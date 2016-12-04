@@ -7,15 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}{% endblock %} </title>
     <!-- Latest compiled and minified CSS -->
-{#    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">#}
+
         <link href="{% static 'user_profile/bootstrap.css' %}" rel="stylesheet" type="text/css">
-
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Rouge+Script" rel="stylesheet">
+         <link href="https://fonts.googleapis.com/css?family=Rouge+Script" rel="stylesheet">
     <style>
         .navbar-header{
             font-family: 'Rouge Script', cursive;
@@ -47,14 +41,14 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Lang Crusier</a>
+            <a class="navbar-brand" href="{% url "home" %}">Lang Crusier</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="Main">
             <ul class="nav navbar-nav">
                 <li><a href="{% url 'user_profile:index' %}">Profile <span class="sr-only">(current)</span></a></li>
-                <li><a href="{% url 'user_profile:newriting' user.username %}">Submit a new Sample</a></li>
+                <li><a href="{% url 'user_profile:newriting' %}">Submit a new Sample</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Services <span class="caret"></span></a>
                     <ul class="dropdown-menu">
@@ -64,13 +58,9 @@
                         <li><a href="#">Consultation</a></li>
                     </ul>
                 </li>
+                <li><a>Welcome {% block nav %}{% endblock %}</a></li>
             </ul>
-            <form class="navbar-form navbar-left">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
-                </div>
-                <button type="submit" class="btn btn-default">Submit</button>
-            </form>
+
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="{% url 'user_profile:logout' %}">Log Out</a></li>
                 <li class="dropdown">
@@ -87,5 +77,7 @@
 </nav>
 {% block content %}
 {% endblock %}
+<script src="{% static 'user_profile/jquery-3.1.1.js' %}"></script>
+<script src="{% static 'user_profile/bootstrap.js' %}"></script>
 </body>
 </html>

@@ -5,6 +5,10 @@
  Welcome {{ user.username }}
 {% endblock %}
 
+{% block nav %}
+    {{ user.username }}
+{% endblock %}
+
 
 {% block content %}
     <div class="container">
@@ -21,11 +25,12 @@
                             </a>
                       </h4>
                 <br>
-                       <a class="btn btn-info " role="button" href="{% url 'user_profile:writing' user.username item.id %}">View</a>
+                       <a class="btn btn-info " role="button" href="{% url 'user_profile:writing'  item.id %}">View</a>
             </div>
             <div id="collapse_{{ forloop.counter }}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading_{{ forloop.counter }}">
               <div class="panel-body">
-                  {{ item.text }}
+                  <p style="width: 100%">{{ item.text }}</p>
+
               </div>
             </div>
             </div>

@@ -21,7 +21,7 @@ def index(request):
     }
     return render(request, 'user_profile/index.html',context)
 
-def writing(request,username,pk):
+def writing(request,pk):
     current_writing=Writing.objects.get(pk=pk)
     return render(request, 'user_profile/writing page.html',{'object':current_writing})
 
