@@ -39,6 +39,38 @@
     </div>
 
 
+<h1> جدول نمرات</h1>
+ <table class="table table-striped">
+    <thead>
+        <tr>
+            <th>title</th>
+            <th>score</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for item in exam %}
+        <tr>
+            <td><a data-toggle="modal" data-target="#PopUp">{{ item.title }}</a></td>
+            <td>{{ item.score }}</td>
+        </tr>
+       <div class="modal fade " id="PopUp">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+             <!--heade-->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h3 class="modal-title">{{ item.title }}</h3>
+            </div>
+            <div class="modal-body">
+                <p>{{ item.text }}</p>
+                <h3> scor: {{ item.score }}</h3>
+            </div>
+        </div>
+        </div>
+    {% endfor %}
+    </tbody>
+ </table>
 
 {% endblock %}
 {#    <a href="{% url 'user_profile:edit' user.pk %}">edit profil</a>#}
