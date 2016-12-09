@@ -14,7 +14,7 @@
         @import "bourbon";
 
         body {
-            background: #eee !important;
+            background: rgb(149,23,104) !important;
         }
 
         .wrapper {
@@ -27,7 +27,7 @@
             padding: 15px 35px 45px;
             margin: 0 auto;
             background-color: #fff;
-            border: 1px solid rgba(0,0,0,0.1);
+            border: 1px solid rgb(149,23,104);
 
         .form-signin-heading,
         .checkbox {
@@ -43,14 +43,12 @@
             font-size: 16px;
             height: auto;
             padding: 10px;
+        @include box-sizing(border-box);
 
-        @include box-sizing(border-box);}
-
-            .form-control:focus {
-            z-index: 2;
-            }
-
-
+        &:focus {
+             z-index: 2;
+         }
+        }
 
         input[type="text"] {
             margin-bottom: -1px;
@@ -64,25 +62,69 @@
             border-top-right-radius: 0;
         }
         }
+        *{
+        font-family:'B yekan',tahoma;
+            font-size:14px;
+        }
+        .navbar-header{
+            font-family: 'Rouge Script', cursive;
+            font-weight: 600;
+        }
+        .navbar-brand{
+            font-size: 30px;
+        }
+        .navbar-default{
+            background-color: white;
+        }
+        .btn-outline-inverse{
+            color: #fff;
+            background-color: transparent;
+            border-color: #cdbfe3;
+        }
+
 
     </style>
 </head>
 <body>
+<nav class="navbar navbar-default navbar-fixed-top" style="margin-bottom: 0; border-bottom-color: rgb(149,23,104)">
+    <div class="container-fluid">
+        <div class="navbar-header navbar-right">
+            <button type="button" class="navbar-toggle collapsed navbar-right" data-toggle="collapse" data-target="#Main" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" style="font-family: 'Rouge Script', cursive; color:rgb(149,23,104) " href="{% url 'home' %}">Lang Crusier</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-left" id="Main" >
+            <ul class="nav navbar-nav">
+
+
+                <li><a href="{% url 'user_profile:login' %}">ورود</a></li>
+
+            </ul>
+        </div><!-- /.navbar-collapse -->
+
+    </div><!-- /.container-fluid -->
+</nav>
+
 <div class="wrapper">
     <form class="form-signin text-center" action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        <h2 class="form-signin-heading">ثبت نام</h2>
+        <h2 class="form-signin-heading" style="color: rgb(149,23,104)">ثبت نام</h2>
         {% for field in form %}
                 <span>{{ field.errors }}</span>
-                <label>{{ field.label_tag }}</label>
+                <label style="color: rgb(149,23,104)">{{ field.label_tag }}</label>
                 <div class="">{{ field }}</div>
+            <br>
         {% endfor %}
 {#        <input type="text" class="form-control" name="username" placeholder="Email Address" required="" autofocus="" />#}
 {#        <input type="password" class="form-control" name="password" placeholder="Password" required=""/>#}
-        <label class="checkbox">
-            <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
-        </label>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+        <br>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" style="background-color: rgb(149,23,104)">Login</button>
     </form>
 </div>
 </body>
@@ -111,4 +153,28 @@
 {#        </form>#}
 {#        </div>#}
 {#    </body>#}
+{#</html>#}
+
+
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>register</title>#}
+{#</head>#}
+{#<body>#}
+{#    <form action="/profile/login/" method="post" >#}
+{#    <form action="" method="post" enctype="multipart/form-data">#}
+{#        {% csrf_token %}#}
+{#        {% for field in form %}#}
+{#            <span>{{ field.errors }}</span>#}
+{#            <label>{{ field.label_tag }}</label>#}
+{#            <div>{{ field }}</div>#}
+{#        {% endfor %}#}
+{#        <button type="submit">submit</button>#}
+{#        <input type="hidden" name="next" value="{{ next }}" />#}
+{#        {{ login_form }}#}
+{#        <input type="submit">#}
+{#    </form>#}
+{#</body>#}
 {#</html>#}
