@@ -8,8 +8,9 @@
     <title>{% block title %}{% endblock %} </title>
     <!-- Latest compiled and minified CSS -->
 
-        <link href="{% static 'user_profile/bootstrap.css' %}" rel="stylesheet" type="text/css">
-         <link href="https://fonts.googleapis.com/css?family=Rouge+Script" rel="stylesheet">
+    <link href="{% static 'user_profile/bootstrap.css' %}" rel="stylesheet" type="text/css">
+     <link href="https://fonts.googleapis.com/css?family=Rouge+Script" rel="stylesheet">
+    {% block head %}{% endblock %}
     <style>
         .navbar-header{
             font-family: 'Rouge Script', cursive;

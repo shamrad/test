@@ -1,6 +1,8 @@
 from django.conf.urls import url,include
 from .views import UserFormView, index, LoginView, writing, CreateWriting, Logout
 from django.contrib.auth import views
+
+
 app_name='user_profile'
 
 urlpatterns = [
@@ -12,4 +14,5 @@ urlpatterns = [
 
     url(r'^(?P<pk>[0-9]+)/$', writing, name='writing'),
     url(r'^addnew/$', CreateWriting.as_view(), name='newriting'),
+    # url(r'edit/$', EditView.as_view(), name='edit'),
 ]

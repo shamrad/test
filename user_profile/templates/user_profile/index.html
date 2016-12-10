@@ -9,8 +9,13 @@
     {{ user.username }}
 {% endblock %}
 
+{% block head %}
+    <link rel="stylesheet" href="{% static 'user_profile/chartist.min.css' %}">
+    <script src="{% static 'user_profile/chartist.min.js'%}"></script>
 
+{% endblock %}
 {% block content %}
+{#    <h1><a href="{% url 'user_profile:edit' user.pk %}">ediiit</a></h1>#}
     <div class="container">
         <h2>{{ user.name }}</h2>
         <h3>{{ user.username }}</h3>
@@ -45,6 +50,7 @@
         <tr>
             <th>title</th>
             <th>score</th>
+            <th>time</th>
         </tr>
     </thead>
     <tbody>
@@ -52,6 +58,7 @@
         <tr>
             <td><a data-toggle="modal" data-target="#PopUp">{{ item.title }}</a></td>
             <td>{{ item.score }}</td>
+            <td>{{ item.time }}</td>
         </tr>
        <div class="modal fade " id="PopUp">
     <div class="modal-dialog">
@@ -71,6 +78,34 @@
     {% endfor %}
     </tbody>
  </table>
+
+
+    <div class="ct-chart ct-golden-section" style="height: 30rem" ></div>
+<!--<div class="ct-chart ct-golden-section" id="chart2"></div>-->
+
+<script>
+        new Chartist.Line('.ct-chart', {
+            labels: [
+
+            ],
+
+            series: [
+                a=[],
+            ]
+        }, {
+            fullWidth: true,
+            chartPadding: {
+                right: 40
+            }
+        });
+    {% for item in exam %}
+{#        labels.a{{ forloop.counter }}='{{ item.time }}'#}
+        a.push({{ item.score }})
+    {% endfor %}
+
+    </script>
+
+
 
 {% endblock %}
 {#    <a href="{% url 'user_profile:edit' user.pk %}">edit profil</a>#}

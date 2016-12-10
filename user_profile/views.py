@@ -1,8 +1,13 @@
+from audioop import reverse
+
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth import login as auth_login
+from django.views import generic
+from django.views.generic.edit import UpdateView
+
 from .form import UserForm, LoginForm
 from django.views.generic import View
 from .models import Writing
@@ -27,7 +32,30 @@ def writing(request,pk):
     return render(request, 'user_profile/writing page.html',{'object':current_writing})
 
 
-
+# class EditView(UpdateView):
+#     model = User
+#     template_name = 'user_profile/editview.html'
+#     fields = ['email','username']
+#
+#
+#     def get_object(self):
+#             return User.objects.get(pk=self.request.GET.get('pk'))  # or request.POST
+#
+# class EditUserProfileView(UpdateView): #Note that we are using UpdateView and not FormView
+#     model = User
+#     form_class = UserForm
+#     template_name = "user_profile/editview.html"
+#
+#     def get_object(self, *args, **kwargs):
+#         user = get_object_or_404(User, pk=self.kwargs)
+#
+#         # We can also get user object using self.request.user  but that doesnt work
+#         # for other models.
+#
+#         return user.userprofile
+#
+#     def get_success_url(self, *args, **kwargs):
+#         return reverse("some url name")
 
 
 class UserFormView(View):
@@ -90,6 +118,7 @@ class CreateWriting(CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super(CreateWriting, self).form_valid(form)
+
 
 def Logout(request):
     logout(request)
