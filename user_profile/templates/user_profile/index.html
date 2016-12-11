@@ -84,7 +84,7 @@
 <!--<div class="ct-chart ct-golden-section" id="chart2"></div>-->
 
 <script>
-        new Chartist.Line('.ct-chart', {
+        new Chartist.Line('.ct-chart', m={
             labels: [
 
             ],
@@ -99,7 +99,7 @@
             }
         });
     {% for item in exam %}
-{#        labels.a{{ forloop.counter }}='{{ item.time }}'#}
+         m.labels.push('{{ item.time }}')
         a.push({{ item.score }})
     {% endfor %}
 
