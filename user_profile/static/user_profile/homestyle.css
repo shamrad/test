@@ -122,9 +122,23 @@ body{
 .inner{margin:0px !important;
 background-color: rgb(149,23,104);
 }
+#green{
+   background-color: rgb(34, 194, 34)
+}
+#yellow{
+       background-color: #febe29
 
+}
+#blue{
+       background-color: #3e5e9a
+
+}
+#red{
+       background-color: #f1685e
+
+}
 .outer{
-    background-color: darksalmon;
+    background-color: rgb(149,23,104);
 }
 
 

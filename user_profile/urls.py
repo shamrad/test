@@ -12,6 +12,7 @@ urlpatterns = [
     url(r'^$', index, name='index'),
     url(r'^logout', Logout, name='logout'),
 
+
     url(r'^(?P<pk>[0-9]+)/$', writing, name='writing'),
     url(r'^addnew/$', CreateWriting.as_view(), name='newriting'),
     # url(r'edit/$', EditView.as_view(), name='edit'),

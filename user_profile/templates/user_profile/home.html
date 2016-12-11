@@ -33,7 +33,7 @@
         <div class="collapse navbar-collapse navbar-left" id="Main" >
             <ul class="nav navbar-nav">
 
-                <li><a href="{% url 'user_profile:login' %}">ورود</a></li>
+                <li><a href="{% url 'user_profile:login' %}">ورود<i class="glyphicon glyphicon-off "></i></a></li>
                 <li><a href="{% url 'user_profile:register' %}">ثبت نام</a></li>
 
             </ul>
@@ -45,6 +45,7 @@
 
 
 <div class="container-fluid">
+{#    pink section#}
     <div class="row" style=" background-color: rgb(149,23,104); color: white; ">
         <h1 class="text-center" style="font-family: 'Rouge Script';font-size: 50px ">Lang Cruz</h1>
         <div class="jumbotron text-center" style="direction: rtl; background: none; padding: 1rem ">
@@ -140,6 +141,7 @@
 
     </div>
     <br>
+    <br>
 
 
 
@@ -148,9 +150,9 @@
         <div class="row">
             <div class="col-sm-3">
                 <div class="flip">
-                    <div class="card">
+                    <div class="card" >
                         <div class="face front">
-                            <div class="well well-sm inner"> برنامه ریزی هشت هفته ای برای موفقیت در آزمون تافل<br>
+                            <div class="well well-sm inner" id="green"> برنامه ریزی هشت هفته ای برای موفقیت در آزمون تافل<br>
                                 معرفی منابع
                                 یادگیری تکنیک های هر 4 مهارت
                                 زمان بندی مناسب.</div>
@@ -165,7 +167,7 @@
                 <div class="flip">
                     <div class="card">
                         <div class="face front">
-                            <div class="well well-sm inner"> Front</div>
+                            <div class="well well-sm inner" id="yellow"> Front</div>
                         </div>
                         <div class="face back">
                             <div class="well well-sm outer"> Back</div>
@@ -177,7 +179,7 @@
                 <div class="flip">
                     <div class="card">
                         <div class="face front">
-                            <div class="well well-sm inner"> Front</div>
+                            <div class="well well-sm inner" id="blue"> Front</div>
                         </div>
                         <div class="face back">
                             <div class="well well-sm outer"> Back</div>
@@ -189,7 +191,7 @@
                 <div class="flip">
                     <div class="card">
                         <div class="face front">
-                            <div class="well well-sm inner"> Front</div>
+                            <div class="well well-sm inner" id="red"> Front</div>
                         </div>
                         <div class="face back">
                             <div class="well well-sm outer"> Back</div>
@@ -200,6 +202,8 @@
         </div>
     </div>
 
+
+<a href="{% url 'service' %}">service</a>
 
     <ul class="social">
         <li> <a href="#"> <i class=" fa fa-telegram">   </i> </a> </li>
