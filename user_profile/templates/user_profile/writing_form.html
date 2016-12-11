@@ -4,6 +4,10 @@
 {% block title %}
     New Writing
 {% endblock %}
+{%  block head %}
+    <script src="{% static 'user_profile/jquery-3.1.1.js' %}"></script>
+    <script src="{% static 'user_profile/word_counter.js' %}"></script>
+{%  endblock %}
 
 {% block content %}
     <div class="container-fluid">
@@ -24,6 +28,11 @@
         </div>
         </div>
     </form>
+    <div id="result">
+    Words: <span id="wordCount">0</span><br/>
+    </div>
+</div>
+
     </div>
 {% endblock %}
 
