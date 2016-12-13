@@ -35,36 +35,15 @@
 
     border-bottom: 1px solid rgb(149,23,104);
 }
+
     </style>
 {% endblock %}
+
 {% block content %}
-{#    <h1><a href="{% url 'user_profile:edit' user.pk %}">ediiit</a></h1>#}
-{#    <div class="container">#}
-{#        <h2>{{ user.name }}</h2>#}
-{#        <h3>{{ user.username }}</h3>#}
-{#        <p>{{ user.email }}</p>#}
-{#        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">#}
-{#        {% for item in exam %}#}
-{#            <div class="panel panel-default">#}
-{#            <div class="panel-heading" role="tab" id="heading_{{ forloop.counter }}">#}
-{#                      <h4 class="panel-title">#}
-{#                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse_{{ forloop.counter }}" aria-expanded="true" aria-controls="collapse_{{ forloop.counter }}">#}
-{#                            {{ item.title }}#}
-{#                            </a>#}
-{#                      </h4>#}
-{#                <br>#}
-{#                       <a class="btn btn-info " role="button" href="{% url 'user_profile:writing'  item.id %}">View</a>#}
-{#            </div>#}
-{#            <div id="collapse_{{ forloop.counter }}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading_{{ forloop.counter }}">#}
-{#              <div class="panel-body">#}
-{#                  <p style="width: 100%">{{ item.text }}</p>#}
-{##}
-{#              </div>#}
-{#            </div>#}
-{#            </div>#}
-{#        {% endfor %}#}
-{#        </div>#}
-{#    </div>#}
+
+        <h2>{{ user.name }}</h2>
+        <h3>{{ user.username }}</h3>
+        <p>{{ user.email }}</p>
 
 <div class="container-fluid">
 <h1 style="color: rgb(149,23,104)"> جدول نمرات</h1>

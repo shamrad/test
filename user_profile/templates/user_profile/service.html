@@ -20,7 +20,7 @@
 
 </head>
 <body>
-<nav class="navbar navbar-default navbar-fixed-top" style="margin-bottom: 0; border-bottom-color: rgb(149,23,104)">
+<nav class="navbar navbar-default navbar-fixed-top" style="margin-bottom: 0; border-bottom-color: rgb(149,23,104); z-index: 1000000">
     <div class="container-fluid">
         <div class="navbar-header navbar-right">
             <button type="button" class="navbar-toggle collapsed navbar-right" data-toggle="collapse" data-target="#Main" aria-expanded="false">
@@ -29,15 +29,15 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" style="font-family: 'Rouge Script', cursive; color:rgb(149,23,104) " href="#">Lang Crusier</a>
+            <a class="navbar-brand" style="font-family: 'Rouge Script', cursive; color:rgb(149,23,104) " href="{% url 'home' %}">Lang Crusier</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-left" id="Main" >
             <ul class="nav navbar-nav">
 
-                <li><a href="#">ورود</a></li>
-                <li><a href="#">ثبت نام</a></li>
+                <li><a href="{% url 'user_profile:login' %}">ورود</a></li>
+                <li><a href="{% url 'user_profile:register' %}">ثبت نام</a></li>
 
             </ul>
         </div><!-- /.navbar-collapse -->
