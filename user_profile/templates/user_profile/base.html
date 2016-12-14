@@ -27,10 +27,6 @@
             background-color: white;
 
         }
-        .navbar{
-{#            position: fixed;#}
-{#            width: 100%;#}
-        }
     </style>
 </head>
 <body>
@@ -51,15 +47,15 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="Main">
             <ul class="nav navbar-nav">
-                <li ><a href="{% url 'user_profile:index' %} " >Profile <span class="sr-only">(current)</span></a></li>
-                <li><a href="{% url 'user_profile:newriting' %}">Submit a new Sample</a></li>
+                <li ><a href="{% url 'user_profile:index' %} " >پروفایل کاربری<span class="sr-only">(current)</span></a></li>
+                <li><a href="{% url 'user_profile:newriting' %}">نوشتن متن جدید</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Services <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">خدمات دیگر<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Take a Test</a></li>
-                        <li><a href="#">TOEFL Tips</a></li>
+                        <li><a href="#">شرکت در آزمون آزمایشی</a></li>
+                        <li><a href="#">نکات آزمون تافل</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#">Consultation</a></li>
+                        <li><a href="#">مشاوره</a></li>
                     </ul>
                 </li>
                 <li><a>Welcome {% block nav %}{% endblock %}</a></li>

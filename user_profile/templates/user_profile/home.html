@@ -211,7 +211,6 @@
     </div>
 
 
-<a href="{% url 'service' %}">service</a>
 
     <section class="get_started_wrap text-center narrow">
     <div class="container">
@@ -219,10 +218,12 @@
 
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <a class="btn btn-success" style="width: 20rem ; border-radius: 50px; padding: 15px; font-size: 30px" href="{% url 'service' %}">خدمات تافل</a>
+
                 <h2>از کجا شروع کنم؟</h2>
                 <div >
-                    <a class="btn btn-me" style="border-radius: 50px; padding: 15px; font-size: large; width: 10rem" href="{% url 'user_profile:login' %} ">ورود</a>
-                    <a class="btn btn-me-inv" style="width: 20rem ; border-radius: 50px; padding: 15px; font-size: large" href="{% url 'user_profile:login' %} ">ثبت نام</a>
+                    <a class="btn btn-info" style="width: 20rem ; border-radius: 50px; padding: 15px; font-size: large" href="{% url 'user_profile:login' %} ">ورود</a>
+                    <a class="btn btn-info" style="width: 20rem ; border-radius: 50px; padding: 15px; font-size: large" href="{% url 'user_profile:login' %} ">ثبت نام</a>
                 </div>
             </div>
         </div>
@@ -233,9 +234,9 @@
 <footer class="panel-footer">
         <div class="text-center ">
 
-                <a href="https://www.facebook.com/bootsnipp"><i id="social-fb" class="fa fa-facebook-square fa-3x social"></i></a>
-	            <a href="https://twitter.com/bootsnipp"><i id="social-ins" class="fa fa-instagram fa-3x social"></i></a>
-	            <a href="mailto:bootsnipp@gmail.com"><i id="social-em" class="fa fa-envelope-square fa-3x social"></i></a>
+                <a href="https://www.facebook.com/bootsnipp"><i id="social-fb" class="glyphicon glyphicon-send fa-2x social"></i></a>
+	            <a href="https://twitter.com/bootsnipp"><i id="social-ins" class="fa fa-instagram fa-2x social"></i></a>
+	            <a href="mailto:bootsnipp@gmail.com"><i id="social-em" class="fa fa-envelope-square fa-2x social"></i></a>
 </div>
 </footer>
 
