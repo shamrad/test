@@ -13,8 +13,7 @@
     <link type="text/css" rel="stylesheet" href="http://ifont.ir/apicode/38">
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Rouge+Script" rel="stylesheet">
-    <!--<link rel="stylesheet" href="s.css" type="text/css">-->
-    <link rel="stylesheet" href="{% static 'user_profile/homestyle.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'user_profile/homestyle.css' %}" type="text/css">
 </head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top" style="margin-bottom: 0; border-bottom-color: rgb(149,23,104)">
@@ -33,8 +32,8 @@
         <div class="collapse navbar-collapse navbar-left" id="Main" >
             <ul class="nav navbar-nav">
 
-                <li><a href="{% url 'user_profile:login' %}"> ورود  <span class="glyphicon glyphicon-log-out"> </span> </a></li>
-                <li><a href="{% url 'user_profile:register' %}">ثبت نام </a></li>
+                <li><a href="{% url 'user_profile:login' %}">ورود</a></li>
+                <li><a href="{% url 'user_profile:register' %}">ثبت نام</a></li>
 
             </ul>
         </div><!-- /.navbar-collapse -->
@@ -90,7 +89,7 @@
                         </li>
                         <li role="presentation" class="">
                             <a href="#writing" aria-controls="writing" role="tab" data-toggle="tab">
-                                <img class="img-circle" src="{% static 'user_profile/writing.jpg' %}" />
+                                <img class="img-circle" src="{% static 'user_profile/writing.jpg' %}" width="5rem" />
                             </a>
                         </li>
                     </ul>
@@ -152,13 +151,27 @@
                 <div class="flip">
                     <div class="card" >
                         <div class="face front">
-                            <div class="well well-sm inner" id="green"> برنامه ریزی هشت هفته ای برای موفقیت در آزمون تافل<br>
-                                معرفی منابع
-                                یادگیری تکنیک های هر 4 مهارت
-                                زمان بندی مناسب.</div>
+                            <div class="well well-sm inner" id="green" style="font-size: 20px">چه نیازی هست که متن ها تصحیح بشن؟</div>
                         </div>
                         <div class="face back">
-                            <div class="well well-sm outer"> Back</div>
+                            <div class="well well-sm outer">نوشتن و صحبت کردن آکادمیک، درست مثل رانندگی یک مهارته! برای تقویت یک مهارت باید تمرین و تلاش کنید و در طول مسیر از کسی که مسیر رو با موفقیت رفته کمک بگیرید تا راهنمایی تون کنه</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-sm-3">
+                <div class="flip">
+                    <div class="card">
+                        <div class="face front">
+                            <div class="well well-sm inner" id="yellow" style="font-size: 20px">چه کسانی متن های شما رو تصحیح می کنند؟<br>
+                            آیا نمره ای که اعلام میشه قابل اعتماده؟</div>
+                        </div>
+                        <div class="face back">
+                            <div class="well well-sm outer">افرادی که سال ها تجربه موفق در تدریس زبان دارند
+                            <br> افرادی که در آزمون اصلی نمره بیش از 100 رو کسب کرده اند
+                                </div>
                         </div>
                     </div>
                 </div>
@@ -167,10 +180,14 @@
                 <div class="flip">
                     <div class="card">
                         <div class="face front">
-                            <div class="well well-sm inner" id="yellow"> Front</div>
+                            <div class="well well-sm inner" id="blue" style="font-size: 20px">چرا باید به ما اعتماد کنید؟</div>
                         </div>
                         <div class="face back">
-                            <div class="well well-sm outer"> Back</div>
+                            <div class="well well-sm outer">چون میدونیم طبق چه استانداردی باید تصحیح بشه
+                            <br>ارزان اما با کیفیت
+                            <br>سریع اما دقیق
+                            <br>اشتباهات متداول داوطلبان میدونیم کجاس
+                                </div>
                         </div>
                     </div>
                 </div>
@@ -179,22 +196,13 @@
                 <div class="flip">
                     <div class="card">
                         <div class="face front">
-                            <div class="well well-sm inner" id="blue"> Front</div>
+                            <div class="well well-sm inner" id="red" style="font-size: 20px">بجز تصحیح چیکار می کنیم؟</div>
                         </div>
                         <div class="face back">
-                            <div class="well well-sm outer"> Back</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="flip">
-                    <div class="card">
-                        <div class="face front">
-                            <div class="well well-sm inner" id="red"> Front</div>
-                        </div>
-                        <div class="face back">
-                            <div class="well well-sm outer"> Back</div>
+                            <div class="well well-sm outer">یه سیستم قوی مشاوره ای داریم
+                            <br>برنامه ریزی تحصیلی مدون
+                            <br>معرفی منابع و معرفی روش ها
+                                </div>
                         </div>
                     </div>
                 </div>
@@ -205,13 +213,32 @@
 
 <a href="{% url 'service' %}">service</a>
 
-    <ul class="social">
-        <li> <a href="#"> <i class=" fa fa-telegram">   </i> </a> </li>
-        <li> <a href="#"> <i class="fa fa-instagram">   </i> </a> </li>
-        <li> <a href="#"> <i class="fa fa-google-plus">   </i> </a> </li>
-        <li> <a href="#"> <i class="fa fa-pinterest">   </i> </a> </li>
-        <li> <a href="#"> <i class="fa fa-aparat">   </i> </a> </li>
-    </ul>
+    <section class="get_started_wrap text-center narrow">
+    <div class="container">
+
+
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h2>از کجا شروع کنم؟</h2>
+                <div >
+                    <a class="btn btn-me" style="border-radius: 50px; padding: 15px; font-size: large; width: 10rem" href="{% url 'user_profile:login' %} ">ورود</a>
+                    <a class="btn btn-me-inv" style="width: 20rem ; border-radius: 50px; padding: 15px; font-size: large" href="{% url 'user_profile:login' %} ">ثبت نام</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<footer class="panel-footer">
+        <div class="text-center ">
+
+                <a href="https://www.facebook.com/bootsnipp"><i id="social-fb" class="fa fa-facebook-square fa-3x social"></i></a>
+	            <a href="https://twitter.com/bootsnipp"><i id="social-ins" class="fa fa-instagram fa-3x social"></i></a>
+	            <a href="mailto:bootsnipp@gmail.com"><i id="social-em" class="fa fa-envelope-square fa-3x social"></i></a>
+</div>
+</footer>
+
 
 </div>
 
