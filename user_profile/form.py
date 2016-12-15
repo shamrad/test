@@ -10,6 +10,7 @@ class UserForm(forms.ModelForm):
         fields=['username','email','password']
 
 
+
 class LoginForm(AuthenticationForm):
 
     def __init__(self, *args, **kwargs):
