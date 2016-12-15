@@ -45,6 +45,8 @@ body{
 p.narrow{
     width: 60%;
     margin: 10px auto;
+    text-indent: 20px;
+    line-height: 40px;
 }
 
 .liner{

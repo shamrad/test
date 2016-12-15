@@ -12,11 +12,19 @@
 {%  block head %}
     <script src="{% static 'user_profile/jquery-3.1.1.js' %}"></script>
     <script src="{% static 'user_profile/word_counter.js' %}"></script>
+    <script src="{% static 'user_profile/timerscript.js' %}"></script>
+    <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
 {%  endblock %}
 
 {% block content %}
     <div class="container-fluid">
     <h3>Submit your new Writing to be corrected!</h3>
+    <p>set time</p><input type="text" id="seconds" name="seconds" value="0" size="2" maxlength="3" /><input type="button" id="btnct" value="Input" />
+        <br>
+       <p> <span id="minspan">00</span> :
+<span id="secspan">00</span></p><input type="button" value="Start" onclick="countdown()">
+<input type="button" value="Stop" onclick="cdpause()">
+<input type="button" value="Reset" onclick="cdreset()">
     <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="form-group">
