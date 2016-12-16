@@ -247,9 +247,14 @@ li.active span.round-tabs.five{
 
 
  /*footer style*/
-ul{
-    text-decoration: none;
+.footerbtn{
+    color: #8f9eaf
 }
+.footerbtn:hover{
+    color: rgb(149,23,104);
+}
+
+
 .btnfooter{
     background-color:  #8f9eaf ;
     width: 30rem ; border-radius: 50px; padding: 15px; font-size: large;

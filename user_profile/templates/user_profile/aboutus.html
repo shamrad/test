@@ -1,0 +1,116 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>about us: toefl learning system</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="{% static 'user_profile/bootstrap.js' %}"></script>
+    <link type="text/css" rel="stylesheet" href="http://ifont.ir/apicode/38">
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Rouge+Script" rel="stylesheet">
+    <link href="{% static 'user_profile/aboutus-style.css' %}" rel="stylesheet">
+
+    <style>
+
+
+    </style>
+</head>
+<body>
+-----------------------
+<!--nav bar-->
+-------------------
+<nav class="navbar navbar-default navbar-fixed-top" style="margin-bottom: 0; border-bottom-color: rgb(149,23,104)">
+    <div class="container-fluid">
+        <div class="navbar-header navbar-right">
+            <button type="button" class="navbar-toggle collapsed navbar-right" data-toggle="collapse" data-target="#Main" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" style="font-family: 'Rouge Script', cursive; color:rgb(149,23,104) " href="#">Lang Crusier</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-left" id="Main" >
+            <ul class="nav navbar-nav">
+
+                <li><a href="#">ورود</a></li>
+                <li><a href="#">ثبت نام</a></li>
+
+            </ul>
+        </div><!-- /.navbar-collapse -->
+
+    </div><!-- /.container-fluid -->
+</nav>
+<br>
+
+<div class="row" style=" background-color: rgb(149,23,104); color: white; ">
+    <br>
+    <h1 class="text-center" style="font-family: 'Rouge Script';font-size: 50px ">Lang Cruz</h1>
+    <div class="jumbotron text-center" style="direction: rtl; background: none; padding: 1rem ">
+        <h1 class="center-block" style=" width:50%; border: 3px solid white; border-radius: 10px">در باره ما</h1>
+    </div>
+    <div class="text-center">
+        <h2>یک آزمون را دوبار تکرار نکنید</h2>
+    </div>
+
+    <br>
+    <br>
+
+</div>
+<br>
+<br>
+
+<div class="container">
+    <h1 class="text-center">داستان ما</h1>
+    <hr>
+    <p style="direction: rtl">داستان از اونجا شروع شد که سال چارم دانشگاه شد و همهی بچه ها درگیر تافل و اپلای شدن، علی الخصوص دانشگاه ما شریف که سردم دار این کاراست خلاصه همون موقعه ها بود که فهمیدیم چقدر فرایند نا واضح اصلا نمیدونستیم باید چی بخونیم و چی کار کنیم تنها راه فهمیدن هم سوال کردن از بقیه بچه ها بود که قبلا آزمون داده بود همچین باد به قبقبشون مینداختن انگار خودشون طراح سوالات آزمون اند که عموما خودشون هم نمی دونست اصلا چی کار کردن با هزار بدبختی فهمیدیم چی باس بخونیم و خوندیم رسیدیم به نزدیک های آزمون ولی حالا کسی نبود بگه خوب الان دیگه اماده ای یا بگه هنوز هم تا نمره ایده آل فاصله داریم، از همون موقعه بود به فکر یه سایتی افتادیم که وقتی یه نفر بخواد تافل یا هر ازمون بین المللی بده این سایت براش کافی باشه از اطلاعات و کتاب و مرجع تا آزمون آمادگی و ثبت نام و حتی بعد از امتحان، پول در آوردن </p>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+{#    footer#}
+    <div class="row panel-footer" style="background-color: #efeeee;">
+        <div class="row">
+            <ul class="col-md-6 float-left">
+                <li><a href="#" class="btnlink">تماس</a></li>
+                <li><a href="#" class="btnlink">داستان ما</a></li>
+                <li><br></li>
+                <li><br></li>
+                <li ><a href="https://www.facebook.com/bootsnipp" class="footerbtn" ><i id="social-fb" class="glyphicon glyphicon-send fa-2x social" ></i></a>
+                    <a href="https://twitter.com/bootsnipp" class="footerbtn"><i id="social-ins" class="fa fa-instagram fa-2x social"></i></a>
+                    <a href="mailto:bootsnipp@gmail.com" class="footerbtn"><i id="social-em" class="fa fa-envelope-square fa-2x social"></i></a>
+                </li>
+            </ul>
+            <ul class="col-md-5 float-right" style="direction: rtl">
+                <li style="margin-bottom: 0.5rem">
+                    <a class="btn btn-info btnfooter"  href="{% url 'user_profile:login' %} ">ورود</a></li>
+                <li>
+                    <a class="btn btn-info btnfooter "  href="{% url 'user_profile:login' %} ">ثبت نام</a></li>
+            </ul>
+        </div>
+        <div>
+            <br>
+            <p class="small" style="margin-bottom: 0; padding-bottom: 0; color: #8f9eaf">© 2016 LangCruz, Inc.</p>
+        </div>
+    </div>
+
+
+
+
+
+
+
+</body>
+</html>

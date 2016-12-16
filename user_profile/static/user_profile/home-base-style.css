@@ -1,0 +1,10 @@
+.navbar-header{
+    font-family: 'Rouge Script', cursive;
+    font-weight: 600;
+}
+.navbar-brand{
+    font-size: 30px;
+}
+.navbar-default{
+    background-color: white;
+}
