@@ -65,38 +65,44 @@
         </tr>
     </thead>
     <tbody>
-    {% for item in exam %}
-        <tr>
-            <td><a data-toggle="modal" data-target="#{{ forloop.counter }}" style="color: rgb(149,23,104); cursor: pointer">{{ item.title }}</a></td>
-            <td>{{ item.score }}</td>
-            <td>{{ forloop.counter }}</td>
-        </tr>
+        {% for item in exam %}
+            <tr>
+                <td><a data-toggle="modal" data-target="#{{ forloop.counter }}" style="color: rgb(149,23,104); cursor: pointer">{{ item.title }}</a></td>
+                <td>{{ item.score }}</td>
+                <td>{{ forloop.counter }}</td>
+            </tr>
 
-       <div class="modal fade " id="{{ forloop.counter }}">
-    <div class="modal-dialog">
-        <div class="modal-content">
+           <div class="modal fade " id="{{ forloop.counter }}">
+        <div class="modal-dialog">
+            <div class="modal-content">
 
-             <!--heade-->
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h3 class="modal-title" style="color: rgb(149,23,104);">{{ item.title }}</h3>
+                 <!--heade-->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3 class="modal-title" style="color: rgb(149,23,104);">{{ item.title }}</h3>
+                </div>
+                <div class="modal-body">
+                    <p>{{ item.text }}</p>
+                    <hr>
+                    <h3> score: {{ item.score }}</h3>
+                </div>
             </div>
-            <div class="modal-body">
-                <p>{{ item.text }}</p>
-                <hr>
-                <h3> score: {{ item.score }}</h3>
             </div>
-        </div>
-        </div>
-    {% endfor %}
+            </div>
+                {% empty %}
+                <a href="{% url 'user_profile:newriting' %}" class="btn btn-info " role="button" >تست رایگان</a>
+        {% endfor %}
     </tbody>
  </table>
 
+
+{#        chart#}
     <div class="col-sm-8">
     <div class="ct-chart ct-golden-section" style="height: 30rem" ></div>
-<!--<div class="ct-chart ct-golden-section" id="chart2"></div>-->
     </div>
     </div>
+
+
 
 
 
