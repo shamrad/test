@@ -8,7 +8,7 @@
 <form method="post" action="" class="form-horizontal">
 
     {% for field in form %}
-                {{% csrf_token %}
+               {% csrf_token %}
                 <span>{{ field.errors }}</span>
                 <label style="color: rgb(149,23,104)">{{ field.label_tag }}</label>
                 <div class="">{{ field }}</div>

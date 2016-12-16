@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse_lazy
 from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth import login as auth_login
@@ -37,13 +38,14 @@ class EditView(UpdateView):
     model = User
 
     template_name = 'user_profile/editview.html'
-    fields = ['email','username']
+    fields = ['first_name','last_name','email','username']
 
     def get_object(self, queryset=None):
         return self.request.user
 
-    def get_success_url(self):
-     return redirect('/profile/')
+    success_url = reverse_lazy('user_profile:index')
+    # def get_success_url(self):
+    #  return  redirect('user_profile:index')
 
 
 class UserFormView(View):

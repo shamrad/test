@@ -1,6 +1,8 @@
 from django.conf.urls import url,include
 from .views import UserFormView, index, LoginView, writing, CreateWriting, Logout, EditView, Increase
 from django.contrib.auth import views
+from django.contrib.auth.views import password_reset,password_reset_done
+
 
 
 app_name='user_profile'
@@ -17,4 +19,8 @@ urlpatterns = [
     url(r'^addnew/$', CreateWriting.as_view(), name='newriting'),
     url(r'^increase-credit/$', Increase , name='increase'),
     url(r'edit/$', EditView.as_view(), name='edit'),
+
+    url(r'password/$', password_reset, name='reset_password'),
+    url(r'password/done$', password_reset_done, name='password_reset_done'),
+
 ]
