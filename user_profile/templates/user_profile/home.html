@@ -259,32 +259,58 @@
     </div>
     </div>
  <br>
+
     <br>
     <br>
     <br>
+    <br>
 
 
 
 
-    <section class=" text-center">
+{#    footer#}
+    <div class="row panel-footer" style="background-color: #efeeee;">
+        <div class="row">
+            <ul class="col-md-6 float-left">
+                <li><a href="#" class="btnlink">تماس</a></li>
+                <li><a href="#" class="btnlink">داستان ما</a></li>
+                <li><br></li>
+                <li><br></li>
+                <li ><a href="https://www.facebook.com/bootsnipp" class="footerbtn" ><i id="social-fb" class="glyphicon glyphicon-send fa-2x social" ></i></a>
+                    <a href="https://twitter.com/bootsnipp" class="footerbtn"><i id="social-ins" class="fa fa-instagram fa-2x social"></i></a>
+                    <a href="mailto:bootsnipp@gmail.com" class="footerbtn"><i id="social-em" class="fa fa-envelope-square fa-2x social"></i></a>
+                </li>
+            </ul>
+            <ul class="col-md-5 float-right" style="direction: rtl">
+                <li style="margin-bottom: 0.5rem">
+                    <a class="btn btn-info btnfooter"  href="{% url 'user_profile:login' %} ">ورود</a></li>
+                <li>
+                    <a class="btn btn-info btnfooter "  href="{% url 'user_profile:login' %} ">ثبت نام</a></li>
+            </ul>
+        </div>
+        <div>
+            <br>
+            <p class="small" style="margin-bottom: 0; padding-bottom: 0; color: #8f9eaf">© 2016 LangCruz, Inc.</p>
+        </div>
+    </div>
 
-                <div >
-                    <a class="btn btn-info" style="width: 20rem ; border-radius: 50px; padding: 15px; font-size: large" href="{% url 'user_profile:login' %} ">ورود</a>
-                    <a class="btn btn-info" style="width: 20rem ; border-radius: 50px; padding: 15px; font-size: large" href="{% url 'user_profile:login' %} ">ثبت نام</a>
-                </div>
 
-    </section>
-
-
-
-<footer class="panel-footer">
-        <div class="text-center ">
-
-                <a href="https://www.facebook.com/bootsnipp"><i id="social-fb" class="glyphicon glyphicon-send fa-2x social"></i></a>
-	            <a href="https://twitter.com/bootsnipp"><i id="social-ins" class="fa fa-instagram fa-2x social"></i></a>
-	            <a href="mailto:bootsnipp@gmail.com"><i id="social-em" class="fa fa-envelope-square fa-2x social"></i></a>
-</div>
-</footer>
+{#<footer class="">#}
+{##}
+{#            <div class="col-md-6">#}
+{#                <a href="https://www.facebook.com/bootsnipp"><i id="social-fb" class="glyphicon glyphicon-send fa-2x social"></i></a>#}
+{#	            <a href="https://twitter.com/bootsnipp"><i id="social-ins" class="fa fa-instagram fa-2x social"></i></a>#}
+{#	            <a href="mailto:bootsnipp@gmail.com"><i id="social-em" class="fa fa-envelope-square fa-2x social"></i></a>#}
+{##}
+{#            </div>#}
+{##}
+{#            <div class="col-md-6">#}
+{#                <a class="btn btn-info" style="width: 30rem ; border-radius: 50px; padding: 15px; font-size: large" href="{% url 'user_profile:login' %} ">ورود</a>#}
+{#                <a class="btn btn-info" style="width: 30rem ; border-radius: 50px; padding: 15px; font-size: large" href="{% url 'user_profile:login' %} ">ثبت نام</a>#}
+{#            </div>#}
+{#                <br>#}
+{##}
+{#</footer>#}
 
 
 </div>
