@@ -6,7 +6,7 @@
     <title>Toefl Learning - Lang Cruz</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-    <script src="{% static 'user_profile/bootstrap.js' %}"></script>
+    <script src="{% static 'user_profile/bootstrap.css' %}"></script>
     <link type="text/css" rel="stylesheet" href="http://ifont.ir/apicode/38">
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Rouge+Script" rel="stylesheet">
@@ -19,6 +19,7 @@
 
 </head>
 <body>
+
 <nav class="navbar navbar-default navbar-fixed-top" style="margin-bottom: 0; border-bottom-color: rgb(149,23,104)">
     <div class="container-fluid">
         <div class="navbar-header navbar-right">
@@ -45,6 +46,8 @@
 </nav>
 <br>
 <br>
+
+
 <div class="row" style=" background-color: rgb(149,23,104); color: white; ">
     <h1 class="text-center" style="font-family: 'Rouge Script';font-size: 50px ">Lang Cruz</h1>
     <div class="jumbotron text-center" style="direction: rtl; background: none; padding: 1rem ">
@@ -58,7 +61,10 @@
     <br>
 </div>
 
-<section style="background:#efefe9;">
+
+
+
+<section style="background:#efefe9">
     <div class="container">
         <div class="row">
             <div class="board" style="height: auto; min-height: 500px">
@@ -198,6 +204,35 @@
         </div>
     </div>
 </section>
+
+
+
+
+{#    footer#}
+    <div class="row panel-footer" style="background-color: #efeeee;">
+        <div class="row">
+            <ul class="col-md-6 float-left">
+                <li><a href="#" class="btnlink">تماس</a></li>
+                <li><a href="#" class="btnlink">داستان ما</a></li>
+                <li><br></li>
+                <li><br></li>
+                <li ><a href="https://www.facebook.com/bootsnipp" class="footerbtn" ><i id="social-fb" class="glyphicon glyphicon-send fa-2x social" ></i></a>
+                    <a href="https://twitter.com/bootsnipp" class="footerbtn"><i id="social-ins" class="fa fa-instagram fa-2x social"></i></a>
+                    <a href="mailto:bootsnipp@gmail.com" class="footerbtn"><i id="social-em" class="fa fa-envelope-square fa-2x social"></i></a>
+                </li>
+            </ul>
+            <ul class="col-md-5 float-right" style="direction: rtl">
+                <li style="margin-bottom: 0.5rem">
+                    <a class="btn btn-info btnfooter"  href="{% url 'user_profile:login' %} ">ورود</a></li>
+                <li>
+                    <a class="btn btn-info btnfooter "  href="{% url 'user_profile:login' %} ">ثبت نام</a></li>
+            </ul>
+        </div>
+        <div>
+            <br>
+            <p class="small" style="margin-bottom: 0; padding-bottom: 0; color: #8f9eaf">© 2016 LangCruz, Inc.</p>
+        </div>
+    </div>
 
 
 
