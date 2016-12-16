@@ -1,11 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<form method="post" action="" class="form-horizontal">
+
+{% extends "user_profile/base.html" %}
+{% load static %}
+
+{% block title %}
+ edit profile {{ user.username }}
+{% endblock %}
+
+{% block nav %}
+    {{ user.username }}
+{% endblock %}
+
+{% block cre %}
+    {{ user.credit.wallet }}
+{% endblock %}
+
+{% block activeClass %}.setting{% endblock %}
+
+{% block head %}{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+    <form method="post" action="" class="form-horizontal">
 
     {% for field in form %}
                {% csrf_token %}
@@ -20,5 +36,8 @@
         <button class="btn btn-lg btn-primary btn-block" type="submit" style="background-color: rgb(149,23,104)">Login</button>
 
 </form>
-</body>
-</html>
+    </div>
+{% endblock %}
+
+
+
