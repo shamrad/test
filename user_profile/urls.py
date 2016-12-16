@@ -1,5 +1,5 @@
 from django.conf.urls import url,include
-from .views import UserFormView, index, LoginView, writing, CreateWriting, Logout, EditView
+from .views import UserFormView, index, LoginView, writing, CreateWriting, Logout, EditView, Increase
 from django.contrib.auth import views
 
 
@@ -15,5 +15,6 @@ urlpatterns = [
 
     url(r'^(?P<pk>[0-9]+)/$', writing, name='writing'),
     url(r'^addnew/$', CreateWriting.as_view(), name='newriting'),
+    url(r'^increase-credit/$', Increase , name='increase'),
     url(r'edit/$', EditView.as_view(), name='edit'),
 ]

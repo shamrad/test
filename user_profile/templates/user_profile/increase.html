@@ -1,0 +1,45 @@
+{% extends "user_profile/base.html" %}
+{% load static %}
+
+{% block title %}
+    Increase your Credit
+{% endblock %}
+
+{% block nav %}
+    {{ request.user }}
+{% endblock %}
+
+{% block cre %}
+    {{ user.credit.wallet }}
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+    <h3>افزایش اعتبار</h3>
+
+    <form class="form-horizontal" action="" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+        <label for="id_title" class="col-sm-2 col-sm-offset-2 control-label">مبلغ مورد نظر خود را انتخاب کنید :</label>
+            <br>
+            <br>
+            <div class="radio col-lg-offset-3">
+              <label><input type="radio" value="9000" name="cre">تصحیح یک متن - 9 هزار تومان</label>
+            </div>
+            <div class="radio col-lg-offset-3">
+              <label><input type="radio" value="39000" name="cre">تصحیح 5 متن - 39 هزار تومان</label>
+            </div>
+            <div class="radio col-lg-offset-3">
+              <label><input type="radio" value="69000" name="cre">تصحیح 10 متن - 69 هزار تومان</label>
+            </div>
+        </div>
+        <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-10">
+          <button type="submit" class="btn btn-success">افزایش اعتبار</button>
+        </div>
+        </div>
+    </form>
+
+</div>
+
+{% endblock %}

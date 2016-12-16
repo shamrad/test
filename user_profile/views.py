@@ -111,3 +111,6 @@ class CreateWriting(CreateView):
 def Logout(request):
     logout(request)
     return  redirect('home')
+
+def Increase(request):
+    return render(request, 'user_profile/increase.html')

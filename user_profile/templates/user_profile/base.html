@@ -54,11 +54,13 @@
                     <ul class="dropdown-menu">
                         <li><a href="#">شرکت در آزمون آزمایشی</a></li>
                         <li><a href="#">نکات آزمون تافل</a></li>
+                        <li><a href="{% url 'user_profile:increase' %}">افزایش اعتبار</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="#">مشاوره</a></li>
                     </ul>
                 </li>
                 <li><a>Welcome {% block nav %}{% endblock %}</a></li>
+                <li><a>اعتبار شما : {% block cre %}{% endblock %}تومان </a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">

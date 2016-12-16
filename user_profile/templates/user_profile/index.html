@@ -9,6 +9,10 @@
     {{ user.username }}
 {% endblock %}
 
+{% block cre %}
+    {{ user.credit.wallet }}
+{% endblock %}
+
 {% block head %}
     <link rel="stylesheet" href="{% static 'user_profile/chartist.min.css' %}">
     <script src="{% static 'user_profile/chartist.min.js'%}"></script>
