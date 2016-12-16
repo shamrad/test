@@ -2,16 +2,7 @@
     font-family:'B yekan',tahoma;
     font-size:14px;
 }
-.navbar-header{
-    font-family: 'Rouge Script', cursive;
-    font-weight: 600;
-}
-.navbar-brand{
-    font-size: 30px;
-}
-.navbar-default{
-    background-color: white;
-}
+
 .btn-outline-inverse{
     color: #fff;
     background-color: transparent;
@@ -210,28 +201,3 @@ ul {
 
 
 /*footer style*/
-.footerbtn{
-    color: #8f9eaf
-}
-.footerbtn:hover{
-    color: rgb(149,23,104);
-}
-
-
-.btnfooter{
-    background-color:  #8f9eaf ;
-    width: 30rem ; border-radius: 50px; padding: 15px; font-size: large;
-    border-color:  #8f9eaf;
-}
-
-.btnfooter:hover{
-    background-color: rgb(149,23,104);
-    border-color: rgb(149,23,104);
-}
-.btnlink{
-    color: #8f9eaf;
-}
-.btnlink:hover{
-    color: rgb(149,23,104);
-    text-decoration: none;
-}

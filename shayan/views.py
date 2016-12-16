@@ -7,6 +7,6 @@ def khane(request):
 
 def service(request):
         coment=Comment.objects.all()
-        return render(request,'user_profile/service.html')
+        return render(request, 'user_profile/service.html')
 def aboutus(request):
-        return render(request,'user_profile/aboutus.html')
+        return render(request, 'user_profile/aboutus.html')

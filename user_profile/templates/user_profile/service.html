@@ -1,53 +1,21 @@
+{% extends "user_profile/home-base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Toefl Learning - Lang Cruz</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-    <script src="{% static 'user_profile/bootstrap.js' %}"></script>
-    <link type="text/css" rel="stylesheet" href="http://ifont.ir/apicode/38">
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Rouge+Script" rel="stylesheet">
+
+{% block title %}
+ Lang Cruz
+{% endblock %}
+
+{% block style %}
     <link href="{% static 'user_profile/service-style.css' %}" rel="stylesheet" type="text/css">
     <script src="{% static 'user_profile/service-script.js' %}"></script>
+{% endblock %}
 
-    <style>
 
-    </style>
-
-</head>
-<body>
-
-<nav class="navbar navbar-default navbar-fixed-top" style="margin-bottom: 0; border-bottom-color: rgb(149,23,104)">
-    <div class="container-fluid">
-        <div class="navbar-header navbar-right">
-            <button type="button" class="navbar-toggle collapsed navbar-right" data-toggle="collapse" data-target="#Main" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" style="font-family: 'Rouge Script', cursive; color:rgb(149,23,104) " href="{% url 'home' %}">Lang Crusier</a>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse navbar-left" id="Main" >
-            <ul class="nav navbar-nav">
-
-                <li><a href="{% url 'user_profile:login' %}">ورود</a></li>
-                <li><a href="{% url 'user_profile:register' %}">ثبت نام</a></li>
-
-            </ul>
-        </div><!-- /.navbar-collapse -->
-
-    </div><!-- /.container-fluid -->
-</nav>
-<br>
+{% block content %}
+    <br>
 <br>
 
-
+<div class="container-fluid">
 <div class="row" style=" background-color: rgb(149,23,104); color: white; ">
     <h1 class="text-center" style="font-family: 'Rouge Script';font-size: 50px ">Lang Cruz</h1>
     <div class="jumbotron text-center" style="direction: rtl; background: none; padding: 1rem ">
@@ -64,8 +32,8 @@
 
 
 
-<section style="background:#efefe9">
-    <div class="container">
+<section style="background:white">
+    <div class="container-fluid">
         <div class="row">
             <div class="board" style="height: auto; min-height: 500px">
                 <div class="board-inner">
@@ -108,7 +76,7 @@
                     </ul></div>
 
                 <div class="tab-content" style="direction: rtl">
-                    <div class="tab-pane fade" id="Reading">
+                    <div class="tab-pane fade color" id="Reading">
                         <h3 class="head text-center ">Reading</h3>
                         <p class="narrow">
 این مهارت برای سنجش توانایی شما در خواندن و درک متن های کوتاه مشابه موضوع و حالتی با متن هایی که دانشجویان در دانشگاه های آمریکا با آن مواجه میشوند است.
@@ -147,7 +115,7 @@
                         </p>
 
                     </div>
-                    <div class="tab-pane fade" id="Listening">
+                    <div class="tab-pane fade color" id="Listening">
                         <h3 class="head text-center">Listening</h3>
                         <p class="narrow ">
 این مهارت دومین قسمت از آزمون تافل عه و دقیقا پس از ریدینگ و بدون وقفه ای شروع میشود.
@@ -160,7 +128,7 @@
 برای تقویت این مهارت باید هم اهنگ و فایل های صوتی زیادی گوش بدید                        </p>
 
                     </div>
-                    <div class="tab-pane fade" id="Speaking">
+                    <div class="tab-pane fade color" id="Speaking">
                         <h3 class="head text-center">Speaking</h3>
                         <p class="narrow text-center">
                             <br>این آزمون پس از یک وقفه 10 دقیقه ای بعد از دو آزمون اول برگزار می شه. پیشنهاد میشه حتما شیرینی و آب کافی رو مصرف کنید تا هم از استرس تون کم بشه هم اینکه میزان قند بدنتون مناسب بشه.<br>
@@ -175,7 +143,7 @@
                         </p>
 
                     </div>
-                    <div class="tab-pane fade" id="Writing">
+                    <div class="tab-pane fade color" id="Writing">
                         <h3 class="head text-center">Writing</h3>
                         <p class="narrow ">
 1.  این آزمون از دو سوال تشکیل میشه که اولین سوال integrated و دومین سوال independent اسم گذاری شده اند. کل زمان این قسمت از آزمون نزدیک به یک ساعت طول میکشه و دقیقا بعد از آزمون Speaking شروع میشه.<br>
@@ -187,7 +155,7 @@
 7.  سوال دوم Writing سوال independent نامیده میشه و مشخصا کاملا مستقل از بقیه مهارت هاست و فقط مهارت نوشتاری شما رو سنجش میکنه. در این قسمت یک سوال پرسیده میشه و نظر شما رو در اون باره میخواند.<br>
 8.  مهم نیست نظرتون چیه فقط اهمیت داره که بتونید خیلی خوب نظرتون رو ساپورت کنید و دلایل منطقی و کافی براش بیارید. صرفا آوردن دلیل و بیان کردنش متن شما رو قشنگ و روان نمیکنه حتما و حتما برای دلیلتون مثال های ملموس هم بیارید.                        </p>
                     </div>
-                    <div class="tab-pane fade  in active" id="General">
+                    <div class="tab-pane fade  in active color" id="General">
                         <h3 class="head text-center">General</h3>
                         <p class="narrow ">
 آزمون تافل یکی از آزمون های متداول برای غیرانگلیسی زبانان به شمار می آید که قصد ادامه تحصیل در خارج را دارند. <br>
@@ -204,37 +172,6 @@
         </div>
     </div>
 </section>
+</div>
 
-
-
-
-{#    footer#}
-    <div class="row panel-footer" style="background-color: #efeeee;">
-        <div class="row">
-            <ul class="col-md-6 float-left">
-                <li><a href="#" class="btnlink">تماس</a></li>
-                <li><a href="{% url 'aboutus' %}" class="btnlink">داستان ما</a></li>
-                <li><br></li>
-                <li><br></li>
-                <li ><a href="https://www.facebook.com/bootsnipp" class="footerbtn" ><i id="social-fb" class="glyphicon glyphicon-send fa-2x social" ></i></a>
-                    <a href="https://twitter.com/bootsnipp" class="footerbtn"><i id="social-ins" class="fa fa-instagram fa-2x social"></i></a>
-                    <a href="mailto:bootsnipp@gmail.com" class="footerbtn"><i id="social-em" class="fa fa-envelope-square fa-2x social"></i></a>
-                </li>
-            </ul>
-            <ul class="col-md-5 float-right" style="direction: rtl">
-                <li style="margin-bottom: 0.5rem">
-                    <a class="btn btn-info btnfooter"  href="{% url 'user_profile:login' %} ">ورود</a></li>
-                <li>
-                    <a class="btn btn-info btnfooter "  href="{% url 'user_profile:login' %} ">ثبت نام</a></li>
-            </ul>
-        </div>
-        <div>
-            <br>
-            <p class="small" style="margin-bottom: 0; padding-bottom: 0; color: #8f9eaf">© 2016 LangCruz, Inc.</p>
-        </div>
-    </div>
-
-
-
-</body>
-</html>
+{% endblock %}
