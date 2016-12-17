@@ -30,5 +30,11 @@ class Comment(models.Model):
 
 class Credit(models.Model):
     customer=models.OneToOneField(User, on_delete=models.CASCADE)
-    wallet=models.PositiveIntegerField(default=0)
+    wallet=models.CharField(max_length=100)
+
+
+# jadid
+class an(models.Model):
+    name=models.CharField(max_length=100)
+    customer=models.CharField(max_length=100)
 

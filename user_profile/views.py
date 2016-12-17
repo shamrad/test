@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth import login as auth_login
 from django.views.generic.edit import UpdateView
 
-from .form import UserForm, LoginForm
+from .form import UserForm, LoginForm, CreditForm
 from django.views.generic import View
 from .models import Writing
 from django.views.generic import CreateView
@@ -111,8 +111,22 @@ class CreateWriting(CreateView):
 
 
 def Logout(request):
-    logout(request)
     return  redirect('home')
 
 def Increase(request):
     return render(request, 'user_profile/increase.html')
+
+
+# jadid
+# credit.html
+def Credit(request):
+    if request.method == "POST":
+        form = CreditForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.save()
+            return redirect('home')
+    else:
+        form = CreditForm()
+    return render(request, 'user_profile/credit.html', {'form': form})
+

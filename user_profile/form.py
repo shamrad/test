@@ -1,6 +1,10 @@
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django import  forms
+from django.forms import RadioSelect
+
+from user_profile.models import Credit, an
+
 
 class UserForm(forms.ModelForm):
     password=forms.CharField(widget=forms.PasswordInput) #TODO: add validator
@@ -23,3 +27,13 @@ class LoginForm(AuthenticationForm):
 
         password_field.widget.attrs = {'class': 'inputA'}
         password_field.label = 'password'
+
+
+
+
+# jadid
+class CreditForm(forms.Form):
+
+    class meta:
+        model=an
+        fields=['customer','name']
