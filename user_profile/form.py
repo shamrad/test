@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django import  forms
 from django.forms import RadioSelect
 
-from user_profile.models import Credit, an
+from user_profile.models import Credit
 
 
 class UserForm(forms.ModelForm):
@@ -29,11 +29,11 @@ class LoginForm(AuthenticationForm):
         password_field.label = 'password'
 
 
+class CreditForm(forms.ModelForm):
+    class Meta:
+        model=Credit
+        fields=['wallet']
+        widgets = {
+            'wallet': forms.RadioSelect(),
+        }
 
-
-# jadid
-class CreditForm(forms.Form):
-
-    class meta:
-        model=an
-        fields=['customer','name']

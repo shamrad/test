@@ -29,12 +29,11 @@ class Comment(models.Model):
 
 
 class Credit(models.Model):
-    customer=models.OneToOneField(User, on_delete=models.CASCADE)
-    wallet=models.CharField(max_length=100)
+    WALLET=(
+        ('1','تصحیح یک متن - 9 هزار تومان'),
+        ('2','تصحیح 5 متن - 39 هزار تومان')
+    )
+    customer=models.OneToOneField(User)
+    wallet=models.CharField(max_length=2, choices= WALLET)
 
-
-# jadid
-class an(models.Model):
-    name=models.CharField(max_length=100)
-    customer=models.CharField(max_length=100)
 

@@ -5,6 +5,7 @@
       <option name="ignoredIdentifiers">
         <list>
           <option value="user_profile.views.username" />
+          <option value="user_profile.form.exclude" />
         </list>
       </option>
     </inspection_tool>
