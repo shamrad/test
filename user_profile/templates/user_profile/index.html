@@ -58,7 +58,8 @@
     </div>
 <div class="container-fluid">
 
-{% for item in exam %}
+{% if exam %}
+
 <h1 style="color: rgb(149,23,104)"> جدول نمرات</h1>
  <table class="table table-striped">
     <thead>
@@ -106,13 +107,13 @@
     <div class="ct-chart ct-golden-section" style="height: 30rem" ></div>
     </div>
     </div>
-
-    {% empty %}
-            <br>
+    {% else %}
+    <br>
             <a href="{% url 'user_profile:NewWriting' %}" class="btn btn-info " role="button" >تست رایگان</a>
             <h1>bad az submite man inja be matn doni tabdil mishe</h1>
-    {% endfor %}
 
+    {% endif %}
+    
 
 
 
