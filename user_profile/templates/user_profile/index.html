@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block cre %}
-    {{ user.credit.wallet }}
+{{ user.credit }}
 {% endblock %}
 
 {% block activeClass %}.pf{% endblock %}
@@ -50,11 +50,15 @@
 
 
     <div class="container">
-        <h2>{{ user.name }}</h2>
+    <div class="text-center" style="border: 2px solid rgb(149,23,104)" >
+        <h2>{{ user.first_name }}</h2>
         <h3>{{ user.username }}</h3>
         <p>{{ user.email }}</p>
-
+        <p></p>
+    </div>
 <div class="container-fluid">
+
+{% for item in exam %}
 <h1 style="color: rgb(149,23,104)"> جدول نمرات</h1>
  <table class="table table-striped">
     <thead>
@@ -89,18 +93,25 @@
             </div>
             </div>
             </div>
-                {% empty %}
-                <a href="{% url 'user_profile:newriting' %}" class="btn btn-info " role="button" >تست رایگان</a>
+
+
         {% endfor %}
     </tbody>
  </table>
 
 
 {#        chart#}
+
     <div class="col-sm-8">
     <div class="ct-chart ct-golden-section" style="height: 30rem" ></div>
     </div>
     </div>
+
+    {% empty %}
+            <br>
+            <a href="{% url 'user_profile:NewWriting' %}" class="btn btn-info " role="button" >تست رایگان</a>
+            <h1>bad az submite man inja be matn doni tabdil mishe</h1>
+    {% endfor %}
 
 
 

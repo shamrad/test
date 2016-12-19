@@ -1,10 +1,19 @@
-from django.contrib.auth.models import User
+from django.contrib.auth.base_user import AbstractBaseUser
+from django.contrib.auth.models import User, AbstractUser, PermissionsMixin, UserManager
 from django.db import models
 from django.core.urlresolvers import reverse
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from model_utils.models import TimeStampedModel
 # from django_jalali.db import models as jmodels
+from django.conf import settings
+from django.contrib.auth.models import User
+
+User._meta.get_field('email').unique
+
+class User(AbstractUser):
+    credit= models.CharField(max_length=10)
+
 
 class Writing(models.Model):
     author=models.ForeignKey(User)
@@ -18,7 +27,7 @@ class Writing(models.Model):
         return reverse('user_profile:index')
 
     def __str__(self):
-        return self.author.username + '-' + self.title + '-' + self.title
+        return self.author.username + '-' + self.title + '-' + self.score
 
 
 class Comment(models.Model):
@@ -28,12 +37,13 @@ class Comment(models.Model):
     page=models.CharField(max_length=100)
 
 
-class Credit(models.Model):
-    WALLET=(
-        ('1','تصحیح یک متن - 9 هزار تومان'),
-        ('2','تصحیح 5 متن - 39 هزار تومان')
-    )
-    customer=models.OneToOneField(User)
-    wallet=models.CharField(max_length=2, choices= WALLET)
+
+# class Credit(models.Model):
+#     WALLET=(
+#         ('1','تصحیح یک متن - 9 هزار تومان'),
+#         ('2','تصحیح 5 متن - 39 هزار تومان')
+#     )
+#     customer=models.OneToOneField(User)
+#     wallet=models.CharField(max_length=2, choices= WALLET)
 
 

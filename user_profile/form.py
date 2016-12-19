@@ -1,13 +1,18 @@
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth.models import User
+from .models import User, Writing
 from django import  forms
-from django.forms import RadioSelect
 
-from user_profile.models import Credit
+
+# from user_profile.models import Credit
 
 
 class UserForm(forms.ModelForm):
     password=forms.CharField(widget=forms.PasswordInput) #TODO: add validator
+    def clean_email(self):
+        data = self.cleaned_data['email']
+        if User.objects.filter(email=data).exists():
+            raise forms.ValidationError("این ایمیل قبلا استغاده شده است")
+        return data
 
     class Meta:
         model=User
@@ -29,11 +34,16 @@ class LoginForm(AuthenticationForm):
         password_field.label = 'password'
 
 
-class CreditForm(forms.ModelForm):
+
+class WritingForm(forms.ModelForm):
     class Meta:
-        model=Credit
-        fields=['wallet']
-        widgets = {
-            'wallet': forms.RadioSelect(),
-        }
+        model= Writing
+        fields = ['title', 'text']
+# class CreditForm(forms.ModelForm):
+#     class Meta:
+#         model=Credit
+#         fields=['wallet']
+#         widgets = {
+#             'wallet': forms.RadioSelect(),
+#         }
 

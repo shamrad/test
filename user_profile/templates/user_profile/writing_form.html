@@ -13,39 +13,106 @@
     <script src="{% static 'user_profile/jquery-3.1.1.js' %}"></script>
     <script src="{% static 'user_profile/word_counter.js' %}"></script>
 {#    <script src="{% static 'user_profile/timerscript1.js' %}"></script>#}
-    <script src="{% static 'user_profile/timerscript2.js' %}"></script>
+    <script src="{% static 'user_profile/timerscript3.js' %}"></script>
     <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
 {%  endblock %}
 
 {% block content %}
     <div class="container-fluid">
     <h3>Submit your new Writing to be corrected!</h3>
-    <p>set time</p><input type="text" id="seconds" name="seconds" value="0" size="2" maxlength="3" /><input type="button" id="btnct" value="Input" />
-        <br>
-       <p> <span id="hspan">00</span> :
-        <span id="minspan">00</span> :
-<span id="secspan">00</span></p><input type="button" value="Start" onclick="countdown()">
-<input type="button" value="Stop" onclick="cdpause()">
-<input type="button" value="Reset" onclick="cdreset()">
-    <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+
+        <ul style="direction: rtl;">
+            <li>بعد از ارسال متن نهایتا تا 5 ساعت بعد متن شما نمره دهی میشود</li>
+            <li>نمره ها از 30 محاسبه می شود و ملاک نحوه ی تصحیح در آزمون تافل است</li>
+            <li>برای داشتن ملاک بیشتر زمان مورد نظر خود را وارد کنید سپس دکمه شروع را بزنید</li>
+        </ul>
+
+
+
+
+<br>
+{#       shoro form#}
+               <div class="modal fade" id="tpo" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+              <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="gridSystemModalLabel">Choose title from TPO</h4>
+                    </div>
+                    <div class="modal-body">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Selet Topic</button>
+                     </div>
+                </div>
+              </div>
+            </div>
+{#---------------------------------------------------------------------------------------#}
+            <div class="modal fade" id="suggested" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+              <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="gridSystemModalLabel">Choose title from Suggested Topics</h4>
+                    </div>
+                    <div class="modal-body">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Selet Topic</button>
+                     </div>
+                </div>
+              </div>
+            </div>
+
+
+        <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        <div class="form-group">
-        <label for="id_title" class="col-sm-2 control-label">Title</label>
-        <div class="col-sm-10">
-        <input class="form-control" id="id_title" name="title" placeholder="Enter the title" >
+
+        <div class="input-group col-lg-offset-1 col-lg-8">
+        <span class="input-group-addon" style="background-color: rgb(149,23,104); color: #fff" >Title: </span>
+        <input type="text" class="form-control" id="id_title" placeholder="Enter topic..." name="title" aria-describedby="basic-addon3">
+        <div class="input-group-btn">
+        <button type="button" class="btn btn-default dropdown-toggle" style="border-color: rgb(149,23,104)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">or Choose <span class="caret"></span></button>
+        <ul class="dropdown-menu dropdown-menu-right">
+          <li><a href="#" data-toggle="modal" data-target="#tpo">From TPO</a></li>
+          <li><a href="#" data-toggle="modal" data-target="#suggested">Suggested topics</a></li>
+        </ul>
         </div>
         </div>
-        <textarea class="form-control col-sm-offset-1" rows="15" placeholder="Enter your text here..." id="id_text" name="text" ></textarea>
         <br>
+{#---------------------------------------------------------------------------------#}
+
+        <div class="col-lg-offset-1 col-lg-11">
+{#            timer#}
+
+
+            <p> <span id="hspan">00</span> :
+        <span id="minspan">00</span> :
+<span id="secspan">00</span></p>
+<input type="button" class="btn btn-default" style="border-color:rgb(149,23,104) " value="Start" onclick="countdown()">
+<input type="button" class="btn btn-default" style="border-color:rgb(149,23,104) " value="Stop" onclick="cdpause()">
+<input type="button" class="btn btn-default" style="border-color:rgb(149,23,104) " value="Reset" onclick="cdreset()">
+
+
+            {#        kalame shomar#}
+        <div id="result">
+        Words: <span id="wordCount">0</span><br/>
+        </div>
+
+        <textarea class="form-control " rows="15" placeholder="Enter your text here..." id="id_text" name="text" ></textarea>
+        <br>
+        </div>
         <div class="form-group">
         <div class="col-sm-offset-1 col-sm-10">
           <button type="submit" class="btn btn-success">Submit</button>
         </div>
         </div>
     </form>
-    <div id="result">
-    Words: <span id="wordCount">0</span><br/>
-    </div>
+
 </div>
 
     </div>

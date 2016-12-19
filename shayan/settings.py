@@ -100,7 +100,7 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
+AUTH_USER_MODEL = 'user_profile.User'
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
@@ -122,5 +122,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-EMAIL_HOST = 'localhost'
-EMAIL_PORT = 1025
+
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_FILE_PATH ='D:/try5/backend3/user_profile'
