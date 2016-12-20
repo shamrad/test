@@ -7,7 +7,7 @@
 
 {% block style %}
     <link rel="stylesheet" href="{% static 'user_profile/homestyle.css' %}" type="text/css">
-
+    <script src="{% static 'user_profile/typed.js' %}"></script>
 {% endblock %}
 {% block content %}
     <div class="container-fluid">
@@ -20,6 +20,21 @@
         <div class="text-center">
             <h2>یک آزمون را دوبار تکرار نکنید</h2>
         </div>
+
+        {#        neveshte hayi ke type mishan miran#}
+        <div id="typed-strings">
+            <p>قبل از هر آزمون به ادازه کافی انتحان بدهید</p>
+            <p>خودتان را بسنجید</p>
+            <p>پیشرفتاتن را نمودار کنید</p>
+            <h1>همین حالا رایگان تست کنید</h1>
+        </div>
+{#         mahale namayesh#}
+         <div class="text-center">
+            <span id="typed" style="white-space:pre; font-size: 30px"></span>
+         </div>
+        <br>
+
+
         <div class="text-center">
         <a href="{% url 'user_profile:login' %}" class="btn btn-outline-inverse btn-lg " role="button">ورود</a>
         <a href="{% url 'user_profile:register' %}" class="btn btn-outline-inverse btn-lg " role="button">ثبت نام</a>

@@ -139,11 +139,12 @@
                 right: 40
             }
         });
-        var i=0
+
     {% for item in exam %}
-        i=i+1
-         m.labels.push(i)
+         {% if item.score != '0' %}
+         m.labels.push({{ forloop.counter }})
         a.push({{ item.score }})
+        {% endif %}
     {% endfor %}
 
     </script>
