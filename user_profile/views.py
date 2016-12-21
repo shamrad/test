@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponse
@@ -33,8 +34,9 @@ def writing(request,pk):
 
 
 
-
-class EditView(UpdateView):
+# @login_required(login_url='user_profile:login')
+class EditView(LoginRequiredMixin,UpdateView):
+    login_url = 'user_profile:login'
     model = User
 
     template_name = 'user_profile/editview.html'
@@ -101,7 +103,8 @@ class LoginView(View):
         })
 
 
-class CreateWriting(CreateView):
+class CreateWriting(LoginRequiredMixin,CreateView):
+    login_url = 'user_profile:login'
     model = Writing
     fields = ['title', 'text']
 
@@ -113,7 +116,7 @@ class CreateWriting(CreateView):
         # uhc = self.request.user.credit>9
         # return is_f_v and uhc
 
-
+@login_required(login_url='user_profile:login')
 def NewWriting(request):
     if request.method=="POST":
         form=WritingForm(request.POST)
