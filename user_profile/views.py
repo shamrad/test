@@ -132,19 +132,6 @@ def Logout(request):
     logout(request)
     return  redirect('home')
 
-#
-# @login_required(login_url='user_profile:login')
-# def CreditView(request):
-#     if request.method == "POST":
-#         # user = User.objects.get(username__exact=request.user)
-#         form = CreditForm(request.POST)
-#         if form.is_valid():
-#             post = form.save(commit=False)
-#             post.customer=request.user
-#             post.save()
-#             return redirect('user_profile:index')
-#     else:
-#         form = CreditForm()
-#         return render(request, 'user_profile/credit.html', {'form': form})
 
-
+def CommingSoon(request):
+    return render(request, 'user_profile/comming_soon.html')

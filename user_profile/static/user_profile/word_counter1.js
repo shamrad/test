@@ -5,7 +5,6 @@ counter = function() {
         $('#wordCount').html(0);
 
         return;
-        console.log(0)
     }
 
     var regex = /\s+/gi;
@@ -24,4 +23,6 @@ $(document).ready(function() {
     $('#id_text').keyup(counter);
     $('#id_text').blur(counter);
     $('#id-text').focus(counter);
-});
+});/**
+ * Created by abedi on 12/21/2016.
+ */

@@ -3,11 +3,11 @@
 {% load static %}
 
 {% block title %}
- edit profile {{ user.username }}
+ ویرایش اطلاعات {{ user.username }}
 {% endblock %}
 
 {% block nav %}
-    {{ user.username }}
+    {{ user.first_name }}
 {% endblock %}
 
 {% block cre %}
@@ -16,11 +16,27 @@
 
 {% block activeClass %}.setting{% endblock %}
 
-{% block head %}{% endblock %}
+{% block head %}
+    <style>
+     body{
+         direction: rtl;
+     }
+    input{
+        border: 1px dashed #951768;
+    }
+    input:hover{
+        border: 1px solid #951768;
+    }
+    input:focus{
+        border: 3px solid #951768;
+    }
+    </style>
+{% endblock %}
 
 
 {% block content %}
     <div class="container">
+    <h3>ویرایش اطلاعات</h3>
     <form method="post" action="" class="form-horizontal">
 
     {% for field in form %}

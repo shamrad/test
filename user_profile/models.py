@@ -12,16 +12,17 @@ from django.contrib.auth.models import User
 User._meta.get_field('email').unique
 
 class User(AbstractUser):
-    credit= models.CharField(max_length=10)
+    credit= models.CharField(max_length=10, null=True)
 
 
 class Writing(models.Model):
     author=models.ForeignKey(User)
-    text=models.CharField(max_length=10000)
+    text=models.TextField(max_length=10000)
     score=models.CharField(max_length=10, default='0')
     title = models.CharField(max_length=30, null=True, default='untitled')
     time = models.DateTimeField(auto_now_add=True)
     corrector=models.CharField(max_length=10, default='noOne')
+    moshaver=models.TextField(default='نظر مشاور ثبت نشده است.')
 
     def get_absolute_url(self):
         return reverse('user_profile:index')

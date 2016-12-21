@@ -2,11 +2,11 @@
 {% load static %}
 
 {% block title %}
- Welcome {{ user.username }}
+ Welcome {{ user.first_name }}
 {% endblock %}
 
 {% block nav %}
-    {{ user.username }}
+    {{ user.first_name }}
 {% endblock %}
 
 {% block cre %}
@@ -18,8 +18,30 @@
 
 {% block head %}
     <link rel="stylesheet" href="{% static 'user_profile/chartist.min.css' %}">
+    <script src="{% static 'user_profile/jquery-3.1.1.js' %}"></script>
     <script src="{% static 'user_profile/chartist.min.js'%}"></script>
+{#    <script src="{% static 'user_profile/word_counter1.js' %}"></script>#}
+
+
+
     <style>
+    body{direction: rtl}
+    mark{
+        background: none;
+        color: rgb(149,23,104);
+        font-weight: bold;
+        font-size: 20px;
+    }
+    .btn-tst{
+        background-color: rgb(149,23,104);
+        color: white;
+        border: 2px dashed white;
+    }
+    .btn-tst:hover{
+        background-color: white;
+        color: rgb(149,23,104);
+        border: 2px dashed rgb(149,23,104);
+    }
     .ct-series-a .ct-bar, .ct-series-a .ct-line, .ct-series-a .ct-point, .ct-series-a .ct-slice-donut {
             stroke: rgb(149,23,104);
             }
@@ -61,20 +83,22 @@
 {% if exam %}
 
 <h1 style="color: rgb(149,23,104)"> جدول نمرات</h1>
- <table class="table table-striped">
-    <thead>
-        <tr>
-            <th>title</th>
-            <th>score</th>
+ <table class="table table-striped" style="direction: ltr" >
+    <thead class="">
+        <tr >
+            <th >شماره Writing</th>
+            <th >موضوع</th>
+            <th >score</th>
             <th>time</th>
         </tr>
     </thead>
     <tbody>
         {% for item in exam %}
             <tr>
+                <td>{{ forloop.counter }}</td>
                 <td><a data-toggle="modal" data-target="#{{ forloop.counter }}" style="color: rgb(149,23,104); cursor: pointer">{{ item.title }}</a></td>
                 <td>{{ item.score }}</td>
-                <td>{{ forloop.counter }}</td>
+                <td>{{ item.time }}</td>
             </tr>
 
            <div class="modal fade " id="{{ forloop.counter }}">
@@ -83,13 +107,19 @@
 
                  <!--heade-->
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <button type="button" class="close" data-dismiss="modal"> &times; </button>
                     <h3 class="modal-title" style="color: rgb(149,23,104);">{{ item.title }}</h3>
                 </div>
                 <div class="modal-body">
-                    <p>{{ item.text }}</p>
+                    <textarea rows="15" class="form-control" id="{{ item.id }}" name="text">{{ item.text }}</textarea>
+                    <div id="result">
+                         تعداد کلمات استفاده شده: <span id="{{ item.id }}wordCount">0</span><br/>
+                     </div>
                     <hr>
                     <h3> score: {{ item.score }}</h3>
+                    <hr>
+                    <p>نظر مشاور</p>
+                    <textarea rows="5" class="form-control"  name="text">{{ item.moshaver }}</textarea>
                 </div>
             </div>
             </div>
@@ -106,14 +136,36 @@
     <div class="col-sm-8">
     <div class="ct-chart ct-golden-section" style="height: 30rem" ></div>
     </div>
+    <div class="col-sm-4">
+    <br>
+    <br>
+
+    <p><mark><-</mark>برای مشاهده متن خود و نظر مشاور بر روی اسم آن کلیک کنید<mark>-></mark></p>
+    <p><mark><-</mark>بعد از ثبت نمره توسط مصحح نمره شما وارد نمودار خواهد شد<mark>-></mark></p>
+    </div>
     </div>
     {% else %}
     <br>
-            <a href="{% url 'user_profile:NewWriting' %}" class="btn btn-info " role="button" >تست رایگان</a>
-            <h1>bad az submite man inja be matn doni tabdil mishe</h1>
+            <div class="text-center">
+                <p style="">متن خود را ثبت کنید تا <mark>کمتر از 12 </mark> ساعت آینده تصحیح شده با نمره و نظر مشاوره دریافت کنید </p>
+                <a href="{% url 'user_profile:NewWriting' %}" class="btn btn-tst " role="button"><h2>تست رایگان writing  </h2></a>
+            </div>
+
 
     {% endif %}
-    
+
+    <br>
+    <br>
+    <hr>
+    <div class="col-sm-6 text-center" style="color: #951768 ">
+        <h3>ضبط speaking</h3>
+        <P>با نمره دهی و نظر مشاوره ای در کمتر از 12 ساعت کاری</P>
+        <p class="center-block" style="border: 1px dashed #951768; width: 150px">comming soon</p>
+    </div><div class="col-sm-6 text-center" style="color: #951768 ">
+        <h3>آزمون اینترنتی Toefl و GRE</h3>
+        <P>با نمره دهی و نظر مشاوره ای در کمتر از 12 ساعت کاری</P>
+        <p class="center-block" style="border: 1px dashed #951768; width: 150px">comming soon</p>
+    </div>
 
 
 
@@ -145,7 +197,39 @@
          m.labels.push({{ forloop.counter }})
         a.push({{ item.score }})
         {% endif %}
+
+
+{#        word counter#}
+    counter{{ forloop.counter }} = function() {
+    var value = $('#{{ item.id}}').val();
+
+    if (value.length == 0) {
+        $('#{{ item.id }}wordCount').html(0);
+
+        return;
+    }
+
+    var regex = /\s+/gi;
+    var wordCount = value.trim().replace(regex, ' ').split(' ').length;
+
+
+    $('#{{ item.id }}wordCount').html(wordCount);
+console.log(wordCount)
+};
+
+$(document).ready(function() {
+    $('#{{ item.id }}').click(counter{{ forloop.counter }});
+{#    $('#id_text').change(counter);#}
+{#    $('#id_text').keydown(counter);#}
+{#    $('#id_text').keypress(counter);#}
+{#    $('#id_text').keyup(counter);#}
+{#    $('#id_text').blur(counter);#}
+{#    $('#id-text').focus(counter);#}
+})
+
     {% endfor %}
+
+
 
     </script>
 
