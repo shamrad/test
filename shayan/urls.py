@@ -8,7 +8,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', khane, name='home'),
     url(r'^profile/', include('user_profile.urls')),
-    url(r'^toefl-learning/', service, name='service'),
+    url(r'^toefl-learning-آموزش-تافل/', service, name='service'),
     url(r'^about-us/', aboutus, name='aboutus'),
 
     url(r'password/$', password_reset,{'template_name': 'user_profile/password_reset.html'}, name='reset_password'),
@@ -20,4 +20,9 @@ urlpatterns = [
 
     # test url
     url(r'^test/', test, name='test'),
+
+
+    # corrector's urls'
+    url(r'^corrector/', include('corrector.urls')),
+
  ]

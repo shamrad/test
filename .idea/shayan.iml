@@ -20,7 +20,7 @@
     <option name="TEMPLATE_FOLDERS">
       <list>
         <option value="$MODULE_DIR$/user_profile/templates" />
-        <option value="$MODULE_DIR$/shayan/template" />
+        <option value="$MODULE_DIR$/corrector/template" />
       </list>
     </option>
   </component>

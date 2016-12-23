@@ -54,13 +54,13 @@
 
             <div class="row">
               <div class="col-md-4 text-center">
-                <a class="" href="#"><img alt="" src="{% static 'user_profile/gre1.jpg' %}"></a>
+                <img alt="GRE , جی آر ای ,exam , learning, آزمون" src="{% static 'user_profile/gre1.jpg' %}">
               </div>
               <div class="col-md-4 text-center">
-                <a class="" href="#"><img alt="" src="{% static 'user_profile/ets.jpg' %}"></a>
+                <img alt=toefl , تافل ,exam , learning, آزمون"" src="{% static 'user_profile/ets.jpg' %}">
               </div>
               <div class="col-md-4 text-center">
-                <a class="" href="#"><img alt="" src="{% static 'user_profile/toefl1.jpg' %}"></a>
+                <img alt="ielts , آیلتس ,exam , learning, آزمون" src="{% static 'user_profile/toefl1.jpg' %}">
               </div>
             </div>
 <hr>
@@ -70,10 +70,54 @@
 
 
 
+<div class="row" style="">
 
-    <!--who we are section-->
+{#sliiide show#}
+    <div class="col-lg-6">
+    <script src="http://cdn.jssor.com/script/jssor.slider-22.0.7.min.js" type="text/javascript" data-library="jssor.slider" data-version="22.0.7"></script>
+<script type="text/javascript">
+    jssor_1_slider_init = function() {
 
-    <div class="[ container text-center ]">
+        var jssor_1_SlideoTransitions = [
+            [{b:0,d:2000,x:497,y:-1}],
+            [{b:0,d:2000,x:-13,y:-2},{b:2000,d:2000,x:-502,y:2}],
+            [{b:4000,d:2000,x:499,y:-3}],
+            [{b:6000,d:2000,x:-516,y:-2}]
+        ];
+
+        var jssor_1_options = {
+            $AutoPlay: true,
+            $CaptionSliderOptions: {
+                $Class: $JssorCaptionSlideo$,
+                $Transitions: jssor_1_SlideoTransitions
+            }
+        };
+
+        var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
+    };
+</script>
+<style></style>
+<div id="jssor_1" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 500px; height: 450px; overflow: hidden; visibility: hidden;">
+    <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 500px; height: 450px; overflow: hidden;">
+
+        <a data-u="any" href="http://www.jssor.com" style="display:none">jQuery Slider</a>
+        <div data-p="118.75">
+            <img data-u="image" src="{% static 'user_profile/imac2.jpg' %}" />
+            <img data-u="caption" data-t="0" style="position:absolute;top:22px;left:-479px;width:464px;height:297px;z-index:0;" src="{% static 'user_profile/ss1.jpg' %}" />
+            <img data-u="caption" data-t="1" style="position:absolute;top:22px;left:533px;width:464px;height:297px;z-index:0;" src="{% static 'user_profile/ss2.jpg' %}" />
+            <img data-u="caption" data-t="2" style="position:absolute;top:24px;left:-481px;width:464px;height:297px;z-index:0;" src="{% static 'user_profile/ss3.jpg' %}" />
+            <img data-u="caption" data-t="3" style="position:absolute;top:24px;left:533px;width:464px;height:297px;z-index:0;" src="{% static 'user_profile/ss4.jpg' %}" />
+        </div>
+    </div>
+</div>
+<script type="text/javascript">jssor_1_slider_init();</script>
+<!-- #endregion Jssor Slider End -->
+
+</div>
+
+     <!--who we are section-->
+    <div class="col-lg-6">
+        <div class="[ text-center ]">
         <div class="text-xenter">
             <h1>Who We Are</h1>
             <p><mark style="background: none; color: rgb(149,23,104); font-size: xx-large ">جامع ترین</mark> مرکز خدمات آمادگی آزمون های بین المللی زبان انگلیسی</p>
@@ -85,17 +129,17 @@
                     <ul class="[ nav nav-justified ]" id="nav-tabs" role="tablist">
                         <li role="presentation" class="active">
                             <a href="#schedule" aria-controls="schedule" role="tab" data-toggle="tab">
-                                <img class="img-circle" src="{% static 'user_profile/manage(pink).jpg' %}" style="box-shadow: rgb(149,23,104)" />
+                                <img class="img-circle" alt="مرکز خدمات آمادگی آزمون های بین المللی زبان انگلیسی تافل" src="{% static 'user_profile/manage(pink).jpg' %}" style="box-shadow: rgb(149,23,104); width: 100px" />
                             </a>
                         </li>
                         <li role="presentation" class="">
                             <a href="#chart" aria-controls="chart" role="tab" data-toggle="tab" >
-                                <img class="img-circle" src="{% static 'user_profile/site.jpg' %}" style="box-shadow: rgb(149,23,104); border-color: rgb(149,23,104)" />
+                                <img class="img-circle" style="width: 50px"; height="50px" alt="ثبت نام آزمون تافل"  src="{% static 'user_profile/site.jpg' %}" style="box-shadow: rgb(149,23,104); border-color: rgb(149,23,104)" />
                             </a>
                         </li>
                         <li role="presentation" class="">
                             <a href="#writing" aria-controls="writing" role="tab" data-toggle="tab">
-                                <img class="img-circle" src="{% static 'user_profile/writing.jpg' %}" width="5rem" />
+                                <img class="img-circle" alt="برنامه ریزی آزمون تافل رایتینگ" src="{% static 'user_profile/writing.jpg' %}" width="5rem" />
                             </a>
                         </li>
                     </ul>
@@ -137,15 +181,20 @@
             </div>
         </div>
     </div>
-    <br>
-    <br>
+    </div>
+    </div>
+</div>
 
+
+<br>
+<br>
+<br>
     <!--quotations section-->
-
+    <div class="container-fluid">
     <div class="row text-center" style=" background-color: rgb(149,23,104); color: white; ">
         <h1><i class="fa fa-quote-left fa-2x" aria-hidden="true"></i> Study Smart, Not Hard</h1>
         <p>-someone we know</p>
-
+    </div>
     </div>
     <br>
     <br>
@@ -180,6 +229,7 @@
                             <div class="well well-sm inner" id="yellow" style="font-size: 20px">چه کسانی متن های شما رو تصحیح می کنند؟<br>
                             آیا نمره ای که اعلام میشه قابل اعتماده؟</div>
                         </div>
+
                         <div class="face back">
                             <div class="well well-sm outer">افرادی که سال ها تجربه موفق در تدریس زبان دارند
                             <br> افرادی که در آزمون اصلی نمره بیش از 100 رو کسب کرده اند
