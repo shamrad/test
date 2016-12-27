@@ -81,6 +81,8 @@ class LoginView(View):
 
     def get(self, request):
         if request.user.is_authenticated():
+            if request.user.teacher:
+                return HttpResponse('<h1>test</h1>')
             return redirect('user_profile:index')
         form = LoginForm()
         return render(request, 'user_profile/login.html', {
@@ -95,7 +97,8 @@ class LoginView(View):
         if form.is_valid():
             user = form.get_user()
             auth_login(request, user)
-
+            if user.teacher:
+                return HttpResponse('<p>teacher</p>')
             return redirect('user_profile:index')
 
         return render(request, 'user_profile/login.html', {

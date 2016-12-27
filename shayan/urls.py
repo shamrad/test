@@ -22,7 +22,6 @@ urlpatterns = [
     url(r'^test/', test, name='test'),
 
 
-    # corrector's urls'
-    url(r'^corrector/', include('corrector.urls')),
+
 
  ]

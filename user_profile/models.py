@@ -8,14 +8,21 @@ from model_utils.models import TimeStampedModel
 # from django_jalali.db import models as jmodels
 from django.conf import settings
 from django.contrib.auth.models import User
+from django.utils.translation import ugettext_lazy as _
 
-from corrector.models import Corrector
 
-User._meta.get_field('email').unique
+# User._meta.get_field('email').unique
 
 class User(AbstractUser):
-    credit= models.CharField(max_length=10, null=True)
+    credit= models.CharField(max_length=10, null=True, blank=True)
+    teacher=models.BooleanField(
+        _('teacher'),
+        default=False,
+        help_text=_(
+            'Designates whether this user can edit the scor??. '
 
+        ),
+    )
 
 class Writing(models.Model):
     author=models.ForeignKey(User)
@@ -23,7 +30,6 @@ class Writing(models.Model):
     score=models.CharField(max_length=10, default='0')
     title = models.CharField(max_length=30, null=True, default='untitled')
     time = models.DateTimeField(auto_now_add=True)
-    corrector=models.ForeignKey(Corrector,blank=True, null=True)
     moshaver=models.TextField(default='نظر مشاور ثبت نشده است.')
 
     def get_absolute_url(self):
