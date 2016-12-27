@@ -39,14 +39,18 @@
         <a href="{% url 'user_profile:login' %}" class="btn btn-outline-inverse btn-lg " role="button">ورود</a>
         <a href="{% url 'user_profile:register' %}" class="btn btn-outline-inverse btn-lg " role="button">ثبت نام</a>
         </div>
-        <br>
-        <br>
-        <br>
+
+        <div class="totop">
+          <i class="arrow">
+            <span class="spani"></span>
+          </i>
+        </div>
+
     </div>
 
     <br>
     <br>
-    <br>
+    <br class="up">
     <br>
     <br>
 
@@ -129,17 +133,17 @@
                     <ul class="[ nav nav-justified ]" id="nav-tabs" role="tablist">
                         <li role="presentation" class="active">
                             <a href="#schedule" aria-controls="schedule" role="tab" data-toggle="tab">
-                                <img class="img-circle" alt="مرکز خدمات آمادگی آزمون های بین المللی زبان انگلیسی تافل" src="{% static 'user_profile/manage(pink).jpg' %}" style="box-shadow: rgb(149,23,104); width: 100px" />
+                                <img class="img-circle" alt="مرکز خدمات آمادگی آزمون های بین المللی زبان انگلیسی تافل" src="{% static 'user_profile/manage(pink).jpg' %}" style="box-shadow: rgb(149,23,104); width: 100px; max-width: 80px" />
                             </a>
                         </li>
                         <li role="presentation" class="">
                             <a href="#chart" aria-controls="chart" role="tab" data-toggle="tab" >
-                                <img class="img-circle" style="width: 50px"; height="50px" alt="ثبت نام آزمون تافل"  src="{% static 'user_profile/site.jpg' %}" style="box-shadow: rgb(149,23,104); border-color: rgb(149,23,104)" />
+                                <img class="img-circle"  alt="ثبت نام آزمون تافل"  src="{% static 'user_profile/site.jpg' %}" style="box-shadow: rgb(149,23,104); border-color: rgb(149,23,104); max-width: 80px" />
                             </a>
                         </li>
                         <li role="presentation" class="">
                             <a href="#writing" aria-controls="writing" role="tab" data-toggle="tab">
-                                <img class="img-circle" alt="برنامه ریزی آزمون تافل رایتینگ" src="{% static 'user_profile/writing.jpg' %}" width="5rem" />
+                                <img class="img-circle" alt="برنامه ریزی آزمون تافل رایتینگ" src="{% static 'user_profile/writing.jpg' %}" style="box-shadow: rgb(149,23,104); border-color: rgb(149,23,104); max-width: 80px" />
                             </a>
                         </li>
                     </ul>

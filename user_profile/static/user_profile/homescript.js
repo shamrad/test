@@ -44,3 +44,11 @@ $(function(){
 
     function foo(){ console.log("Callback"); }
 
+// scroll down script
+$(document).ready(function() {
+$(".totop").click(function() {
+     $('html, body').animate({
+         scrollTop: $(".up").offset().top
+     }, 1500);
+ });
+});
