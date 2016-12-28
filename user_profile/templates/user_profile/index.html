@@ -96,12 +96,12 @@
         {% for item in exam %}
             <tr>
                 <td>{{ forloop.counter }}</td>
-                <td><a data-toggle="modal" data-target="#{{ forloop.counter }}" style="color: rgb(149,23,104); cursor: pointer">{{ item.title }}</a></td>
+                <td><a data-toggle="modal" data-target="#{{ forloop.counter }}a" style="color: rgb(149,23,104); cursor: pointer">{{ item.title }}</a></td>
                 <td>{{ item.score }}</td>
                 <td>{{ item.time }}</td>
             </tr>
 
-           <div class="modal fade " id="{{ forloop.counter }}">
+           <div class="modal fade " id="{{ forloop.counter }}a">
         <div class="modal-dialog">
             <div class="modal-content">
 

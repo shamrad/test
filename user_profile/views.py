@@ -128,6 +128,7 @@ def NewWriting(request):
             post.author=request.user
             post.save()
             return redirect('user_profile:index')
+
     else:
         form = WritingForm()
         return render(request,'user_profile/writing_form.html', {'form':form})

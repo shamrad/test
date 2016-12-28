@@ -28,7 +28,7 @@ class Writing(models.Model):
     author=models.ForeignKey(User)
     text=models.TextField(max_length=10000)
     score=models.CharField(max_length=10, default='0')
-    title = models.CharField(max_length=30, null=True, default='untitled')
+    title = models.CharField(max_length=30,  default='untitled')
     time = models.DateTimeField(auto_now_add=True)
     moshaver=models.TextField(default='نظر مشاور ثبت نشده است.')
 
