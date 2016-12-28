@@ -22,6 +22,8 @@ urlpatterns = [
     url(r'^test/', test, name='test'),
 
 
+    # teacher
+    url(r'^teacher/', include('corrector.urls')),
 
 
  ]

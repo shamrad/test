@@ -31,6 +31,8 @@ class Writing(models.Model):
     title = models.CharField(max_length=30,  default='untitled')
     time = models.DateTimeField(auto_now_add=True)
     moshaver=models.TextField(default='نظر مشاور ثبت نشده است.')
+    corrector=models.CharField(max_length=30, null=True, blank=True)
+
 
     def get_absolute_url(self):
         return reverse('user_profile:index')

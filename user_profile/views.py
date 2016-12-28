@@ -19,6 +19,8 @@ def index(request):
 
     #current_user=User.objects.get(username=username)
     current_user = request.user
+    if current_user.teacher :
+        return redirect('corrector:teacherindex')
     exam = current_user.writing_set.all()
     context = {
         'user': current_user,
@@ -82,7 +84,8 @@ class LoginView(View):
     def get(self, request):
         if request.user.is_authenticated():
             if request.user.teacher:
-                return HttpResponse('<h1>test</h1>')
+                # return HttpResponse('<h1>test</h1>')
+                return redirect('corrector:teacherindex')
             return redirect('user_profile:index')
         form = LoginForm()
         return render(request, 'user_profile/login.html', {
@@ -98,7 +101,8 @@ class LoginView(View):
             user = form.get_user()
             auth_login(request, user)
             if user.teacher:
-                return HttpResponse('<p>teacher</p>')
+                return redirect('corrector:teacherindex')
+                # return HttpResponse('<p>teacher</p>')
             return redirect('user_profile:index')
 
         return render(request, 'user_profile/login.html', {
