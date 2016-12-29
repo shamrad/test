@@ -78,19 +78,21 @@
 
 {#sliiide show#}
     <div class="col-lg-6">
-    <script src="http://cdn.jssor.com/script/jssor.slider-22.0.7.min.js" type="text/javascript" data-library="jssor.slider" data-version="22.0.7"></script>
+    <script src="http://cdn.jssor.com/script/jssor.slider-22.0.15.min.js" type="text/javascript" data-library="jssor.slider" data-version="22.0.15"></script>
 <script type="text/javascript">
     jssor_1_slider_init = function() {
 
         var jssor_1_SlideoTransitions = [
-            [{b:0,d:2000,x:497,y:-1}],
-            [{b:0,d:2000,x:-13,y:-2},{b:2000,d:2000,x:-502,y:2}],
-            [{b:4000,d:2000,x:499,y:-3}],
-            [{b:6000,d:2000,x:-516,y:-2}]
+            [{b:-1,d:1,i:100}],
+            [{b:0,d:2000,x:537}],
+            [{b:2000,d:2000,x:-499}],
+            [{b:4000,d:2000,x:537}],
+            [{b:6000,d:2000,x:-499}]
         ];
 
         var jssor_1_options = {
             $AutoPlay: true,
+            $Idle: 1000,
             $CaptionSliderOptions: {
                 $Class: $JssorCaptionSlideo$,
                 $Transitions: jssor_1_SlideoTransitions
@@ -103,14 +105,15 @@
 <style></style>
 <div id="jssor_1" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 500px; height: 450px; overflow: hidden; visibility: hidden;">
     <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 500px; height: 450px; overflow: hidden;">
-
-        <a data-u="any" href="http://www.jssor.com" style="display:none">jQuery Slider</a>
+        <!--<img data-u="add" title="Jssor Slider" style="display:block;position:absolute;top:0;right:0;width:16px;height:16px;z-index:1000;" src="" />-->
+        <a data-u="any" href="http://www.jssor.com/meehraaad/mehradslide.slider" style="display:none">jQuery Slider</a>
         <div data-p="118.75">
-            <img data-u="image" src="{% static 'user_profile/imac2.jpg' %}" />
-            <img data-u="caption" data-t="0" style="position:absolute;top:22px;left:-479px;width:464px;height:297px;z-index:0;" src="{% static 'user_profile/ss1.jpg' %}" />
-            <img data-u="caption" data-t="1" style="position:absolute;top:22px;left:533px;width:464px;height:297px;z-index:0;" src="{% static 'user_profile/ss2.jpg' %}" />
-            <img data-u="caption" data-t="2" style="position:absolute;top:24px;left:-481px;width:464px;height:297px;z-index:0;" src="{% static 'user_profile/ss3.jpg' %}" />
-            <img data-u="caption" data-t="3" style="position:absolute;top:24px;left:533px;width:464px;height:297px;z-index:0;" src="{% static 'user_profile/ss4.jpg' %}" />
+            <img data-u="caption" data-t="0" style="position:absolute;top:0px;left:0px;width:500px;height:450px;z-index:0;" src="{% static 'user_profile/imac3.png' %}" />
+            <img style="position:absolute;top:22px;left:19px;width:464px;height:297px;z-index:0;" src="{% static 'user_profile/ss5.jpg' %}" />
+            <img data-u="caption" data-t="1" style="position:absolute;top:22px;left:-518px;width:464px;height:297px;z-index:0;" src="{% static 'user_profile/ss1.jpg' %}" />
+            <img data-u="caption" data-t="2" style="position:absolute;top:22px;left:518px;width:464px;height:297px;z-index:0;" src="{% static 'user_profile/ss2.jpg' %}" />
+            <img data-u="caption" data-t="3" style="position:absolute;top:22px;left:-518px;width:464px;height:297px;z-index:0;" src="{% static 'user_profile/ss3.jpg' %}" />
+            <img data-u="caption" data-t="4" style="position:absolute;top:22px;left:518px;width:464px;height:297px;z-index:0;" src="{% static 'user_profile/ss4.jpg' %}" />
         </div>
     </div>
 </div>
