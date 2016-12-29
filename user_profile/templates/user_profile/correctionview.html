@@ -1,0 +1,23 @@
+{%  extends 'user_profile/teacher-base.html' %}
+{% block content %}
+    <div class="container">
+        <form method="post" action="" class="form-horizontal">
+        {% csrf_token %}
+
+        <br>
+        <input type="text" class="form-control" id="id_title" value="{{ writing.title }}"  name="title" aria-describedby="basic-addon3">
+        <br>
+        <textarea class="form-control " rows="15"   id="id_text" name="text" >{{ writing.text }}</textarea>
+        <br>
+        <input type="text" class="form-control" id="id_score"  value="{{ writing.score }}" name="score" aria-describedby="basic-addon3">
+        <br>
+        <textarea class="form-control " rows="15"   id="id_moshaver" placeholder="اشکالات و پیشنهاد های خود را اینجا ثبت کنید" name="moshaver" ></textarea>
+
+        <input type="hidden" class="form-control" id="id_corrector" value="{{ user.username }}" name="corrector" aria-describedby="basic-addon3">
+
+
+        <button class="btn btn-lg btn-primary" type="submit" style="background-color: rgb(149,23,104)">Edit</button>
+
+</form>
+    </div>
+{%  endblock %}

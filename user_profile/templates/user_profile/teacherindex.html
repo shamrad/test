@@ -1,4 +1,5 @@
 {% extends "user_profile/teacher-base.html" %}
+{#{% load order_tag %}#}
 {% load static %}
 
 {% block title %}
@@ -16,9 +17,15 @@
 {% block activeClass %}.pf{% endblock %}
 
 {% block content %}
-    <h1>hello</h1>
-    {% for item in writing %}
-        <a href="{% url 'corrector:score' item.id %}">{{ item.title }}</a>
+    <div class="container-fluid">
+        <div class="text-center">
+            <h1>متن های تصحیح نشده</h1>
+            <ul style="list-style: none;">
+                {% for item in writing %}
+                    <li><a href="{% url 'corrector:score' item.id %}">{{ item.title }}</a></li>
 
-    {% endfor %}
+                 {% endfor %}
+            </ul>
+        </div>
+    </div>
 {% endblock %}

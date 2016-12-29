@@ -8,7 +8,7 @@ from user_profile.models import Writing
 
 def Teacherindex(request):
     current_user = request.user
-    writing=Writing.objects.exclude(corrector__isnull=False)
+    writing=Writing.objects.filter(score='0')
     if current_user.teacher:
         context={
             'user': current_user,
@@ -21,8 +21,8 @@ def Teacherindex(request):
 class Score(LoginRequiredMixin,UpdateView):
     login_url = 'user_profile:login'
     model = Writing
-    template_name = 'user_profile/editview.html'
-    fields = ['text','score','title','corrector']
+    template_name = 'user_profile/correctionview.html'
+    fields = ['text','score','title','corrector','moshaver']
 
     success_url = reverse_lazy('corrector:teacherindex')
 
