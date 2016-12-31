@@ -1,5 +1,6 @@
 {% extends "user_profile/teacher-base.html" %}
 {#{% load order_tag %}#}
+{#{% templatetag %}#}
 {% load static %}
 
 {% block title %}
@@ -17,15 +18,42 @@
 {% block activeClass %}.pf{% endblock %}
 
 {% block content %}
-    <div class="container-fluid">
-        <div class="text-center">
+    <div class="container">
+        <div class="">
             <h1>متن های تصحیح نشده</h1>
-            <ul style="list-style: none;">
+            <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>tile</th>
+                    <th>id</th>
+                </tr>
+            </thead>
+            <tbody id="container">
                 {% for item in writing %}
-                    <li><a href="{% url 'corrector:score' item.id %}">{{ item.title }}</a></li>
-
-                 {% endfor %}
-            </ul>
+                    <tr class="id">
+                        <td><a href="{% url 'corrector:score' item.id %}">{{ item.title }}</a></td>
+                        <td class="tdid">{{ item.id }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            </table>
         </div>
     </div>
+
+    <script>
+{#    var $tr = $("tr.id");#}
+{#    $(document).ready(function () {#}
+{#        var numericallyOrderedDivs = $tr.sort(function (a, b) {#}
+{#        return $(a).find(".tdid") > $(b).find(".tdid");#}
+{#    });#}
+{#    $("#container").html(numericallyOrderedDivs);#}
+{#    })#}
+{#    #}
+    
+    </script>
+    
+
+
+
+
 {% endblock %}

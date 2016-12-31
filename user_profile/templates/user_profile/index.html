@@ -183,7 +183,7 @@
             ],
 
             series: [
-                a=[],
+                a=[30],
             ]
         }, {
             fullWidth: true,
@@ -194,7 +194,7 @@
 
     {% for item in exam %}
          {% if item.score != '0' %}
-         m.labels.push({{ forloop.counter }}+1)
+         m.labels.push({{ forloop.counter }})
         a.push({{ item.score }})
         {% endif %}
         {% endfor %}
@@ -222,10 +222,10 @@ $(document).ready(function() {
     $('#{{ item.id }}').click(counter{{ forloop.counter }});
     $('{{ item.id }}').change(counter{{ forloop.counter }});
     $('{{ item.id }}').keydown(counter{{ forloop.counter }});
-    $('#id_text').keypress(counter{{ forloop.counter }});
-    $('#id_text').keyup(counter{{ forloop.counter }});
-    $('#id_text').blur(counter{{ forloop.counter }});
-    $('#id-text').focus(counter{{ forloop.counter }});
+    $('{{ item.id }}').keypress(counter{{ forloop.counter }});
+    $('{{ item.id }}').keyup(counter{{ forloop.counter }});
+    $('{{ item.id }}').blur(counter{{ forloop.counter }});
+    $('{{ item.id }}').focus(counter{{ forloop.counter }});
 })
 
     {% endfor %}
