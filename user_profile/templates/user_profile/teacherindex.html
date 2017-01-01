@@ -37,6 +37,22 @@
                 {% endfor %}
             </tbody>
             </table>
+            <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>tile</th>
+                    <th>id</th>
+                </tr>
+            </thead>
+            <tbody id="container">
+                {% for item in free %}
+                    <tr class="id">
+                        <td><a href="{% url 'corrector:score' item.id %}">{{ item.title }}</a></td>
+                        <td class="tdid">{{ item.id }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            </table>
         </div>
     </div>
 
