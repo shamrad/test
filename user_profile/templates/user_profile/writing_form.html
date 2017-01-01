@@ -47,10 +47,12 @@
                         <fieldset data-role="controlgroup" data-type="horizontal">
                             <ul style="list-style: none">
                                 {% for item in subject %}
+                                    {% if item.tpo == True %}
                                 <li>
                                     <input name="dest_type" id="{{ forloop.counter }}b" value="{{ item.topic }}" type="radio" />
                                     <label for="{{ forloop.counter }}b">{{ item.topic }}</label>
                                 </li>
+                                    {% endif %}
                                 {% endfor %}
 
                             </ul>
@@ -74,24 +76,21 @@
                     <div class="modal-body">
                          <fieldset data-role="controlgroup" data-type="horizontal">
                             <ul style="list-style: none">
+                                {% for item in subject %}
+                                    {% if item.tpo == False %}
                                 <li>
-                                    <input name="dest_type" id="radio3" value="technology" type="radio" checked />
-                                    <label for="radio3">Technology</label>
-                                 </li>
-                                <li>
-                                    <input name="dest_type" id="radio4" value="sience" type="radio" />
-                                    <label for="radio4">Sience</label>
+                                    <input name="dest_type" id="{{ forloop.counter }}c" value="{{ item.topic }}" type="radio" />
+                                    <label for="{{ forloop.counter }}c">{{ item.topic }}</label>
                                 </li>
-                                <li>
-                                    <input name="dest_type" id="radio5" value="ane sag" type="radio" />
-                                    <label for="radio5">ane sag</label>
-                                </li>
+                                    {% endif %}
+                                {% endfor %}
+
                             </ul>
                         </fieldset>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Selet Topic</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Select Topic</button>
                      </div>
                 </div>
               </div>
@@ -104,7 +103,7 @@
         <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
 
-        <div class="input-group col-lg-offset-1 col-lg-8">
+        <div class="input-group col-lg-offset-1 col-lg-10">
         <span class="input-group-addon" style="background-color: rgb(149,23,104); color: #fff" >Title: </span>
         <input type="text" class="form-control" id="id_title" placeholder="Enter topic..." name="title" aria-describedby="basic-addon3">
         <div class="input-group-btn">

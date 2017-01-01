@@ -94,6 +94,7 @@
     </thead>
     <tbody>
         {% for item in exam %}
+
             <tr>
                 <td>{{ forloop.counter }}</td>
                 <td><a data-toggle="modal" data-target="#{{ forloop.counter }}a" style="color: rgb(149,23,104); cursor: pointer">{{ item.title }}</a></td>
@@ -108,7 +109,7 @@
                  <!--heade-->
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"> &times; </button>
-                    <h3 class="modal-title" style="color: rgb(149,23,104);">{{ item.title }}</h3>
+                    <h3 class="modal-title" style="direction: ltr;color: rgb(149,23,104);">{{ item.title }}</h3>
                 </div>
                 <div class="modal-body">
                     <textarea rows="15" class="form-control" id="{{ item.id }}" name="text">{{ item.text }}</textarea>
