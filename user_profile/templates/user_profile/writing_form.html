@@ -46,24 +46,19 @@
 
                         <fieldset data-role="controlgroup" data-type="horizontal">
                             <ul style="list-style: none">
+                                {% for item in subject %}
                                 <li>
-                                    <input name="dest_type" id="radio3" value="education" type="radio" checked />
-                                    <label for="radio3">education</label>
-                                 </li>
-                                <li>
-                                    <input name="dest_type" id="radio4" value="politics" type="radio" />
-                                    <label for="radio4">politics</label>
+                                    <input name="dest_type" id="{{ forloop.counter }}b" value="{{ item.topic }}" type="radio" />
+                                    <label for="{{ forloop.counter }}b">{{ item.topic }}</label>
                                 </li>
-                                <li>
-                                    <input name="dest_type" id="radio5" value="migration" type="radio" />
-                                    <label for="radio5">migration</label>
-                                </li>
+                                {% endfor %}
+
                             </ul>
                         </fieldset>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Selet Topic</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Select Topic</button>
                      </div>
                 </div>
               </div>

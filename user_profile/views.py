@@ -10,7 +10,7 @@ from django.views.generic.edit import UpdateView
 
 from .form import UserForm, LoginForm, WritingForm
 from django.views.generic import View
-from .models import Writing
+from .models import Writing, Subject
 from django.views.generic import CreateView
 
 
@@ -114,7 +114,6 @@ class CreateWriting(LoginRequiredMixin,CreateView):
     login_url = 'user_profile:login'
     model = Writing
     fields = ['title', 'text']
-
     def form_valid(self, form):
         form.instance.author = self.request.User
         return super(CreateWriting, self).form_valid(form)
@@ -135,7 +134,8 @@ def NewWriting(request):
 
     else:
         form = WritingForm()
-        return render(request,'user_profile/writing_form.html', {'form':form})
+        subject = Subject.objects.all()
+        return render(request,'user_profile/writing_form.html', {'form':form , 'subject':subject})
 
 
 

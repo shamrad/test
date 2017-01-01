@@ -48,6 +48,10 @@ class Comment(models.Model):
     page=models.CharField(max_length=100)
 
 
+class Subject(models.Model):
+    title=models.CharField(max_length=20)
+    topic=models.CharField(max_length=1000)
+
 
 # class Credit(models.Model):
 #     WALLET=(
