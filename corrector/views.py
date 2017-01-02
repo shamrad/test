@@ -1,4 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
@@ -29,15 +30,19 @@ class Score(LoginRequiredMixin,UpdateView):
     model = Writing
     template_name = 'user_profile/correctionview.html'
     fields = ['text','score','title','corrector','moshaver']
-
     success_url = reverse_lazy('corrector:teacherindex')
 
+    def get_object(self, *args, **kwargs):
+        if self.request.user.teacher:
+            wrt = super(Score, self).get_object(*args, **kwargs)
+            if wrt.corrector == self.request.user.username:
+                return wrt
+            else:
+              raise PermissionDenied()
+        raise PermissionDenied()  # or Http404
 
-#
-# def Score(request,id):
-#     current_user= request.user
-#     if current_user.teacher:
-#         def get(self, request):
-#             form=Writing
-#
-#     return redirect('user_profile:index')
+
+
+
+
+
