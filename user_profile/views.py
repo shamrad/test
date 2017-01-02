@@ -122,6 +122,8 @@ class CreateWriting(LoginRequiredMixin,CreateView):
         # uhc = self.request.user.credit>9
         # return is_f_v and uhc
 
+
+subject = Subject.objects.all()
 @login_required(login_url='user_profile:login')
 def NewWriting(request):
     if request.method=="POST":
@@ -134,8 +136,7 @@ def NewWriting(request):
 
     else:
         form = WritingForm()
-        subject = Subject.objects.all()
-        return render(request,'user_profile/writing_form.html', {'form':form , 'subject':subject})
+    return render(request,'user_profile/writing_form.html', {'form':form , 'subject':subject})
 
 
 

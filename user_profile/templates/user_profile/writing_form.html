@@ -102,7 +102,7 @@
 
         <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
-
+            {{ form.errors.title }}
         <div class="input-group col-lg-offset-1 col-lg-10">
         <span class="input-group-addon" style="background-color: rgb(149,23,104); color: #fff" >Title: </span>
         <input type="text" class="form-control" id="id_title" placeholder="Enter topic..." name="title" aria-describedby="basic-addon3">
@@ -137,7 +137,7 @@
         <div id="result">
         Words: <span id="wordCount">0</span><br/>
         </div>
-
+            {{ form.errors.text }}
         <textarea class="form-control " rows="15" autocorrect="off" spellcheck="false" placeholder="Enter your text here..." id="id_text" name="text" ></textarea>
         <br>
         </div>
