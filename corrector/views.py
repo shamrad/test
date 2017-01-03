@@ -35,10 +35,13 @@ class Score(LoginRequiredMixin,UpdateView):
     def get_object(self, *args, **kwargs):
         if self.request.user.teacher:
             wrt = super(Score, self).get_object(*args, **kwargs)
-            if wrt.corrector == self.request.user.username:
-                return wrt
+            if wrt.author != self.request.user.username:
+                if (wrt.corrector == self.request.user.username) or (wrt.corrector==None):
+                    return wrt
+                else:
+                    raise PermissionDenied() #matn haye tashih shode baz nemishavad
             else:
-              raise PermissionDenied()
+                raise PermissionDenied() #shoma nemitavanid matne khudetan ra tashih koni
         raise PermissionDenied()  # or Http404
 
 

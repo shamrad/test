@@ -5,9 +5,9 @@
         {% csrf_token %}
 
         <br>
-        <input type="text" class="form-control" id="id_title" value="{{ writing.title }}"  name="title" aria-describedby="basic-addon3">
+        <input type="text" class="form-control" id="id_title" value="{{ writing.title }}" readonly  name="title" aria-describedby="basic-addon3">
         <br>
-        <textarea class="form-control " rows="15"   id="id_text" name="text" >{{ writing.text }}</textarea>
+        <textarea class="form-control " rows="15"   id="id_text" name="text" readonly spellcheck="true" autocorrect="on">{{ writing.text }}</textarea>
         <br>
         <input type="text" class="form-control" id="id_score"  value="{{ writing.score }}" name="score" aria-describedby="basic-addon3">
         <br>
