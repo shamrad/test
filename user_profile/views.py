@@ -8,7 +8,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth import login as auth_login
 from django.views.generic.edit import UpdateView
 
-from .form import UserForm, LoginForm, WritingForm
+from .form import UserForm, LoginForm, WritingForm, WritingFormTest
 from django.views.generic import View
 from .models import Writing, Subject
 from django.views.generic import CreateView
@@ -135,7 +135,12 @@ def NewWriting(request):
             return redirect('user_profile:index')
 
     else:
-        form = WritingForm()
+        writing = request.user.writing_set.all().count()
+        if writing >0:
+            form = WritingForm()
+        else:
+            from1=WritingFormTest()
+            return render(request,'user_profile/editview.html', {'form':from1 , 'subject':subject})
     return render(request,'user_profile/writing_form.html', {'form':form , 'subject':subject})
 
 

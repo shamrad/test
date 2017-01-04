@@ -1,4 +1,6 @@
 from django.contrib.auth.forms import AuthenticationForm
+from django.core.validators import MaxLengthValidator
+
 from .models import User, Writing
 from django import  forms
 
@@ -7,7 +9,8 @@ from django import  forms
 
 
 class UserForm(forms.ModelForm):
-    password=forms.CharField(widget=forms.PasswordInput) #TODO: add validator
+    # password=forms.CharField(widget=forms.PasswordInput) #TODO: add validator
+
     def clean_email(self):
         data = self.cleaned_data['email']
         if User.objects.filter(email=data).exists():
@@ -39,11 +42,15 @@ class WritingForm(forms.ModelForm):
     class Meta:
         model= Writing
         fields = ['title', 'text']
-# class CreditForm(forms.ModelForm):
-#     class Meta:
-#         model=Credit
-#         fields=['wallet']
-#         widgets = {
-#             'wallet': forms.RadioSelect(),
-#         }
+
+
+class WritingFormTest(forms.ModelForm):
+    text = forms.CharField(
+        max_length=1000,
+        widget=forms.Textarea
+    )
+    class Meta:
+        model= Writing
+        fields = ['title', 'text']
+
 
