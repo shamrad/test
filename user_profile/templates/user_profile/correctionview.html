@@ -1,4 +1,30 @@
 {%  extends 'user_profile/teacher-base.html' %}
+{% load static %}
+{% block head %}
+    <script type="text/javascript" src='https://cdn.tinymce.com/4/tinymce.min.js'></script>
+    <script type="text/javascript">
+    tinymce.init({
+    selector: '#id_text',
+    menubar: false,
+    plugins: "textcolor ",
+    toolbar: " backcolor ",
+    textcolor_map: [
+    "000000", "Black",
+    "993300", "Burnt orange",
+    "008000", "Green",
+    "FF0000", "Red",
+    "00CCFF", "Sky blue",
+
+    ],
+    browser_spellcheck : true,})
+    </script>
+    <style>
+    .input-group-addon{
+        color: white;
+    }
+    </style>
+
+{% endblock %}
 {% block content %}
     <div class="container">
         <form method="post" action="" class="form-horizontal">
@@ -7,8 +33,116 @@
         <br>
         <input type="text" class="form-control" id="id_title" value="{{ writing.title }}" readonly  name="title" aria-describedby="basic-addon3">
         <br>
-        <textarea class="form-control " rows="15"   id="id_text" name="text" readonly spellcheck="true" autocorrect="on">{{ writing.text }}</textarea>
+        <textarea class="form-control " rows="15"   id="id_text" name="text" spellcheck="true" readonly>{{ writing.text }}</textarea>
         <br>
+
+            <div class="container">
+    <div class="row">
+    <div class="col-sm-6">
+    <div class="input-group">
+    <span class="input-group-addon label-success" >Word Choice</span>
+    <select class="form-control" id="sel1">
+    <option value="" disabled selected>Select Level</option>
+    <option value="5">appropriate word choice, and idiomaticity</option>
+    <option value="4">use of idiomatic language that do not interfere with meaning</option>
+    <option value="3">inconsistent facility in sentence formation and word choice that may result in lack of clarity and occasionally obscure meaning</option>
+    <option value="2">a noticeably inappropriate choice of words or word forms</option>
+    <option value="1">serious and frequent errors</option>
+    </select>
+    </div>
+    </div>
+
+    <div class="col-sm-6">
+    <div class="input-group">
+    <span class="input-group-addon label-danger" >Organization and Development</span>
+    <select class="form-control" id="sel1">
+    <option value="" disabled selected>Select Level</option>
+    <option value="5">well developed, using clearly appropriate explanations, exemplifications, and/or details</option>
+    <option value="4">generally well organized and well developed, using appropriate and sufficient explanations, exemplifications, and/or details</option>
+    <option value="3">somewhat developed explanations, exemplifications, and/or details</option>
+    <option value="2">inadequate organization  or connection of ideas</option>
+    <option value="1">serious disorganization</option>
+    </select>
+    </div>
+    </div>
+        </div>
+                <br>
+<div class="row">
+    <div class="col-sm-6">
+    <div class="input-group">
+    <span class="input-group-addon label-default" >Addressing Topic</span>
+    <select class="form-control" id="sel1">
+    <option value="" disabled selected>Select Level</option>
+    <option value="5">Effectively Addresses the topic and the task</option>
+    <option value="4">Addresses well, but some points may not be fully elaborated</option>
+    <option value="3">Addresses using somewhat developed explanations and details</option>
+    <option value="2">Limited development in response</option>
+    <option value="1">underdevelopment</option>
+    </select>
+    </div>
+    </div>
+
+    <div class="col-sm-6">
+    <div class="input-group">
+    <span class="input-group-addon label-info" >Unity, Progression and Coherence</span>
+    <select class="form-control" id="sel1">
+    <option value="" disabled selected>Select Level</option>
+    <option value="5">display fully unity, progression, and coherence</option>
+    <option value="4">it may contain occasional redundancy, digression, or unclear connections</option>
+    <option value="3">connection of ideas may be occasionally obscured</option>
+    <option value="2">inadequate connection of ideas</option>
+    <option value="1"> irrelevant specifics</option>
+    </select>
+    </div>
+    </div>
+    </div>
+
+                <br>
+<div class="row">
+    <div class="col-sm-6">
+    <div class="input-group">
+    <span class="input-group-addon label-primary" >Grammar</span>
+    <select class="form-control" id="sel1">
+    <option value="" disabled selected>Select Level</option>
+    <option value="5">demonstrating syntactic variety, it may have minor lexical or grammatical errors</option>
+    <option value="4"> demonstrating syntactic variety, occasional noticeable minor errors in structure</option>
+    <option value="3">limited range of syntactic structures</option>
+    <option value="2">an accumulation of errors in sentence structure and/or usage</option>
+    <option value="1">frequent errors in sentence structure</option>
+    </select>
+    </div>
+    </div>
+
+    <div class="col-sm-6">
+    <div class="input-group">
+    <span class="input-group-addon label-warning" >Vocabulary</span>
+    <select class="form-control" id="sel1">
+    <option value="" disabled selected>Select Level</option>
+    <option value="5">displays consistent facility in the use of language</option>
+    <option value="4">range of vocabulary, noticeable minor errors that do not interfere with meaning</option>
+    <option value="3">limited range of vocabulary</option>
+    <option value="2">inappropriate choice of words</option>
+    <option value="1"> frequent errors</option>
+    </select>
+    </div>
+    </div>
+    </div>
+
+
+<br>
+</div>
+
+
+    <script src="{% static 'user_profile/bootstrap.js' %}" rel="script" type="text/javascript"></script>
+    <script>
+        $('select').change(function(){
+    var sum = 0;
+    $('select :selected').each(function() {
+        sum += Number($(this).val());
+    });
+     $("#id_score").val(sum);
+});
+    </script>
         <input type="text" class="form-control" id="id_score"  value="{{ writing.score }}" name="score" aria-describedby="basic-addon3">
         <br>
         <textarea class="form-control " rows="15"   id="id_moshaver" placeholder="اشکالات و پیشنهاد های خود را اینجا ثبت کنید" name="moshaver" ></textarea>
@@ -20,4 +154,5 @@
 
 </form>
     </div>
+
 {%  endblock %}
