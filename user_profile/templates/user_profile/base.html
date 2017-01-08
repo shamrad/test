@@ -87,8 +87,7 @@
 <br>
 {% block content %}
 {% endblock %}
-<script src="{% static 'user_profile/jquery-3.1.1.js' %}"></script>
-<script src="{% static 'user_profile/bootstrap.js' %}"></script>
+
 <script>
     $(document).ready(function(){
         $('{% block activeClass %}{% endblock %}').addClass('active')

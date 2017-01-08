@@ -1,18 +1,144 @@
 {% extends "user_profile/base.html" %}
 {% load static %}
-
+{% block nav %}
+    {{ user.first_name }}
+{% endblock %}
 {% block title %}
 {{ object.title }} by {{ object.author }}
 {% endblock %}
+
+{% block head %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.2.0/js/mdb.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.2.0/css/mdb.min.css" rel="stylesheet">
+{% endblock %}
+
 
 {% block content %}
     <div class="container-fluid">
     <h2 class="text-info">{{ object.title }} by {{ object.author }}</h2>
 
     <p>
-    {{ object.text }}
+    {{ object.text|safe }}
     </p>
 <br>
 <label>Score: {{ object.score }}</label>
+<div class="row">
+    <div class="col-sm-6">
+    <div class="input-group">
+    <span class="input-group-addon label-success" >Word Choice</span>
+    <p >
+                            {{ object.wordchoice }}
+                        </p>
     </div>
+    </div>
+
+    <div class="col-sm-6">
+    <div class="input-group">
+    <span class="input-group-addon label-danger" >Organization and Development</span>
+    <p >
+                            {{ object.wordchoice }}
+                        </p>
+    </div>
+    </div>
+        </div>
+<br>
+<div class="row">
+                        <div class="col-sm-6">
+                        <div class="input-group">
+                        <span class="input-group-addon label-default" >Addressing Topic</span>
+                        <p >
+                            {{ object.adress }}
+                        </p>
+                        </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                        <div class="input-group">
+                        <span class="input-group-addon label-info" >Unity, Progression and Coherence</span>
+                        <p >
+                            {{ object.unity }}
+                        </p>
+                        </div>
+                        </div>
+                        </div>
+
+                                    <br>
+                    <div class="row">
+                        <div class="col-sm-6">
+                        <div class="input-group">
+                        <span class="input-group-addon label-primary" >Grammar</span>
+                                <p >
+                            {{ object.grammer }}
+                        </p>
+                        </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                        <div class="input-group">
+                        <span class="input-group-addon label-warning" >Vocabulary</span>
+                        <p >
+                            {{ object.vocab }}
+                        </p>
+                        </div>
+                        </div>
+                        </div>
+
+
+                    <br>
+                    </div>
+
+    </div>
+<div style="height: 20rem">
+    <canvas id="myChart"></canvas>
+</div>
+
+<script>
+
+$(function () {
+    var option = {
+    responsive: true,
+    };
+
+var data = [
+    {
+        value: 300,
+        color:"#",
+        highlight: "#FF5A5E",
+        label: "Red"
+    },{
+        value: 300,
+        color:"#F7464A",
+        highlight: "#FF5A5E",
+        label: "Red"
+    },{
+        value: 300,
+        color:"#F7464A",
+        highlight: "#FF5A5E",
+        label: "Red"
+    },{
+        value: 300,
+        color:"#F7464A",
+        highlight: "#FF5A5E",
+        label: "Red"
+    },
+    {
+        value: 50,
+        color: "#46BFBD",
+        highlight: "#5AD3D1",
+        label: "Green"
+    },
+    {
+        value: 100,
+        color: "#FDB45C",
+        highlight: "#FFC870",
+        label: "Yellow"
+    }
+]
+
+    // Get the context of the canvas element we want to select
+    var ctx = document.getElementById("myChart").getContext('2d');
+    var myLineChart = new Chart(ctx).Pie(data, option); //'Line' defines type of the chart.
+});
+
+</script>
 {% endblock %}

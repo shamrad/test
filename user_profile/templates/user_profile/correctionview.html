@@ -41,7 +41,7 @@
     <div class="col-sm-6">
     <div class="input-group">
     <span class="input-group-addon label-success" >Word Choice</span>
-    <select class="form-control" id="sel1">
+    <select class="form-control" id="word_choice">
     <option value="" disabled selected>Select Level</option>
     <option value="5">appropriate word choice, and idiomaticity</option>
     <option value="4">use of idiomatic language that do not interfere with meaning</option>
@@ -55,7 +55,7 @@
     <div class="col-sm-6">
     <div class="input-group">
     <span class="input-group-addon label-danger" >Organization and Development</span>
-    <select class="form-control" id="sel1">
+    <select class="form-control" id="OaD">
     <option value="" disabled selected>Select Level</option>
     <option value="5">well developed, using clearly appropriate explanations, exemplifications, and/or details</option>
     <option value="4">generally well organized and well developed, using appropriate and sufficient explanations, exemplifications, and/or details</option>
@@ -71,7 +71,7 @@
     <div class="col-sm-6">
     <div class="input-group">
     <span class="input-group-addon label-default" >Addressing Topic</span>
-    <select class="form-control" id="sel1">
+    <select class="form-control" id="adressing">
     <option value="" disabled selected>Select Level</option>
     <option value="5">Effectively Addresses the topic and the task</option>
     <option value="4">Addresses well, but some points may not be fully elaborated</option>
@@ -85,7 +85,7 @@
     <div class="col-sm-6">
     <div class="input-group">
     <span class="input-group-addon label-info" >Unity, Progression and Coherence</span>
-    <select class="form-control" id="sel1">
+    <select class="form-control" id="unity">
     <option value="" disabled selected>Select Level</option>
     <option value="5">display fully unity, progression, and coherence</option>
     <option value="4">it may contain occasional redundancy, digression, or unclear connections</option>
@@ -102,7 +102,7 @@
     <div class="col-sm-6">
     <div class="input-group">
     <span class="input-group-addon label-primary" >Grammar</span>
-    <select class="form-control" id="sel1">
+    <select class="form-control" id="grammer">
     <option value="" disabled selected>Select Level</option>
     <option value="5">demonstrating syntactic variety, it may have minor lexical or grammatical errors</option>
     <option value="4"> demonstrating syntactic variety, occasional noticeable minor errors in structure</option>
@@ -116,7 +116,7 @@
     <div class="col-sm-6">
     <div class="input-group">
     <span class="input-group-addon label-warning" >Vocabulary</span>
-    <select class="form-control" id="sel1">
+    <select class="form-control" id="vocab">
     <option value="" disabled selected>Select Level</option>
     <option value="5">displays consistent facility in the use of language</option>
     <option value="4">range of vocabulary, noticeable minor errors that do not interfere with meaning</option>
@@ -139,16 +139,38 @@
     var sum = 0;
     $('select :selected').each(function() {
         sum += Number($(this).val());
+        grammer=$('#grammer :selected').text()+'('+Number($('#grammer :selected').val())+' points odd 5 points)'
+        vocab=$('#vocab :selected').text()+'('+Number($('#vocab :selected').val())+' points odd 5 points)'
+        unity=$('#unity :selected').text()+'('+Number($('#unity :selected').val())+' points odd 5 points)'
+        oad  =$('#OaD   :selected').text()+'('+Number($('#OaD   :selected').val())+' points odd 5 points)'
+        wordchoice=$('#word_choice :selected').text()+': ('+Number($('#word_choice :selected').val())+' points odd 5 points)'
+        adress=$('#adressing :selected').text()+': ('+Number($('#adressing :selected').val())+' points odd 5 points)'
+
     });
      $("#id_score").val(sum);
-});
+     $('#id_grammer').val(grammer)
+     $('#id_vocab').val(vocab)
+     $('#id_unity').val(unity)
+     $('#id_oad').val(oad)
+     $('#id_wordchoice').val(wordchoice)
+     $('#id_adress').val(adress)
+    });
+
+
     </script>
         <input type="text" class="form-control" id="id_score"  value="{{ writing.score }}" name="score" aria-describedby="basic-addon3">
         <br>
         <textarea class="form-control " rows="15"   id="id_moshaver" placeholder="اشکالات و پیشنهاد های خود را اینجا ثبت کنید" name="moshaver" ></textarea>
 
         <input type="hidden" class="form-control" id="id_corrector" value="{{ user.username }}" name="corrector" aria-describedby="basic-addon3">
-
+        <input type="hidden" class="form-control" id="id_grammer" name="grammer" value="{{ writing.grammer }}" aria-describedby="basic-addon3">
+        <input type="hidden" class="form-control" id="id_vocab" name="vocab" value="{{ writing.vocab }}" aria-describedby="basic-addon3">
+        <input type="hidden" class="form-control" id="id_unity" name="unity" value="{{ writing.unity }}" aria-describedby="basic-addon3">
+        <input type="hidden" class="form-control" id="id_oad" name="oad" value="{{ writing.oad }}" aria-describedby="basic-addon3">
+        <input type="hidden" class="form-control" id="id_wordchoice" name="wordchoice" value="{{ writing.wordchoice }}" aria-describedby="basic-addon3">
+        <input type="hidden" class="form-control" id="id_adress" name="adress" value="{{ writing.adress }}" aria-describedby="basic-addon3">
+{#        <input type="text" class="form-control" id="vocab" aria-describedby="basic-addon3">#}
+<br>
 
         <button class="btn btn-lg btn-primary" type="submit" style="background-color: rgb(149,23,104)">Edit</button>
 

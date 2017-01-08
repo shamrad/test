@@ -27,11 +27,20 @@ class User(AbstractUser):
 class Writing(models.Model):
     author=models.ForeignKey(User)
     text=models.TextField(max_length=10000)
-    score=models.CharField(max_length=10, default='0')
     title = models.CharField(max_length=3000,  default='untitled')
     time = models.DateTimeField(auto_now_add=True)
     moshaver=models.TextField(default='نظر مشاور ثبت نشده است.')
     corrector=models.CharField(max_length=30, null=True, blank=True)
+
+
+    score=models.CharField(max_length=10, default='0')
+    grammer=models.CharField(max_length=10000, null=True, blank=True)
+    vocab=models.CharField(max_length=10000, null=True, blank=True)
+    unity=models.CharField(max_length=10000, null=True, blank=True)
+    oad=models.CharField(max_length=10000, null=True, blank=True)
+    wordchoice=models.CharField(max_length=10000, null=True, blank=True)
+    adress=models.CharField(max_length=10000, null=True, blank=True)
+
 
 
     def get_absolute_url(self):

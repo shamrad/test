@@ -31,8 +31,10 @@ def index(request):
 @login_required(login_url='user_profile:login')
 def writing(request,pk):
     current_writing=Writing.objects.get(pk=pk)
-    return render(request, 'user_profile/writing page.html',{'object':current_writing})
-
+    if current_writing.author == request.user:
+        return render(request, 'user_profile/writing page.html',{'object':current_writing})
+    else:
+        return HttpResponse('hii')
 
 
 

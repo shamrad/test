@@ -112,7 +112,7 @@
                     <h3 class="modal-title" style="direction: ltr;color: rgb(149,23,104);">{{ item.title }}</h3>
                 </div>
                 <div class="modal-body">
-                    <div rows="15" class="form-control" id="{{ item.id }}" name="text">{{ item.text }}</div>
+                    <div rows="15"  ><p  id="{{ item.id }}">{{ item.text|safe }}</p></div>
                     <div id="result">
                          تعداد کلمات استفاده شده (روی متن کلیک کنید) : <span id="{{ item.id }}wordCount">0</span><br/>
                      </div>
@@ -221,6 +221,8 @@ console.log(wordCount)
 
 $(document).ready(function() {
     $('#{{ item.id }}').click(counter{{ forloop.counter }});
+    $('.modal-content').click(counter{{ forloop.counter }});
+    $('.modal-header').click(counter{{ forloop.counter }});
     $('{{ item.id }}').change(counter{{ forloop.counter }});
     $('{{ item.id }}').keydown(counter{{ forloop.counter }});
     $('{{ item.id }}').keypress(counter{{ forloop.counter }});
