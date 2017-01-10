@@ -139,12 +139,23 @@
     var sum = 0;
     $('select :selected').each(function() {
         sum += Number($(this).val());
-        grammer=$('#grammer :selected').text()+'('+Number($('#grammer :selected').val())+' points odd 5 points)'
-        vocab=$('#vocab :selected').text()+'('+Number($('#vocab :selected').val())+' points odd 5 points)'
-        unity=$('#unity :selected').text()+'('+Number($('#unity :selected').val())+' points odd 5 points)'
-        oad  =$('#OaD   :selected').text()+'('+Number($('#OaD   :selected').val())+' points odd 5 points)'
-        wordchoice=$('#word_choice :selected').text()+': ('+Number($('#word_choice :selected').val())+' points odd 5 points)'
-        adress=$('#adressing :selected').text()+': ('+Number($('#adressing :selected').val())+' points odd 5 points)'
+
+        grammer=$('#grammer :selected').text()+'('+Number($('#grammer :selected').val())
+        vocab=$('#vocab :selected').text()+'('+Number($('#vocab :selected').val())
+        unity=$('#unity :selected').text()+'('+Number($('#unity :selected').val())
+        oad  =$('#OaD   :selected').text()+'('+Number($('#OaD   :selected').val())
+        wordchoice=$('#word_choice :selected').text()+': ('+Number($('#word_choice :selected').val())
+        adress=$('#adressing :selected').text()+': ('+Number($('#adressing :selected').val())
+
+
+        grammersc=Number($('#grammer :selected').val())
+        vocabsc=Number($('#vocab :selected').val())
+        unitysc=Number($('#unity :selected').val())
+        oadsc=Number($('#OaD   :selected').val())
+        wordchoicesc=Number($('#word_choice :selected').val())
+        adressingsc=Number($('#adressing :selected').val())
+
+
 
     });
      $("#id_score").val(sum);
@@ -154,7 +165,17 @@
      $('#id_oad').val(oad)
      $('#id_wordchoice').val(wordchoice)
      $('#id_adress').val(adress)
-    });
+
+
+     $('#id_grammersc').val(grammersc)
+     $('#id_vocabsc').val(vocabsc)
+     $('#id_unitysc').val(unitysc)
+     $('#id_oadsc').val(oadsc)
+     $('#id_wordchoicesc').val(wordchoicesc)
+     $('#id_adresssc').val(adressingsc)
+
+
+        });
 
 
     </script>
@@ -171,8 +192,16 @@
         <input type="hidden" class="form-control" id="id_adress" name="adress" value="{{ writing.adress }}" aria-describedby="basic-addon3">
 {#        <input type="text" class="form-control" id="vocab" aria-describedby="basic-addon3">#}
 <br>
+        <input type="text" class="form-control" id="id_grammersc" name="grammersc" value="{{ writing.grammersc }}" aria-describedby="basic-addon3">
+        <input type="text" class="form-control" id="id_vocabsc" name="vocabsc" value="{{ writing.vocabsc }}" aria-describedby="basic-addon3">
+        <input type="text" class="form-control" id="id_unitysc" name="unitysc" value="{{ writing.unitysc }}" aria-describedby="basic-addon3">
+        <input type="text" class="form-control" id="id_oadsc" name="oadsc" value="{{ writing.oadsc }}" aria-describedby="basic-addon3">
+        <input type="text" class="form-control" id="id_wordchoicesc" name="wordchoicesc" value="{{ writing.wordchoicesc }}" aria-describedby="basic-addon3">
+        <input type="text" class="form-control" id="id_adresssc" name="adresssc" value="{{ writing.adresssc }}" aria-describedby="basic-addon3">
 
-        <button class="btn btn-lg btn-primary" type="submit" style="background-color: rgb(149,23,104)">Edit</button>
+
+            <button class="btn btn-lg btn-primary" type="submit" style="background-color: rgb(149,23,104)">Edit</button>
+
 
 </form>
     </div>

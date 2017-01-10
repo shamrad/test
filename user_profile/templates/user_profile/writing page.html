@@ -14,83 +14,65 @@
 
 
 {% block content %}
-    <div class="container-fluid">
+<div class="container-fluid">
     <h2 class="text-info">{{ object.title }} by {{ object.author }}</h2>
 
     <p>
-    {{ object.text|safe }}
+        {{ object.text|safe }}
     </p>
-<br>
-<label>Score: {{ object.score }}</label>
-<div class="row">
-    <div class="col-sm-6">
-    <div class="input-group">
-    <span class="input-group-addon label-success" >Word Choice</span>
-    <p >
-                            {{ object.wordchoice }}
-                        </p>
+    <br>
+    <label>Score: {{ object.score }}</label>
+
+    <table class="table table-striped" >
+        <thead >
+            <tr >
+                <th ></th>
+                <th >status</th>
+                <th >sscore</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="label-success">Word Choice</td>
+                <td>{{ object.wordchoice }}</td>
+                <td>{{ object.wordchoicesc }}</td>
+            </tr>
+            <tr>
+                <td class="label-danger">Organization and Development</td>
+                <td>{{ object.oad }}</td>
+                <td>{{ object.oadsc}}</td>
+            </tr>
+            <tr>
+                <td class="label-default">Addressing Topic</td>
+                <td>{{ object.adress }}</td>
+                <td>{{ object.adresssc }}</td>
+            </tr>
+            <tr>
+                <td class="label-info">Unity, Progression and Coherence</td>
+                <td>{{ object.unity}}</td>
+                <td>{{ object.unitysc }}</td>
+            </tr>
+            <tr>
+                <td class="label-primary">Grammar</td>
+                <td>{{ object.grammer }}</td>
+                <td>{{ object.grammersc }}</td>
+            </tr>
+            <tr>
+                <td class="label-warning">Vocabulary</td>
+                <td>{{ object.vocab }}</td>
+                <td>{{ object.vocabsc }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div style="height: 20rem">
+        <canvas id="myChart"></canvas>
     </div>
-    </div>
-
-    <div class="col-sm-6">
-    <div class="input-group">
-    <span class="input-group-addon label-danger" >Organization and Development</span>
-    <p >
-                            {{ object.wordchoice }}
-                        </p>
-    </div>
-    </div>
-        </div>
-<br>
-<div class="row">
-                        <div class="col-sm-6">
-                        <div class="input-group">
-                        <span class="input-group-addon label-default" >Addressing Topic</span>
-                        <p >
-                            {{ object.adress }}
-                        </p>
-                        </div>
-                        </div>
-
-                        <div class="col-sm-6">
-                        <div class="input-group">
-                        <span class="input-group-addon label-info" >Unity, Progression and Coherence</span>
-                        <p >
-                            {{ object.unity }}
-                        </p>
-                        </div>
-                        </div>
-                        </div>
-
-                                    <br>
-                    <div class="row">
-                        <div class="col-sm-6">
-                        <div class="input-group">
-                        <span class="input-group-addon label-primary" >Grammar</span>
-                                <p >
-                            {{ object.grammer }}
-                        </p>
-                        </div>
-                        </div>
-
-                        <div class="col-sm-6">
-                        <div class="input-group">
-                        <span class="input-group-addon label-warning" >Vocabulary</span>
-                        <p >
-                            {{ object.vocab }}
-                        </p>
-                        </div>
-                        </div>
-                        </div>
-
-
-                    <br>
-                    </div>
-
-    </div>
-<div style="height: 20rem">
-    <canvas id="myChart"></canvas>
 </div>
+
+
+
 
 <script>
 
@@ -101,37 +83,37 @@ $(function () {
 
 var data = [
     {
-        value: 300,
-        color:"#",
+        value: {{ object.wordchoicesc }},
+        color:"rgb(92, 184, 92)",
         highlight: "#FF5A5E",
-        label: "Red"
+        label: "Word Choice"
     },{
-        value: 300,
-        color:"#F7464A",
+        value: {{ object.oadsc }},
+        color:"rgb(217, 83, 79)",
         highlight: "#FF5A5E",
-        label: "Red"
+        label: "Organization and Development"
     },{
-        value: 300,
-        color:"#F7464A",
+        value: {{ object.adresssc }},
+        color:"rgb(119, 119, 119)",
         highlight: "#FF5A5E",
-        label: "Red"
+        label: "Addressing Topic"
     },{
-        value: 300,
-        color:"#F7464A",
+        value: {{ object.unitysc }},
+        color:"rgb(91, 192, 222)",
         highlight: "#FF5A5E",
-        label: "Red"
+        label: "Unity, Progression and Coherence"
     },
     {
-        value: 50,
-        color: "#46BFBD",
+        value: {{ object.grammersc }},
+        color: "rgb(51, 122, 183)",
         highlight: "#5AD3D1",
-        label: "Green"
+        label: "Grammar"
     },
     {
-        value: 100,
-        color: "#FDB45C",
+        value: {{ object.vocabsc }},
+        color: "rgb(240, 173, 78)",
         highlight: "#FFC870",
-        label: "Yellow"
+        label: "Vocabulary"
     }
 ]
 

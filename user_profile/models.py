@@ -42,6 +42,14 @@ class Writing(models.Model):
     adress=models.CharField(max_length=10000, null=True, blank=True)
 
 
+    grammersc=models.CharField(max_length=10000, null=True, blank=True)
+    vocabsc=models.CharField(max_length=10000, null=True, blank=True)
+    unitysc=models.CharField(max_length=10000, null=True, blank=True)
+    oadsc=models.CharField(max_length=10000, null=True, blank=True)
+    wordchoicesc=models.CharField(max_length=10000, null=True, blank=True)
+    adresssc=models.CharField(max_length=10000, null=True, blank=True)
+
+
 
     def get_absolute_url(self):
         return reverse('user_profile:index')

@@ -29,14 +29,14 @@ class Score(LoginRequiredMixin,UpdateView):
     login_url = 'user_profile:login'
     model = Writing
     template_name = 'user_profile/correctionview.html'
-    fields = ['text','score','title','corrector','moshaver', 'grammer', 'vocab', 'oad', 'wordchoice', 'unity','adress']
+    fields = ['text','score','title','corrector','moshaver', 'grammer', 'vocab', 'oad', 'wordchoice', 'unity','adress','grammersc', 'vocabsc', 'oadsc', 'wordchoicesc', 'unitysc','adresssc' ]
     success_url = reverse_lazy('corrector:teacherindex')
 
     def get_object(self, *args, **kwargs):
         if self.request.user.teacher:
             wrt = super(Score, self).get_object(*args, **kwargs)
             if wrt.author != self.request.user:
-                if (wrt.corrector == self.request.user.username) or (wrt.corrector==None):
+                if (wrt.corrector == self.request.user.username) or (wrt.corrector==None)or (wrt.corrector==''):
                     return wrt
                 else:
                     raise PermissionDenied() #matn haye tashih shode baz nemishavad
