@@ -4,7 +4,7 @@
     {{ user.first_name }}
 {% endblock %}
 {% block title %}
-{{ object.title }} by {{ object.author }}
+writing by {{ object.author }}
 {% endblock %}
 
 {% block head %}
@@ -21,6 +21,10 @@
         {{ object.text|safe }}
     </p>
     <br>
+    {% if object.score == '0' %}
+
+    <h1 class="text-center" style="color:rgb(149,23,104) ">این متن به زودی تصحیح می شود</h1>
+    {% else %}
     <label>Score: {{ object.score }}</label>
 
     <table class="table table-striped" >
@@ -69,7 +73,9 @@
     <div style="height: 20rem">
         <canvas id="myChart"></canvas>
     </div>
+    {% endif %}
 </div>
+
 
 
 
