@@ -49,7 +49,7 @@ a {
       left: 0;
       transform: translateX(30%) scale(0.8);
       animation: box-1--out 0.5s;
-      transform-origin: center right; }
+      transform-origin: center; }
       .panel__wrap .panel__box:first-child.active {
         transform: translateX(35%);
         animation: box-1 0.5s; }
@@ -57,7 +57,7 @@ a {
       right: 0;
       transform: translateX(-30%) scale(0.8);
       animation: box-2--out 0.5s;
-      transform-origin: center left; }
+      transform-origin: center; }
       .panel__wrap .panel__box:last-child input[type="submit"] {
         background: none;
         border: 1px solid #A5E434;
@@ -105,75 +105,75 @@ a {
         border-radius: 30px;
         color: #fff; }
 
-@keyframes box-1 {
-  0% {
-    transform: translateX(30%) scale(0.8);
-    z-index: 1; }
-  49% {
-    transform: translateX(0) scale(0.9);
-    z-index: 1; }
-  50% {
-    transform: translateX(0) scale(0.9);
-    z-index: 2;
-    label, input {
-      opacity: 0; } }
-  100% {
-    transform: translateX(35%) scale(1);
-    z-index: 2;
-    label, input {
-      opacity: 1; } } }
-@keyframes box-1--out {
-  0% {
-    transform: translateX(35%) scale(1);
-    z-index: 2;
-    label {
-      opacity: 1; } }
-  49% {
-    transform: translateX(0) scale(0.9);
-    z-index: 2; }
-  50% {
-    transform: translateX(0) scale(0.9);
-    z-index: 1;
-    label, input {
-      opacity: 1; } }
-  100% {
-    transform: translateX(30%) scale(0.8);
-    z-index: 1;
-    label, input {
-      opacity: 0; } } }
-@keyframes box-2 {
-  0% {
-    transform: translateX(-30%) scale(0.8);
-    z-index: 1; }
-  49% {
-    transform: translateX(0) scale(0.9);
-    z-index: 1; }
-  50% {
-    transform: translateX(0) scale(0.9);
-    z-index: 2;
-    label, input {
-      opacity: 0; } }
-  100% {
-    transform: translateX(-35%) scale(1);
-    z-index: 2;
-    label, input {
-      opacity: 1; } } }
-@keyframes box-2--out {
-  0% {
-    transform: translateX(-35%) scale(1);
-    z-index: 2; }
-  49% {
-    transform: translateX(0) scale(0.9);
-    z-index: 2; }
-  50% {
-    transform: translateX(0) scale(0.9);
-    z-index: 1;
-    label, input {
-      opacity: 1; } }
-  100% {
-    transform: translateX(-30%) scale(0.8);
-    z-index: 1;
-    label, input {
-      opacity: 0; } } }
+/*@keyframes box-1 {*/
+  /*0% {*/
+    /*transform: translateX(30%) scale(0.8);*/
+    /*z-index: 1; }*/
+  /*49% {*/
+    /*transform: translateX(0) scale(0.9);*/
+    /*z-index: 1; }*/
+  /*50% {*/
+    /*transform: translateX(0) scale(0.9);*/
+    /*z-index: 2;*/
+    /*label, input {*/
+      /*opacity: 0; } }*/
+  /*100% {*/
+    /*transform: translateX(35%) scale(1);*/
+    /*z-index: 2;*/
+    /*label, input {*/
+      /*opacity: 1; } } }*/
+/*@keyframes box-1--out {*/
+  /*0% {*/
+    /*transform: translateX(35%) scale(1);*/
+    /*z-index: 2;*/
+    /*label {*/
+      /*opacity: 1; } }*/
+  /*49% {*/
+    /*transform: translateX(0) scale(0.9);*/
+    /*z-index: 2; }*/
+  /*50% {*/
+    /*transform: translateX(0) scale(0.9);*/
+    /*z-index: 1;*/
+    /*label, input {*/
+      /*opacity: 1; } }*/
+  /*100% {*/
+    /*transform: translateX(30%) scale(0.8);*/
+    /*z-index: 1;*/
+    /*label, input {*/
+      /*opacity: 0; } } }*/
+/*@keyframes box-2 {*/
+  /*0% {*/
+    /*transform: translateX(-30%) scale(0.8);*/
+    /*z-index: 1; }*/
+  /*49% {*/
+    /*transform: translateX(0) scale(0.9);*/
+    /*z-index: 1; }*/
+  /*50% {*/
+    /*transform: translateX(0) scale(0.9);*/
+    /*z-index: 2;*/
+    /*label, input {*/
+      /*opacity: 0; } }*/
+  /*100% {*/
+    /*transform: translateX(-35%) scale(1);*/
+    /*z-index: 2;*/
+    /*label, input {*/
+      /*opacity: 1; } } }*/
+/*@keyframes box-2--out {*/
+  /*0% {*/
+    /*transform: translateX(-35%) scale(1);*/
+    /*z-index: 2; }*/
+  /*49% {*/
+    /*transform: translateX(0) scale(0.9);*/
+    /*z-index: 2; }*/
+  /*50% {*/
+    /*transform: translateX(0) scale(0.9);*/
+    /*z-index: 1;*/
+    /*label, input {*/
+      /*opacity: 1; } }*/
+  /*100% {*/
+    /*transform: translateX(-30%) scale(0.8);*/
+    /*z-index: 1;*/
+    /*label, input {*/
+      /*opacity: 0; } } }*/
 
 /*# sourceMappingURL=signpagestyle.css.map */

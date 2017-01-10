@@ -7,14 +7,21 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="bootstrap.js"></script>
-    <link type="text/css" rel="stylesheet" href="http://ifont.ir/apicode/38">
+{#    <link type="text/css" rel="stylesheet" href="http://ifont.ir/apicode/38">#}
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Rouge+Script" rel="stylesheet">
     <style>
-        @import "bourbon";
-
+        @font-face {
+        font-family: 'IRANSans';
+        src: url('{% static 'font/IRANSans.ttf' %}') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+        }
         body {
             background: rgb(149,23,104) !important;
+            font-family:'IRANSans',tahoma;
+            font-size:14px;
+            direction: rtl;
         }
 
         .wrapper {
@@ -43,12 +50,12 @@
             font-size: 16px;
             height: auto;
             padding: 10px;
-        @include box-sizing(border-box);
+        @include box-sizing(border-box);}
 
-        &:focus {
+        .form-control:focus {
              z-index: 2;
          }
-        }
+
 
         input[type="text"] {
             margin-bottom: -1px;
@@ -63,8 +70,7 @@
         }
         }
         *{
-        font-family:'B yekan',tahoma;
-            font-size:14px;
+
         }
         .navbar-header{
             font-family: 'Rouge Script', cursive;

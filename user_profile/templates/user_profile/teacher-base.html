@@ -14,8 +14,14 @@
     <script src="{% static 'user_profile/bootstrap.js' %}"></script>
     {% block head %}{% endblock %}
     <style>
+        @font-face {
+        font-family: 'IRANSans';
+        src: url('{% static 'font/IRANSans.ttf' %}') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+        }
         body{
-            font-family: 'B yekan', tahoma;
+            font-family: 'IRANSans', tahoma;
         }
         .navbar-header{
             font-family: 'Rouge Script', cursive;
