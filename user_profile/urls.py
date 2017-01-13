@@ -1,5 +1,6 @@
 from django.conf.urls import url
-from .views import UserFormView, index, LoginView, writing, CreateWriting, Logout, EditView, NewWriting, CommingSoon
+from .views import UserFormView, index, LoginView, writing, CreateWriting, Logout, EditView, NewWriting, CommingSoon, \
+    ChangePassword
 
 app_name='user_profile'
 
@@ -12,9 +13,10 @@ urlpatterns = [
 
 
     url(r'^(?P<pk>[0-9]+)/$', writing, name='writing'),
-    # url(r'^addnew/$',CreateWriting.as_view(), name='newriting'),
-    # url(r'^increase-credit/$', CreditView , name='increase'),
     url(r'edit/$', EditView.as_view(), name='edit'),
+    url(r'change-password/$', ChangePassword, name='ChangePassword'),
+
+
     url(r'NewWriting/$', NewWriting, name='NewWriting'),
 
     url(r'^آزمون-تافل/', CommingSoon, name='exam'),

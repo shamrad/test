@@ -4,9 +4,10 @@ from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponse
 from django.shortcuts import render,redirect
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth import login as auth_login
 from django.views.generic.edit import UpdateView
+from django.contrib.auth.forms import PasswordChangeForm
 
 from .form import UserForm, LoginForm, WritingForm, WritingFormTest
 from django.views.generic import View
@@ -154,3 +155,17 @@ def Logout(request):
 
 def CommingSoon(request):
     return render(request, 'user_profile/comming_soon.html')
+
+def ChangePassword(request):
+    if request.method == 'POST':
+        form=PasswordChangeForm(data=request.POST, user=request.user)
+
+        if form.is_valid():
+            form.save()
+            update_session_auth_hash(request,form.user)
+            return redirect('user_profile:index')
+        return render(request,'user_profile/editview.html',{'form':form})
+    else:
+        form=PasswordChangeForm(user=request.user)
+        context={'form':form}
+        return render(request,'user_profile/editview.html', context)
