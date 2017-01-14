@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from .views import UserFormView, index, LoginView, writing, CreateWriting, Logout, EditView, NewWriting, CommingSoon, \
+from .views import UserFormView, index, LoginView, writing, Logout, EditView, NewWriting, CommingSoon, \
     ChangePassword
 
 app_name='user_profile'

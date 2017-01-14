@@ -9,7 +9,7 @@ from django.contrib.auth import login as auth_login
 from django.views.generic.edit import UpdateView
 from django.contrib.auth.forms import PasswordChangeForm
 
-from .form import UserForm, LoginForm, WritingForm, WritingFormTest
+from .form import UserForm, LoginForm, WritingForm
 from django.views.generic import View
 from .models import Writing, Subject
 from django.views.generic import CreateView
@@ -113,17 +113,17 @@ class LoginView(View):
         })
 
 
-class CreateWriting(LoginRequiredMixin,CreateView):
-    login_url = 'user_profile:login'
-    model = Writing
-    fields = ['title', 'text']
-    def form_valid(self, form):
-        form.instance.author = self.request.User
-        return super(CreateWriting, self).form_valid(form)
-        # super az form valid creat  view es use mikone
-        # is_f_v = super(CreateWriting, self).form_valid(form)
-        # uhc = self.request.user.credit>9
-        # return is_f_v and uhc
+# class CreateWriting(LoginRequiredMixin,CreateView):
+#     login_url = 'user_profile:login'
+#     model = Writing
+#     fields = ['title', 'text']
+#     def form_valid(self, form):
+#         form.instance.author = self.request.User
+#         return super(CreateWriting, self).form_valid(form)
+#         # super az form valid creat  view es use mikone
+#         # is_f_v = super(CreateWriting, self).form_valid(form)
+#         # uhc = self.request.user.credit>9
+#         # return is_f_v and uhc
 
 
 subject = Subject.objects.all()
@@ -141,10 +141,10 @@ def NewWriting(request):
         writing = request.user.writing_set.all().count()
         if writing >0:
             form = WritingForm()
+            return render(request, 'user_profile/writing_form.html', {'form': form, 'subject': subject})
         else:
-            from1=WritingFormTest()
-            return render(request,'user_profile/editview.html', {'form':from1 , 'subject':subject})
-    return render(request,'user_profile/writing_form.html', {'form':form , 'subject':subject})
+            form = WritingForm()
+            return render(request,'user_profile/writing_form_test.html', {'form':form , 'subject':subject})
 
 
 

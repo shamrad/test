@@ -44,13 +44,4 @@ class WritingForm(forms.ModelForm):
         fields = ['title', 'text']
 
 
-class WritingFormTest(forms.ModelForm):
-    text = forms.CharField(
-        max_length=1000,
-        widget=forms.Textarea
-    )
-    class Meta:
-        model= Writing
-        fields = ['title', 'text']
-
 
