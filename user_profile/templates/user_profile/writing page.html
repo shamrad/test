@@ -10,6 +10,11 @@ writing by {{ object.author }}
 {% block head %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.2.0/js/mdb.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.2.0/css/mdb.min.css" rel="stylesheet">
+    <style>
+    .NFh{
+        border: solid 2px black;
+    }
+    </style>
 {% endblock %}
 
 
@@ -26,13 +31,13 @@ writing by {{ object.author }}
     <h1 class="text-center" style="color:rgb(149,23,104) ">این متن به زودی تصحیح می شود</h1>
     {% else %}
     <label>Score: {{ object.score }}</label>
-
+<div id="result"></div>
     <table class="table table-striped" >
         <thead >
             <tr >
                 <th ></th>
                 <th >status</th>
-                <th >sscore</th>
+                <th >score</th>
 
             </tr>
         </thead>
@@ -70,8 +75,8 @@ writing by {{ object.author }}
         </tbody>
     </table>
 
-    <div style="height: 20rem">
-        <canvas id="myChart"></canvas>
+    <div style="height: 50rem">
+        <canvas id="myChart" height="50rem"></canvas>
     </div>
     {% endif %}
 </div>
@@ -112,13 +117,13 @@ var data = [
     {
         value: {{ object.grammersc }},
         color: "rgb(51, 122, 183)",
-        highlight: "#5AD3D1",
+        highlight: "#FF5A5E",
         label: "Grammar"
     },
     {
         value: {{ object.vocabsc }},
         color: "rgb(240, 173, 78)",
-        highlight: "#FFC870",
+        highlight: "#FF5A5E",
         label: "Vocabulary"
     }
 ]
@@ -128,5 +133,43 @@ var data = [
     var myLineChart = new Chart(ctx).Pie(data, option); //'Line' defines type of the chart.
 });
 
+</script>
+
+
+    <script>
+
+    $(document).ready(function(){
+    $("span").hover(function(){
+        $(this).attr('data-toggle','tooltip');
+        var color = $( this ).css( "background-color" );
+        if ($(this).css('background-color') == 'rgb(255, 0, 0)'){
+            $(this).attr('title','word choice');
+            $( "#result" ).html( "You have a <span style='color:" +
+    color + ";'>" + "word choice" + "</span> problem here." );
+        }
+        else if ($(this).css('background-color') == 'rgb(0, 128, 0)'){
+            $(this).attr('title','vocabulary');
+            $( "#result" ).html( "You have a <span style='color:" +
+    color + ";'>" + "vocabulary" + "</span> problem here." );
+        }
+        else if ($(this).css('background-color') == 'rgb(153, 51, 0)'){
+            $(this).attr('title','grammar');
+            $( "#result" ).html( "You have a <span style='color:" +
+    color + ";'>" + "grammar" + "</span> problem here." );
+        }
+        else if ($(this).css('background-color') == 'rgb(0, 204, 255)'){
+            $(this).attr('title','organization');
+            $( "#result" ).html( "You have a <span style='color:" +
+    color + ";'>" + "organization" + "</span> problem here." );
+        }
+
+    });
+     $("span").mouseout(function(){
+        $("#result").html("");
+    });
+     $('body').tooltip({
+        selector: '[data-toggle="tooltip"]'
+    });
+});
 </script>
 {% endblock %}
