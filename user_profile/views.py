@@ -4,14 +4,14 @@ from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponse
 from django.shortcuts import render,redirect
-from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
+from django.contrib.auth import authenticate, login, logout, update_session_auth_hash, get_user_model
 from django.contrib.auth import login as auth_login
 from django.views.generic.edit import UpdateView
 from django.contrib.auth.forms import PasswordChangeForm
 
-from .form import UserForm, LoginForm, WritingForm
+from .form import UserForm, LoginForm, WritingForm, Rate
 from django.views.generic import View
-from .models import Writing, Subject
+from .models import Writing, Subject, Teacherate
 from django.views.generic import CreateView
 
 
@@ -31,12 +31,28 @@ def index(request):
 
 @login_required(login_url='user_profile:login')
 def writing(request,pk):
-    current_writing=Writing.objects.get(pk=pk)
-    if current_writing.author == request.user:
-        return render(request, 'user_profile/writing page.html',{'object':current_writing})
-    else:
-        return HttpResponse('hii')
+    current_writing = Writing.objects.get(pk=pk)
+    form = Rate(request.POST)
+    rate = Teacherate.objects.filter(writing_id=pk)
+    if request.method == "POST":
+        user = get_user_model()
 
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.teacher = user.objects.get(username=current_writing.corrector)
+            post.student = request.user
+            post.writing = current_writing
+            post.save()
+            return redirect('user_profile:index')
+        return HttpResponse('afasf')
+    else:
+        if current_writing.author == request.user:
+            if rate:
+                return render(request, 'user_profile/writing page.html', {'object': current_writing})
+            else:
+                return render(request, 'user_profile/writing page.html', {'object': current_writing, 'form': form})
+        else:
+            raise PermissionError()
 
 
 # @login_required(login_url='user_profile:login')

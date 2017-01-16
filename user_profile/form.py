@@ -1,7 +1,7 @@
 from django.contrib.auth.forms import AuthenticationForm
 from django.core.validators import MaxLengthValidator
 
-from .models import User, Writing
+from .models import User, Writing, Teacherate
 from django import  forms
 
 
@@ -43,5 +43,9 @@ class WritingForm(forms.ModelForm):
         model= Writing
         fields = ['title', 'text']
 
+class Rate (forms.ModelForm):
+    class Meta:
+        model=Teacherate
+        fields=['rate']
 
 

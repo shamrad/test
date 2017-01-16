@@ -58,11 +58,14 @@ class Writing(models.Model):
         return self.author.username + '-' + self.title + '-' + self.score+ '-'
 
 
-class Comment(models.Model):
-    name=models.CharField(max_length=100)
-    coment=models.CharField(max_length=10000)
-    email=models.CharField(max_length=100)
-    page=models.CharField(max_length=100)
+class Teacherate(models.Model):
+    teacher=models.ForeignKey(User,null=False, related_name='teacherscore' )
+    student = models.ForeignKey(User, null=False, related_name='student')
+    rate=models.CharField(max_length=100)
+    writing=models.ForeignKey(Writing, null=False)
+
+    def __str__(self):
+        return self.teacher.username + ' by ' + self.student.username
 
 
 class Subject(models.Model):

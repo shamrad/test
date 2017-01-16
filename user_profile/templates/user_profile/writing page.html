@@ -74,7 +74,21 @@ writing by {{ object.author }}
             </tr>
         </tbody>
     </table>
+<form method="post" action="" class="form-horizontal">
 
+    {% for field in form %}
+               {% csrf_token %}
+                <span>{{ field.errors }}</span>
+                <label style="color: rgb(149,23,104)">{{ field.label_tag }}</label>
+                <div class="">{{ field }}</div>
+            <br>
+        {% endfor %}
+{#        <input type="text" class="form-control" name="username" placeholder="Email Address" required="" autofocus="" />#}
+{#        <input type="password" class="form-control" name="password" placeholder="Password" required=""/>#}
+        <br>
+        <button class="btn btn-lg btn-primary" type="submit" style="background-color: rgb(149,23,104)">Edit</button>
+
+</form>
     <div style="height: 50rem">
         <canvas id="myChart" height="50rem"></canvas>
     </div>
