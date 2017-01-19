@@ -17,59 +17,154 @@
 
 {% block activeClass %}.pf{% endblock %}
 
+{% block head %}
+
+{% endblock %}
+
 {% block content %}
     <div class="container">
-        <div class="">
-            <h1>متن های تصحیح نشده</h1>
-            <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>tile</th>
-                    <th>id</th>
+
+
+
+
+
+
+        <div class="row">
+            <div class="col-lg-5 backblue">
+                <h1 class="text-center">متن های تصحیح نشده</h1>
+                <p style="color: rgb(149,23,104)" class="text-center">چرا باید متن های زایگان تصحیح کنیم؟</p>
+                <p class="rtl">پس از تصحیح کردن هر متن رایگان متن های آن شحص فقط برای شما می آید در واقع شما معلم مجازی او خواهید شد</p>
+                <p class="rtl">پس با نهایت کفیت متن ها را تصحیح کنید</p>
+                <table class="table table-fixed">
+                <thead >
+                <tr style="background-color: #2b542c">
+                    <th class="col-xs-2 blue">#</th><th class="col-xs-8 blue">Title</th><th class="col-xs-2 blue">id</th>
                 </tr>
-            </thead>
-            <tbody id="container">
+                </thead>
+                <tbody>
                 {% for item in writing %}
-                    <tr class="id">
-                        <td><a href="{% url 'corrector:score' item.id %}">{{ item.title }}</a></td>
-                        <td class="tdid">{{ item.id }}</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-            </table>
-            <table class="table table-striped">
-            <thead>
                 <tr>
-                    <th>tile</th>
-                    <th>id</th>
+                    <td class="col-xs-2">{{ forloop.counter }}</td>
+                    <td class="col-xs-8"><a href="{% url 'corrector:score' item.id %}">{{ item.title }}</a></td>
+                    <td class="col-xs-2">{{ item.id }}</td>
                 </tr>
-            </thead>
-            <tbody id="container">
+                {% endfor %}
+                <tr>
+                        <td class="col-xs-2">1</td>
+                        <td class="col-xs-8">ad</a></td>
+                        <td class="col-xs-2">fas</td>
+                    </tr><tr>
+                        <td class="col-xs-2">1</td>
+                        <td class="col-xs-8">ad</a></td>
+                        <td class="col-xs-2">fas</td>
+                    </tr><tr>
+                        <td class="col-xs-2">1</td>
+                        <td class="col-xs-8">ad</a></td>
+                        <td class="col-xs-2">fas</td>
+                    </tr><tr>
+                        <td class="col-xs-2">1</td>
+                        <td class="col-xs-8">ad</a></td>
+                        <td class="col-xs-2">fas</td>
+                    </tr><tr>
+                        <td class="col-xs-2">1</td>
+                        <td class="col-xs-8">ad</a></td>
+                        <td class="col-xs-2">fas</td>
+                    </tr><tr>
+                        <td class="col-xs-2">1</td>
+                        <td class="col-xs-8">ad</a></td>
+                        <td class="col-xs-2">fas</td>
+                    </tr><tr>
+                        <td class="col-xs-2">1</td>
+                        <td class="col-xs-8">ad</a></td>
+                        <td class="col-xs-2">fas</td>
+                    </tr><tr>
+                        <td class="col-xs-2">1</td>
+                        <td class="col-xs-8">ad</a></td>
+                        <td class="col-xs-2">fas</td>
+                    </tr>
+
+                </tbody>
+            </table>
+            </div>
+        <div class="col-lg-2"></div>
+            <div class="col-lg-5 backred" >
+                <h1> متن های پولی</h1>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <table class="table table-fixed">
+                <thead>
+                <tr>
+                    <th class="col-xs-2 red">#</th><th class="col-xs-8 red">Title</th><th class="col-xs-2 red">id</th>
+                </tr>
+                </thead>
+                <tbody>
                 {% for item in free %}
-                    <tr class="id">
-                        <td><a href="{% url 'corrector:score' item.id %}">{{ item.title }}</a></td>
-                        <td class="tdid">{{ item.id }}</td>
+                    <tr>
+                        <td class="col-xs-2">{{ forloop.counter }}</td>
+                        <td class="col-xs-8"><a href="{% url 'corrector:score' item.id %}">{{ item.title }}</a></td>
+                        <td class="col-xs-2">{{ item.id }}</td>
                     </tr>
                 {% endfor %}
-            </tbody>
+                     <tr>
+                        <td class="col-xs-2">1</td>
+                        <td class="col-xs-8">ad</a></td>
+                        <td class="col-xs-2">fas</td>
+                    </tr><tr>
+                        <td class="col-xs-2">1</td>
+                        <td class="col-xs-8">ad</a></td>
+                        <td class="col-xs-2">fas</td>
+                    </tr><tr>
+                        <td class="col-xs-2">1</td>
+                        <td class="col-xs-8">ad</a></td>
+                        <td class="col-xs-2">fas</td>
+                    </tr><tr>
+                        <td class="col-xs-2">1</td>
+                        <td class="col-xs-8">ad</a></td>
+                        <td class="col-xs-2">fas</td>
+                    </tr><tr>
+                        <td class="col-xs-2">1</td>
+                        <td class="col-xs-8">ad</a></td>
+                        <td class="col-xs-2">fas</td>
+                    </tr><tr>
+                        <td class="col-xs-2">1</td>
+                        <td class="col-xs-8">ad</a></td>
+                        <td class="col-xs-2">fas</td>
+                    </tr>
+                </tbody>
             </table>
+
+            </div>
+
+        </div>
+        <br>
+        <div class="row" >
+                <h1>متن هایی که شما تصحیح کردید</h1>
+                            <table class="table table-fixed">
+                <thead >
+                <tr >
+                    <th class="col-xs-2 blue">#</th><th class="col-xs-8 blue">Title</th><th class="col-xs-2 blue">teacher's score</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for item in scored %}
+                <tr>
+                    <td class="col-xs-2">{{ forloop.counter }}</td>
+                    <td class="col-xs-8"><a href="{% url 'corrector:score' item.writing.id %}">{{ item.writing.title }}</a></td>
+                    <td class="col-xs-2">{{ item.rate }}</td>
+                </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+
         </div>
     </div>
 
-    <script>
-{#    var $tr = $("tr.id");#}
-{#    $(document).ready(function () {#}
-{#        var numericallyOrderedDivs = $tr.sort(function (a, b) {#}
-{#        return $(a).find(".tdid") > $(b).find(".tdid");#}
-{#    });#}
-{#    $("#container").html(numericallyOrderedDivs);#}
-{#    })#}
-{#    #}
-    
-    </script>
-    
-
-
-
-
+{% for item in scored %}
+    <p>{{ item.rate }}</p>
+{% endfor %}
 {% endblock %}

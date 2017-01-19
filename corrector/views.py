@@ -1,11 +1,15 @@
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.models import User
 from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.views.generic import UpdateView
 
-from user_profile.models import Writing
+from user_profile.models import Writing, Teacherate
+
 
 def Teacherindex(request):
     current_user = request.user
@@ -15,11 +19,13 @@ def Teacherindex(request):
     follow = Writing.objects.filter(corrector=request.user.username).values('author').distinct()
     writing = Writing.objects.exclude(author=request.user).filter(author__in=follow, score='0')
 
+    scored =Teacherate.objects.filter(teacher=request.user)
     if current_user.teacher:
         context={
             'user': current_user,
             'free': free,
-            'writing': writing
+            'writing': writing,
+            'scored': scored
         }
         return render(request, 'user_profile/teacherindex.html', context)
 
@@ -44,8 +50,31 @@ class Score(LoginRequiredMixin,UpdateView):
                 raise PermissionDenied() #shoma nemitavanid matne khudetan ra tashih koni
         raise PermissionDenied()  # or Http404
 
+def ChangePassword(request):
+    if request.method == 'POST':
+        form=PasswordChangeForm(data=request.POST, user=request.user)
 
+        if form.is_valid():
+            form.save()
+            update_session_auth_hash(request,form.user)
+            return redirect('user_profile:index')
+        return render(request,'user_profile/editviewteacher.html',{'form':form})
+    else:
+        form=PasswordChangeForm(user=request.user)
+        context={'form':form}
+        return render(request,'user_profile/editviewteacher.html', context)
 
+class EditView(LoginRequiredMixin,UpdateView):
+    login_url = 'user_profile:login'
+    model = User
+
+    template_name = 'user_profile/editviewteacher.html'
+    fields = ['first_name','last_name','email','username']
+
+    def get_object(self, queryset=None):
+        return self.request.user
+
+    success_url = reverse_lazy('corrector:teacherindex"')
 
 
 

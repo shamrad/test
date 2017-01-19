@@ -1,0 +1,60 @@
+
+{% extends "user_profile/teacher-base.html" %}
+{% load static %}
+
+{% block title %}
+ ویرایش اطلاعات {{ user.username }}
+{% endblock %}
+
+{% block nav %}
+    {{ user.first_name }}
+{% endblock %}
+
+{% block cre %}
+    {{ user.credit }}
+{% endblock %}
+
+{% block activeClass %}.setting{% endblock %}
+
+{% block head %}
+    <style>
+     body{
+         direction: rtl;
+     }
+    input{
+        border: 1px dashed #951768;
+    }
+    input:hover{
+        border: 1px solid #951768;
+    }
+    input:focus{
+        border: 2px solid #951768;
+        outline: none;
+    }
+    </style>
+{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+    <h3>ویرایش اطلاعات</h3>
+    <form method="post" action="" class="form-horizontal">
+
+    {% for field in form %}
+               {% csrf_token %}
+                <span>{{ field.errors }}</span>
+                <label style="color: rgb(149,23,104)">{{ field.label_tag }}</label>
+                <div class="">{{ field }}</div>
+            <br>
+        {% endfor %}
+{#        <input type="text" class="form-control" name="username" placeholder="Email Address" required="" autofocus="" />#}
+{#        <input type="password" class="form-control" name="password" placeholder="Password" required=""/>#}
+        <br>
+        <button class="btn btn-lg btn-primary" type="submit" style="background-color: rgb(149,23,104)">Edit</button>
+
+</form>
+    </div>
+{% endblock %}
+
+
+

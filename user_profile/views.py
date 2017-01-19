@@ -142,9 +142,11 @@ class LoginView(View):
 #         # return is_f_v and uhc
 
 
-subject = Subject.objects.all()
+
 @login_required(login_url='user_profile:login')
 def NewWriting(request):
+    subject = Subject.objects.all()
+    current_user=request.user
     if request.method=="POST":
         form=WritingForm(request.POST)
         if form.is_valid():
@@ -154,13 +156,16 @@ def NewWriting(request):
             return redirect('user_profile:index')
 
     else:
-        writing = request.user.writing_set.all().count()
-        if writing >0:
-            form = WritingForm()
-            return render(request, 'user_profile/writing_form.html', {'form': form, 'subject': subject})
+        if current_user.teacher:
+            return redirect('corrector:teacherindex')
         else:
-            form = WritingForm()
-            return render(request,'user_profile/writing_form_test.html', {'form':form , 'subject':subject})
+            writing = request.user.writing_set.all().count()
+            if writing >0:
+                form = WritingForm()
+                return render(request, 'user_profile/writing_form.html', {'form': form, 'subject': subject})
+            else:
+                form = WritingForm()
+                return render(request,'user_profile/writing_form_test.html', {'form':form , 'subject':subject})
 
 
 
