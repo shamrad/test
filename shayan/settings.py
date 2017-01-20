@@ -126,3 +126,9 @@ STATIC_URL = '/static/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_FILE_PATH ='D:/try5/backend3/user_profile'
+
+
+# Local settings
+f = os.path.join(os.path.join(BASE_DIR, 'shayan'), 'local_settings.py')
+if os.path.exists(f):
+    exec (open(f, "rb").read())
