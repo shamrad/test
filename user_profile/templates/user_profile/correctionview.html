@@ -2,7 +2,10 @@
 {% load static %}
 {% block head %}
     <script type="text/javascript" src='https://cdn.tinymce.com/4/tinymce.min.js'></script>
+    <script src="{% static 'user_profile/jquery-3.1.1.js' %}"></script>
+<script src="{% static 'user_profile/bootstrap.js' %}"></script>
     <script type="text/javascript">
+
     tinymce.init({
     selector: '#id_text',
     menubar: false,
@@ -139,7 +142,7 @@
     var sum = 0;
     $('select :selected').each(function() {
         sum += Number($(this).val());
-
+        console.log(sum)
         grammer=$('#grammer :selected').text()+'('+Number($('#grammer :selected').val())
         vocab=$('#vocab :selected').text()+'('+Number($('#vocab :selected').val())
         unity=$('#unity :selected').text()+'('+Number($('#unity :selected').val())

@@ -74,7 +74,7 @@ class EditView(LoginRequiredMixin,UpdateView):
     def get_object(self, queryset=None):
         return self.request.user
 
-    success_url = reverse_lazy('corrector:teacherindex"')
+    success_url = reverse_lazy('corrector:teacherindex')
 
 
 

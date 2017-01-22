@@ -38,6 +38,12 @@ p.narrow{
     text-indent: 20px;
     line-height: 40px;
 }
+h1.narrow{
+    width: 60%;
+    margin: 10px auto;
+    text-indent: 20px;
+    line-height: 40px;
+}
 
 .liner{
     height: 2px;
