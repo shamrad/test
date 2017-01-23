@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
-from django.core.urlresolvers import reverse_lazy
+from django.core.urlresolvers import reverse_lazy, reverse
 from django.http import HttpResponse
 from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash, get_user_model
@@ -230,9 +230,31 @@ def Send_request(request):
                                            amount,
                                            description,
                                            email,
-                                           str(url_for('verify', _external=True)))
+                                           reverse('verify'))
     if result.Status == 100:
         return redirect('https://www.zarinpal.com/pg/StartPay/' + result.Authority)
     else:
         return 'Error'
+
+def verify(request):
+    client = Client(ZARINPAL_WEBSERVICE)
+    amount = request.user.amount
+    credit=request.user.credit
+    current_user=request.user
+    if request.args.get('Status') == 'OK':
+        result = client.service.PaymentVerification(MMERCHANT_ID,
+                                                    request.args['Authority'],
+                                                    amount)
+        if result.Status == 100:
+            current_user.amount2 += current_user.amount
+            current_user.credit2 += current_user.credit
+            return render(request,'success.html')
+        elif result.Status == 101:
+            return 'Transaction submitted : ' + str(result.Status)
+        else:
+            return 'Transaction failed. Status: ' + str(result.Status)
+    else:
+        return 'Transaction failed or canceled by user'
+
+
 

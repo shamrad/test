@@ -1,0 +1,22 @@
+{% extends "user_profile/base.html" %}
+{% load static %}
+
+{% block title %}
+ Welcome {{ user.first_name }}
+{% endblock %}
+
+{% block nav %}
+    {{ user.first_name }}
+{% endblock %}
+
+{% block cre %}
+{{ user.credit }}
+{% endblock %}
+
+{% block activeClass %}.pf{% endblock %}
+
+{%  block content %}
+    <div class="text-center">
+    <h1> تراکنش با موفقیت انجام شد</h1>
+    </div>
+{% endblock %}
