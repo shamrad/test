@@ -1,6 +1,6 @@
 from django.conf.urls import url
 from .views import UserFormView, index, LoginView, writing, Logout, EditView, NewWriting, CommingSoon, \
-    ChangePassword, Credit
+    ChangePassword, Etebar
 
 app_name='user_profile'
 
@@ -24,7 +24,7 @@ urlpatterns = [
     url(r'^مشاوره-زبان-تافل/', CommingSoon, name='moshavere'),
 
 
-    url(r'^etebar/', Credit, name='credit'),
+    url(r'^etebar/', Etebar, name='credit'),
 
 
 ]

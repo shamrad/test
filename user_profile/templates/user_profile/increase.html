@@ -10,35 +10,194 @@
 {% endblock %}
 
 {% block cre %}
-    {{ user.credit.wallet }}
+    {{ user.credit }}
 {% endblock %}
+
+{% block head %}
+    <style>
+        *{
+         direction: rtl;
+        }
+        .panel-pricing {
+          -moz-transition: all .3s ease;
+          -o-transition: all .3s ease;
+          -webkit-transition: all .3s ease;
+        }
+        .panel-pricing:hover {
+          box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.2);
+        }
+        .panel-pricing .panel-heading {
+          padding: 20px 10px;
+        }
+        .panel-pricing .panel-heading .fa {
+          margin-top: 10px;
+          font-size: 58px;
+        }
+        .panel-pricing .list-group-item {
+          color: #777777;
+          border-bottom: 1px solid rgba(250, 250, 250, 0.5);
+        }
+        .panel-pricing .list-group-item:last-child {
+          border-bottom-right-radius: 0px;
+          border-bottom-left-radius: 0px;
+        }
+        .panel-pricing .list-group-item:first-child {
+          border-top-right-radius: 0px;
+          border-top-left-radius: 0px;
+        }
+        .panel-pricing .panel-body {
+          background-color: #f0f0f0;
+          font-size: 40px;
+          color: #777777;
+          padding: 20px;
+          margin: 0px;
+        }
+
+    </style>
+{% endblock %}
+
 
 {% block content %}
     <div class="container-fluid">
-    <h3>افزایش اعتبار</h3>
+    <br>
+    <h1 class="text-center" style="color: rgb(149,23,104)">افزایش اعتبار</h1>
+    <br/><br/>
 
-    <form class="form-horizontal" action="" method="post">
-        {% csrf_token %}
-        <div class="form-group">
-        <label for="id_title" class="col-sm-2 col-sm-offset-2 control-label">مبلغ مورد نظر خود را انتخاب کنید :</label>
-            <br>
-            <br>
-            <div class="radio col-lg-offset-3">
-              <label><input type="radio" value="9000" name="cre">تصحیح یک متن - 9 هزار تومان</label>
-            </div>
-            <div class="radio col-lg-offset-3">
-              <label><input type="radio" value="39000" name="cre">تصحیح 5 متن - 39 هزار تومان</label>
-            </div>
-            <div class="radio col-lg-offset-3">
-              <label><input type="radio" value="69000" name="cre">تصحیح 10 متن - 69 هزار تومان</label>
+    <form class="form-signin text-center" action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+        <input type=input class="form-control" id="id_wallet" name="wallet" value="{{ writing.grammersc }}" aria-describedby="basic-addon3">
+        <input type=input class="form-control" id="id_number" name="number" value="{{ writing.grammersc }}" aria-describedby="basic-addon3">
+
+
+    <!-- Plans -->
+    <section id="plans">
+        <div class="container">
+            <div class="row">
+
+                <!-- item -->
+                <div class="col-md-4 text-center">
+                    <div class="panel panel-danger panel-pricing">
+                        <div class="panel-heading">
+                            <i class="fa fa-desktop"></i>
+                            <h3>قرمز</h3>
+                        </div>
+                        <div class="panel-body text-center">
+                            <p><strong>{{ price.wallet }} تومان</strong></p>
+                        </div>
+                        <ul class="list-group text-center">
+                            <li class="list-group-item"><i class="fa fa-check"></i>تصحیح {{ price.number3 }} متن</li>
+                            <li class="list-group-item"><i class="fa fa-check"></i> مشاوره</li>
+{#                            <li class="list-group-item"><i class="fa fa-check"></i> 27/7 support</li>#}
+                        </ul>
+                        <div class="panel-footer">
+                            <button class="btn btn-lg btn-block btn-danger" id="1" type="submit">BUY NOW!</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- /item -->
+
+                <!-- item -->
+                <div class="col-md-4 text-center">
+                    <div class="panel panel-warning panel-pricing">
+                        <div class="panel-heading">
+                            <i class="fa fa-desktop"></i>
+                            <h3>نارنجی</h3>
+                        </div>
+                        <div class="panel-body text-center">
+                            <p><strong>{{ price.wallet2 }} تومان</strong></p>
+                        </div>
+                        <ul class="list-group text-center">
+                            <li class="list-group-item"><i class="fa fa-check"></i>تصحیح {{ price.number2 }} متن</li>
+                            <li class="list-group-item"><i class="fa fa-check"></i> مشاوره</li>
+{#                            <li class="list-group-item"><i class="fa fa-check"></i> 27/7 support</li>#}
+                        </ul>
+                        <div class="panel-footer">
+                            <button class="btn btn-lg btn-block btn-warning" id="2" type="submit">BUY NOW!</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- /item -->
+
+                <!-- item -->
+                <div class="col-md-4 text-center">
+                    <div class="panel panel-success panel-pricing">
+                        <div class="panel-heading">
+                            <i class="fa fa-desktop"></i>
+                            <h3>سبز</h3>
+                        </div>
+                        <div class="panel-body text-center">
+                            <p><strong>{{ price.wallet3 }} تومان</strong></p>
+                        </div>
+                        <ul class="list-group text-center">
+                            <li class="list-group-item"><i class="fa fa-check"></i> تصحیح {{ price.number }} متن</li>
+                            <li class="list-group-item"><i class="fa fa-check"></i> مشاوره</li>
+{#                            <li class="list-group-item"><i class="fa fa-check"></i> 27/7 support</li>#}
+                        </ul>
+                        <div class="panel-footer">
+                            <button class="btn btn-lg btn-block btn-success" id="3" type="submit">BUY NOW!</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- /item -->
+
             </div>
         </div>
-        <div class="form-group">
-        <div class="col-sm-offset-3 col-sm-10">
-          <button type="submit" class="btn btn-success">افزایش اعتبار</button>
-        </div>
-        </div>
+    </section>
+    <!-- /Plans -->
     </form>
+
+
+        <script>
+           $('#1').click(function () {
+               $("#id_wallet").val({{ price.wallet }});
+               $("#id_number").val({{ price.number }});
+           })
+$('#2').click(function () {
+               $("#id_wallet").val({{ price.wallet2 }});
+               $("#id_number").val({{ price.number2 }});
+           })
+$('#3').click(function () {
+               $("#id_wallet").val({{ price.wallet3 }});
+               $("#id_number").val({{ price.number3 }});
+           })
+        </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{#    <form class="form-horizontal" action="" method="post">#}
+{#        {% csrf_token %}#}
+{#        <div class="form-group">#}
+{#        <label for="id_title" class="col-sm-2 col-sm-offset-2 control-label">مبلغ مورد نظر خود را انتخاب کنید :</label>#}
+{#            <br>#}
+{#            <br>#}
+{#            <div class="radio col-lg-offset-3">#}
+{#              <label><input type="radio" value="9000" name="cre">تصحیح یک متن - 9 هزار تومان</label>#}
+{#            </div>#}
+{#            <div class="radio col-lg-offset-3">#}
+{#              <label><input type="radio" value="39000" name="cre">تصحیح 5 متن - 39 هزار تومان</label>#}
+{#            </div>#}
+{#            <div class="radio col-lg-offset-3">#}
+{#              <label><input type="radio" value="69000" name="cre">تصحیح 10 متن - 69 هزار تومان</label>#}
+{#            </div>#}
+{#        </div>#}
+{#        <div class="form-group">#}
+{#        <div class="col-sm-offset-3 col-sm-10">#}
+{#          <button type="submit" class="btn btn-success">افزایش اعتبار</button>#}
+{#        </div>#}
+{#        </div>#}
+{#    </form>#}
 
 </div>
 

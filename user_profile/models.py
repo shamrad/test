@@ -79,11 +79,19 @@ class Subject(models.Model):
     def __str__(self):
         return  self.title
 
-class Credit(models.Model):
+class Price(models.Model):
+    wallet=models.CharField(max_length=100)
+    number=models.CharField(max_length=100, default=0)
+    wallet2=models.CharField(max_length=100, default=0)
+    number2=models.CharField(max_length=100, default=0)
+    wallet3=models.CharField(max_length=100, default=0)
+    number3=models.CharField(max_length=100, default=0)
 
-    wallet=models.CharField(max_length=2)
-    number=models.CharField(max_length=2, default=0)
 
-
+class Buy(models.Model):
+    user=models.ForeignKey(User)
+    amount=models.CharField(max_length=100)
+    number=models.CharField(max_length=100)
+    date=models.DateTimeField(auto_now_add=True)
 
 

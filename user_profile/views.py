@@ -10,9 +10,9 @@ from django.views.generic.edit import UpdateView
 from django.contrib.auth.forms import PasswordChangeForm
 from oauthlib.oauth2 import Client
 
-from .form import UserForm, LoginForm, WritingForm, Rate, Price
+from .form import UserForm, LoginForm, WritingForm, Rate, PriceForm
 from django.views.generic import View
-from .models import Writing, Subject, Teacherate
+from .models import Writing, Subject, Teacherate, Buy, Price
 from django.views.generic import CreateView
 
 
@@ -194,23 +194,26 @@ def ChangePassword(request):
 
 
 
-def Credit(request):
-    form = Price(request.POST)
+@login_required(login_url='user_profile:login')
+def Etebar(request):
+    form = PriceForm()
+    price=Price.objects.last()
+    current_user = request.user
     if request.method=="GET":
-        return render(request,'user_profile/input test.html',{'form':form})
+        return render(request,'user_profile/increase.html',{'form':form,'price':price})
     else:
-
+        form = PriceForm(request.POST)
         if form.is_valid():
             form=form.save(commit=False)
             credit = form.number
             amount = form.wallet
-            current_user = request.user
+
             current_user.credit = credit
             current_user.amount = amount
             current_user.save()
-            return redirect('user_profile:index')
+            return redirect('user_profile:index')  #bayad adrese banko bedim
         else:
-            return HttpResponse('narini')
+            return render(request,'user_profile/increase.html',{'form':form})
 
 
 MMERCHANT_ID = 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX'  # Required
@@ -224,7 +227,7 @@ description = u'توضیحات تراکنش تستی'  # Required
 
 def Send_request(request):
     client = Client(ZARINPAL_WEBSERVICE)
-    amount=request.user.credit
+    amount=request.user.amount
     email=request.user.email
     result = client.service.PaymentRequest(MMERCHANT_ID,
                                            amount,
@@ -248,6 +251,12 @@ def verify(request):
         if result.Status == 100:
             current_user.amount2 += current_user.amount
             current_user.credit2 += current_user.credit
+            current_user.save()
+            buy=Buy.objects.create()
+            buy.user=current_user
+            buy.amount=amount
+            buy.number=credit
+            buy.save()
             return render(request,'success.html')
         elif result.Status == 101:
             return 'Transaction submitted : ' + str(result.Status)
