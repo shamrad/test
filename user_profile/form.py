@@ -1,7 +1,7 @@
 from django.contrib.auth.forms import AuthenticationForm
 from django.core.validators import MaxLengthValidator
 
-from .models import User, Writing, Teacherate
+from .models import User, Writing, Teacherate, Credit
 from django import  forms
 
 
@@ -49,3 +49,7 @@ class Rate (forms.ModelForm):
         fields=['rate']
 
 
+class Price(forms.ModelForm):
+    class Meta:
+        model= Credit
+        fields = ['wallet','number']

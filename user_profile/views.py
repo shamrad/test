@@ -8,8 +8,9 @@ from django.contrib.auth import authenticate, login, logout, update_session_auth
 from django.contrib.auth import login as auth_login
 from django.views.generic.edit import UpdateView
 from django.contrib.auth.forms import PasswordChangeForm
+from oauthlib.oauth2 import Client
 
-from .form import UserForm, LoginForm, WritingForm, Rate
+from .form import UserForm, LoginForm, WritingForm, Rate, Price
 from django.views.generic import View
 from .models import Writing, Subject, Teacherate
 from django.views.generic import CreateView
@@ -190,3 +191,48 @@ def ChangePassword(request):
         form=PasswordChangeForm(user=request.user)
         context={'form':form}
         return render(request,'user_profile/editview.html', context)
+
+
+
+def Credit(request):
+    form = Price(request.POST)
+    if request.method=="GET":
+        return render(request,'user_profile/input test.html',{'form':form})
+    else:
+
+        if form.is_valid():
+            form=form.save(commit=False)
+            credit = form.number
+            amount = form.wallet
+            current_user = request.user
+            current_user.credit = credit
+            current_user.amount = amount
+            current_user.save()
+            return redirect('user_profile:index')
+        else:
+            return HttpResponse('narini')
+
+
+MMERCHANT_ID = 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX'  # Required
+ZARINPAL_WEBSERVICE = 'https://www.zarinpal.com/pg/services/WebGate/wsdl'  # Required
+# amount = 1000  # Amount will be based on Toman  Required
+description = u'توضیحات تراکنش تستی'  # Required
+# email = 'user@userurl.ir'  # Optional
+# mobile = '09123456789'  # Optional
+
+
+
+def Send_request(request):
+    client = Client(ZARINPAL_WEBSERVICE)
+    amount=request.user.credit
+    email=request.user.email
+    result = client.service.PaymentRequest(MMERCHANT_ID,
+                                           amount,
+                                           description,
+                                           email,
+                                           str(url_for('verify', _external=True)))
+    if result.Status == 100:
+        return redirect('https://www.zarinpal.com/pg/StartPay/' + result.Authority)
+    else:
+        return 'Error'
+

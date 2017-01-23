@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form class="form-signin text-center" action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h2 class="form-signin-heading" style="color: rgb(149,23,104)">ورود</h2>
+        {% for field in form %}
+
+                <label style="color: rgb(149,23,104)">{{ field.label_tag }}</label>
+                <div class="">{{ field }}</div>
+        {% endfor %}
+{#        <input type="text" class="form-control" name="username" placeholder="Email Address" required="" autofocus="" />#}
+{#        <input type="password" class="form-control" name="password" placeholder="Password" required=""/>#}
+        <label class="checkbox">
+{#            <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me#}
+        </label>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" style="background-color: rgb(149,23,104)">Login</button>
+
+    </form>
+</body>
+</html>

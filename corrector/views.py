@@ -77,4 +77,3 @@ class EditView(LoginRequiredMixin,UpdateView):
     success_url = reverse_lazy('corrector:teacherindex')
 
 
-
