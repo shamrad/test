@@ -65,8 +65,8 @@
 
     <form class="form-signin text-center" action="" method="post" enctype="multipart/form-data">
     {% csrf_token %}
-        <input type=input class="form-control" id="id_wallet" name="wallet" value="{{ writing.grammersc }}" aria-describedby="basic-addon3">
-        <input type=input class="form-control" id="id_number" name="number" value="{{ writing.grammersc }}" aria-describedby="basic-addon3">
+        <input type=hidden class="form-control" id="id_wallet" name="wallet" value="{{ writing.grammersc }}" aria-describedby="basic-addon3">
+        <input type=hidden class="form-control" id="id_number" name="number" value="{{ writing.grammersc }}" aria-describedby="basic-addon3">
 
 
     <!-- Plans -->
@@ -82,7 +82,7 @@
                             <h3>قرمز</h3>
                         </div>
                         <div class="panel-body text-center">
-                            <p><strong>{{ price.wallet }} تومان</strong></p>
+                            <p><strong>{{ price.wallet3 }} تومان</strong></p>
                         </div>
                         <ul class="list-group text-center">
                             <li class="list-group-item"><i class="fa fa-check"></i>تصحیح {{ price.number3 }} متن</li>
@@ -126,7 +126,7 @@
                             <h3>سبز</h3>
                         </div>
                         <div class="panel-body text-center">
-                            <p><strong>{{ price.wallet3 }} تومان</strong></p>
+                            <p><strong>{{ price.wallet }} تومان</strong></p>
                         </div>
                         <ul class="list-group text-center">
                             <li class="list-group-item"><i class="fa fa-check"></i> تصحیح {{ price.number }} متن</li>

@@ -7,7 +7,7 @@ from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.views.generic import UpdateView
-
+from django.db.models import Sum
 from user_profile.models import Writing, Teacherate
 
 
@@ -19,14 +19,22 @@ def Teacherindex(request):
     follow = Writing.objects.filter(corrector=request.user.username).values('author').distinct()
     writing = Writing.objects.exclude(author=request.user).filter(author__in=follow, score='0')
 
+
+    all=Writing.objects.filter(corrector=request.user.username)
+
+    rate=Teacherate.objects.filter(teacher=request.user).aggregate(Sum('rate'))['rate__sum']
     scored =Teacherate.objects.filter(teacher=request.user)
+
+    income=scored.count()-follow.count()
+    context={
+        'user': current_user,
+        'free': free,
+        'writing': writing,
+        'rate':rate,
+        'income':income,
+        'all':all
+    }
     if current_user.teacher:
-        context={
-            'user': current_user,
-            'free': free,
-            'writing': writing,
-            'scored': scored
-        }
         return render(request, 'user_profile/teacherindex.html', context)
 
     return redirect('user_profile:index') #agar user teacher nabod redirect beshe

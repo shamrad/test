@@ -6,6 +6,8 @@ from django.http import HttpResponse
 from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash, get_user_model
 from django.contrib.auth import login as auth_login
+from django.template import RequestContext
+from django.views.decorators.csrf import csrf_exempt
 from django.views.generic.edit import UpdateView
 from django.contrib.auth.forms import PasswordChangeForm
 from oauthlib.oauth2 import Client
@@ -18,8 +20,6 @@ from django.views.generic import CreateView
 
 @login_required(login_url='user_profile:login')
 def index(request):
-
-    #current_user=User.objects.get(username=username)
     current_user = request.user
     if current_user.teacher :
         return redirect('corrector:teacherindex')
@@ -31,6 +31,7 @@ def index(request):
     return render(request, 'user_profile/index.html',context)
 
 @login_required(login_url='user_profile:login')
+@csrf_exempt
 def writing(request,pk):
     current_writing = Writing.objects.get(pk=pk)
     form = Rate(request.POST)
@@ -44,14 +45,15 @@ def writing(request,pk):
             post.student = request.user
             post.writing = current_writing
             post.save()
-            return redirect('user_profile:index')
-        return HttpResponse('afasf')
+            return redirect('user_profile:writing')
+
     else:
         if current_writing.author == request.user:
             if rate:
                 return render(request, 'user_profile/writing page.html', {'object': current_writing})
             else:
-                return render(request, 'user_profile/writing page.html', {'object': current_writing, 'form': form})
+                form1=Rate()
+                return render(request, 'user_profile/writing page.html', {'object': current_writing, 'form': form1})
         else:
             raise PermissionError()
 
@@ -211,12 +213,12 @@ def Etebar(request):
             current_user.credit = credit
             current_user.amount = amount
             current_user.save()
-            return redirect('user_profile:index')  #bayad adrese banko bedim
+            return redirect('https://www.zarinpal.com/pg/services/WebGate/wsdl')  #bayad adrese banko bedim
         else:
             return render(request,'user_profile/increase.html',{'form':form})
 
 
-MMERCHANT_ID = 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX'  # Required
+MMERCHANT_ID = 'fbac782a-dfa6-11e6-8ef4-000c295eb8fc'  # Required
 ZARINPAL_WEBSERVICE = 'https://www.zarinpal.com/pg/services/WebGate/wsdl'  # Required
 # amount = 1000  # Amount will be based on Toman  Required
 description = u'توضیحات تراکنش تستی'  # Required

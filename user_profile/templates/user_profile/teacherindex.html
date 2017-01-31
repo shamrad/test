@@ -12,7 +12,7 @@
 {% endblock %}
 
 {% block cre %}
-{{ user.credit }}
+{{ rate }}
 {% endblock %}
 
 {% block activeClass %}.pf{% endblock %}
@@ -25,14 +25,18 @@
     <div class="container">
 
 
-
-
-
+<h1>{{ income }}</h1>
+{% for item in test %}
+    <h2>{{ item.authorx }}</h2>
+{% endfor %}
+<br>
+<br>
+<br>
 
         <div class="row">
-            <div class="col-lg-5 backblue">
+            <div class="col-lg-5 " style="border: 2px solid rgb(149,23,104); border-radius: 5px; height: 400px">
                 <h1 class="text-center">متن های تصحیح نشده</h1>
-                <p style="color: rgb(149,23,104)" class="text-center">چرا باید متن های زایگان تصحیح کنیم؟</p>
+                <p style="color: rgb(149,23,104)" class="text-center">چرا باید متن های رایگان تصحیح کنیم؟</p>
                 <p class="rtl">پس از تصحیح کردن هر متن رایگان متن های آن شحص فقط برای شما می آید در واقع شما معلم مجازی او خواهید شد</p>
                 <p class="rtl">پس با نهایت کفیت متن ها را تصحیح کنید</p>
                 <table class="table table-fixed">
@@ -42,7 +46,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                {% for item in writing %}
+                {% for item in free %}
                 <tr>
                     <td class="col-xs-2">{{ forloop.counter }}</td>
                     <td class="col-xs-8"><a href="{% url 'corrector:score' item.id %}">{{ item.title }}</a></td>
@@ -87,13 +91,12 @@
             </table>
             </div>
         <div class="col-lg-2"></div>
-            <div class="col-lg-5 backred" >
-                <h1> متن های پولی</h1>
+            <div class="col-lg-5" style="border: 2px solid rgb(149,23,104); border-radius: 5px; height: 400px" >
+                <h1 class="text-center"> متن های پولی</h1>
                 <br>
+                <p>تصحیح هر متن در صورت دارا بودن کیفیت مطلوب 3000 تومان به اعتبار شما می افزاید</p>
                 <br>
-                <br>
-                <br>
-                <br>
+
                 <br>
                 <table class="table table-fixed">
                 <thead>
@@ -102,7 +105,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                {% for item in free %}
+                {% for item in writing %}
                     <tr>
                         <td class="col-xs-2">{{ forloop.counter }}</td>
                         <td class="col-xs-8"><a href="{% url 'corrector:score' item.id %}">{{ item.title }}</a></td>
@@ -141,20 +144,22 @@
 
         </div>
         <br>
+        <br>
+        <br>
         <div class="row" >
                 <h1>متن هایی که شما تصحیح کردید</h1>
-                            <table class="table table-fixed">
-                <thead >
+                            <table class=" table table-fixed">
+                <thead  >
                 <tr >
-                    <th class="col-xs-2 blue">#</th><th class="col-xs-8 blue">Title</th><th class="col-xs-2 blue">teacher's score</th>
+                    <th class="col-xs-4 blue">#</th><th class="col-xs-8 blue">Title</th>
                 </tr>
                 </thead>
                 <tbody>
-                {% for item in scored %}
+                {% for item in all %}
                 <tr>
-                    <td class="col-xs-2">{{ forloop.counter }}</td>
-                    <td class="col-xs-8"><a href="{% url 'corrector:score' item.writing.id %}">{{ item.writing.title }}</a></td>
-                    <td class="col-xs-2">{{ item.rate }}</td>
+                    <td class="col-xs-4">{{ forloop.counter }}</td>
+                    <td class="col-xs-8"><a href="{% url 'corrector:score' item.id %}">{{ item.title }}</a></td>
+
                 </tr>
                 {% endfor %}
 

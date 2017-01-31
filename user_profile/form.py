@@ -9,7 +9,7 @@ from django import  forms
 
 
 class UserForm(forms.ModelForm):
-    # password=forms.CharField(widget=forms.PasswordInput) #TODO: add validator
+    password=forms.CharField(widget=forms.PasswordInput) #TODO: add validator
 
     def clean_email(self):
         data = self.cleaned_data['email']
