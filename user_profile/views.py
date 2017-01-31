@@ -213,7 +213,7 @@ def Etebar(request):
             current_user.credit = credit
             current_user.amount = amount
             current_user.save()
-            return redirect('https://www.zarinpal.com/pg/services/WebGate/wsdl')  #bayad adrese banko bedim
+            return Send_request()  #bayad adrese banko bedim
         else:
             return render(request,'user_profile/increase.html',{'form':form})
 
@@ -259,7 +259,7 @@ def verify(request):
             buy.amount=amount
             buy.number=credit
             buy.save()
-            return render(request,'success.html')
+            return render(request,'user_profile/success.html')
         elif result.Status == 101:
             return 'Transaction submitted : ' + str(result.Status)
         else:
