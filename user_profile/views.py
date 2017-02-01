@@ -239,7 +239,7 @@ def Send_request(request):
     if result.Status == 100:
         return redirect('https://www.zarinpal.com/pg/StartPay/' + result.Authority)
     else:
-        return 'Error'
+        return HttpResponse('Error')
 
 def verify(request):
     client = Client(ZARINPAL_WEBSERVICE)
