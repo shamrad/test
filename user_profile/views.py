@@ -6,11 +6,11 @@ from django.http import HttpResponse
 from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash, get_user_model
 from django.contrib.auth import login as auth_login
-from django.template import RequestContext
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic.edit import UpdateView
 from django.contrib.auth.forms import PasswordChangeForm
-from oauthlib.oauth2 import Client
+# from oauthlib.oauth2 import Client
+from suds.client import Client
 
 from .form import UserForm, LoginForm, WritingForm, Rate, PriceForm
 from django.views.generic import View
@@ -213,7 +213,7 @@ def Etebar(request):
             current_user.credit = credit
             current_user.amount = amount
             current_user.save()
-            return Send_request()  #bayad adrese banko bedim
+            return redirect('user_profile:Send_request')  #bayad adrese banko bedim
         else:
             return render(request,'user_profile/increase.html',{'form':form})
 
@@ -235,7 +235,7 @@ def Send_request(request):
                                            amount,
                                            description,
                                            email,
-                                           reverse('verify'))
+                                           reverse('user_profile:verify'))
     if result.Status == 100:
         return redirect('https://www.zarinpal.com/pg/StartPay/' + result.Authority)
     else:
@@ -261,9 +261,9 @@ def verify(request):
             buy.save()
             return render(request,'user_profile/success.html')
         elif result.Status == 101:
-            return 'Transaction submitted : ' + str(result.Status)
+            return 'Transaction submitted : ' + result.Status
         else:
-            return 'Transaction failed. Status: ' + str(result.Status)
+            return 'Transaction failed. Status: ' + result.Status
     else:
         return 'Transaction failed or canceled by user'
 

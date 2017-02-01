@@ -1,6 +1,6 @@
 from django.conf.urls import url
 from .views import UserFormView, index, LoginView, writing, Logout, EditView, NewWriting, CommingSoon, \
-    ChangePassword, Etebar
+    ChangePassword, Etebar, Send_request, verify
 
 app_name='user_profile'
 
@@ -27,4 +27,7 @@ urlpatterns = [
     url(r'^etebar/', Etebar, name='credit'),
 
 
+    # bank
+    url(r'^Send_request/', Send_request, name='Send_request'),
+    url(r'^verify/', verify, name='verify'),
 ]
