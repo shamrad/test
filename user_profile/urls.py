@@ -29,5 +29,5 @@ urlpatterns = [
 
     # bank
     url(r'^Send_request/', Send_request, name='Send_request'),
-    url(r'^verify/', verify, name='verify'),
+    url(r'^verify?Authority=(?P<Authority>[0-9]+)&Status=(?P<Status>[A-Z]+)/', verify, name='verify'),
 ]

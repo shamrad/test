@@ -246,14 +246,14 @@ def Send_request(request):
     else:
         return HttpResponse(result.Status)
 
-def verify(request):
+def verify(request,Authority,Status):
     client = Client(ZARINPAL_WEBSERVICE)
     amount = request.user.amount
     credit=request.user.credit
     current_user=request.user
-    if request.args.get('Status') == 'OK':
+    if Status == 'OK':
         result = client.service.PaymentVerification(MMERCHANT_ID,
-                                                    request.args['Authority'],
+                                                    Authority,
                                                     amount)
         if result.Status == 100:
             current_user.amount2 += current_user.amount
