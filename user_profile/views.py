@@ -248,21 +248,23 @@ def Send_request(request):
 
 def verify(request):
     client = Client(ZARINPAL_WEBSERVICE)
-    amount = request.user.amount
-    credit=request.user.credit
     current_user=request.user
+    amount1 = current_user.amount
+    credit1=current_user.credit
+    amount2=current_user.amount2
+    credit2=current_user.credit2
     if request.GET.get('Status') == 'OK':
         result = client.service.PaymentVerification(MMERCHANT_ID,
                                                     request.GET['Authority'],
-                                                    amount)
+                                                    amount1)
         if result.Status == 100:
-            current_user.amount2 += current_user.amount
-            current_user.credit2 += current_user.credit
+            current_user.amount2 = amount1+amount2
+            current_user.credit2 = credit1+credit2
             current_user.save()
             buy=Buy.objects.create()
             buy.user=current_user
-            buy.amount=amount
-            buy.number=credit
+            buy.amount=amount1
+            buy.number=credit1
             buy.save()
             return render(request,'user_profile/success.html')
         elif result.Status == 101:
