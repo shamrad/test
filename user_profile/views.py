@@ -251,7 +251,7 @@ def verify(request):
     amount = request.user.amount
     credit=request.user.credit
     current_user=request.user
-    if request.args.get('Status') == 'OK':
+    if request.GET.get('Status') == 'OK':
         result = client.service.PaymentVerification(MMERCHANT_ID,
                                                     request.args['Authority'],
                                                     amount)
