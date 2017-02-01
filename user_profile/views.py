@@ -240,20 +240,20 @@ def Send_request(request):
                                            description,
                                            email,
                                            mobile,
-                                           reverse('user_profile:verify'))
+                                           'http://scorize.com' + reversed('user_profile:verify'))
     if result.Status == 100:
         return redirect('https://www.zarinpal.com/pg/StartPay/' + result.Authority)
     else:
         return HttpResponse(result.Status)
 
-def verify(request,Authority,Status):
+def verify(request):
     client = Client(ZARINPAL_WEBSERVICE)
     amount = request.user.amount
     credit=request.user.credit
     current_user=request.user
-    if Status == 'OK':
+    if request.args.get('Status') == 'OK':
         result = client.service.PaymentVerification(MMERCHANT_ID,
-                                                    Authority,
+                                                    request.args['Authority'],
                                                     amount)
         if result.Status == 100:
             current_user.amount2 += current_user.amount
