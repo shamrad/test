@@ -14,10 +14,10 @@ from django.utils.translation import ugettext_lazy as _
 # User._meta.get_field('email').unique
 
 class User(AbstractUser):
-    credit= models.CharField(max_length=10, null=True, blank=True)
-    credit2= models.CharField(max_length=10, null=True, blank=True, default=0)
-    amount= models.CharField(max_length=10, null=True, blank=True)
-    amount2= models.CharField(max_length=10, null=True, blank=True,default=0)
+    credit= models.CharField(max_length=1000, null=True, blank=True)
+    credit2= models.CharField(max_length=1000, null=True, blank=True, default=0)
+    amount= models.CharField(max_length=1000, null=True, blank=True)
+    amount2= models.CharField(max_length=1000, null=True, blank=True,default=0)
     teacher=models.BooleanField(
         _('teacher'),
         default=False,
