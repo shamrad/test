@@ -253,7 +253,7 @@ def verify(request):
     current_user=request.user
     if request.GET.get('Status') == 'OK':
         result = client.service.PaymentVerification(MMERCHANT_ID,
-                                                    request.POST.args['Authority'],
+                                                    request.GET['Authority'],
                                                     amount)
         if result.Status == 100:
             current_user.amount2 += current_user.amount
