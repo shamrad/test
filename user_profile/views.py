@@ -268,7 +268,7 @@ def verify(request):
             buy.save()
             return render(request,'user_profile/success.html')
         elif result.Status == 101:
-            return HttpResponse('Transaction submitted : ' + result.Status)
+            return HttpResponse('پرداخت شما ثبت شد')
         else:
             return HttpResponse('Transaction failed. Status: ' + result.Status)
     else:
