@@ -240,7 +240,7 @@ def Send_request(request):
                                            description,
                                            email,
                                            mobile,
-                                           'http://scorize.com' + reversed('user_profile:verify'))
+                                           'http://scorize.com' + reverse('user_profile:verify'))
     if result.Status == 100:
         return redirect('https://www.zarinpal.com/pg/StartPay/' + result.Authority)
     else:
