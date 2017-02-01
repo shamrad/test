@@ -258,8 +258,8 @@ def verify(request):
                                                     request.GET['Authority'],
                                                     amount1)
         if result.Status == 100:
-            current_user.amount2 = amount1+amount2
-            current_user.credit2 = credit1+credit2
+            current_user.amount2 =int( amount1)+int(amount2)
+            current_user.credit2 = int(credit1)+int(credit2)
             current_user.save()
             buy=Buy.objects.create(user=current_user)
             buy.authority=request.GET['Authority']
