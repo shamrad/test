@@ -45,15 +45,14 @@ def writing(request,pk):
             post.student = request.user
             post.writing = current_writing
             post.save()
-            return redirect('user_profile:writing')
+            return redirect('user_profile:index')
 
     else:
         if current_writing.author == request.user:
             if rate:
                 return render(request, 'user_profile/writing page.html', {'object': current_writing})
             else:
-                form1=Rate()
-                return render(request, 'user_profile/writing page.html', {'object': current_writing, 'form': form1})
+                return render(request, 'user_profile/writing page.html', {'object': current_writing, 'form': form})
         else:
             raise PermissionError()
 
@@ -156,6 +155,8 @@ def NewWriting(request):
             post=form.save(commit=False)
             post.author=request.user
             post.save()
+            current_user.credit2 -= 1
+            current_user.save()
             return redirect('user_profile:index')
 
     else:
@@ -198,10 +199,13 @@ def ChangePassword(request):
 
 @login_required(login_url='user_profile:login')
 def Etebar(request):
+
     form = PriceForm()
     price=Price.objects.last()
     current_user = request.user
     if request.method=="GET":
+        if request.user.teacher:
+            return redirect('corrector:teacherindex')
         return render(request,'user_profile/increase.html',{'form':form,'price':price})
     else:
         form = PriceForm(request.POST)
@@ -220,10 +224,10 @@ def Etebar(request):
 
 MMERCHANT_ID = 'fbac782a-dfa6-11e6-8ef4-000c295eb8fc'  # Required
 ZARINPAL_WEBSERVICE = 'https://www.zarinpal.com/pg/services/WebGate/wsdl'  # Required
-# amount = 1000  # Amount will be based on Toman  Required
-description = u'توضیحات تراکنش تستی'  # Required
+# amount = 10000  # Amount will be based on Toman  Required
+description = u'خرید خدمات تصحیح متن انگلیسی'  # Required
 # email = 'user@userurl.ir'  # Optional
-# mobile = '09123456789'  # Optional
+mobile = '09123456789'  # Optional
 
 
 
@@ -235,11 +239,12 @@ def Send_request(request):
                                            amount,
                                            description,
                                            email,
+                                           mobile,
                                            reverse('user_profile:verify'))
     if result.Status == 100:
         return redirect('https://www.zarinpal.com/pg/StartPay/' + result.Authority)
     else:
-        return HttpResponse('Error')
+        return HttpResponse(result.Status)
 
 def verify(request):
     client = Client(ZARINPAL_WEBSERVICE)
