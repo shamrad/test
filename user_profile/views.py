@@ -261,11 +261,11 @@ def verify(request):
             buy.save()
             return render(request,'user_profile/success.html')
         elif result.Status == 101:
-            return 'Transaction submitted : ' + result.Status
+            return HttpResponse('Transaction submitted : ' + result.Status)
         else:
-            return 'Transaction failed. Status: ' + result.Status
+            return HttpResponse('Transaction failed. Status: ' + result.Status)
     else:
-        return 'Transaction failed or canceled by user'
+        return HttpResponse('Transaction failed or canceled by user')
 
 
 
