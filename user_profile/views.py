@@ -261,8 +261,8 @@ def verify(request):
             current_user.amount2 = amount1+amount2
             current_user.credit2 = credit1+credit2
             current_user.save()
-            buy=Buy.objects.create()
-            buy.user=current_user
+            buy=Buy.objects.create(user=current_user)
+            buy.authority=request.GET['Authority']
             buy.amount=amount1
             buy.number=credit1
             buy.save()

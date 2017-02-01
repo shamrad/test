@@ -15,9 +15,9 @@ from django.utils.translation import ugettext_lazy as _
 
 class User(AbstractUser):
     credit= models.CharField(max_length=10, null=True, blank=True)
-    credit2= models.CharField(max_length=10, null=True, blank=True)
+    credit2= models.CharField(max_length=10, null=True, blank=True, default=0)
     amount= models.CharField(max_length=10, null=True, blank=True)
-    amount2= models.CharField(max_length=10, null=True, blank=True)
+    amount2= models.CharField(max_length=10, null=True, blank=True,default=0)
     teacher=models.BooleanField(
         _('teacher'),
         default=False,
@@ -93,5 +93,5 @@ class Buy(models.Model):
     amount=models.CharField(max_length=100)
     number=models.CharField(max_length=100)
     date=models.DateTimeField(auto_now_add=True)
-
+    authority=models.CharField(max_length=100,default=0)
 
