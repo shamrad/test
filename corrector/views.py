@@ -22,10 +22,10 @@ def Teacherindex(request):
 
     all=Writing.objects.filter(corrector=request.user.username)
 
-    rate=Teacherate.objects.filter(teacher=request.user).aggregate(Sum('rate'))['rate__sum']
-    scored =Teacherate.objects.filter(teacher=request.user)
+    rate=Teacherate.objects.filter(teacher=request.user).aggregate(Sum('rate'))
 
-    income=scored.count()-follow.count()
+
+    income=Writing.objects.filter(corrector=request.user.username).count()-follow.count()
     context={
         'user': current_user,
         'free': free,

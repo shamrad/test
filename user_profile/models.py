@@ -36,7 +36,8 @@ class Writing(models.Model):
     corrector=models.CharField(max_length=30, null=True, blank=True)
 
 
-    score=models.CharField(max_length=10, default='0')
+    score=models.IntegerField( default=0)
+
     grammer=models.CharField(max_length=10000, null=True, blank=True)
     vocab=models.CharField(max_length=10000, null=True, blank=True)
     unity=models.CharField(max_length=10000, null=True, blank=True)
@@ -45,12 +46,12 @@ class Writing(models.Model):
     adress=models.CharField(max_length=10000, null=True, blank=True)
 
 
-    grammersc=models.CharField(max_length=10000, null=True, blank=True)
-    vocabsc=models.CharField(max_length=10000, null=True, blank=True)
-    unitysc=models.CharField(max_length=10000, null=True, blank=True)
-    oadsc=models.CharField(max_length=10000, null=True, blank=True)
-    wordchoicesc=models.CharField(max_length=10000, null=True, blank=True)
-    adresssc=models.CharField(max_length=10000, null=True, blank=True)
+    grammersc=models.IntegerField(null=True, blank=True)
+    vocabsc=models.IntegerField(null=True, blank=True)
+    unitysc=models.IntegerField(null=True, blank=True)
+    oadsc=models.IntegerField(null=True, blank=True)
+    wordchoicesc=models.IntegerField(null=True, blank=True)
+    adresssc=models.IntegerField(null=True, blank=True)
 
 
 
@@ -64,7 +65,7 @@ class Writing(models.Model):
 class Teacherate(models.Model):
     teacher=models.ForeignKey(User,null=False, related_name='teacherscore' )
     student = models.ForeignKey(User, null=False, related_name='student')
-    rate=models.CharField(max_length=100)
+    rate=models.IntegerField()
     writing=models.ForeignKey(Writing, null=False)
 
     def __str__(self):
@@ -80,18 +81,19 @@ class Subject(models.Model):
         return  self.title
 
 class Price(models.Model):
-    wallet=models.CharField(max_length=100)
-    number=models.CharField(max_length=100, default=0)
-    wallet2=models.CharField(max_length=100, default=0)
-    number2=models.CharField(max_length=100, default=0)
-    wallet3=models.CharField(max_length=100, default=0)
-    number3=models.CharField(max_length=100, default=0)
+    wallet=models.IntegerField(  )
+    number=models.IntegerField( default=0)
+    wallet2=models.IntegerField( default=0)
+    number2=models.IntegerField( default=0)
+    wallet3=models.IntegerField( default=0)
+    number3=models.IntegerField( default=0)
 
 
 class Buy(models.Model):
     user=models.ForeignKey(User)
-    amount=models.CharField(max_length=100)
-    number=models.CharField(max_length=100)
+    amount=models.IntegerField()
+    number=models.IntegerField()
     date=models.DateTimeField(auto_now_add=True)
-    authority=models.CharField(max_length=100,default=0)
-
+    authority=models.IntegerField(default=0)
+    def __str__(self):
+        return self.user + ' buy '+ self.number

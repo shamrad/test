@@ -250,7 +250,7 @@ def Send_request(request):
     else:
         return HttpResponse(result.Status)
 
-@login_required(login_url='user_profile:login')
+# @login_required(login_url='user_profile:login')
 def verify(request):
     client = Client(ZARINPAL_WEBSERVICE)
     current_user=request.user

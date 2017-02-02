@@ -11,10 +11,18 @@ from django import  forms
 class UserForm(forms.ModelForm):
     password=forms.CharField(widget=forms.PasswordInput) #TODO: add validator
 
+
+    def __init__(self, *args, **kwargs):
+        super(UserForm, self).__init__(*args, **kwargs)
+        self.fields['email'].required = True
+        self.fields['first_name'].required = True
+        self.fields['last_name'].required = True
+
+
     def clean_email(self):
         data = self.cleaned_data['email']
         if User.objects.filter(email=data).exists():
-            raise forms.ValidationError("این ایمیل قبلا استغاده شده است")
+            raise forms.ValidationError("این ایمیل قبلا استفاده شده است")
         return data
 
     class Meta:
