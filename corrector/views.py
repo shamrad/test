@@ -13,11 +13,11 @@ from user_profile.models import Writing, Teacherate
 
 def Teacherindex(request):
     current_user = request.user
-    second = Writing.objects.exclude(corrector='').values('author').distinct()
-    free = Writing.objects.exclude(author=request.user).filter(score='0').exclude(author__in=second)
+    second = Writing.objects.exclude(corrector='').exclude(corrector=None).values('author').distinct()
+    free = Writing.objects.exclude(author=request.user).filter(score=0).exclude(author__in=second)
 
     follow = Writing.objects.filter(corrector=request.user.username).values('author').distinct()
-    writing = Writing.objects.exclude(author=request.user).filter(author__in=follow, score='0')
+    writing = Writing.objects.exclude(author=request.user).filter(author__in=follow, score=0)
 
 
     all=Writing.objects.filter(corrector=request.user.username)
@@ -32,7 +32,8 @@ def Teacherindex(request):
         'writing': writing,
         'rate':rate,
         'income':income,
-        'all':all
+        'all':all,
+        'test':second
     }
     if current_user.teacher:
         return render(request, 'user_profile/teacherindex.html', context)

@@ -59,7 +59,7 @@ class Writing(models.Model):
         return reverse('user_profile:index')
 
     def __str__(self):
-        return self.author.username + '-' + self.title + '-' + self.score+ '-'
+        return self.author.username + '-' + self.title + '-'
 
 
 class Teacherate(models.Model):
