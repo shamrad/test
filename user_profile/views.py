@@ -171,9 +171,7 @@ def NewWriting(request):
                     form = WritingForm()
                     return render(request, 'user_profile/writing_form.html', {'form': form, 'subject': subject})
                 else:
-                    form = PriceForm()
-                    price = Price.objects.last()
-                    return render(request, 'user_profile/increase.html', {'form': form, 'price': price})
+                    return redirect('user_profile:credit')
             else:
                 form = WritingForm()
                 return render(request,'user_profile/writing_form_test.html', {'form':form , 'subject':subject})
@@ -277,7 +275,7 @@ def verify(request):
         elif result.Status == 101:
             return HttpResponse('پرداخت شما ثبت شد')
         else:
-            return HttpResponse('Transaction failed. Status: ' + result.Status)
+            return HttpResponse('Transaction failed.')
     else:
         return HttpResponse('Transaction failed or canceled by user')
 
