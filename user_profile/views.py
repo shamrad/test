@@ -155,8 +155,10 @@ def NewWriting(request):
             post=form.save(commit=False)
             post.author=request.user
             post.save()
-            current_user.credit2 -= 1
-            current_user.save()
+            writing = request.user.writing_set.all().count()
+            if writing>1:
+                current_user.credit2 = current_user.credit2-1
+                current_user.save()
             return redirect('user_profile:index')
 
     else:
@@ -165,12 +167,16 @@ def NewWriting(request):
         else:
             writing = request.user.writing_set.all().count()
             if writing >0:
-                form = WritingForm()
-                return render(request, 'user_profile/writing_form.html', {'form': form, 'subject': subject})
+                if current_user.credit2 > 0:
+                    form = WritingForm()
+                    return render(request, 'user_profile/writing_form.html', {'form': form, 'subject': subject})
+                else:
+                    form = PriceForm()
+                    price = Price.objects.last()
+                    return render(request, 'user_profile/increase.html', {'form': form, 'price': price})
             else:
                 form = WritingForm()
                 return render(request,'user_profile/writing_form_test.html', {'form':form , 'subject':subject})
-
 
 
 def Logout(request):
@@ -230,7 +236,7 @@ description = u'خرید خدمات تصحیح متن انگلیسی'  # Require
 mobile = '09123456789'  # Optional
 
 
-
+@login_required(login_url='user_profile:login')
 def Send_request(request):
     client = Client(ZARINPAL_WEBSERVICE)
     amount=request.user.amount
@@ -246,6 +252,7 @@ def Send_request(request):
     else:
         return HttpResponse(result.Status)
 
+@login_required(login_url='user_profile:login')
 def verify(request):
     client = Client(ZARINPAL_WEBSERVICE)
     current_user=request.user
