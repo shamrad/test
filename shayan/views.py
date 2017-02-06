@@ -8,8 +8,12 @@ def khane(request):
         return render(request, 'user_profile/home.html')
 
 def service(request):
-
         return render(request, 'user_profile/service.html')
+
+
+def faq(request):
+        return render(request, 'user_profile/faq.html')
+
 def aboutus(request):
         return render(request, 'user_profile/aboutus.html')
 

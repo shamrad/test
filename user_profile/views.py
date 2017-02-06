@@ -10,7 +10,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.generic.edit import UpdateView
 from django.contrib.auth.forms import PasswordChangeForm
 # from oauthlib.oauth2 import Client
-from suds.client import Client
+# from suds.client import Client
 
 from .form import UserForm, LoginForm, WritingForm, Rate, PriceForm
 from django.views.generic import View

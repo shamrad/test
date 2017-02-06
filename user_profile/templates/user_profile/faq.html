@@ -1,0 +1,131 @@
+{% extends "user_profile/home-base.html" %}
+{% load static %}
+
+{% block title %}
+TOEFL FAQ | سوالات متداول تافل
+{% endblock %}
+
+{% block style %}
+<style>
+#accordion{
+    direction: rtl;
+}
+</style>
+
+{% endblock %}
+
+
+{% block content %}
+    <br>
+    <br>
+    <br>
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          کلا تافل چیه؟
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+تافل ازمون سنجش زبان انگلیسی ست و چهار مهارت زبانی رو سنجش میکنه. ریزترین اطلاعات تافل رو میتونید اینجا بخونید.      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingTwo">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+تافل اینترنتی چیه؟ کجا برگزار میشه؟         </a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="panel-body">
+مرسوم ترین نوع تافله که نمره از صفر تا 120 داره و در سنتر های 7 شهر تهران تبریز اصفهان زنجان آمل جیرفت و کرمان برگزار میشه.      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingThree">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+چند بشیم خوبه؟         </a>
+      </h4>
+    </div>
+    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+      <div class="panel-body">
+بستگی به مورد استفاده تون داره. اگه بخواید برای پذیرش از دانشگاه های خارجی اقدام کنید اکثر دانشگاه ها نمره 80 به بالا رو میپذیرند. هر چه دانشگاه بهتر باشه باید نمره بالاتری داشته باشید. نمره بالای 100 بسیار عالی است.      </div>
+    </div>
+  </div>
+
+
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="heading4">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="false" aria-controls="collapseThree">
+نمونه سوال داره این تافل؟          </a>
+      </h4>
+    </div>
+    <div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4">
+      <div class="panel-body">
+بله توسط داوطلبان چینی این سوالات برای ما فراهم شده و میتونیم ازشون استفاده کنیم و تا الان 48 نمونه سوال موجوده. این سوالات به TPO یا  Test Preparation Online مشهور هستند.
+      </div>
+    </div>
+   </div>
+
+
+        <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="heading5">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse5" aria-expanded="false" aria-controls="collapseThree">
+تا حالا کلاس های بیشماری از زبان را شرکت کرده اید و الان قصد دارید در آزمون تافل شکرت کنید. آیا نیازی به شرکت در کلاس های تافل هست؟          </a>
+      </h4>
+    </div>
+    <div id="collapse5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading5">
+      <div class="panel-body">
+بله باید بلد باشید مهارت های تافل رو امتحان بدید مهارت های آزمون دادن. درست مثل تست زدن در کنکور برای خودش روش و تکنیک داره بنابراین نیازه حتما وقت ویژه براش در نظر بگیرید تا هم با سوالا هم با تکنیک ها آشنا بشید. منابع مورد نیازتون رو تامین کنید و تمرین های بدرد بخوری برای تقویت مهارت های لازم انجام بدید. نه صرفا ازمون های گذشته رو شرکت کنید.    </div>
+  </div>
+            </div>
+
+
+<div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="heading6">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse6" aria-expanded="false" aria-controls="collapseThree">
+آیا صرف شرکت در نمونه آزمون های تافل موسوم به tpo مشکلمان حل میشود؟         </a>
+      </h4>
+    </div>
+    <div id="collapse6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading6">
+      <div class="panel-body">
+درست مثل اینه که با خوندن سوال های گذشته کنکور بخوای تو کنکور شرکت کنی. پیشنهاد میکنیم هم مهارت رو کسب کنید با تمرین ها هم با آزمون بسنجید هم بررسی شون کنید که اشکالاتتون رو رفع کنید.    </div>
+  </div>
+</div>
+        <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="heading7">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse7" aria-expanded="false" aria-controls="collapseThree">
+چجوری قراره مشکلاتمون تو اسپیکینگ و رایتینگ رو رفع کنیم؟ tpo که جواب نداره!         </a>
+      </h4>
+    </div>
+    <div id="collapse7" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading7">
+      <div class="panel-body">
+تیم تصحیح اسکورایز کاملا مسلط به امر تصحیح و دادن مشاوره به شماست و کار رو راحت کرده.  </div>
+</div>
+ </div>
+
+        <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="heading8">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse8" aria-expanded="false" aria-controls="collapseThree">
+از کجا باید شروع کنیم؟         </a>
+      </h4>
+    </div>
+    <div id="collapse8" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading8">
+      <div class="panel-body">
+تیم اسکورایز یه برنامه 8 هفته ای برای مطالعه تافل مهیا کرده که با استفاده ازش میتونید روش لازم برای مطالعه، منابع مناسب و تمرین های کاربردی برای تافل رو یاد بگیرید. این برنامه رو میتونید از اینجا قابل دسترسیه.  </div>
+</div>
+</div>
+</div>
+
+
+{% endblock %}
