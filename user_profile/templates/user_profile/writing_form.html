@@ -80,7 +80,7 @@ Typically, an effective essay will contain a minimum of 300 words. Your essay wi
                                     {% if item.tpo == True %}
                                 <li>
                                     <input name="dest_type" id="{{ forloop.counter }}b" value="{{ item.topic }}" type="radio" />
-                                    <label for="{{ forloop.counter }}b">{{ item.topic }}</label>
+                                    <label for="{{ forloop.counter }}b">{{ item.title }} - {{ item.topic }}</label>
                                 </li>
                                     {% endif %}
                                 {% endfor %}
