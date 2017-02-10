@@ -45,7 +45,7 @@ def writing(request,pk):
             post.student = request.user
             post.writing = current_writing
             post.save()
-            return redirect('user_profile:index')
+            return redirect('user_profile:writing')
 
     else:
         if current_writing.author == request.user:
