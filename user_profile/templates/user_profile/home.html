@@ -35,7 +35,7 @@
 <br>
         <div class="text-center">
         <div data-anijs="if: mouseover, do: bounce animated, to: #airplane" class="btn btn-outline-inverse btn-lg paeen">میخواهم در آزمون های بین المللی شرکت کنم</div>
-        <a data-anijs="if: mouseover, do: bounce animated, to: #chat" href="{% url 'user_profile:register' %}" class="btn btn-outline-inverse btn-lg " role="button"> میخواهم در دوره رایگان مکالمه شرکت کنم</a>
+        <div data-anijs="if: mouseover, do: bounce animated, to: #chat" class="btn btn-outline-inverse btn-lg " data-toggle="modal" data-target="#free" role="button"> میخواهم در دوره رایگان مکالمه شرکت کنم</div>
         </div>
         <br>
         <div class="row container">
@@ -136,23 +136,23 @@
             <p><mark style="background: none; color: rgb(149,23,104); font-size: xx-large ">جامع ترین</mark> مرکز خدمات آمادگی آزمون های بین المللی زبان انگلیسی</p>
         </div>
         <div class="[ row ]">
-            <div class="[ col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 ]" role="tabpanel">
+            <div class="[ col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-1 ]" role="tabpanel">
                 <div class="[ col-xs-4 col-sm-12 ]">
                     <!-- Nav tabs -->
                     <ul class="[ nav nav-justified ]" id="nav-tabs" role="tablist">
                         <li role="presentation" class="active">
                             <a href="#schedule" aria-controls="schedule" role="tab" data-toggle="tab">
-                                <img class="img-circle" alt="مرکز خدمات آمادگی آزمون های بین المللی زبان انگلیسی تافل" src="{% static 'user_profile/manage(pink).jpg' %}" style="box-shadow: rgb(149,23,104); width: 100px; max-width: 80px" />
+                                <img class="img-circle" alt="مرکز خدمات آمادگی آزمون های بین المللی زبان انگلیسی تافل" src="{% static 'user_profile/calendar (1).png' %}"  />
                             </a>
                         </li>
                         <li role="presentation" class="">
                             <a href="#chart" aria-controls="chart" role="tab" data-toggle="tab" >
-                                <img class="img-circle"  alt="ثبت نام آزمون تافل"  src="{% static 'user_profile/site.jpg' %}" style="box-shadow: rgb(149,23,104); border-color: rgb(149,23,104); max-width: 80px" />
+                                <img class="img-circle"  alt="ثبت نام آزمون تافل"  src="{% static 'user_profile/growth.png' %}"  />
                             </a>
                         </li>
                         <li role="presentation" class="">
                             <a href="#writing" aria-controls="writing" role="tab" data-toggle="tab">
-                                <img class="img-circle" alt="برنامه ریزی آزمون تافل رایتینگ" src="{% static 'user_profile/writing.jpg' %}" style="box-shadow: rgb(149,23,104); border-color: rgb(149,23,104); max-width: 80px" />
+                                <img class="img-circle" alt="برنامه ریزی آزمون تافل رایتینگ" src="{% static 'user_profile/checklist.png' %}"  />
                             </a>
                         </li>
                     </ul>
@@ -332,7 +332,27 @@
     <br>
     <br>
     <br>
-
+<div class="modal fade" id="free" tabindex="-1" role="dialog" aria-labelledby="freeLabel" style="direction: rtl">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="freeLabel">ثبت نام در دوره رایگان یادگیری مکالمه</h4>
+      </div>
+      <div class="modal-body">
+      در ده هفته به شما فایل های صوتی و متنی کوتاه ارسال می کنیم که با انجام تمرین های آن شما می توانید به راحتی به انگلیسی صحبت کنید!
+          باور نمی کنید؟ این دوره رایگانه! امتحانش مجانیه! ثبت نام کنید!
+          <form>
+              <input placeholder="فقط کافیه ایمیل تون رو اینجا وارد کنید" type="email" class="form-control">
+          </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">اطلاعات بیشتر</button>
+        <button type="button" class="btn btn-primary">ثبت نام</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 </div>

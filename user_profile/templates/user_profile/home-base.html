@@ -74,14 +74,34 @@
                 <li>راه های ارتباطی با ما:</li>
                 <li>از طریق ایمیل به info@scorize.com</li>
                 <li>و شماره تماس 09387523757</li>
-                <li>برای گرفتن آخرین خبرها در شبکه های اجتماعی ما را دنبال کنید.</li>
+                <li>برای گرفتن آخرین خبرها ما را در <a href="https://www.instagram.com/scorizei/">شبکه های اجتماعی</a> دنبال کنید.</li>
             </ul>
             <ul class="col-md-5 float-right" style="direction: rtl">
                 <li style="margin-bottom: 0.5rem">
                     <a class="btn btn-info btnfooter"  href="{% url 'user_profile:login' %} ">ورود</a></li>
-                <li>
+                <li style="margin-bottom: 0.5rem">
                     <a class="btn btn-info btnfooter "  href="{% url 'user_profile:register' %} ">ثبت نام</a></li>
+                <li>
+                    <a type="button" class="btn btn-info btnfooter" data-toggle="modal" data-target="#Hire">همکاری با ما</a></li>
             </ul>
+
+
+<div class="modal fade" id="Hire" tabindex="-1" role="dialog" aria-labelledby="hiring" style="direction: rtl">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="hiring">دعوت به همکاری</h4>
+      </div>
+      <div class="modal-body">
+       از افرادی که در زمینه تدریس حرفه ای زبان برای آزمون های تافل و آیلتس سابقه و انگیزه لازم را دارند دعوت می کنیم با ارسال رزومه خود به آدرس zamani@scorize.com به تیم اسکورایز بپیوندند. :)
+      </div>
+      <div class="modal-footer">
+        <a href="mailto:zamani@scorize.com" class="btn btn-primary">ارسال ایمیل</a>
+      </div>
+    </div>
+  </div>
+</div>
         </div>
         <div>
             <br>
