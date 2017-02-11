@@ -17,6 +17,15 @@ $('.flip').hover(function(){
 
 });
 
+$(function(){
+      $(".first").typed({
+        strings: [" در آزمون ها شرکت کنند", " روان صحبت کنند"],
+        backDelay: 1500,
+        typeSpeed: 60,
+        backSpeed: 100,
+        loop: true
+      });
+  });
 
 // typed script
 // $(function(){

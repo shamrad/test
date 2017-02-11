@@ -7,7 +7,6 @@
 
 {% block style %}
     <link rel="stylesheet" href="{% static 'user_profile/homestyle.css' %}" type="text/css">
-    <script src="{% static 'user_profile/typed.js' %}"></script>
 
 {% endblock %}
 {% block content %}
@@ -26,25 +25,33 @@
 
         {#        neveshte hayi ke type mishan miran#}
         <div class="text-center" style="font-size: 30px;">
-            <h1>به وب سایت گروه آموزشی اسکورایز خوش آمدید</h1>
+            <h1 data-anijs="if: DOMContentLoaded, do: pulse animated">به وب سایت گروه آموزشی اسکورایز خوش آمدید</h1>
             <br>
-            <h2>برای آنها که میخواهند در آزمون های زبان شرکت کنند یا بتونن راحت حرف بزنند</h2>
+            <h2>برای آنها که می خواهند<span class="first"></span></h2>
         </div>
 {#         mahale namayesh#}
-
 
 <br>
 <br>
         <div class="text-center">
-        <div class="btn btn-outline-inverse btn-lg paeen">میخواهم در آزمون های بین المللی شرکت کنم</div>
-        <a href="{% url 'user_profile:register' %}" class="btn btn-outline-inverse btn-lg " role="button"> میخواهم در دوره رایگان مکالمه شرکت کنم</a>
+        <div data-anijs="if: mouseover, do: bounce animated, to: #airplane" class="btn btn-outline-inverse btn-lg paeen">میخواهم در آزمون های بین المللی شرکت کنم</div>
+        <a data-anijs="if: mouseover, do: bounce animated, to: #chat" href="{% url 'user_profile:register' %}" class="btn btn-outline-inverse btn-lg " role="button"> میخواهم در دوره رایگان مکالمه شرکت کنم</a>
         </div>
-        <div class="totop">
+        <br>
+        <div class="row container">
+            <div class="col-lg-2 col-lg-offset-4" style="padding-right: 25rem">
+                <img id="airplane"  data-anijs="if: mouseover, do: rubberBand animated" src="{% static 'user_profile/airplane.png' %}" width="100px">
+            </div>
+
+        <div class="totop col-lg-2">
           <i class="arrow">
             <span class="spani"></span>
           </i>
         </div>
-
+            <div class="col-lg-3" style="padding-left: 15rem">
+                <img id="chat" data-anijs="if: mouseover, do: tada animated" src="{% static 'user_profile/chat.png' %}" width="100px">
+            </div>
+        </div>
     </div>
 
     <br>
@@ -101,8 +108,8 @@
         var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
     };
 </script>
-<style></style>
-<div id="jssor_1" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 500px; height: 450px; overflow: hidden; visibility: hidden;">
+
+<div id="jssor_1" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 500px; height: 450px; overflow: hidden; visibility: hidden;" data-anijs="if: scroll, on: window, do: slideInLeft animated, before: $scrollReveal">
     <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 500px; height: 450px; overflow: hidden;">
         <!--<img data-u="add" title="Jssor Slider" style="display:block;position:absolute;top:0;right:0;width:16px;height:16px;z-index:1000;" src="" />-->
         <a data-u="any" href="http://www.jssor.com/meehraaad/mehradslide.slider" style="display:none">jQuery Slider</a>
@@ -122,7 +129,7 @@
 </div>
 
      <!--who we are section-->
-    <div class="col-lg-6">
+    <div class="col-lg-6" data-anijs="if: scroll, on: window, do: slideInRight animated, before: $scrollReveal">
         <div class="[ text-center ]">
         <div class="text-xenter">
             <h1>Who We Are</h1>
@@ -196,7 +203,7 @@
 <br>
 <br>
     <!--quotations section-->
-    <div class="container-fluid">
+    <div class="container-fluid" data-anijs="if: scroll, on: window, do: fadeInUp animated, before: $scrollReveal">
     <div class="row text-center" style=" background-color: rgb(149,23,104); color: white; ">
         <h1><i class="fa fa-quote-left fa-2x" aria-hidden="true"></i> Study Smart, Not Hard</h1>
         <p>-someone we know</p>
@@ -211,12 +218,12 @@
     <br>
 {#    Frequesntly Asked Question#}
     <div class="container">
-    <div class="row" style="border: 3px solid #dfb9d2; border-radius:5px ">
+    <div class="row" style="border: 3px solid #dfb9d2; border-radius:5px " data-anijs="if: scroll, on: window, do: bounceIn animated, before: $scrollReveal repeat">
     <div class="text-center">
-        <h2 style="direction: rtl">آیا میخواید در آزمون تافل شرکت کنید؟</h2>
-        <p style="direction: rtl; font-size: 20px"> تمام سوالات متداول تون رو تو این قسمت جواب دادیم! حتما توصیه میکنیم یه نگاهی بندازید. شاید سوال شما هم اینجا باشد!</p>
+        <h2 style="direction: rtl">شما هم میخواهید در آزمون تافل شرکت کنید؟</h2>
+        <p style="direction: rtl; font-size: 20px"> تمام سوالات متداول تون رو تو این قسمت جواب دادیم! حتما توصیه می کنیم یه نگاهی بندازید. شاید سوال شما هم اینجا باشد!</p>
         <br>
-        <a class="btn btn-pink" style="width: 32rem ; border-radius: 50px; padding: 15px; font-size: 30px" href="{% url 'faq' %}">سوالات متداول تافلی ها</a>
+        <a data-anijs="if: mouseover, do: swing animated" class="btn btn-pink" style="width: 32rem ; border-radius: 50px; padding: 15px; font-size: 30px" href="{% url 'faq' %}">سوالات متداول تافلی ها</a>
         <br>
         <br>
     </div>
@@ -228,10 +235,10 @@
     <div class="container">
     <div class="row" style="border: 3px solid #dfb9d2; border-radius:5px ">
     <div class="text-center">
-        <h2 style="direction: rtl">قبل از شروع، حتی شروع درس خواندن حتما ...</h2>
-        <p style="direction: rtl; font-size: 20px">یک مقاله خیلی خیلی کوتاه و کامل، تا تمامه آنچه قبل از شروع به خواندن تا سر جلسه آزمون را باید بدانید در آن آورده ایم</p>
+        <h2 style="direction: rtl">می خواهید بیشتر درباره آزمون تافل بدونید؟</h2>
+        <p style="direction: rtl; font-size: 20px">یک مقاله خیلی کوتاه و کامل، تا تموم چیزی که قبل از شروع تا سر جلسه آزمون را باید بدانید رو آماده کردیم</p>
         <br>
-        <a class="btn btn-pink" style="width: 29rem ; border-radius: 50px; padding: 15px; font-size: 30px" href="{% url 'service' %}">هر آنچه باید بدانید</a>
+        <a data-anijs="if: mouseover, do: swing animated" class="btn btn-pink" style="width: 29rem ; border-radius: 50px; padding: 15px; font-size: 30px" href="{% url 'service' %}">هر چی که باید بدونید</a>
         <br>
         <br>
     </div>
@@ -240,13 +247,13 @@
 
     <br>
 {#    8-week schedule#}
-    <div class="container">
+    <div class="container" data-anijs="if: scroll, on: window, do: lightSpeedIn animated, before: $scrollReveal">
     <div class="row" style="border: 3px solid #dfb9d2; border-radius:5px ">
     <div class="text-center">
-        <h2 style="direction: rtl">برنامه هشت هفته ای مطالعاتی تافل</h2>
+        <h2 style="direction: rtl">نمی دونید از کجا باید شروع کنید؟</h2>
         <p style="direction: rtl; font-size: 20px">چطور زمان بندی کنیم تا در هشت هفته برای تافل آماده شویم؟ تمرین های لازم چیه؟</p>
         <br>
-        <a class="btn btn-pink" style="width: 29rem ; border-radius: 50px; padding: 15px; font-size: 30px" href="#">برنامه مطالعاتی تافل</a>
+        <a data-anijs="if: mouseover, do: swing animated" class="btn btn-pink" style="width: 29rem ; border-radius: 50px; padding: 15px; font-size: 30px" href="#">برنامه مطالعاتی تافل</a>
         <br>
         <br>
     </div>
@@ -292,7 +299,7 @@
                 <div class="flip">
                     <div class="card">
                         <div class="face front">
-                            <div class="well well-sm inner" id="blue" style="font-size: 20px">چرا باید به ما اعتماد کنید؟</div>
+                            <div class="well well-sm inner" id="blue" style="font-size: 20px">چرا به ما اعتماد می کنید؟</div>
                         </div>
                         <div class="face back">
                             <div class="well well-sm outer">چون میدونیم طبق چه استانداردی باید تصحیح بشه
@@ -330,4 +337,6 @@
 
 </div>
 <script type="text/javascript" rel="script" src="{% static 'user_profile/homescript.js' %}"></script>
+        <script src="{% static 'user_profile/typed.js' %}"></script>
+
 {% endblock %}
