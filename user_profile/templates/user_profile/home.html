@@ -13,7 +13,7 @@
     <div class="container-fluid">
 {#    pink section#}
     <div class="row" style=" background-color: rgb(149,23,104); color: white; ">
-        <h1 class="text-center" style="font-family: 'Rouge Script';font-size: 50px ">Scorize</h1>
+        <h1 class="text-center" data-anijs="if: mouseover, do: bounce animated" style="font-family: 'Rouge Script';font-size: 50px ">Scorize</h1>
 <br>
         <br>
 {#        <div class="jumbotron text-center" style="direction: rtl; background: none; padding: 1rem ">#}
@@ -25,7 +25,7 @@
 
         {#        neveshte hayi ke type mishan miran#}
         <div class="text-center" style="font-size: 30px;">
-            <h1 data-anijs="if: DOMContentLoaded, do: pulse animated">به وب سایت گروه آموزشی اسکورایز خوش آمدید</h1>
+            <h1> به وب سایت گروه آموزشی اسکورایز خوش آمدید</h1>
             <br>
             <h2>برای آنها که می خواهند<span class="first"></span></h2>
         </div>
@@ -62,8 +62,8 @@
 
 {#    picture of toefl and others#}
 
-            <div class="row">
-              <div class="col-md-4 text-center">
+            <div class="row" data-anijs="if: scroll, on: window, do: zoomIn animated, before: $scrollReveal repeat">
+              <div class="col-md-4 text-center" >
                 <img alt="GRE , جی آر ای ,exam , learning, آزمون" src="{% static 'user_profile/gre1.jpg' %}">
               </div>
               <div class="col-md-4 text-center">
@@ -132,8 +132,8 @@
     <div class="col-lg-6" data-anijs="if: scroll, on: window, do: slideInRight animated, before: $scrollReveal">
         <div class="[ text-center ]">
         <div class="text-xenter">
-            <h1>Who We Are</h1>
-            <p><mark style="background: none; color: rgb(149,23,104); font-size: xx-large ">جامع ترین</mark> مرکز خدمات آمادگی آزمون های بین المللی زبان انگلیسی</p>
+            <h2>در اسکورایز چیکار می کنیم؟</h2>
+            <h4>ارائه خدمات آمادگی آزمون های بین المللی زبان انگلیسی</h4>
         </div>
         <div class="[ row ]">
             <div class="[ col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-1 ]" role="tabpanel">
@@ -157,23 +157,24 @@
                         </li>
                     </ul>
                 </div>
+                </div>
                 <div class="[ col-xs-8 col-sm-12 ]">
                     <!-- Tab panes -->
                     <div class="tab-content" id="tabs-collapse">
                         <div role="tabpanel" class="tab-pane fade in active" id="schedule">
                             <div class="tab-inner">
-                                <p class="lead">
-                                    برنامه ریزی هشت هفته ای برای موفقیت در آزمون تافل<br>
-                                    معرفی منابع
-                                    یادگیری تکنیک های هر 4 مهارت
-                                    زمان بندی مناسب</p>
+                                <ul style="color: black">
+                                <li class="lead">برنامه ریزی هشت هفته ای برای موفقیت در آزمون تافل</li>
+                                <li class="lead">معرفی منابع</li>
+                                <li class="lead">آموزش تکنیک های هر 4 مهارت در زمان بندی مناسب</li>
+                                    </ul>
                                 <hr>
                             </div>
                         </div>
 
                         <div role="tabpanel" class="tab-pane fade" id="chart">
                             <div class="tab-inner">
-                                <p class="lead">بررسی پیشرفت تحصیلی</p>
+                                <p class="lead">بررسی وضعیت شما، مشاوره و کمک به پیشرفت نمرات شما</p>
                                 <br>
                                 <hr>
                             </div>
@@ -191,7 +192,7 @@
 
                     </div>
                 </div>
-            </div>
+
         </div>
     </div>
     </div>
@@ -205,7 +206,8 @@
     <!--quotations section-->
     <div class="container-fluid" data-anijs="if: scroll, on: window, do: fadeInUp animated, before: $scrollReveal">
     <div class="row text-center" style=" background-color: rgb(149,23,104); color: white; ">
-        <h1><i class="fa fa-quote-left fa-2x" aria-hidden="true"></i> Study Smart, Not Hard</h1>
+        <h1 class="col-lg-8"><i class="fa fa-quote-left fa-2x" aria-hidden="true"></i> Study Smart, Not Hard</h1>
+        <img data-anijs="if: scroll, on: window, do: zoomIn animated, before: $scrollReveal repeat" style="padding-top: 5rem" src="{% static "user_profile/study.png" %}">
         <p>-someone we know</p>
     </div>
     </div>
@@ -222,8 +224,8 @@
     <div class="text-center">
         <h2 style="direction: rtl">شما هم میخواهید در آزمون تافل شرکت کنید؟</h2>
         <p style="direction: rtl; font-size: 20px"> تمام سوالات متداول تون رو تو این قسمت جواب دادیم! حتما توصیه می کنیم یه نگاهی بندازید. شاید سوال شما هم اینجا باشد!</p>
-        <br>
-        <a data-anijs="if: mouseover, do: swing animated" class="btn btn-pink" style="width: 32rem ; border-radius: 50px; padding: 15px; font-size: 30px" href="{% url 'faq' %}">سوالات متداول تافلی ها</a>
+        <a data-anijs="if: mouseover, do: swing animated" class="btn btn-pink" style="margin: auto;width: 32rem ; border-radius: 50px; padding: 15px; font-size: 30px" href="{% url 'faq' %}">سوالات متداول تافلی ها</a>
+        <img style="padding-left: 15rem" data-anijs="if: scroll, on: window, do: slideInRight animated, before: $scrollReveal" src="{% static "user_profile/question.png" %}">
         <br>
         <br>
     </div>
@@ -238,6 +240,7 @@
         <h2 style="direction: rtl">می خواهید بیشتر درباره آزمون تافل بدونید؟</h2>
         <p style="direction: rtl; font-size: 20px">یک مقاله خیلی کوتاه و کامل، تا تموم چیزی که قبل از شروع تا سر جلسه آزمون را باید بدانید رو آماده کردیم</p>
         <br>
+        <img style="padding-right: 15rem" data-anijs="if: scroll, on: window, do: slideInLeft animated, before: $scrollReveal" src="{% static "user_profile/notes.png" %}">
         <a data-anijs="if: mouseover, do: swing animated" class="btn btn-pink" style="width: 29rem ; border-radius: 50px; padding: 15px; font-size: 30px" href="{% url 'service' %}">هر چی که باید بدونید</a>
         <br>
         <br>
@@ -253,7 +256,9 @@
         <h2 style="direction: rtl">نمی دونید از کجا باید شروع کنید؟</h2>
         <p style="direction: rtl; font-size: 20px">چطور زمان بندی کنیم تا در هشت هفته برای تافل آماده شویم؟ تمرین های لازم چیه؟</p>
         <br>
+        <img style="padding-right: 10rem" src="{% static "user_profile/1 (1).png" %}">
         <a data-anijs="if: mouseover, do: swing animated" class="btn btn-pink" style="width: 29rem ; border-radius: 50px; padding: 15px; font-size: 30px" href="#">برنامه مطالعاتی تافل</a>
+        <img style="padding-left: 10rem" src="{% static "user_profile/1 (2).png" %}">
         <br>
         <br>
     </div>
