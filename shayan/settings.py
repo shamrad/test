@@ -125,7 +125,7 @@ STATIC_URL = '/static/'
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
-EMAIL_FILE_PATH ='D:/try5/backend3/user_profile'
+EMAIL_FILE_PATH = 'C:/Users/Shayan/Desktop/check/shayan'
 
 
 # Local settings
