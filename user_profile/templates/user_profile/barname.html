@@ -1,0 +1,43 @@
+{% extends "user_profile/home-base.html" %}
+{% load static %}
+
+{% block meta %}
+    <meta name="keywords" content="تافل,TOEFL, برنامه مطالعاتی تافل, تافل 120, تافل صد و بیست">
+    <meta name="description" content="برنامه مطالعاتی آزمون تافل | تافل 120 - چگونه و از چه منابعی بخوانیم تا در تافل موفق شویم؟">
+{% endblock %}
+
+{% block title %}
+برنامه مطالعاتی موفقیت در آزمون تافل | تافل 120
+{% endblock %}
+
+{% block style %}
+
+{% endblock %}
+
+
+{% block content %}
+    <br>
+    <br>
+    <br>
+
+    <div class="container text-center" style="direction: rtl">
+    <h1>موفقیت در آزمون تافل با استفاده از برنامه مطالعاتی "تافل 120"</h1>
+<br>
+    <h2>
+        اگر قبلا انگلیسی کار کرده اید و میخواهید در آزمون بهترین نتیجه رو کسب کنید
+    </h2>
+        <h2 style="color: red" data-anijs="do: lightSpeedIn animated">این برنامه برای شما طراحی شده</h2>
+        <img data-anijs="if: mouseover, do: tada animated" src="{% static 'user_profile/test.png' %}" >
+    <br>
+        <h2>برنامه مطالعاتی تافل 120 فقط برای اعضای سایت و به صورت کاملا رایگان</h2>
+    <br>
+    <br>
+    <br>
+    <a class="btn btn-info" style="font-size: large" href="{% url 'user_profile:register' %}">میخواهم برنامه تافل 120 رو دریافت کنم</a>
+    <br>
+
+
+</div>
+    <br>
+
+{% endblock %}

@@ -17,6 +17,9 @@ def faq(request):
 def aboutus(request):
         return render(request, 'user_profile/aboutus.html')
 
+def barname(request):
+        return render(request, 'user_profile/barname.html')
+
 
 
 # test
