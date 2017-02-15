@@ -46,6 +46,9 @@ body { padding-top: 60px; }
     -webkit-transition: all 0.3s 0s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     transition: all 0.3s 0s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
+#nav-tabs li a:hover, #nav-tabs li a:focus{
+    background-color: transparent;
+}
 .nav.nav-justified > li.active > a > img,
 .nav.nav-justified > li:hover > a > img,
 .nav.nav-justified > li:focus > a > img {
@@ -195,6 +198,7 @@ ul {
     color: white;
 }
 button:focus {outline:0;}
+
 
 .first{
     font-size: 20px;

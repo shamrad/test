@@ -1,7 +1,7 @@
 
 from django.conf.urls import url,include
 from django.contrib import admin
-from .views import khane, service,aboutus, test, faq, barname
+from .views import khane, service,aboutus, test, faq, barname, nini
 from django.contrib.auth.views import password_reset,password_reset_done,password_reset_confirm, password_reset_complete
 
 urlpatterns = [
@@ -12,6 +12,7 @@ urlpatterns = [
     url(r'^toefl-faq/', faq, name='faq'),
     url(r'^about-us/', aboutus, name='aboutus'),
     url(r'^toefl-120-برنامه/', barname, name='barname'),
+    url(r'^مکالمه-به-روش-کودکان/', nini, name='nini'),
 
     url(r'password/$', password_reset,{'template_name': 'user_profile/password_reset.html'}, name='reset_password'),
     url(r'password/done/$', password_reset_done,{'template_name': 'user_profile/password_reset_done.html'}, name='password_reset_done'),

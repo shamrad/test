@@ -20,6 +20,9 @@ def aboutus(request):
 def barname(request):
         return render(request, 'user_profile/barname.html')
 
+def nini(request):
+        return render(request, 'user_profile/nini.html')
+
 
 
 # test
