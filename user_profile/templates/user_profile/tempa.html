@@ -1,0 +1,28 @@
+{% extends "user_profile/home-base.html" %}
+{% load static %}
+
+{% block style %}
+    <style>
+    p{
+        font-size: 18px;
+        margin: 4rem;
+    }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <br>
+    <br>
+    <br>
+    <div class="container-fluid">
+    <div class="row" style=" background-color: rgb(149,23,104); color: white; ">
+        <h1 style="direction: rtl; float:right; margin: 5rem ">{% block heading %}{% endblock %}</h1>
+        <img data-anijs="if: scroll, on: window, do: zoomIn animated, before: $scrollReveal repeat" src="{% block image %}{% endblock %}" width="150px" style="float: left; margin-left: 10% ; padding: 2rem">
+    </div>
+    <br>
+    <div style="direction: rtl; color: black;float: right">
+        {% block matn %}{% endblock %}
+    </div>
+    </div>
+    <br>
+{% endblock %}

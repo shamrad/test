@@ -111,7 +111,10 @@ body{
     height: 15rem;
     border-radius: 15px;
     color: #ffffff;
-
+    direction: rtl;
+}
+.well a{
+    color: papayawhip;
 }
 .inner{margin:0px !important;
 background-color: rgb(149,23,104);
@@ -136,10 +139,10 @@ background-color: white;
 background-color: white;
    border: 3px solid rgb(149,23,104);color: black;
 }
-.outer{
-    background-color: rgb(149,23,104);
-}
+.outer {
+    background-color: rgb(149, 23, 104);
 
+}
 
 /*----------------------------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------------------------*/
