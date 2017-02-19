@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'simple_email_confirmation',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -125,7 +126,7 @@ STATIC_URL = '/static/'
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
-EMAIL_FILE_PATH = 'C:/Users/Shayan/Desktop/check/shayan'
+EMAIL_FILE_PATH = 'C:/Users/Shayan/Desktop/check2/shayan'
 
 
 # Local settings

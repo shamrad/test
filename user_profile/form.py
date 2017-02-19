@@ -1,5 +1,7 @@
 from django.contrib.auth.forms import AuthenticationForm
+from django.core.exceptions import ValidationError
 from django.core.validators import MaxLengthValidator
+from simple_email_confirmation.models import EmailAddress
 
 from .models import User, Writing, Teacherate, Price
 from django import  forms
@@ -51,10 +53,23 @@ class WritingForm(forms.ModelForm):
         model= Writing
         fields = ['title', 'text']
 
-class Rate (forms.ModelForm):
+class Rate(forms.ModelForm):
     class Meta:
         model=Teacherate
         fields=['rate']
+
+
+class EmailForm (forms.ModelForm):
+
+    # def check_email(self):
+    #     data = self.cleaned_data['email']
+    #     if data not in EmailAddress.objects.all().email:
+    #         raise forms.ValidationError("قبلا ثبت نام نکرده اید")
+    #     return data
+
+    class Meta:
+        model=User
+        fields=['email']
 
 
 class PriceForm(forms.ModelForm):

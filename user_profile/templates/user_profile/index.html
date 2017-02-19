@@ -149,7 +149,11 @@
     <br>
             <div class="text-center">
                 <p style="">متن خود را ثبت کنید تا <mark>کمتر از 12 </mark> ساعت آینده تصحیح شده با نمره و نظر مشاوره دریافت کنید </p>
+             {% if request.user.is_confirmed %}
                 <a href="{% url 'user_profile:NewWriting' %}" class="btn btn-tst " role="button"><h2>تست رایگان writing  </h2></a>
+             {% else %}
+                <a data-toggle="modal" data-target="#test1"  class="btn btn-tst " role="button"><h2>تست رایگان writing  </h2></a>
+             {% endif %}
             </div>
 
 
@@ -234,6 +238,22 @@ $(document).ready(function() {
     {% endfor %}
 
     </script>
+<div class="modal fade" id="test1" tabindex="-1" role="dialog" aria-labelledby="testLabel" style="direction: rtl">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="testLabel">ایمیل شما تایید نشده است!</h4>
+      </div>
+      <div class="modal-body">
+          کاربر محترم برای استفاده از محتوای موجود در صفحه شخصی خود لازم است ایمیل خود را تایید کنید. قبلا هنگام ثبت نام لینک تایید ایمیل برای شما فرستاده شده است.
+      </div>
+      <div class="modal-footer">
+        <a type="button" class="btn btn-primary" href="{% url 'resendkey' %}">ارسال دوباره ایمیل</a>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 

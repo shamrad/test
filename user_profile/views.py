@@ -1,6 +1,8 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
+from django.core.mail import send_mail
 from django.core.urlresolvers import reverse_lazy, reverse
 from django.http import HttpResponse
 from django.shortcuts import render,redirect
@@ -11,8 +13,9 @@ from django.views.generic.edit import UpdateView
 from django.contrib.auth.forms import PasswordChangeForm
 # from oauthlib.oauth2 import Client
 # from suds.client import Client
+from simple_email_confirmation.models import EmailAddress
 
-from .form import UserForm, LoginForm, WritingForm, Rate, PriceForm
+from .form import UserForm, LoginForm, WritingForm, Rate, PriceForm, EmailForm
 from django.views.generic import View
 from .models import Writing, Subject, Teacherate, Buy, Price
 from django.views.generic import CreateView
@@ -89,16 +92,40 @@ class UserFormView(View):
             username=form.cleaned_data['username']
             password=form.cleaned_data['password']
             user.set_password(password)
+            email = form.cleaned_data['email']
             user.save()
-            user=authenticate(username=username, password=password)
+            send_mail('Dear %s! Welcome to Scorize!' %user.first_name, ' www.scorize.com/profile/confirm/%s/ از اینکه به وب سایت اسکورایز پیوستید خوشحالیم. برای استفاده از محتوای سایت با کلیک کردن بر لینک مقابل ایمیل خود را تایید کنید.!' % user.confirmation_key, 'info@scorize.com', [email], fail_silently=False)
+            karbar = authenticate(username=username, password=password)
 
-            if user is not None:
+            if karbar is not None:
 
-                if user.is_active:
-                    login(request,user)
+                if karbar.is_active:
+                    login(request, karbar)
                     return redirect('user_profile:index')
         return render(request, self.template_name, {'form': form})
 
+
+def confirmation(request,confirmation_key):
+    email=EmailAddress.objects.get(key=confirmation_key)
+    user=get_user_model()
+    pending_user= user.objects.get(email=email.email)
+    pending_user.confirm_email(confirmation_key,save=True)
+    pending_user.is_confirmed
+    return redirect('user_profile:index')
+
+
+def resendkey(request):
+    email = request.user.email
+    data = EmailAddress.objects.get(email=email)
+    confkey=data.key
+    send_mail('Dear %s! Activation Key!' % request.user.first_name,
+              ' www.scorize.com/profile/confirm/%s/ برای استفاده از محتوای سایت با کلیک کردن بر لینک مقابل ایمیل خود را تایید کنید.!' % confkey,
+              'info@scorize.com', [email], fail_silently=False)
+    return redirect('user_profile:emailsent')
+
+
+def emailsent(request):
+    return render(request, 'user_profile/emailsent.html')
 
 class LoginView(View):
 

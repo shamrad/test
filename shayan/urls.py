@@ -1,6 +1,8 @@
 
 from django.conf.urls import url,include
 from django.contrib import admin
+
+from user_profile.views import resendkey
 from .views import khane, service,aboutus, test, faq, barname, nini
 from django.contrib.auth.views import password_reset,password_reset_done,password_reset_confirm, password_reset_complete
 
@@ -19,6 +21,7 @@ urlpatterns = [
     url(r'password/confirm/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', password_reset_confirm,{'template_name': 'user_profile/password_reset_confirm.html'}, name='password_reset_confirm'),
     # url(r'password/confirm/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', password_reset_confirm,name='password_reset_confirm'),
     url(r'password/complete/$', password_reset_complete,{'template_name': 'user_profile/password_reset_complete.html'}, name='password_reset_complete'),
+    url(r'resend-key/$', resendkey, name='resendkey'),
 
 
     # test url

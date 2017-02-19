@@ -12,8 +12,10 @@ from django.utils.translation import ugettext_lazy as _
 
 
 # User._meta.get_field('email').unique
+from simple_email_confirmation.models import SimpleEmailConfirmationUserMixin
 
-class User(AbstractUser):
+
+class User(AbstractUser, SimpleEmailConfirmationUserMixin):
     credit= models.IntegerField(null=True, blank=True)
     credit2= models.IntegerField(null=True, blank=True, default=0)
     amount= models.IntegerField(null=True, blank=True)
@@ -27,6 +29,7 @@ class User(AbstractUser):
         ),
     )
 
+
 class Writing(models.Model):
     author=models.ForeignKey(User)
     text=models.TextField(max_length=10000)
@@ -34,7 +37,6 @@ class Writing(models.Model):
     time = models.DateTimeField(auto_now_add=True)
     moshaver=models.TextField(default='نظر مشاور ثبت نشده است.')
     corrector=models.CharField(max_length=30, null=True, blank=True)
-
 
     score=models.IntegerField( default=0)
 
