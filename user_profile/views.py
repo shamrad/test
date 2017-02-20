@@ -16,6 +16,7 @@ from django.contrib.auth.forms import PasswordChangeForm
 # from oauthlib.oauth2 import Client
 # from suds.client import Client
 from simple_email_confirmation.models import EmailAddress
+from django.conf import settings
 
 from .form import UserForm, LoginForm, WritingForm, Rate, PriceForm, EmailForm
 from django.views.generic import View
@@ -96,7 +97,7 @@ class UserFormView(View):
             user.set_password(password)
             email = form.cleaned_data['email']
             user.save()
-            send_mail('Dear %s! Welcome to Scorize!' %user.first_name, ' www.scorize.com/profile/confirm/%s/ از اینکه به وب سایت اسکورایز پیوستید خوشحالیم. برای استفاده از محتوای سایت با کلیک کردن بر لینک مقابل ایمیل خود را تایید کنید.!' % user.confirmation_key, 'info@scorize.com', [email], fail_silently=False)
+            send_mail('Dear %s! Welcome to Scorize!' %user.first_name, ' www.scorize.com/profile/confirm/%s/ از اینکه به وب سایت اسکورایز پیوستید خوشحالیم. برای استفاده از محتوای سایت با کلیک کردن بر لینک مقابل ایمیل خود را تایید کنید.!' % user.confirmation_key, settings.DEFAULT_FROM_EMAIL, [email], fail_silently=False)
             karbar = authenticate(username=username, password=password)
 
             if karbar is not None:
@@ -122,7 +123,7 @@ def resendkey(request):
     confkey=data.key
     send_mail('Dear %s! Activation Key!' % request.user.first_name,
               ' www.scorize.com/profile/confirm/%s/ برای استفاده از محتوای سایت با کلیک کردن بر لینک مقابل ایمیل خود را تایید کنید.!' % confkey,
-              'info@scorize.com', [email], fail_silently=False)
+              settings.DEFAULT_FROM_EMAIL, [email], fail_silently=False)
     return redirect('user_profile:emailsent')
 
 
@@ -234,7 +235,7 @@ def conversation(request):
     m.save()
     send_mail('ثبت نام شما در دوره مکالمه رایگان اسکورایز با موفقیت انجام شد!',
               'ثبت نام شدید! منتظر درس های دوره مکالمه باشید. درس ها به مدت 10 هفته در روزهای شنبه و سه شنبه به ایمیل شما ارسال میشه.',
-              'info@scorize.com', [request.user.email], fail_silently=False)
+              settings.DEFAULT_FROM_EMAIL, [request.user.email], fail_silently=False)
     messages.success(request,'ثبت نام با موفقیت انجام شد.')
     return redirect('user_profile:index')
 

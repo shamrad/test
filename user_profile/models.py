@@ -130,4 +130,4 @@ class Buy(models.Model):
     date=models.DateTimeField(auto_now_add=True)
     authority=models.IntegerField(default=0)
     def __str__(self):
-        return self.user + ' buy '+ self.number
+        return self.user.username + ' buy '+ self.number
