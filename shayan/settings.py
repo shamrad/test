@@ -13,6 +13,8 @@ import locale
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+from celery.schedules import crontab
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -127,6 +129,14 @@ STATIC_URL = '/static/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_FILE_PATH = 'C:/Users/Shayan/Desktop/check2/shayan'
+
+
+CELERYBEAT_SCHEDULE = {
+    'ersal-e-darsname': {
+        'task': 'shayan.tasks.ersal',
+        'schedule': crontab(minute=1, hour=9, day_of_week='thu,fri'),
+    },
+}
 
 
 # Local settings

@@ -1,9 +1,11 @@
+
 from django.contrib.auth.base_user import AbstractBaseUser
 from django.contrib.auth.models import User, AbstractUser, PermissionsMixin, UserManager
 from django.db import models
 from django.core.urlresolvers import reverse
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.utils import timezone
 from model_utils.models import TimeStampedModel
 # from django_jalali.db import models as jmodels
 from django.conf import settings
@@ -13,6 +15,7 @@ from django.utils.translation import ugettext_lazy as _
 
 # User._meta.get_field('email').unique
 from simple_email_confirmation.models import SimpleEmailConfirmationUserMixin
+
 
 
 class User(AbstractUser, SimpleEmailConfirmationUserMixin):
@@ -82,6 +85,7 @@ class Subject(models.Model):
     def __str__(self):
         return  self.title
 
+
 class Price(models.Model):
     wallet=models.IntegerField(  )
     number=models.IntegerField( default=0)
@@ -89,6 +93,34 @@ class Price(models.Model):
     number2=models.IntegerField( default=0)
     wallet3=models.IntegerField( default=0)
     number3=models.IntegerField( default=0)
+
+
+class Course(models.Model):
+    name=models.CharField(max_length=30)
+    number_of_sessions=models.IntegerField()
+    student=models.ManyToManyField(User, through='Registration')
+
+    def __str__(self):
+        return self.name
+
+
+class Registration(models.Model):
+    course=models.ForeignKey(Course, on_delete=models.CASCADE)
+    participant=models.ForeignKey(User, on_delete=models.CASCADE)
+    date_joined=models.DateTimeField(default=timezone.now)
+    last_email_received=models.IntegerField(default=0)
+    is_finished=models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.participant.username + ' in ' + self.course.name
+
+
+class Lesson(models.Model):
+    whichcourse=models.ForeignKey(Course)
+    title=models.CharField(max_length=50)
+    content=models.TextField()
+    order=models.IntegerField()
+
 
 
 class Buy(models.Model):

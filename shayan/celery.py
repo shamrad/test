@@ -1,12 +1,16 @@
 # -*- coding: utf-8 -*-
-from __future__ import absolute_import
-
-import celery
+from __future__ import absolute_import, unicode_literals
 import os
-from django.conf import settings
+import celery
 
-# os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'shayan.settings')
-# app = celery.Celery('scorize', broker=settings.BROKER_URL)
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'shayan.settings')
+app = celery.Celery('shayan')
 # print(settings.BROKER_URL)
-# app.config_from_object('django.conf:settings')
-# app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
+app.config_from_object('django.conf:settings')
+app.config_from_object('django.conf:settings', namespace='CELERY')
+app.autodiscover_tasks()
+
+
+@app.task(bind=True)
+def debug_task(self):
+    print('Request: {0!r}'.format(self.request))

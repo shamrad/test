@@ -2,7 +2,7 @@
 from django.conf.urls import url,include
 from django.contrib import admin
 
-from user_profile.views import resendkey
+from user_profile.views import resendkey, conversation
 from .views import khane, service,aboutus, test, faq, barname, nini
 from django.contrib.auth.views import password_reset,password_reset_done,password_reset_confirm, password_reset_complete
 
@@ -14,6 +14,7 @@ urlpatterns = [
     url(r'^toefl-faq/', faq, name='faq'),
     url(r'^about-us/', aboutus, name='aboutus'),
     url(r'^toefl-120-برنامه/', barname, name='barname'),
+    url(r'^conversation/', conversation, name='conversation'),
     url(r'^مکالمه-به-روش-کودکان/', nini, name='nini'),
 
     url(r'password/$', password_reset,{'template_name': 'user_profile/password_reset.html'}, name='reset_password'),

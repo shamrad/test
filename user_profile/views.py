@@ -1,3 +1,5 @@
+from celery.task import task
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
@@ -17,7 +19,7 @@ from simple_email_confirmation.models import EmailAddress
 
 from .form import UserForm, LoginForm, WritingForm, Rate, PriceForm, EmailForm
 from django.views.generic import View
-from .models import Writing, Subject, Teacherate, Buy, Price
+from .models import Writing, Subject, Teacherate, Buy, Price, Registration, Course, Lesson
 from django.views.generic import CreateView
 
 
@@ -225,6 +227,17 @@ def ChangePassword(request):
         form=PasswordChangeForm(user=request.user)
         context={'form':form}
         return render(request,'user_profile/editview.html', context)
+
+def conversation(request):
+    Mokaleme=Course.objects.get(name='Mokaleme')
+    m= Registration(course=Mokaleme, participant=request.user)
+    m.save()
+    send_mail('ثبت نام شما در دوره مکالمه رایگان اسکورایز با موفقیت انجام شد!',
+              'ثبت نام شدید! منتظر درس های دوره مکالمه باشید. درس ها به مدت 10 هفته در روزهای شنبه و سه شنبه به ایمیل شما ارسال میشه.',
+              'info@scorize.com', [request.user.email], fail_silently=False)
+    messages.success(request,'ثبت نام با موفقیت انجام شد.')
+    return redirect('user_profile:index')
+
 
 
 

@@ -80,6 +80,18 @@
         <p></p>
     </div>
 <div class="container-fluid">
+{% if messages %}
+<div class="row">
+
+    {% for message in messages %}
+    <div{% if message.tags == 'success' %} class="alert alert-success alert-dismissible" role="alert"{% endif %}>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        {{ message }}</div>
+    {% endfor %}
+
+</div>
+{% endif %}
+
 
 {% if exam %}
 
@@ -156,7 +168,7 @@
              {% endif %}
             </div>
 
-
+            <a href="{% url 'conversation' %}">ثبت نام در دوره مکالمه</a>
     {% endif %}
 
     <br>
