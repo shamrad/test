@@ -121,6 +121,9 @@ class Lesson(models.Model):
     content=models.TextField()
     order=models.IntegerField()
 
+    def __str__(self):
+        return self.order + ' : ' + self.title
+
 
 
 class Buy(models.Model):

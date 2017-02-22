@@ -134,7 +134,8 @@ EMAIL_FILE_PATH = 'C:/Users/Shayan/Desktop/check2/shayan'
 CELERYBEAT_SCHEDULE = {
     'ersal-e-darsname': {
         'task': 'shayan.tasks.ersal',
-        'schedule': crontab(minute=1, hour=9, day_of_week='thu,fri'),
+        # 'schedule': crontab(minute=1, hour=9, day_of_week='thu,fri'),
+        'schedule': crontab(minute='*/15'),
     },
 }
 
