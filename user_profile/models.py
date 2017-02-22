@@ -122,7 +122,7 @@ class Lesson(models.Model):
     order=models.IntegerField()
 
     def __str__(self):
-        return self.order + ' : ' + self.title
+        return str(self.order) + ' : ' + self.title
 
 
 
@@ -133,4 +133,4 @@ class Buy(models.Model):
     date=models.DateTimeField(auto_now_add=True)
     authority=models.IntegerField(default=0)
     def __str__(self):
-        return self.user.username + ' buy '+ self.number
+        return self.user.username + ' buy '+ str(self.number)

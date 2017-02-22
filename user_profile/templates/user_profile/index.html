@@ -79,6 +79,7 @@
         <p>{{ user.email }}</p>
         <p></p>
     </div>
+    <br>
 <div class="container-fluid">
 {% if messages %}
 <div class="row">
@@ -168,9 +169,9 @@
              {% endif %}
             </div>
 
-            <a href="{% url 'conversation' %}">ثبت نام در دوره مکالمه</a>
-    {% endif %}
 
+    {% endif %}
+<a class="btn btn-success" href="{% url 'conversation' %}">ثبت نام در دوره مکالمه</a>
     <br>
     <br>
     <hr>
