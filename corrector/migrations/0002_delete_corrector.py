@@ -9,6 +9,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('corrector', '0001_initial'),
+        ('user_profile', '0002_remove_writing_corrector'),
     ]
 
     operations = [
