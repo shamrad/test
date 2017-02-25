@@ -231,12 +231,15 @@ def ChangePassword(request):
 
 def conversation(request):
     Mokaleme=Course.objects.get(name='Mokaleme')
-    m= Registration(course=Mokaleme, participant=request.user)
-    m.save()
-    send_mail('ثبت نام شما در دوره مکالمه رایگان اسکورایز با موفقیت انجام شد!',
+    if Registration.objects.filter(course=Mokaleme).filter(participant=request.user) is None:
+        m= Registration(course=Mokaleme, participant=request.user)
+        m.save()
+        send_mail('ثبت نام شما در دوره مکالمه رایگان اسکورایز با موفقیت انجام شد!',
               'ثبت نام شدید! منتظر درس های دوره مکالمه باشید. درس ها به مدت 10 هفته در روزهای شنبه و سه شنبه به ایمیل شما ارسال میشه.',
               settings.DEFAULT_FROM_EMAIL, [request.user.email], fail_silently=False)
-    messages.success(request,'ثبت نام با موفقیت انجام شد.')
+        messages.success(request,'ثبت نام با موفقیت انجام شد.')
+    else:
+        messages.error(request, 'شما قبلا در این دوره ثبت نام کرده اید!')
     return redirect('user_profile:index')
 
 
@@ -319,6 +322,8 @@ def verify(request):
             return HttpResponse('Transaction failed.')
     else:
         return HttpResponse('Transaction failed or canceled by user')
+
+
 
 
 

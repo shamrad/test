@@ -65,19 +65,87 @@
 
     border-bottom: 1px solid rgb(149,23,104);
 }
-
+    li{
+        margin-bottom: 1rem;
+    }
     </style>
 {% endblock %}
 
 {% block content %}
 
 
-    <div class="container">
-    <div class="text-center" style="border: 2px solid rgb(149,23,104)" >
+    <div class="container-fluid">
+    <br>
+    <div class="row">
+    <div class="text-center col-md-4 col-md-offset-2" style="border: 2px solid rgb(149,23,104); float: left; border-radius: 10px">
+        <br>
+        <p>پروفایل کاربری:</p>
+        <img src="{% static 'user_profile/man.png' %}">
         <h2>{{ user.first_name }}</h2>
-        <h3>{{ user.username }}</h3>
-        <p>{{ user.email }}</p>
-        <p></p>
+        <h3>username: {{ user.username }}</h3>
+        <p>email: {{ user.email }}</p>
+        <a href="{% url 'user_profile:edit' %}">ویرایش اطلاعات</a>
+    </div>
+    <div class="text-center col-md-4">
+        <h2>خدمات:</h2>
+
+        <ul class="nav nav-justified">
+
+                <li><a href="#raigan" aria-controls="schedule" role="tab" data-toggle="tab"><img src="{% static 'user_profile/dollar-symbol.png' %}" width="100px"></a></li>
+                <li><a href="#mokaleme" aria-controls="schedule" role="tab" data-toggle="tab"><img src="{% static 'user_profile/chat.png' %}" width="100px"></a></li>
+                <li><a href="#schedule" aria-controls="schedule" role="tab" data-toggle="tab"><img src="{% static 'user_profile/1 (1).png' %}" width="100px"></a></li>
+
+        </ul>
+    {% if request.user.is_confirmed %}
+        <div class="tab-content" id="tabs-collapse">
+                        <div role="tabpanel" class="tab-pane fade in active" id="raigan">
+                            <div class="tab-inner">
+                                {% if exam %}
+                                    <a href="#" disabled><h3>نوشتن Writing رایگان</h3></a>
+                                {% else %}
+                                    <a href="{% url 'user_profile:NewWriting' %}"><h3>نوشتن Writing رایگان</h3></a>
+                                {% endif %}
+                                <p>محدود به 1000 کاراکتر</p>
+                            </div>
+                        </div>
+
+                        <div role="tabpanel" class="tab-pane fade" id="mokaleme">
+                            <div class="tab-inner">
+<a href="{% url 'conversation' %}"><h3>ثبت نام در دوره 10 هفته ای مکالمه</h3></a>
+                                <a href="{% url 'nini' %}"><p>اطلاعات بیشتر</p></a>
+                            </div>
+                        </div>
+
+                        <div role="tabpanel" class="tab-pane fade" id="schedule">
+                            <div class="tab-inner">
+                                <h3>دریافت برنامه روزانه مطالعاتی تافل 120</h3>
+                            </div>
+                        </div>
+                    </div>
+    {% else %}
+    <div class="tab-content" id="tabs-collapse">
+                        <div role="tabpanel" class="tab-pane fade in active" id="raigan">
+                            <div class="tab-inner">
+<a data-toggle="modal" data-target="#test1"><h3>نوشتن Writing رایگان</h3></a>
+                                <p>محدود به 1000 کاراکتر</p>
+                            </div>
+                        </div>
+
+                        <div role="tabpanel" class="tab-pane fade" id="mokaleme">
+                            <div class="tab-inner">
+<a data-toggle="modal" data-target="#test1"><h3>ثبت نام در دوره 10 هفته ای مکالمه</h3></a>
+                                <a href="{% url 'nini' %}"><p>اطلاعات بیشتر</p></a>
+                            </div>
+                        </div>
+
+                        <div role="tabpanel" class="tab-pane fade" id="schedule">
+                            <div class="tab-inner">
+                                <h3>دریافت برنامه روزانه مطالعاتی تافل 120</h3>
+                            </div>
+                        </div>
+                    </div>
+    {% endif %}
+    </div>
     </div>
     <br>
 <div class="container-fluid">
@@ -158,20 +226,24 @@
     <p><mark><-</mark>بعد از ثبت نمره توسط مصحح نمره شما وارد نمودار خواهد شد<mark>-></mark></p>
     </div>
     </div>
-    {% else %}
-    <br>
-            <div class="text-center">
-                <p style="">متن خود را ثبت کنید تا <mark>کمتر از 12 </mark> ساعت آینده تصحیح شده با نمره و نظر مشاوره دریافت کنید </p>
-             {% if request.user.is_confirmed %}
-                <a href="{% url 'user_profile:NewWriting' %}" class="btn btn-tst " role="button"><h2>تست رایگان writing  </h2></a>
-             {% else %}
-                <a data-toggle="modal" data-target="#test1"  class="btn btn-tst " role="button"><h2>تست رایگان writing  </h2></a>
-             {% endif %}
-            </div>
-
+{#    {% else %}#}
+{#    <br>#}
+{#            <div class="text-center">#}
+{#                <p style="">متن خود را ثبت کنید تا <mark>کمتر از 12 </mark> ساعت آینده تصحیح شده با نمره و نظر مشاوره دریافت کنید </p>#}
+{#             {% if request.user.is_confirmed %}#}
+{#                <a href="{% url 'user_profile:NewWriting' %}" class="btn btn-tst " role="button"><h2>تست رایگان writing  </h2></a>#}
+{#                <a href="{% url 'conversation' %}" class="btn btn-tst " role="button"><h2>ثبت نام در دوره مکالمه  </h2></a>#}
+{#                <a href="{% url '' %}" class="btn btn-tst " role="button"><h2>دریافت برنامه مطالعاتی تافل 120</h2></a>#}
+{#             {% else %}#}
+{#                <a data-toggle="modal" data-target="#test1"  class="btn btn-tst " role="button"><h2>تست رایگان writing  </h2></a>#}
+{#                <a data-toggle="modal" data-target="#test1"  class="btn btn-tst " role="button"><h2>ثبت نام در دوره مکالمه </h2></a>#}
+{#                <a data-toggle="modal" data-target="#test1"  class="btn btn-tst " role="button"><h2>دریافت برنامه مطالعاتی تافل 120 </h2></a>#}
+{#             {% endif %}#}
+{#            </div>#}
+{##}
 
     {% endif %}
-<a class="btn btn-success" href="{% url 'conversation' %}">ثبت نام در دوره مکالمه</a>
+
     <br>
     <br>
     <hr>
@@ -259,7 +331,7 @@ $(document).ready(function() {
         <h4 class="modal-title" id="testLabel">ایمیل شما تایید نشده است!</h4>
       </div>
       <div class="modal-body">
-          کاربر محترم برای استفاده از محتوای موجود در صفحه شخصی خود لازم است ایمیل خود را تایید کنید. قبلا هنگام ثبت نام لینک تایید ایمیل برای شما فرستاده شده است.
+          کاربر محترم، {{ user.first_name }}  عزیز، برای استفاده از محتوای موجود در صفحه شخصی خود لازم است ایمیل خود را تایید کنید. قبلا هنگام ثبت نام لینک تایید ایمیل برای شما فرستاده شده است.
       </div>
       <div class="modal-footer">
         <a type="button" class="btn btn-primary" href="{% url 'resendkey' %}">ارسال دوباره ایمیل</a>

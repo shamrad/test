@@ -22,7 +22,46 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container">
+    <div class="container-fluid">
+    <div class="row">
+    <div class="text-center col-md-4 col-md-offset-2" style="border: 2px solid rgb(149,23,104); float: left; border-radius: 10px">
+        <br>
+        <p>پروفایل کاربری:</p>
+        <img src="{% static 'user_profile/professor.png' %}">
+        <h2>{{ user.first_name }}</h2>
+        <h3>username: {{ user.username }}</h3>
+        <p>email: {{ user.email }}</p>
+        <a href="{% url 'user_profile:edit' %}">ویرایش اطلاعات</a>
+    </div>
+    <div class="text-center col-md-4">
+        <ul class="nav nav-justified">
+
+                <li><a href="#agree" aria-controls="schedule" role="tab" data-toggle="tab"><img src="{% static 'user_profile/handshake.png' %}" width="100px"></a></li>
+                <li><a href="#payment" aria-controls="schedule" role="tab" data-toggle="tab"><img src="{% static 'user_profile/credit-card.png' %}" width="100px"></a></li>
+                <li><a href="#best" aria-controls="schedule" role="tab" data-toggle="tab"><img src="{% static 'user_profile/agreement.png' %}" width="100px"></a></li>
+
+        </ul>
+        <div class="tab-content" id="tabs-collapse">
+                        <div role="tabpanel" class="tab-pane fade in active" id="agree">
+                            <div class="tab-inner">
+                                <h3>دریافت فرم قرارداد و پر کردن آن</h3>
+                            </div>
+                        </div>
+
+                        <div role="tabpanel" class="tab-pane fade" id="payment">
+                            <div class="tab-inner">
+                                <h3>نحوه بازپرداخت</h3>
+                            </div>
+                        </div>
+
+                        <div role="tabpanel" class="tab-pane fade" id="best">
+                            <div class="tab-inner">
+                                <h3>بهترین پاسخ ها</h3>
+                            </div>
+                        </div>
+                    </div>
+    </div>
+    </div>
 
 
 <h1>{{ income }}</h1>

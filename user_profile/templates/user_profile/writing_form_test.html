@@ -4,7 +4,7 @@
     {{ user.first_name }}
 {% endblock %}
 {% block title %}
-    ثبت رایتینگ جدید
+    رایتینگ رایگان
 {% endblock %}
 
 
@@ -19,16 +19,51 @@
 
 {%  endblock %}
 
+{% block cre %}
+{{ user.credit2 }}
+{% endblock %}
+
 {% block content %}
     <div class="container-fluid">
-    <h3>Submit your new Writing to be corrected!</h3>
+    <h3>Submit your new Writing to be corrected! (FREE Version!)</h3>
 
         <ul style="direction: rtl;">
-            <li>بعد از ارسال متن نهایتا تا 5 ساعت بعد متن شما نمره دهی میشود</li>
-            <li>نمره ها از 30 محاسبه می شود و ملاک نحوه ی تصحیح در آزمون تافل است</li>
-            <li>برای داشتن ملاک بیشتر زمان مورد نظر خود را وارد کنید سپس دکمه شروع را بزنید</li>
-            <li>در نسخه رایگان شما محدمد به 1000 کارکتر هستید</li>
+            <li>بعد از ارسال متن نهایتا تا 5 ساعت بعد متن شما نمره دهی می شود.</li>
+            <li>نمره ها از 30 محاسبه می شود و ملاک نحوه ی تصحیح در آزمون تافل است.</li>
+            <li>میتوانید برای  شبیه سازی جلسه آزمون از تایمر برای اندازه گیری زمان استفاده کنید.</li>
+            <li>این رایتینگ به صورت نمونه برای شما به رایگان تصحیح می شود، در این نمونه شما محدود به نوشتن 1000 کاراکتر هستید.</li>
+
         </ul>
+
+
+
+<br>
+
+<button type="button" class="btn btn-primary btn-lg col-sm-offset-4" data-toggle="modal" data-target="#direction">
+  TOEFL Writing Direction
+</button>
+
+    <br>
+    <br>
+<!-- Modal -->
+<div class="modal fade" id="direction" tabindex="-1" role="dialog" aria-labelledby="directionLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="directionLabel">Writing Direction</h4>
+      </div>
+      <div class="modal-body">
+      For this task, you will write an essay in response to a question that asks you to state, explain, and support your opinion on an issue. In an actual test, you will have 30 minutes to write your essay.
+Typically, an effective essay will contain a minimum of 300 words. Your essay will be judged on the quality of your writing. This includes the development of your ideas, the organization of your essay, and the quality and accuracy of the language you use to express your ideas.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 
 
