@@ -36,6 +36,7 @@ def index(request):
     }
     return render(request, 'user_profile/index.html',context)
 
+
 @login_required(login_url='user_profile:login')
 @csrf_exempt
 def writing(request,pk):
