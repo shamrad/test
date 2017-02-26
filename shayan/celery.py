@@ -8,7 +8,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'shayan.settings')
 app = celery.Celery('shayan')
 # print(settings.BROKER_URL)
 app.config_from_object('django.conf:settings')
-app.config_from_object('django.conf:settings', namespace='CELERY')
+# app.config_from_object('django.conf:settings', namespace='CELERY')
 app.autodiscover_tasks()
 
 app.conf.beat_schedule= {
