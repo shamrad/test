@@ -23,6 +23,7 @@ app.conf.beat_schedule= {
     },
     'test111':{
         'task': 'test',
+        'options': {'queue': 'celery'},
         'schedule' : crontab(),
     },
 }
