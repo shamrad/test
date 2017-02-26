@@ -147,6 +147,7 @@ fabric.properties
 # .idea/misc.xml
 # *.ipr
 
+celerybeat.pid
 
 ### Django ###
 *.pyc

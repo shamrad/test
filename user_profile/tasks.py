@@ -13,7 +13,7 @@ app = Celery()
 
 @app.task(name='user_profile.tasks.ersal')
 def ersal():
-    pending_requests = Registration.objects.filter(is_finished=False)
+    pending_requests = Registration.objects.get(is_finished=False)
     for i in pending_requests:
         pending_lesson=Lesson.objects.filter(whichcourse=i.course).filter(order=i.last_email_received+1)
         send_mail('dars shomare %s' % pending_lesson.order, pending_lesson.content, settings.DEFAULT_FROM_EMAIL,
