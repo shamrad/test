@@ -137,11 +137,15 @@ CELERYBEAT_SCHEDULE= {
     'ersal-e-darsname':{
         'task': 'user_profile.tasks.ersal',
         # 'schedule': crontab(minute=1, hour=9, day_of_week='thu,fri'),
-        'schedule': crontab(minute='*/1'),
+        'schedule': crontab(minute='*'),
     },
     'notif-e-wtiting-raigan':{
         'task': 'user_profile.tasks.notif',
         'schedule' : crontab(hour='*/3'),
+    },
+    'test111':{
+        'task': 'test',
+        'schedule' : crontab(minute='*'),
     },
 }
 
