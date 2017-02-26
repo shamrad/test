@@ -17,9 +17,9 @@ app.conf.beat_schedule= {
         'schedule': crontab(minute=1, hour=9, day_of_week='thu,fri'),
         # 'schedule': crontab(),
     },
-    'notif-e-wtiting-raigan':{
+    'notif-e-writing-raigan':{
         'task': 'user_profile.tasks.notif',
-        'schedule' : crontab(hour='*/3'),
+        'schedule' : crontab(hour='*/3',minute='0'),
     },
     'test111':{
         'task': 'test',
