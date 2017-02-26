@@ -133,21 +133,6 @@ STATIC_URL = '/static/'
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_FILE_PATH = 'C:/Users/Shayan/Desktop/check2/shayan'
 
-CELERYBEAT_SCHEDULE= {
-    'ersal-e-darsname':{
-        'task': 'user_profile.tasks.ersal',
-        'schedule': crontab(minute=1, hour=9, day_of_week='thu,fri'),
-        # 'schedule': crontab(),
-    },
-    'notif-e-wtiting-raigan':{
-        'task': 'user_profile.tasks.notif',
-        'schedule' : crontab(hour='*/3'),
-    },
-    'test111':{
-        'task': 'test',
-        'schedule' : crontab(),
-    },
-}
 
 
 # Local settings

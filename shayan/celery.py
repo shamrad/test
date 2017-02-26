@@ -2,6 +2,7 @@
 from __future__ import absolute_import, unicode_literals
 import os
 import celery
+from celery.schedules import crontab
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'shayan.settings')
 app = celery.Celery('shayan')
@@ -10,6 +11,21 @@ app.config_from_object('django.conf:settings')
 app.config_from_object('django.conf:settings', namespace='CELERY')
 app.autodiscover_tasks()
 
+app.conf.beat_schedule= {
+    'ersal-e-darsname':{
+        'task': 'user_profile.tasks.ersal',
+        'schedule': crontab(minute=1, hour=9, day_of_week='thu,fri'),
+        # 'schedule': crontab(),
+    },
+    'notif-e-wtiting-raigan':{
+        'task': 'user_profile.tasks.notif',
+        'schedule' : crontab(hour='*/3'),
+    },
+    'test111':{
+        'task': 'test',
+        'schedule' : crontab(),
+    },
+}
 
 @app.task(bind=True,name='test')
 def debug_task(self):
