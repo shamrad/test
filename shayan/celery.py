@@ -14,18 +14,20 @@ app.autodiscover_tasks()
 app.conf.beat_schedule= {
     'ersal-e-darsname':{
         'task': 'user_profile.tasks.ersal',
-        'schedule': crontab(minute=1, hour=9, day_of_week='thu,fri'),
+        'options': {'queue': 'celery'},
+        'schedule': crontab(minute=0, hour=9, day_of_week='thu,fri'),
         # 'schedule': crontab(),
     },
     'notif-e-writing-raigan':{
         'task': 'user_profile.tasks.notif',
+        'options': {'queue': 'celery'},
         'schedule' : crontab(hour='*/3',minute='0'),
     },
-    'test111':{
-        'task': 'test',
-        'options': {'queue': 'celery'},
-        'schedule' : crontab(),
-    },
+    # 'test111':{
+    #     'task': 'test',
+    #     'options': {'queue': 'celery'},
+    #     'schedule' : crontab(),
+    # },
 }
 
 @app.task(bind=True,name='test')
