@@ -19,11 +19,9 @@ def Teacherindex(request):
     follow = Writing.objects.filter(corrector=request.user.username).values('author').distinct()
     writing = Writing.objects.exclude(author=request.user).filter(author__in=follow, score=0)
 
-
     all=Writing.objects.filter(corrector=request.user.username)
 
-    rate=Teacherate.objects.filter(teacher=request.user).aggregate(Sum('rate'))
-
+    rate=Teacherate.objects.filter(teacher=request.user).aggregate(Sum('rate')) #mjafar beporsam
 
     income=Writing.objects.filter(corrector=request.user.username).count()-follow.count()
     context={
@@ -58,6 +56,7 @@ class Score(LoginRequiredMixin,UpdateView):
             else:
                 raise PermissionDenied() #shoma nemitavanid matne khudetan ra tashih koni
         raise PermissionDenied()  # or Http404
+
 
 def ChangePassword(request):
     if request.method == 'POST':

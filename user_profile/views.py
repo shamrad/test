@@ -14,7 +14,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.generic.edit import UpdateView
 from django.contrib.auth.forms import PasswordChangeForm
 # from oauthlib.oauth2 import Client
-# from suds.client import Client
+from suds.client import Client
 from simple_email_confirmation.models import EmailAddress
 from django.conf import settings
 
@@ -187,8 +187,11 @@ def NewWriting(request):
             post.save()
             writing = request.user.writing_set.all().count()
             if writing>1:
+                corrector=Writing.objects.filter(author=current_user).get(pk=1).corrector
                 current_user.credit2 = current_user.credit2-1
                 current_user.save()
+                send_mail('new writing from %s' %current_user.username, '%s has submitted a new writing, and it is avaliable in your profile.' %current_user.username,
+                          settings.DEFAULT_FROM_EMAIL, [corrector.email], fail_silently=False)
             return redirect('user_profile:index')
 
     else:

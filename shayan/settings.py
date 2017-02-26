@@ -141,6 +141,10 @@ app.conf.beat_schedule = {
         # 'schedule': crontab(minute=1, hour=9, day_of_week='thu,fri'),
         'schedule': crontab(minute='*/5'),
     },
+    'notif-e-wtiting-raigan':{
+        'task': 'user_profile.tasks.notif',
+        'schedule' : crontab(hour='*/3'),
+    },
 }
 
 
