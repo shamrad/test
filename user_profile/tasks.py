@@ -18,9 +18,9 @@ def ersal():
         pending_lesson=Lesson.objects.filter(whichcourse=i.course).get(order=i.last_email_received+1)
         send_mail('dars shomare %s' % pending_lesson.order, pending_lesson.content, settings.DEFAULT_FROM_EMAIL,
                   [i.participant.email],fail_silently=False)
-        i.last_email_received += 1
-        if i.last_email_received == i.course.number_of_sessions:
-            i.is_finished = True
+        # i.last_email_received += 1
+        # if i.last_email_received == i.course.number_of_sessions:
+        #     i.is_finished = True
 
 
 @app.task(name='user_profile.tasks.notif')
