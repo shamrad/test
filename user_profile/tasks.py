@@ -17,7 +17,11 @@ def ersal():
     pending_requests = Registration.objects.filter(is_finished=False)
     for i in pending_requests:
         pending_lesson=Lesson.objects.filter(whichcourse=i.course).get(order=i.last_email_received+1)
-        msg_html = render_to_string('user_profile/1.html', {'username': i.participant.username})
+        msg_html = render_to_string('user_profile/1.html',
+                                    {'username': i.participant.username,
+                                     'number': pending_lesson.order,
+                                     'content': pending_lesson.content,
+                                     'site': settings.SITE_URL})
         send_mail('دانلود درس شماره %s' % pending_lesson.order, pending_lesson.content, settings.DEFAULT_FROM_EMAIL,
                   [i.participant.email],fail_silently=False,html_message=msg_html)
         i.last_email_received += 1
@@ -32,6 +36,7 @@ def notif():
     free_writings=Writing.objects.filter(corrector=None)
     teachers=User.objects.filter(teacher=True)
     for x in teachers:
-        send_mail('notif', '%s new free writings are available in your profile.' %free_writings.count(),
-                  settings.DEFAULT_FROM_EMAIL,[x.email],fail_silently=False)
+        send_mail('New Writings Notification', 'Dear Prof. %s, %s new free writings are available in your profile.'
+                  % x.username % free_writings.count(),
+                  settings.DEFAULT_FROM_EMAIL, [x.email], fail_silently=False)
 
