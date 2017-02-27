@@ -191,7 +191,7 @@
 
                                         <table align="left" border="0" cellpadding="0" cellspacing="0" width="150">
                                             <tr>
-                                                <td valign="top"><a href="http://scorize.com" target="_blank"><img src="{{ site }}{% static 'user_profile/notes.png' %}" alt="alt text here" width="150" height="200" border="0" style="display: block; font-family: Arial; color: #266e9c; font-size: 14px;"></a></td>
+                                                <td valign="top"><a href="http://scorize.com" target="_blank"><img src="{{ site }}{% static 'user_profile/notes.png' %}" border="0" style="display: block; font-family: Arial; color: #266e9c; font-size: 14px;"></a></td>
                                             </tr>
                                         </table>
                                     </div>
@@ -251,7 +251,7 @@
                                     <div style="display:inline-block; margin: 0 -2px; max-width:150px; vertical-align:top; width:100%;" dir="ltr">
                                         <table align="left" border="0" cellpadding="0" cellspacing="0" width="150">
                                             <tr>
-                                                <td valign="top"><a href="http://scorize.com" target="_blank"><img src="{{ site }}{% static 'user_profile/school.png' %}" alt="alt text here" width="150" height="200" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px;"></a></td>
+                                                <td valign="top"><a href="http://scorize.com" target="_blank"><img src="{{ site }}{% static 'user_profile/school.png' %}" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px;"></a></td>
                                             </tr>
                                         </table>
                                     </div>
@@ -271,7 +271,9 @@
                                                             <td align="left" style="padding: 0 0 5px 0; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding-copy">دانلود فایل متنی این جلسه</td>
                                                         </tr>
                                                         <tr>
-                                                             <td align="left" style="padding: 10px 0 15px 0; font-size: 16px; line-height: 24px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding-copy">برای دانلود فایل متنی جلسه شماره {{ number }} اینجا کلیک کنید</td>
+                                                            {% with 'dars ha/Lesson '|add:number|add:'.mp3' as music_static %}
+                                                             <td align="left" style="padding: 10px 0 15px 0; font-size: 16px; line-height: 24px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding-copy">برای دانلود فایل متنی جلسه شماره {{ number }} <a href="{{ site }}{% static music_static %}" download>اینجا</a> کلیک کنید</td>
+                                                            {% endwith %}
                                                         </tr>
                                                     </table>
                                                 </td>
@@ -312,7 +314,7 @@
 
                                         <table align="left" border="0" cellpadding="0" cellspacing="0" width="150">
                                             <tr>
-                                                <td valign="top"><a href="http://scorize.com" target="_blank"><img src="{{ site }}{% static 'user_profile/music-player.png' %}" alt="alt text here" width="150" height="200" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px;"></a></td>
+                                                <td valign="top"><a href="http://scorize.com" target="_blank"><img src="{{ site }}{% static 'user_profile/music-player.png' %}" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px;"></a></td>
                                             </tr>
                                         </table>
                                     </div>
