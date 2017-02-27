@@ -84,7 +84,7 @@ class UserFormView(View):
     form_class=UserForm
     template_name='user_profile/register_form.html'
 
-    def get(self,request):
+    def get(self, request: object) -> object:
         form=self.form_class(None)
         return render(request,self.template_name, {'form':form})
 

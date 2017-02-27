@@ -17,11 +17,12 @@ def ersal():
     pending_requests = Registration.objects.filter(is_finished=False)
     for i in pending_requests:
         pending_lesson=Lesson.objects.filter(whichcourse=i.course).get(order=i.last_email_received+1)
-        msg_html = render_to_string('user_profile/11.html',
+        msg_html = render_to_string('user_profile/1.html',
                                     {'username': i.participant.username,
                                      'number': pending_lesson.order,
                                      'content': pending_lesson.content,
-                                     'site': settings.SITE_URL})
+                                     'site': settings.SITE_URL,
+                                     'music_file': 'dars ha/Lesson '+pending_lesson.order+'.mp3'})
         send_mail('دانلود درس شماره %s' % pending_lesson.order, pending_lesson.content, settings.DEFAULT_FROM_EMAIL,
                   [i.participant.email],fail_silently=False,html_message=msg_html)
         i.last_email_received += 1

@@ -119,7 +119,7 @@
 <body style="margin: 0 !important; padding: 0 !important;">
 
 <!-- HIDDEN PREHEADER TEXT -->
-<div style="display: none; font-size: 1px; color: #fefefe; line-height: 1px; font-family: Helvetica, Arial, sans-serif; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;">
+<div style="display: none; font-size: 1px; color: #fefefe; line-height: 1px; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;">
     دانلود فایل دوره رایگان مکالمه اسکورایز
 </div>
 
@@ -149,7 +149,7 @@
                                     <!-- COPY -->
                                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                         <tr>
-                                            <td align="center" style="font-size: 36px; font-family: Helvetica, Arial, sans-serif; color: white; padding-top: 15px;" class="padding-copy">دانلود درس شماره {{ number}} دوره مکالمه</td>
+                                            <td align="center" style="font-size: 36px; color: white; padding-top: 15px;" class="padding-copy">دانلود درس شماره {{ number}} دوره مکالمه</td>
                                         </tr>
                                     </table>
                                 </td>
@@ -170,7 +170,8 @@
         <td bgcolor="#ffffff" align="center" style="padding: 70px 15px 25px 15px;" class="section-padding">
             <table border="0" cellpadding="0" cellspacing="0" width="500" style="padding:0 0 20px 0;" class="responsive-table">
                 <tr>
-                    <p style="direction: rtl"> {{ username }} عزیز سلام! خوش حالیم که از دوره مکالمه استفاده میکنی!</p>
+                    <p style="direction: rtl; font-size: 20px"> {{ username }} عزیز سلام! خوش حالیم که از دوره مکالمه استفاده میکنی!</p>
+                    <br>
                 </tr>
                 <tr>
                     <td align="center" height="100%" valign="top" width="100%" style="padding-bottom: 35px;">
@@ -208,10 +209,10 @@
                                                     <!-- ARTICLE -->
                                                     <table border="0" cellspacing="0" cellpadding="0" width="100%">
                                                         <tr>
-                                                            <td align="left" style="padding: 0 0 5px 0; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding-copy">موضوع این جلسه</td>
+                                                            <td align="left" style="padding: 0 0 5px 0; font-size: 22px; font-weight: normal; color: #333333;" class="padding-copy">موضوع این جلسه</td>
                                                         </tr>
                                                         <tr>
-                                                             <td align="left" style="direction:rtl;padding: 10px 0 15px 0; font-size: 16px; line-height: 24px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding-copy">استفاده از جملات {{ content }}</td>
+                                                             <td align="left" style="direction:rtl;padding: 10px 0 15px 0; font-size: 16px; line-height: 24px; color: #666666;" class="padding-copy">استفاده از جملات {{ content }}</td>
                                                         </tr>
                                                     </table>
                                                 </td>
@@ -251,7 +252,7 @@
                                     <div style="display:inline-block; margin: 0 -2px; max-width:150px; vertical-align:top; width:100%;" dir="ltr">
                                         <table align="left" border="0" cellpadding="0" cellspacing="0" width="150">
                                             <tr>
-                                                <td valign="top"><a href="http://scorize.com" target="_blank"><img src="{{ site }}{% static 'user_profile/school.png' %}" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px;"></a></td>
+                                                <td valign="top"><a href="http://scorize.com" target="_blank"><img src="{{ site }}{% static 'user_profile/school.png' %}" width="128" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px;"></a></td>
                                             </tr>
                                         </table>
                                     </div>
@@ -268,12 +269,10 @@
                                                     <!-- ARTICLE -->
                                                     <table border="0" cellspacing="0" cellpadding="0" width="100%">
                                                         <tr>
-                                                            <td align="left" style="padding: 0 0 5px 0; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding-copy">دانلود فایل متنی این جلسه</td>
+                                                            <td align="left" style="padding: 0 0 5px 0; font-size: 22px; font-weight: normal; color: #333333;" class="padding-copy">دانلود فایل متنی این جلسه</td>
                                                         </tr>
                                                         <tr>
-                                                            {% with 'dars ha/Lesson '|add:number|add:'.mp3' as music_static %}
-                                                             <td align="left" style="padding: 10px 0 15px 0; font-size: 16px; line-height: 24px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding-copy">برای دانلود فایل متنی جلسه شماره {{ number }} <a href="{{ site }}{% static music_static %}" download>اینجا</a> کلیک کنید</td>
-                                                            {% endwith %}
+                                                             <td align="left" style="padding: 10px 0 15px 0; font-size: 16px; line-height: 24px; color: #666666;" class="padding-copy">برای دانلود فایل متنی جلسه شماره {{ number }} <a href="{{ site }}{% static music_file %}" download>اینجا</a> کلیک کنید</td>
                                                         </tr>
                                                     </table>
                                                 </td>
@@ -314,7 +313,7 @@
 
                                         <table align="left" border="0" cellpadding="0" cellspacing="0" width="150">
                                             <tr>
-                                                <td valign="top"><a href="http://scorize.com" target="_blank"><img src="{{ site }}{% static 'user_profile/music-player.png' %}" border="0" style="display: block; font-family: Arial; color: #666666; font-size: 14px;"></a></td>
+                                                <td valign="top"><a href="http://scorize.com" target="_blank"><img src="{{ site }}{% static 'user_profile/music-player.png' %}" width="128" border="0" style="display: block;"></a></td>
                                             </tr>
                                         </table>
                                     </div>
@@ -331,10 +330,10 @@
                                                     <!-- ARTICLE -->
                                                     <table border="0" cellspacing="0" cellpadding="0" width="100%">
                                                         <tr>
-                                                            <td align="left" style="padding: 0 0 5px 0; font-size: 22px; font-family: Helvetica, Arial, sans-serif; font-weight: normal; color: #333333;" class="padding-copy">فایل صوتی این جلسه</td>
+                                                            <td align="left" style="padding: 0 0 5px 0; font-size: 22px; font-weight: normal; color: #333333;" class="padding-copy">فایل صوتی این جلسه</td>
                                                         </tr>
                                                         <tr>
-                                                             <td align="left" style="direction: rtl;padding: 10px 0 15px 0; font-size: 16px; line-height: 24px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding-copy">برای دریافت فایل صوتی جلسه شماره {{ number }} به مدت 5 دقیقه اینجا کلیک کنید.</td>
+                                                             <td align="left" style="direction: rtl;padding: 10px 0 15px 0; font-size: 16px; line-height: 24px; color: #666666;" class="padding-copy">برای دریافت فایل صوتی جلسه شماره {{ number }} به مدت 5 دقیقه اینجا کلیک کنید.</td>
                                                         </tr>
                                                     </table>
                                                 </td>
@@ -370,10 +369,10 @@
                                     <!-- COPY -->
                                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                         <tr>
-                                            <td align="center" style="font-size: 25px; font-family: Helvetica, Arial, sans-serif; color: #333333; padding-top: 30px;" class="padding-copy">دوره رایگان تقویت مکالمه - اسکورایز</td>
+                                            <td align="center" style="font-size: 25px; color: #333333; padding-top: 30px;" class="padding-copy">دوره رایگان تقویت مکالمه - اسکورایز</td>
                                         </tr>
                                         <tr>
-                                            <td align="center" style="direction:rtl;;padding: 20px 0 0 0; font-size: 16px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #666666;" class="padding-copy">این دوره برای تقویت مهارت مکالمه به زبان انگلیسی برای فارسی زبانان طراحی شده و با تمرین و تکرار درس ها به شما این امکان را میدهد در هر موقعیتی مطلب مورد نظر خود را بیان کنید.</td>
+                                            <td align="center" style="direction:rtl;;padding: 20px 0 0 0; font-size: 16px; line-height: 25px; color: #666666;" class="padding-copy">این دوره برای تقویت مهارت مکالمه به زبان انگلیسی برای فارسی زبانان طراحی شده و با تمرین و تکرار درس ها به شما این امکان را میدهد در هر موقعیتی مطلب مورد نظر خود را بیان کنید.</td>
                                         </tr>
                                     </table>
                                 </td>
@@ -386,7 +385,7 @@
                                             <td align="center" style="padding-top: 25px;" class="padding">
                                                 <table border="0" cellspacing="0" cellpadding="0" class="mobile-button-container">
                                                     <tr>
-                                                        <td align="center" style="border-radius: 3px;" bgcolor="#256F9C"><a href="http://scorize.com" target="_blank" style="font-size: 16px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; border-radius: 3px; padding: 15px 25px; border: 1px solid #256F9C; display: inline-block;" class="mobile-button">می خواهم بیشتر بدانم&rarr;</a></td>
+                                                        <td align="center" style="border-radius: 3px;" bgcolor="#256F9C"><a href="http://scorize.com" target="_blank" style="font-size: 16px; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; border-radius: 3px; padding: 15px 25px; border: 1px solid #256F9C; display: inline-block;" class="mobile-button">می خواهم بیشتر بدانم&rarr;</a></td>
                                                     </tr>
                                                 </table>
                                             </td>
@@ -410,7 +409,7 @@
             <!-- UNSUBSCRIBE COPY -->
             <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="max-width: 500px;" class="responsive-table">
                 <tr>
-                    <td align="center" style="font-size: 12px; line-height: 18px; font-family: Helvetica, Arial, sans-serif; color:#666666;">
+                    <td align="center" style="font-size: 12px; line-height: 18px; color:#666666;">
                         گروه اسکورایز - دوره رایگان مکالمه
                         <br>
                         <a href="#" target="_blank" style="color: #666666; text-decoration: none;">Unsubscribe</a>
