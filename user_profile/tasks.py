@@ -22,7 +22,7 @@ def ersal():
                                      'number': pending_lesson.order,
                                      'content': pending_lesson.content,
                                      'site': settings.SITE_URL,
-                                     'music_file': 'dars ha/Lesson '+pending_lesson.order+'.mp3'})
+                                     'music_file': 'dars ha/Lesson '+str(pending_lesson.order)+'.mp3'})
         send_mail('دانلود درس شماره %s' % pending_lesson.order, pending_lesson.content, settings.DEFAULT_FROM_EMAIL,
                   [i.participant.email],fail_silently=False,html_message=msg_html)
         i.last_email_received += 1
