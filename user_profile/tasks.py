@@ -23,6 +23,7 @@ def ersal():
         i.last_email_received += 1
         if i.last_email_received == i.course.number_of_sessions:
             i.is_finished = True
+        i.save()
 
 
 @app.task(name='user_profile.tasks.notif')
