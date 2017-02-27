@@ -17,7 +17,7 @@ def ersal():
     pending_requests = Registration.objects.filter(is_finished=False)
     for i in pending_requests:
         pending_lesson=Lesson.objects.filter(whichcourse=i.course).get(order=i.last_email_received+1)
-        msg_html = render_to_string('user_profile/1.html',
+        msg_html = render_to_string('user_profile/11.html',
                                     {'username': i.participant.username,
                                      'number': pending_lesson.order,
                                      'content': pending_lesson.content,
