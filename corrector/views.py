@@ -42,7 +42,7 @@ class Score(LoginRequiredMixin,UpdateView):
     login_url = 'user_profile:login'
     model = Writing
     template_name = 'user_profile/correctionview.html'
-    fields = ['text','score','title','corrector','moshaver', 'grammer', 'vocab', 'oad', 'wordchoice', 'unity','adress','grammersc', 'vocabsc', 'oadsc', 'wordchoicesc', 'unitysc','adresssc' ]
+    fields = ['text','score','title','corrector','moshaver', 'grammer', 'vocab', 'oad', 'wordchoice', 'unity','adress','grammersc', 'vocabsc', 'oadsc', 'wordchoicesc', 'unitysc','adresssc']
     success_url = reverse_lazy('corrector:teacherindex')
 
     def get_object(self, *args, **kwargs):

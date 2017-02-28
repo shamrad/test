@@ -21,7 +21,7 @@ app.conf.beat_schedule= {
     'notif-e-writing-raigan':{
         'task': 'user_profile.tasks.notif',
         'options': {'queue': 'celery'},
-        'schedule' : crontab(hour='9,18',minute='0'),
+        'schedule' : crontab(hour='9,18', minute='0'),
     },
     # 'test111':{
     #     'task': 'test',

@@ -24,11 +24,15 @@
     .input-group-addon{
         color: white;
     }
+    p{direction: rtl}
     </style>
 
 {% endblock %}
 {% block content %}
-    <div class="container">
+    <div class="container-fluid">
+        <p>همکار گرامی، لطفا با توجه به <a href="{{ site }}{% static 'Writing_Rubrics.pdf' %}" download> نکات و دستورالعمل سازمان ets</a>متن زیر را تصحیح فرمایید.</p>
+        <p>می توانید با استفاده از ابزار موجود در صفحه خود برای ارائه توضیحات بهتر هر قسمت از متن را رنگی کرده و در قسمت توضیحات به تفضیل مسئله را بیان کنید.</p>
+        <p>در پایان پس از بررسی متن در هر یک از موارد شش گانه تصحیح نمره مناسب را برای داوطلب منظور نمایید. با تشکر</p>
         <form method="post" action="" class="form-horizontal">
         {% csrf_token %}
 

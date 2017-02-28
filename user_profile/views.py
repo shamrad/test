@@ -189,7 +189,7 @@ def NewWriting(request):
             writing = request.user.writing_set.all().count()
             if writing>1:
                 corrector=Writing.objects.filter(author=current_user).get(pk=1).corrector
-                current_user.credit2 = current_user.credit2-1
+                current_user.credit2 -= 1
                 current_user.save()
                 send_mail('New writing from %s' %current_user.username,
                           '%s has submitted a new writing, and it is avaliable in your profile.' %current_user.username,
@@ -240,7 +240,7 @@ def conversation(request):
         m= Registration(course=Mokaleme, participant=request.user)
         m.save()
         send_mail('ثبت نام شما در دوره مکالمه رایگان اسکورایز با موفقیت انجام شد!',
-              'ثبت نام شدید! منتظر درس های دوره مکالمه باشید. درس ها به مدت 7 هفته در 9 صبح روزهای شنبه و دوشنبه و چهارشنبه به ایمیل شما ارسال میشه.',
+              'ثبت نام شدید! منتظر درس های دوره مکالمه باشید. درس ها به مدت 7 هفته در 9 صبح روزهای شنبه و دوشنبه و چهارشنبه به ایمیل شما ارسال می شود.',
               settings.DEFAULT_FROM_EMAIL, [request.user.email], fail_silently=False)
         messages.success(request,'ثبت نام با موفقیت انجام شد.')
     else:

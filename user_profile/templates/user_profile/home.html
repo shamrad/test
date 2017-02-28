@@ -69,7 +69,7 @@
 
 {#    picture of toefl and others#}
 
-            <div class="row" data-anijs="if: scroll, on: window, do: zoomIn animated, before: $scrollReveal repeat">
+            <div class="row" >
               <div class="col-md-4 text-center" >
                 <img alt="GRE , جی آر ای ,exam , learning, آزمون" src="{% static 'user_profile/gre1.jpg' %}">
               </div>
@@ -232,7 +232,7 @@
         <h2 style="direction: rtl">شما هم می خواهید در آزمون تافل شرکت کنید؟</h2>
         <p style="direction: rtl; font-size: 20px">حتما توصیه می کنیم یه نگاهی بندازید. شاید سوال شما هم اینجا باشد!</p>
         <a data-anijs="if: mouseover, do: swing animated" class="btn btn-pink" style="margin: auto;width: 32rem ; border-radius: 50px; padding: 15px; font-size: 25px" href="{% url 'faq' %}">سوالات متداول تافلی ها</a>
-        <img style="padding-left: 15rem" data-anijs="if: scroll, on: window, do: slideInRight animated, before: $scrollReveal" src="{% static "user_profile/question.png" %}">
+        <img style="padding-left: 15rem" src="{% static "user_profile/question.png" %}">
         <br>
         <br>
     </div>
@@ -247,7 +247,7 @@
         <h2 style="direction: rtl">می خواهید بیشتر درباره آزمون تافل بدونید؟</h2>
         <p style="direction: rtl; font-size: 20px">تموم چیزی که قبل از شروع تا سر جلسه آزمون را باید بدانید رو آماده کردیم.</p>
         <br>
-        <img style="padding-right: 15rem" data-anijs="if: scroll, on: window, do: slideInLeft animated, before: $scrollReveal" src="{% static "user_profile/notes.png" %}">
+        <img style="padding-right: 15rem" src="{% static "user_profile/notes.png" %}">
         <a data-anijs="if: mouseover, do: swing animated" class="btn btn-pink" style="width: 29rem ; border-radius: 50px; padding: 15px; font-size: 25px" href="{% url 'service' %}">هر چی که باید بدونید</a>
         <br>
         <br>
@@ -257,7 +257,7 @@
 
     <br>
 {#    8-week schedule#}
-    <div class="container" data-anijs="if: scroll, on: window, do: lightSpeedIn animated, before: $scrollReveal">
+    <div class="container" >
     <div class="row" style="border: 3px solid #dfb9d2; border-radius:5px ">
     <div class="text-center">
         <h2 style="direction: rtl">نمی دونید از کجا باید شروع کنید؟</h2>
