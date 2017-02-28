@@ -26,6 +26,28 @@
 
 
     <style>
+.nav.nav-justified > li > a > img {
+    width: 100px;
+    height: 100px;
+    opacity: .3;
+    -webkit-transform: scale(.8,.8);
+    transform: scale(.8,.8);
+    -webkit-transition: all 0.3s 0s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.3s 0s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+#khadamat li a:hover, #khadamat li a:focus{
+    background-color: transparent;
+}
+.nav.nav-justified > li.active > a > img,
+.nav.nav-justified > li:hover > a > img,
+.nav.nav-justified > li:focus > a > img {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+    -webkit-transition: all 0.3s 0s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.3s 0s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.tab-pane .tab-inner { padding: 30px 0 20px; }
     body{direction: rtl}
     mark{
         background: none;
@@ -33,16 +55,7 @@
         font-weight: bold;
         font-size: 20px;
     }
-    .btn-tst{
-        background-color: rgb(149,23,104);
-        color: white;
-        border: 2px dashed white;
-    }
-    .btn-tst:hover{
-        background-color: white;
-        color: rgb(149,23,104);
-        border: 2px dashed rgb(149,23,104);
-    }
+
     .ct-series-a .ct-bar, .ct-series-a .ct-line, .ct-series-a .ct-point, .ct-series-a .ct-slice-donut {
             stroke: rgb(149,23,104);
             }
@@ -68,6 +81,9 @@
     li{
         margin-bottom: 1rem;
     }
+    a{
+        color: black;
+    }
     </style>
 {% endblock %}
 
@@ -89,19 +105,19 @@
     <div class="text-center col-md-4">
         <h2>خدمات:</h2>
 
-        <ul class="nav nav-justified">
+        <ul class="nav nav-justified" id="khadamat">
 
                 <li><a href="#raigan" aria-controls="schedule" role="tab" data-toggle="tab"><img src="{% static 'user_profile/dollar-symbol.png' %}" width="100px"></a></li>
-                <li><a href="#mokaleme" aria-controls="schedule" role="tab" data-toggle="tab"><img src="{% static 'user_profile/chat.png' %}" width="100px"></a></li>
+                <li class="active"><a href="#mokaleme" aria-controls="schedule" role="tab" data-toggle="tab"><img src="{% static 'user_profile/chat.png' %}" width="100px"></a></li>
                 <li><a href="#schedule" aria-controls="schedule" role="tab" data-toggle="tab"><img src="{% static 'user_profile/1 (1).png' %}" width="100px"></a></li>
 
         </ul>
     {% if request.user.is_confirmed %}
         <div class="tab-content" id="tabs-collapse">
-                        <div role="tabpanel" class="tab-pane fade in active" id="raigan">
+                        <div role="tabpanel" class="tab-pane fade" id="raigan">
                             <div class="tab-inner">
                                 {% if exam %}
-                                    <a href="#" disabled><h3>نوشتن Writing رایگان</h3></a>
+                                    <h3>شما Writing رایگان خود را قبلا نوشته اید!</h3>
                                 {% else %}
                                     <a href="{% url 'user_profile:NewWriting' %}"><h3>نوشتن Writing رایگان</h3></a>
                                 {% endif %}
@@ -109,7 +125,7 @@
                             </div>
                         </div>
 
-                        <div role="tabpanel" class="tab-pane fade" id="mokaleme">
+                        <div role="tabpanel" class="tab-pane fade in active" id="mokaleme">
                             <div class="tab-inner">
 <a href="{% url 'conversation' %}"><h3>ثبت نام در دوره 10 هفته ای مکالمه</h3></a>
                                 <a href="{% url 'nini' %}"><p>اطلاعات بیشتر</p></a>
@@ -124,14 +140,14 @@
                     </div>
     {% else %}
     <div class="tab-content" id="tabs-collapse">
-                        <div role="tabpanel" class="tab-pane fade in active" id="raigan">
+                        <div role="tabpanel" class="tab-pane fade" id="raigan">
                             <div class="tab-inner">
 <a data-toggle="modal" data-target="#test1"><h3>نوشتن Writing رایگان</h3></a>
                                 <p>محدود به 1000 کاراکتر</p>
                             </div>
                         </div>
 
-                        <div role="tabpanel" class="tab-pane fade" id="mokaleme">
+                        <div role="tabpanel" class="tab-pane fade in active" id="mokaleme">
                             <div class="tab-inner">
 <a data-toggle="modal" data-target="#test1"><h3>ثبت نام در دوره 10 هفته ای مکالمه</h3></a>
                                 <a href="{% url 'nini' %}"><p>اطلاعات بیشتر</p></a>
@@ -273,7 +289,7 @@
             ],
 
             series: [
-                a=[10],
+                a=[0],
             ]
         }, {
             fullWidth: true,

@@ -16,6 +16,9 @@ writing by {{ object.author }}
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.2.0/css/mdb.min.css" rel="stylesheet">
     <script src="{% static 'user_profile/ratingheart-script.js' %}"></script>
     <style>
+    td{
+        color: white;
+    }
     .NFh{
         border: solid 2px black;
     }
@@ -23,7 +26,7 @@ writing by {{ object.author }}
         width: 500px;
         height: 200px;
         position: fixed;
-        left: 1rem;
+        right: 1rem;
         bottom:30px;
         border:2px solid rgb(149,23,104);
         box-sizing: border-box;
@@ -43,7 +46,9 @@ writing by {{ object.author }}
 
 {% block content %}
 <div class="container-fluid">
-    <h2 class="text-info">{{ object.title }} by {{ object.author }}</h2>
+    <h3 class="text-info">Author: {{ object.author }}</h3>
+<br>
+    <h4>Topic: {{ object.title }} </h4>
 
     <p style="border: 1px solid #f1f1f1">
         {{ object.text|safe }}
@@ -103,6 +108,7 @@ writing by {{ object.author }}
         </tbody>
     </table>
         {% if form %}
+            {% if object.score != '0' %}
         <div class="banner text-center">
         <br>
 
@@ -120,6 +126,7 @@ writing by {{ object.author }}
 
 
 </form>
+                {% endif %}
     {% endif %}
         <br>
         </div>
