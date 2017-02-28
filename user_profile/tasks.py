@@ -39,6 +39,6 @@ def notif():
     teachers = User.objects.filter(teacher=True)
     for x in teachers:
         send_mail('New Writings Notification', 'Dear Prof. %s, %s new free writings are available in your profile.'
-                  % x.username % free_writings.count(),
+                  % (x.username, free_writings.count()),
                   settings.DEFAULT_FROM_EMAIL, [x.email], fail_silently=False)
 

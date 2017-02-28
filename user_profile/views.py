@@ -131,6 +131,7 @@ def resendkey(request):
 def emailsent(request):
     return render(request, 'user_profile/emailsent.html')
 
+
 class LoginView(View):
 
     def get(self, request):
@@ -312,7 +313,7 @@ def verify(request):
                                                     request.GET['Authority'],
                                                     amount1)
         if result.Status == 100:
-            current_user.amount2 =int( amount1)+int(amount2)
+            current_user.amount2 = int(amount1)+int(amount2)
             current_user.credit2 = int(credit1)+int(credit2)
             current_user.save()
             buy=Buy.objects.create(user=current_user)
@@ -322,13 +323,11 @@ def verify(request):
             buy.save()
             return render(request,'user_profile/success.html')
         elif result.Status == 101:
-            return HttpResponse('پرداخت شما ثبت شد')
+            messages.success(request, 'پرداخت شما با موفقیت انجام شد.')
+            return redirect('user_profile:index')
         else:
-            return HttpResponse('Transaction failed.')
+            messages.error(request, 'Transaction failed.')
+            return redirect('user_profile:index')
     else:
-        return HttpResponse('Transaction failed or canceled by user')
-
-
-
-
-
+        messages.warning(request, 'Transaction failed or canceled by user.')
+        return redirect('user_profile:index')
