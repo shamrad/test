@@ -57,16 +57,17 @@
         <a href="{% url 'user_profile:edit' %}">ویرایش اطلاعات</a>
     </div>
     <div class="text-center col-md-4">
-        <h2>فرم ها:</h2>
+        <br>
+        <h2 style="direction: rtl">فرم ها:</h2>
         <ul class="nav nav-justified" id="formha">
 
                 <li><a href="#agree" aria-controls="schedule" role="tab" data-toggle="tab"><img src="{% static 'user_profile/handshake.png' %}" width="100px"></a></li>
                 <li><a href="#payment" aria-controls="schedule" role="tab" data-toggle="tab"><img src="{% static 'user_profile/credit-card.png' %}" width="100px"></a></li>
-                <li><a href="#best" aria-controls="schedule" role="tab" data-toggle="tab"><img src="{% static 'user_profile/agreement.png' %}" width="100px"></a></li>
+                <li class="active"><a href="#best" aria-controls="schedule" role="tab" data-toggle="tab"><img src="{% static 'user_profile/agreement.png' %}" width="100px"></a></li>
 
         </ul>
         <div class="tab-content" id="tabs-collapse">
-                        <div role="tabpanel" class="tab-pane fade in active" id="agree">
+                        <div role="tabpanel" class="tab-pane fade" id="agree">
                             <div class="tab-inner">
                                 <h3>دریافت فرم قرارداد و پر کردن آن</h3>
                             </div>
@@ -78,11 +79,11 @@
                             </div>
                         </div>
 
-                        <div role="tabpanel" class="tab-pane fade" id="best">
+                        <div role="tabpanel" class="tab-pane fade in active" id="best">
                             <div class="tab-inner">
                                 <h3>استانداردهای تصحیح</h3>
                                 <br>
-                                <a class="btn btn-default" href="{{ site }}{% static 'Writing_Rubrics.pdf' %}" download target="_blank">Scoring Standards by ETS</a>
+                                <a class="btn btn-info" href="{{ site }}{% static 'Writing_Rubrics.pdf' %}" download target="_blank">Scoring Standards by ETS</a>
                             </div>
                         </div>
                     </div>
@@ -126,7 +127,7 @@
             <div class="col-lg-5" style="border: 2px solid rgb(149,23,104); border-radius: 5px; height: 400px" >
                 <h1 class="text-center"> متن های پولی</h1>
                 <br>
-                <p>تصحیح هر متن در صورت دارا بودن کیفیت مطلوب 3000 تومان به اعتبار شما می افزاید</p>
+                <p>تصحیح هر متن در صورت دارا بودن کیفیت مطلوب 5000 تومان به اعتبار شما می افزاید</p>
                 <br>
 
                 <br>

@@ -103,13 +103,14 @@
         <a href="{% url 'user_profile:edit' %}">ویرایش اطلاعات</a>
     </div>
     <div class="text-center col-md-4">
+        <br>
         <h2>خدمات:</h2>
 
-        <ul class="nav nav-justified" id="khadamat">
+        <ul class="nav nav-justified" id="khadamat" role="tablist">
 
-                <li><a href="#raigan" aria-controls="schedule" role="tab" data-toggle="tab"><img src="{% static 'user_profile/dollar-symbol.png' %}" width="100px"></a></li>
-                <li class="active"><a href="#mokaleme" aria-controls="schedule" role="tab" data-toggle="tab"><img src="{% static 'user_profile/chat.png' %}" width="100px"></a></li>
-                <li><a href="#schedule" aria-controls="schedule" role="tab" data-toggle="tab"><img src="{% static 'user_profile/1 (1).png' %}" width="100px"></a></li>
+                <li role="presentation"><a href="#raigan" aria-controls="raigan" role="tab" data-toggle="tab"><img src="{% static 'user_profile/dollar-symbol.png' %}" width="100px"></a></li>
+                <li role="presentation" class="active"><a href="#mokaleme" aria-controls="mokaleme" role="tab" data-toggle="tab"><img src="{% static 'user_profile/chat.png' %}" width="100px"></a></li>
+                <li role="presentation"><a href="#schedule" aria-controls="schedule" role="tab" data-toggle="tab"><img src="{% static 'user_profile/1 (1).png' %}" width="100px"></a></li>
 
         </ul>
     {% if request.user.is_confirmed %}
@@ -135,6 +136,7 @@
                         <div role="tabpanel" class="tab-pane fade" id="schedule">
                             <div class="tab-inner">
                                 <h3>دریافت برنامه روزانه مطالعاتی تافل 120</h3>
+                                <p>به زودی :)</p>
                             </div>
                         </div>
                     </div>
@@ -157,6 +159,7 @@
                         <div role="tabpanel" class="tab-pane fade" id="schedule">
                             <div class="tab-inner">
                                 <h3>دریافت برنامه روزانه مطالعاتی تافل 120</h3>
+                                <p>به زودی :)</p>
                             </div>
                         </div>
                     </div>
@@ -264,7 +267,7 @@
     <br>
     <hr>
     <div class="col-sm-6 text-center" style="color: #951768 ">
-        <h3>ضبط speaking</h3>
+        <h3>تصحیح Speaking</h3>
         <P>با نمره دهی و نظر مشاوره ای در کمتر از 12 ساعت کاری</P>
         <p class="center-block" style="border: 1px dashed #951768; width: 150px">comming soon</p>
     </div><div class="col-sm-6 text-center" style="color: #951768 ">
