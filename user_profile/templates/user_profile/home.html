@@ -40,22 +40,22 @@
 <br>
 <br>
         <div class="text-center">
-        <div data-anijs="if: mouseover, do: bounce animated, to: #airplane" class="btn btn-outline-inverse btn-lg paeen" style="width: 30%">میخواهم در آزمون های بین المللی شرکت کنم</div>
-        <div data-anijs="if: mouseover, do: bounce animated, to: #chat" class="btn btn-outline-inverse btn-lg " data-toggle="modal" data-target="#free" role="button" style="width: 30%"> میخواهم در دوره رایگان مکالمه شرکت کنم</div>
+        <div data-anijs="if: mouseover, do: bounce animated, to: #airplane" class="btn btn-outline-inverse btn-lg paeen" style="width: 400px; font-size: 20px">میخواهم در آزمون های بین المللی شرکت کنم</div>
+        <div data-anijs="if: mouseover, do: bounce animated, to: #chat" class="btn btn-outline-inverse btn-lg " data-toggle="modal" data-target="#free" role="button" style="width: 400px; font-size: 20px"> میخواهم در دوره رایگان مکالمه شرکت کنم</div>
         </div>
         <br>
-        <div class="row container">
-            <div class="col-lg-4 col-lg-offset-3 text-center">
-                <img id="airplane"  data-anijs="if: mouseover, do: rubberBand animated" src="{% static 'user_profile/airplane.png' %}" width="100px">
-            </div>
+        <div class="row">
+            <div class="col-md-6 col-sx-6 col-md-offset-3 text-center">
+                <img id="airplane" style="margin-right: 100px"  data-anijs="if: mouseover, do: rubberBand animated" src="{% static 'user_profile/airplane.png' %}" width="100px">
+
 
 {#        <div class="totop col-lg-2">#}
 {#          <i class="arrow">#}
 {#            <span class="spani"></span>#}
 {#          </i>#}
 {#        </div>#}
-            <div class="col-lg-5 text-center" >
-                <img id="chat" data-anijs="if: mouseover, do: tada animated" src="{% static 'user_profile/chat.png' %}" width="100px">
+
+                <img id="chat" style="margin-left: 100px" data-anijs="if: mouseover, do: tada animated" src="{% static 'user_profile/chat.png' %}" width="100px">
             </div>
         </div>
         <br>
@@ -70,13 +70,9 @@
 {#    picture of toefl and others#}
 
             <div class="row" >
-              <div class="col-md-4 text-center" >
+              <div class=" text-center" >
                 <img alt="GRE , جی آر ای ,exam , learning, آزمون" src="{% static 'user_profile/gre1.jpg' %}">
-              </div>
-              <div class="col-md-4 text-center">
                 <img alt="toefl , تافل ,exam , learning, آزمون" src="{% static 'user_profile/ets.jpg' %}">
-              </div>
-              <div class="col-md-4 text-center">
                 <img alt="ielts , آیلتس ,exam , learning, آزمون" src="{% static 'user_profile/toefl1.jpg' %}">
               </div>
             </div>
@@ -136,7 +132,7 @@
 {#</div>#}
 
      <!--who we are section-->
-    <div class="col-lg-6 col-lg-offset-3" data-anijs="if: scroll, on: window, do: slideInRight animated, before: $scrollReveal">
+    <div class="col-lg-6 col-lg-offset-3">
         <div class="[ text-center ]">
         <div class="text-xenter">
             <h2>در اسکورایز چیکار می کنیم؟</h2>
@@ -263,9 +259,9 @@
         <h2 style="direction: rtl">نمی دونید از کجا باید شروع کنید؟</h2>
         <p style="direction: rtl; font-size: 20px">چطور زمان بندی کنیم تا در هشت هفته برای تافل آماده شویم؟ تمرین های لازم چیه؟</p>
         <br>
-        <img style="padding-right: 10rem" src="{% static "user_profile/1 (1).png" %}">
+        <img style="padding-right: 1rem" src="{% static "user_profile/1 (1).png" %}" width="150">
         <a data-anijs="if: mouseover, do: swing animated" class="btn btn-pink" style="width: 29rem ; border-radius: 50px; padding: 15px; font-size: 25px" href="{% url 'barname' %}">برنامه مطالعاتی تافل</a>
-        <img style="padding-left: 10rem" src="{% static "user_profile/1 (2).png" %}">
+        <img style="padding-left: 1rem" src="{% static "user_profile/1 (2).png" %}" width="150">
         <br>
         <br>
     </div>

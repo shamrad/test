@@ -321,7 +321,8 @@ def verify(request):
             buy.amount=amount1
             buy.number=credit1
             buy.save()
-            return render(request,'user_profile/success.html')
+            messages.success(request, 'تراکنش با موفقیت انجام شد.')
+            return redirect('user_profile:index')
         elif result.Status == 101:
             messages.success(request, 'پرداخت شما با موفقیت انجام شد.')
             return redirect('user_profile:index')

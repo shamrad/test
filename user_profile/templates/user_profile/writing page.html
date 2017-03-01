@@ -16,7 +16,7 @@ writing by {{ object.author }}
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.2.0/css/mdb.min.css" rel="stylesheet">
     <script src="{% static 'user_profile/ratingheart-script.js' %}"></script>
     <style>
-    td{
+    td.label{
         color: white;
     }
     .NFh{
@@ -71,32 +71,32 @@ writing by {{ object.author }}
         </thead>
         <tbody>
             <tr>
-                <td class="label-success">Word Choice | انتخاب واژگان</td>
+                <td class="label-success label">Word Choice | انتخاب واژگان</td>
                 <td>{{ object.wordchoice }}</td>
                 <td>{{ object.wordchoicesc }}</td>
             </tr>
             <tr>
-                <td class="label-danger">Organization and Development | توسعه دادن نوشته</td>
+                <td class="label-danger label">Organization and Development | توسعه دادن نوشته</td>
                 <td>{{ object.oad }}</td>
                 <td>{{ object.oadsc}}</td>
             </tr>
             <tr>
-                <td class="label-default">Addressing Topic | بیان مسئله</td>
+                <td class="label-default label">Addressing Topic | بیان مسئله</td>
                 <td>{{ object.adress }}</td>
                 <td>{{ object.adresssc }}</td>
             </tr>
             <tr>
-                <td class="label-info">Unity, Progression and Coherence | یک پارچگی متن</td>
+                <td class="label-info label">Unity, Progression and Coherence | یک پارچگی متن</td>
                 <td>{{ object.unity}}</td>
                 <td>{{ object.unitysc }}</td>
             </tr>
             <tr>
-                <td class="label-primary">Grammar | ساختار های صحیح</td>
+                <td class="label-primary label">Grammar | ساختار های صحیح</td>
                 <td>{{ object.grammer }}</td>
                 <td>{{ object.grammersc }}</td>
             </tr>
             <tr>
-                <td class="label-warning">Vocabulary | املای صحیح</td>
+                <td class="label-warning label">Vocabulary | املای صحیح</td>
                 <td>{{ object.vocab }}</td>
                 <td>{{ object.vocabsc }}</td>
             </tr>
@@ -107,27 +107,25 @@ writing by {{ object.author }}
             </tr>
         </tbody>
     </table>
+        {% if object.score != '0' %}
         {% if form %}
-            {% if object.score != '0' %}
         <div class="banner text-center">
         <br>
 
         <h4>به تصحیح من چند امتیاز میدی؟؟</h4>
-         <div class="row lead"style="margin-bottom: 0">
+         <div class="row lead" style="margin-bottom: 0">
         <div id="hearts" class="starrr" style="direction: ltr"></div>
              <p> <span id="count">0</span> از 5</p>
           </div>
 
-<form method="post" action="" class="form-horizontal" enctype="multipart/form-data">
-    {% csrf_token %}
+        <form method="post" action="" class="form-horizontal" enctype="multipart/form-data">
+        {% csrf_token %}
         <input id="id_rate" maxlength="100" name="rate" type="hidden">
         <button class="btn btn-lg btn-primary" type="submit" style="background-color: rgb(149,23,104); width: 100px; height: 30px; padding: 0">ارسال</button>
 
-
-
-</form>
-                {% endif %}
-    {% endif %}
+        </form>
+        {% endif %}
+        {% endif %}
         <br>
         </div>
     <div style="height: 50rem">
