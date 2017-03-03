@@ -238,15 +238,15 @@ def ChangePassword(request):
 
 def conversation(request):
     Mokaleme=Course.objects.get(name='Mokaleme')
-    # if Registration.objects.get(course=Mokaleme, participant=request.user) is None:
-    m= Registration(course=Mokaleme, participant=request.user)
-    m.save()
-    send_mail('ثبت نام شما در دوره مکالمه رایگان اسکورایز با موفقیت انجام شد!',
-          'ثبت نام شدید! منتظر درس های دوره مکالمه باشید. درس ها به مدت 7 هفته در 9 صبح روزهای شنبه و دوشنبه و چهارشنبه به ایمیل شما ارسال می شود.',
-          settings.DEFAULT_FROM_EMAIL, [request.user.email], fail_silently=False)
-    messages.success(request,'ثبت نام با موفقیت انجام شد.')
-    # else:
-    #     messages.error(request, 'شما قبلا در این دوره ثبت نام کرده اید!')
+    if not Registration.objects.get(course=Mokaleme, participant=request.user).exists():
+        m= Registration(course=Mokaleme, participant=request.user)
+        m.save()
+        send_mail('ثبت نام شما در دوره مکالمه رایگان اسکورایز با موفقیت انجام شد!',
+              'ثبت نام شدید! منتظر درس های دوره مکالمه باشید. درس ها به مدت 7 هفته در 9 صبح روزهای شنبه و دوشنبه و چهارشنبه به ایمیل شما ارسال می شود.',
+              settings.DEFAULT_FROM_EMAIL, [request.user.email], fail_silently=False)
+        messages.success(request,'ثبت نام با موفقیت انجام شد.')
+    else:
+        messages.error(request, 'شما قبلا در این دوره ثبت نام کرده اید!')
     return redirect('user_profile:index')
 
 
