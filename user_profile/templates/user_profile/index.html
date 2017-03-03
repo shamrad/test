@@ -84,6 +84,13 @@
     a{
         color: black;
     }
+    .btn{
+        border-radius: 15px;
+        padding: 0 5px;
+    }
+    h3{
+        margin-top: 10px;
+    }
     </style>
 {% endblock %}
 
@@ -92,79 +99,81 @@
 
     <div class="container-fluid">
     <br>
-    <div class="row">
-    <div class="text-center col-md-4 col-md-offset-2" style="border: 2px solid rgb(149,23,104); float: left; border-radius: 10px">
-        <br>
-        <p>پروفایل کاربری:</p>
-        <img src="{% static 'user_profile/man.png' %}">
-        <h2>{{ user.first_name }}</h2>
-        <h3>username: {{ user.username }}</h3>
-        <p>email: {{ user.email }}</p>
-        <a href="{% url 'user_profile:edit' %}">ویرایش اطلاعات</a>
-    </div>
-    <div class="text-center col-md-4">
-        <br>
-        <h2>خدمات:</h2>
+        <div class="row">
+            <div class="text-center col-md-4 col-md-offset-2 col-xs-12" style="border: 2px solid rgb(149,23,104); float: left; border-radius: 10px">
+                <br>
+                <p>پروفایل کاربری:</p>
+                <img src="{% static 'user_profile/man.png' %}">
+                <h2>{{ user.first_name }}</h2>
+                <h3>username: {{ user.username }}</h3>
+                <p>email: {{ user.email }}</p>
+                <a href="{% url 'user_profile:edit' %}">ویرایش اطلاعات</a>
+            </div>
+            <div class="[ text-center col-md-4 col-xs-12 col-sm-12 ]" role="tabpanel">
+                <br>
+                <h2>خدمات:</h2>
+            <div class="[ col-xs-12 col-md-4 ]">
+                <ul class="[ nav nav-justified ]" id="khadamat" role="tablist">
 
-        <ul class="nav nav-justified" id="khadamat" role="tablist">
+                        <li role="presentation"><a href="#raigan" aria-controls="raigan" role="tab" data-toggle="tab"><img src="{% static 'user_profile/dollar-symbol.png' %}" width="100px"></a></li>
+                        <li role="presentation" class="active"><a href="#mokaleme" aria-controls="mokaleme" role="tab" data-toggle="tab"><img src="{% static 'user_profile/chat.png' %}" width="100px"></a></li>
+                        <li role="presentation"><a href="#schedule" aria-controls="schedule" role="tab" data-toggle="tab"><img src="{% static 'user_profile/1 (1).png' %}" width="100px"></a></li>
 
-                <li role="presentation"><a href="#raigan" aria-controls="raigan" role="tab" data-toggle="tab"><img src="{% static 'user_profile/dollar-symbol.png' %}" width="100px"></a></li>
-                <li role="presentation" class="active"><a href="#mokaleme" aria-controls="mokaleme" role="tab" data-toggle="tab"><img src="{% static 'user_profile/chat.png' %}" width="100px"></a></li>
-                <li role="presentation"><a href="#schedule" aria-controls="schedule" role="tab" data-toggle="tab"><img src="{% static 'user_profile/1 (1).png' %}" width="100px"></a></li>
-
-        </ul>
-    {% if request.user.is_confirmed %}
-        <div class="tab-content" id="tabs-collapse">
-                        <div role="tabpanel" class="tab-pane fade" id="raigan">
-                            <div class="tab-inner">
-                                {% if exam %}
-                                    <h3>شما Writing رایگان خود را قبلا نوشته اید!</h3>
-                                {% else %}
-                                    <a href="{% url 'user_profile:NewWriting' %}"><h3>نوشتن Writing رایگان</h3></a>
-                                {% endif %}
-                                <p>محدود به 1000 کاراکتر</p>
+                </ul>
+            </div>
+            {% if request.user.is_confirmed %}
+            <div class="tab-content" id="tabs-collapse">
+                            <div role="tabpanel" class="tab-pane fade" id="raigan">
+                                <div class="tab-inner">
+                                    {% if exam %}
+                                        <h3>شما Writing رایگان خود را قبلا نوشته اید!</h3>
+                                    {% else %}
+                                        <a class="btn btn-warning" href="{% url 'user_profile:NewWriting' %}"><h3>نوشتن Writing رایگان</h3></a>
+                                    {% endif %}
+                                    <p>محدود به 1000 کاراکتر</p>
+                                </div>
                             </div>
-                        </div>
 
-                        <div role="tabpanel" class="tab-pane fade in active" id="mokaleme">
-                            <div class="tab-inner">
-<a href="{% url 'conversation' %}"><h3>ثبت نام در دوره 10 هفته ای مکالمه</h3></a>
-                                <a href="{% url 'nini' %}"><p>اطلاعات بیشتر</p></a>
+                            <div role="tabpanel" class="tab-pane fade in active" id="mokaleme">
+                                <div class="tab-inner">
+                                    <a class="btn btn-success" href="{% url 'conversation' %}"><h3>ثبت نام در دوره 10 هفته ای مکالمه</h3></a>
+                                    <br>
+                                    <a href="{% url 'nini' %}"><p>اطلاعات بیشتر</p></a>
+                                </div>
                             </div>
-                        </div>
 
-                        <div role="tabpanel" class="tab-pane fade" id="schedule">
-                            <div class="tab-inner">
-                                <h3>دریافت برنامه روزانه مطالعاتی تافل 120</h3>
-                                <p>به زودی :)</p>
+                            <div role="tabpanel" class="tab-pane fade" id="schedule">
+                                <div class="tab-inner">
+                                    <h3>دریافت برنامه روزانه مطالعاتی تافل 120</h3>
+                                    <p>به زودی :)</p>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-    {% else %}
-    <div class="tab-content" id="tabs-collapse">
-                        <div role="tabpanel" class="tab-pane fade" id="raigan">
-                            <div class="tab-inner">
-<a data-toggle="modal" data-target="#test1"><h3>نوشتن Writing رایگان</h3></a>
-                                <p>محدود به 1000 کاراکتر</p>
+            </div>
+            {% else %}
+            <div class="tab-content" id="tabs-collapse">
+                            <div role="tabpanel" class="tab-pane fade" id="raigan">
+                                <div class="tab-inner">
+                                    <a class="btn btn-warning" data-toggle="modal" data-target="#test1"><h3>نوشتن Writing رایگان</h3></a>
+                                    <p>محدود به 1000 کاراکتر</p>
+                                </div>
                             </div>
-                        </div>
 
-                        <div role="tabpanel" class="tab-pane fade in active" id="mokaleme">
-                            <div class="tab-inner">
-<a data-toggle="modal" data-target="#test1"><h3>ثبت نام در دوره 10 هفته ای مکالمه</h3></a>
-                                <a href="{% url 'nini' %}"><p>اطلاعات بیشتر</p></a>
+                            <div role="tabpanel" class="tab-pane fade in active" id="mokaleme">
+                                <div class="tab-inner">
+                                    <a class="btn btn-success" data-toggle="modal" data-target="#test1"><h3>ثبت نام در دوره 10 هفته ای مکالمه</h3></a>
+                                    <a href="{% url 'nini' %}"><p>اطلاعات بیشتر</p></a>
+                                </div>
                             </div>
-                        </div>
 
-                        <div role="tabpanel" class="tab-pane fade" id="schedule">
-                            <div class="tab-inner">
-                                <h3>دریافت برنامه روزانه مطالعاتی تافل 120</h3>
-                                <p>به زودی :)</p>
+                            <div role="tabpanel" class="tab-pane fade" id="schedule">
+                                <div class="tab-inner">
+                                        <h3>دریافت برنامه روزانه مطالعاتی تافل 120</h3>
+                                        <p>به زودی :)</p>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-    {% endif %}
-    </div>
+            </div>
+            {% endif %}
+        </div>
     </div>
     <br>
 <div class="container-fluid">
@@ -172,7 +181,8 @@
 <div class="row">
 
     {% for message in messages %}
-    <div{% if message.tags == 'success' %} class="alert alert-success alert-dismissible" role="alert"{% endif %}>
+    <div {% if message.tags == 'success' %} class="alert alert-success alert-dismissible" role="alert"
+    {% elif message.tags == 'error' %} class="alert alert-danger alert-dismissible" role="alert" {% endif %}>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         {{ message }}</div>
     {% endfor %}

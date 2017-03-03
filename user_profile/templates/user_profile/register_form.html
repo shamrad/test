@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ثبت نام</title>
+    <title>ایجاد حساب کاربری</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
@@ -122,7 +122,7 @@
 <div class="wrapper">
     <form class="form-signin text-center" action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        <h2 class="form-signin-heading" style="color: rgb(149,23,104)">ثبت نام</h2>
+        <h2 class="form-signin-heading" style="color: rgb(149,23,104)">ایجاد حساب کاربری</h2>
         {% for field in form %}
                 <span>{{ field.errors }}</span>
                 <label style="color: rgb(149,23,104)">{{ field.label_tag }}</label>
@@ -132,7 +132,7 @@
 {#        <input type="text" class="form-control" name="username" placeholder="Email Address" required="" autofocus="" />#}
 {#        <input type="password" class="form-control" name="password" placeholder="Password" required=""/>#}
         <br>
-        <button class="btn btn-lg btn-primary btn-block" type="submit" style="background-color: rgb(149,23,104)">ثبت نام و ارسال ایمیل تایید</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" style="background-color: rgb(149,23,104)">ثبت و ارسال ایمیل تایید</button>
     </form>
 </div>
 </body>
