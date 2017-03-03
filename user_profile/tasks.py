@@ -22,8 +22,8 @@ def ersal():
                                      'number': pending_lesson.order,
                                      'content': pending_lesson.content,
                                      'site': settings.SITE_URL,
-                                     'music_file': 'dars ha/Lesson ' + str(pending_lesson.order) + '.mp3',
-                                     'text_file': 'dars ha/' + str(pending_lesson.order) + '.pdf'})
+                                     'music_file': 'dars ha/'+ pending_lesson.whichcourse +'/Lesson ' + str(pending_lesson.order) + '.mp3',
+                                     'text_file': 'dars ha/'+ pending_lesson.whichcourse +'/' + str(pending_lesson.order) + '.pdf'})
         send_mail('دانلود درس شماره %s' % pending_lesson.order, pending_lesson.content, settings.DEFAULT_FROM_EMAIL,
                   [i.participant.email], fail_silently=False, html_message=msg_html)
         i.last_email_received += 1

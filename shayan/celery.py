@@ -15,13 +15,14 @@ app.conf.beat_schedule= {
     'ersal-e-darsname':{
         'task': 'user_profile.tasks.ersal',
         'options': {'queue': 'celery'},
-        'schedule': crontab(minute=0, hour=9, day_of_week='1,3,6'),
-        # 'schedule': crontab(),
+        # 'schedule': crontab(minute=0, hour=9, day_of_week='1,3,6'),
+        'schedule': crontab(),
     },
     'notif-e-writing-raigan':{
         'task': 'user_profile.tasks.notif',
         'options': {'queue': 'celery'},
-        'schedule' : crontab(hour='9,18', minute='0'),
+        # 'schedule' : crontab(hour='9,18', minute='0'),
+        'schedule': crontab(),
     },
     # 'test111':{
     #     'task': 'test',
