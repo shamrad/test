@@ -238,7 +238,7 @@ def ChangePassword(request):
 
 def conversation(request):
     Mokaleme=Course.objects.get(name='Mokaleme')
-    if not Registration.objects.get(course=Mokaleme, participant=request.user).exists():
+    if not Registration.objects.filter(course=Mokaleme, participant=request.user).exists():
         m= Registration(course=Mokaleme, participant=request.user)
         m.save()
         send_mail('ثبت نام شما در دوره مکالمه رایگان اسکورایز با موفقیت انجام شد!',
