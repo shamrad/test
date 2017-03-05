@@ -7,9 +7,10 @@ from django.core.exceptions import ValidationError
 from django.core.mail import send_mail
 from django.core.urlresolvers import reverse_lazy, reverse
 from django.http import HttpResponse
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash, get_user_model
 from django.contrib.auth import login as auth_login
+from django.template.loader import render_to_string
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic.edit import UpdateView
 from django.contrib.auth.forms import PasswordChangeForm
@@ -27,19 +28,19 @@ from django.views.generic import CreateView
 @login_required(login_url='user_profile:login')
 def index(request):
     current_user = request.user
-    if current_user.teacher :
+    if current_user.teacher:
         return redirect('corrector:teacherindex')
     exam = current_user.writing_set.all()
     context = {
         'user': current_user,
         'exam': exam
     }
-    return render(request, 'user_profile/index.html',context)
+    return render(request, 'user_profile/index.html', context)
 
 
 @login_required(login_url='user_profile:login')
 @csrf_exempt
-def writing(request,pk):
+def writing(request, pk):
     current_writing = Writing.objects.get(pk=pk)
     form = Rate(request.POST)
     rate = Teacherate.objects.filter(writing_id=pk)
@@ -65,12 +66,12 @@ def writing(request,pk):
 
 
 # @login_required(login_url='user_profile:login')
-class EditView(LoginRequiredMixin,UpdateView):
+class EditView(LoginRequiredMixin, UpdateView):
     login_url = 'user_profile:login'
     model = User
 
     template_name = 'user_profile/editview.html'
-    fields = ['first_name','last_name','email','username']
+    fields = ['first_name', 'last_name', 'email', 'username']
 
     def get_object(self, queryset=None):
         return self.request.user
@@ -81,24 +82,30 @@ class EditView(LoginRequiredMixin,UpdateView):
 
 
 class UserFormView(View):
-    form_class=UserForm
-    template_name='user_profile/register_form.html'
+    form_class = UserForm
+    template_name = 'user_profile/register_form.html'
 
     def get(self, request: object) -> object:
-        form=self.form_class(None)
-        return render(request,self.template_name, {'form':form})
+        form = self.form_class(None)
+        return render(request, self.template_name, {'form': form})
 
-    def post(self,request):
+    def post(self, request):
         form = self.form_class(request.POST)
 
         if form.is_valid():
-            user=form.save(commit=False)
-            username=form.cleaned_data['username']
-            password=form.cleaned_data['password']
+            user = form.save(commit=False)
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
             user.set_password(password)
             email = form.cleaned_data['email']
             user.save()
-            send_mail('Dear %s! Welcome to Scorize!' %user.first_name, ' www.scorize.com/profile/confirm/%s/ از اینکه به وب سایت اسکورایز پیوستید خوشحالیم. برای استفاده از محتوای سایت با کلیک کردن بر لینک مقابل ایمیل خود را تایید کنید.!' % user.confirmation_key, settings.DEFAULT_FROM_EMAIL, [email], fail_silently=False)
+            msg = render_to_string('user_profile/Email4.html',
+                                        {'username': user.first_name,
+                                        'site': settings.SITE_URL,
+                                        'confkey': user.confirmation_key})
+            send_mail('Dear %s! Welcome to Scorize!' % user.first_name,
+                      ' www.scorize.com/profile/confirm/%s/ از اینکه به وب سایت اسکورایز پیوستید خوشحالیم. برای استفاده از محتوای سایت با کلیک کردن بر لینک مقابل ایمیل خود را تایید کنید.!' % user.confirmation_key,
+                      settings.DEFAULT_FROM_EMAIL, [email], fail_silently=False, html_message=msg)
             karbar = authenticate(username=username, password=password)
 
             if karbar is not None:
@@ -109,11 +116,11 @@ class UserFormView(View):
         return render(request, self.template_name, {'form': form})
 
 
-def confirmation(request,confirmation_key):
-    email=EmailAddress.objects.get(key=confirmation_key)
-    user=get_user_model()
-    pending_user= user.objects.get(email=email.email)
-    pending_user.confirm_email(confirmation_key,save=True)
+def confirmation(request, confirmation_key):
+    email = EmailAddress.objects.get(key=confirmation_key)
+    user = get_user_model()
+    pending_user = user.objects.get(email=email.email)
+    pending_user.confirm_email(confirmation_key, save=True)
     pending_user.is_confirmed
     return redirect('user_profile:index')
 
@@ -121,10 +128,14 @@ def confirmation(request,confirmation_key):
 def resendkey(request):
     email = request.user.email
     data = EmailAddress.objects.get(email=email)
-    confkey=data.key
+    confkey = data.key
+    msg_html = render_to_string('user_profile/Email2.html',
+                                {'username': request.user.first_name,
+                                 'site': settings.SITE_URL,
+                                 'confkey': confkey})
     send_mail('Dear %s! Activation Key!' % request.user.first_name,
               ' www.scorize.com/profile/confirm/%s/ برای استفاده از محتوای سایت با کلیک کردن بر لینک مقابل ایمیل خود را تایید کنید.!' % confkey,
-              settings.DEFAULT_FROM_EMAIL, [email], fail_silently=False)
+              settings.DEFAULT_FROM_EMAIL, [email], fail_silently=False, html_message=msg_html)
     return redirect('user_profile:emailsent')
 
 
@@ -133,7 +144,6 @@ def emailsent(request):
 
 
 class LoginView(View):
-
     def get(self, request):
         if request.user.is_authenticated():
             if request.user.teacher:
@@ -180,20 +190,20 @@ class LoginView(View):
 @login_required(login_url='user_profile:login')
 def NewWriting(request):
     subject = Subject.objects.all()
-    current_user=request.user
-    if request.method=="POST":
-        form=WritingForm(request.POST)
+    current_user = request.user
+    if request.method == "POST":
+        form = WritingForm(request.POST)
         if form.is_valid():
-            post=form.save(commit=False)
-            post.author=request.user
+            post = form.save(commit=False)
+            post.author = request.user
             post.save()
             writing = request.user.writing_set.all().count()
-            if writing>1:
-                corrector=Writing.objects.filter(author=current_user).get(pk=1).corrector
+            if writing > 1:
+                corrector = Writing.objects.filter(author=current_user).get(pk=1).corrector
                 current_user.credit2 -= 1
                 current_user.save()
-                send_mail('New writing from %s' %current_user.username,
-                          '%s has submitted a new writing, and it is avaliable in your profile.' %current_user.username,
+                send_mail('New writing from %s' % current_user.username,
+                          '%s has submitted a new writing, and it is avaliable in your profile.' % current_user.username,
                           settings.DEFAULT_FROM_EMAIL, [corrector.email], fail_silently=False)
             return redirect('user_profile:index')
 
@@ -202,7 +212,7 @@ def NewWriting(request):
             return redirect('corrector:teacherindex')
         else:
             writing = request.user.writing_set.all().count()
-            if writing >0:
+            if writing > 0:
                 if current_user.credit2 > 0:
                     form = WritingForm()
                     return render(request, 'user_profile/writing_form.html', {'form': form, 'subject': subject})
@@ -210,71 +220,72 @@ def NewWriting(request):
                     return redirect('user_profile:credit')
             else:
                 form = WritingForm()
-                return render(request,'user_profile/writing_form_test.html', {'form':form , 'subject':subject})
+                return render(request, 'user_profile/writing_form_test.html', {'form': form, 'subject': subject})
 
 
 def Logout(request):
     logout(request)
-    return  redirect('home')
+    return redirect('home')
 
 
 def CommingSoon(request):
     return render(request, 'user_profile/comming_soon.html')
 
+
 def ChangePassword(request):
     if request.method == 'POST':
-        form=PasswordChangeForm(data=request.POST, user=request.user)
+        form = PasswordChangeForm(data=request.POST, user=request.user)
 
         if form.is_valid():
             form.save()
-            update_session_auth_hash(request,form.user)
+            update_session_auth_hash(request, form.user)
             return redirect('user_profile:index')
-        return render(request,'user_profile/editview.html',{'form':form})
+        return render(request, 'user_profile/editview.html', {'form': form})
     else:
-        form=PasswordChangeForm(user=request.user)
-        context={'form':form}
-        return render(request,'user_profile/editview.html', context)
+        form = PasswordChangeForm(user=request.user)
+        context = {'form': form}
+        return render(request, 'user_profile/editview.html', context)
 
 
 def conversation(request):
-    Mokaleme=Course.objects.get(name='Mokaleme')
+    Mokaleme = Course.objects.get(name='Mokaleme')
     if not Registration.objects.filter(course=Mokaleme, participant=request.user).exists():
-        m= Registration(course=Mokaleme, participant=request.user)
+        m = Registration(course=Mokaleme, participant=request.user)
         m.save()
+        msg_html = render_to_string('user_profile/Email3.html',
+                                    {'username': request.user.first_name,
+                                     'site': settings.SITE_URL})
         send_mail('ثبت نام شما در دوره مکالمه رایگان اسکورایز با موفقیت انجام شد!',
-              'ثبت نام شدید! منتظر درس های دوره مکالمه باشید. درس ها به مدت 7 هفته در 9 صبح روزهای شنبه و دوشنبه و چهارشنبه به ایمیل شما ارسال می شود.',
-              settings.DEFAULT_FROM_EMAIL, [request.user.email], fail_silently=False)
-        messages.success(request,'ثبت نام با موفقیت انجام شد.')
+                  'ثبت نام شدید! منتظر درس های دوره مکالمه باشید. درس ها به مدت 7 هفته در 9 صبح روزهای شنبه و دوشنبه و چهارشنبه به ایمیل شما ارسال می شود.',
+                  settings.DEFAULT_FROM_EMAIL, [request.user.email], fail_silently=False, html_message=msg_html)
+        messages.success(request, 'ثبت نام با موفقیت انجام شد.')
     else:
         messages.error(request, 'شما قبلا در این دوره ثبت نام کرده اید!')
     return redirect('user_profile:index')
 
 
-
-
 @login_required(login_url='user_profile:login')
 def Etebar(request):
-
     form = PriceForm()
-    price=Price.objects.last()
+    price = Price.objects.last()
     current_user = request.user
-    if request.method=="GET":
+    if request.method == "GET":
         if request.user.teacher:
             return redirect('corrector:teacherindex')
-        return render(request,'user_profile/increase.html',{'form':form,'price':price})
+        return render(request, 'user_profile/increase.html', {'form': form, 'price': price})
     else:
         form = PriceForm(request.POST)
         if form.is_valid():
-            form=form.save(commit=False)
+            form = form.save(commit=False)
             credit = form.number
             amount = form.wallet
 
             current_user.credit = credit
             current_user.amount = amount
             current_user.save()
-            return redirect('user_profile:Send_request')  #bayad adrese banko bedim
+            return redirect('user_profile:Send_request')  # bayad adrese banko bedim
         else:
-            return render(request,'user_profile/increase.html',{'form':form})
+            return render(request, 'user_profile/increase.html', {'form': form})
 
 
 MMERCHANT_ID = 'fbac782a-dfa6-11e6-8ef4-000c295eb8fc'  # Required
@@ -288,8 +299,8 @@ mobile = '09123456789'  # Optional
 @login_required(login_url='user_profile:login')
 def Send_request(request):
     client = Client(ZARINPAL_WEBSERVICE)
-    amount=request.user.amount
-    email=request.user.email
+    amount = request.user.amount
+    email = request.user.email
     result = client.service.PaymentRequest(MMERCHANT_ID,
                                            amount,
                                            description,
@@ -301,26 +312,27 @@ def Send_request(request):
     else:
         return HttpResponse(result.Status)
 
+
 # @login_required(login_url='user_profile:login')
 def verify(request):
     client = Client(ZARINPAL_WEBSERVICE)
-    current_user=request.user
+    current_user = request.user
     amount1 = current_user.amount
-    credit1=current_user.credit
-    amount2=current_user.amount2
-    credit2=current_user.credit2
+    credit1 = current_user.credit
+    amount2 = current_user.amount2
+    credit2 = current_user.credit2
     if request.GET.get('Status') == 'OK':
         result = client.service.PaymentVerification(MMERCHANT_ID,
                                                     request.GET['Authority'],
                                                     amount1)
         if result.Status == 100:
-            current_user.amount2 = int(amount1)+int(amount2)
-            current_user.credit2 = int(credit1)+int(credit2)
+            current_user.amount2 = int(amount1) + int(amount2)
+            current_user.credit2 = int(credit1) + int(credit2)
             current_user.save()
-            buy=Buy.objects.create(user=current_user)
-            buy.authority=request.GET['Authority']
-            buy.amount=amount1
-            buy.number=credit1
+            buy = Buy.objects.create(user=current_user)
+            buy.authority = request.GET['Authority']
+            buy.amount = amount1
+            buy.number = credit1
             buy.save()
             messages.success(request, 'تراکنش با موفقیت انجام شد.')
             return redirect('user_profile:index')

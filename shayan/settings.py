@@ -116,6 +116,8 @@ LANGUAGE_CODE = 'fa_IR'
 
 TIME_ZONE = 'Asia/Tehran'
 
+CELERY_ENABLE_UTC = False
+
 USE_I18N = True
 
 USE_L10N = True
