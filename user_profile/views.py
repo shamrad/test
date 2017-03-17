@@ -232,6 +232,10 @@ def CommingSoon(request):
     return render(request, 'user_profile/comming_soon.html')
 
 
+def reference(request):
+    return render(request, 'user_profile/manabe.html')
+
+
 def ChangePassword(request):
     if request.method == 'POST':
         form = PasswordChangeForm(data=request.POST, user=request.user)
