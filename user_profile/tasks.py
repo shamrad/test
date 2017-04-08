@@ -5,6 +5,7 @@ from django.contrib.auth import get_user_model
 from django.core.mail import send_mail
 from django.conf import settings
 from django.template.loader import render_to_string
+from time import sleep
 
 import user_profile
 from user_profile.models import Registration, Lesson, Writing
@@ -14,6 +15,7 @@ app = Celery()
 
 @app.task(name='user_profile.tasks.ersal')
 def ersal():
+    j = 0
     pending_requests = Registration.objects.filter(is_finished=False)
     for i in pending_requests:
         pending_lesson = Lesson.objects.filter(whichcourse=i.course).get(order=i.last_email_received + 1)
@@ -30,6 +32,9 @@ def ersal():
         if i.last_email_received == i.course.number_of_sessions:
             i.is_finished = True
         i.save()
+        j += 1
+        if j % 5 == 0:
+            sleep(300)
 
 
 @app.task(name='user_profile.tasks.notif')
