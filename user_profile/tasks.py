@@ -15,7 +15,6 @@ app = Celery()
 
 @app.task(name='user_profile.tasks.ersal')
 def ersal():
-    j = 0
     pending_requests = Registration.objects.filter(is_finished=False)
     for i in pending_requests:
         pending_lesson = Lesson.objects.filter(whichcourse=i.course).get(order=i.last_email_received + 1)
@@ -32,9 +31,7 @@ def ersal():
         if i.last_email_received == i.course.number_of_sessions:
             i.is_finished = True
         i.save()
-        j += 1
-        if j % 5 == 0:
-            sleep(300)
+        sleep(100)
 
 
 @app.task(name='user_profile.tasks.notif')
