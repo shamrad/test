@@ -134,3 +134,25 @@ class Buy(models.Model):
     authority=models.IntegerField(default=0)
     def __str__(self):
         return self.user.username + ' buy '+ str(self.number)
+
+
+class Event(models.Model):
+    name=models.CharField(max_length=50)
+    date=models.DateField()
+    location=models.CharField(max_length=50)
+    expense=models.IntegerField()
+    description=models.CharField(max_length=200)
+
+
+class Hamayesh(models.Model):
+    name=models.CharField(max_length=100)
+    mobile=models.CharField(max_length=12)
+    email=models.CharField(max_length=50)
+    university=models.CharField(max_length=50)
+    event=models.ForeignKey(Event)
+    grade=models.CharField(max_length=20)
+    major=models.CharField(max_length=20)
+    def __str__(self):
+        return self.name + ' registered from ' + self.university
+
+

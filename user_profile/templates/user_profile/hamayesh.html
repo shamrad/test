@@ -1,0 +1,39 @@
+{% extends "user_profile/home-base.html" %}
+{% load static %}
+
+{% block meta %}
+    <meta name="keywords" content="همایش اپلای 2018,apply, how to apply, دانشگاه صنعتی شریف,شریف">
+    <meta name="description" content="ثبت نام در همایش فرصت های تحصیل در خارج از کشور">
+{% endblock %}
+
+{% block title %}
+    ثبت نام در همایش How to Apply 2018 دانشگاه شریف
+{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" href="" type="text/css">
+
+{% endblock %}
+{% block content %}
+    <div class="container-fluid">
+    <br>
+    <br>
+    <br>
+    <br>
+<form class="form-signin text-center" action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h2 class="form-signin-heading" style="color: rgb(149,23,104)">فرم ثبت نام در همایش</h2>
+<br>
+        {% for field in form %}
+                <span>{{ field.errors }}</span>
+                <label style="color: rgb(149,23,104)">{{ field.label_tag }}</label>
+                <div class="">{{ field }}</div>
+        {% endfor %}
+<br>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" style="background-color: rgb(149,23,104); width: 25rem; margin: auto">ثبت و پرداخت هزینه</button>
+    </form>
+    </div>
+    <br>
+    <br>
+    <br>
+{% endblock %}

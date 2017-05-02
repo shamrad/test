@@ -19,9 +19,9 @@ from suds.client import Client
 from simple_email_confirmation.models import EmailAddress
 from django.conf import settings
 
-from .form import UserForm, LoginForm, WritingForm, Rate, PriceForm, EmailForm
+from .form import UserForm, LoginForm, WritingForm, Rate, PriceForm, EmailForm, HamayeshForm
 from django.views.generic import View
-from .models import Writing, Subject, Teacherate, Buy, Price, Registration, Course, Lesson
+from .models import Writing, Subject, Teacherate, Buy, Price, Registration, Course, Lesson, Event
 from django.views.generic import CreateView
 
 
@@ -141,6 +141,9 @@ def resendkey(request):
 
 def emailsent(request):
     return render(request, 'user_profile/emailsent.html')
+
+
+
 
 
 class LoginView(View):
@@ -295,16 +298,16 @@ def Etebar(request):
 MMERCHANT_ID = 'fbac782a-dfa6-11e6-8ef4-000c295eb8fc'  # Required
 ZARINPAL_WEBSERVICE = 'https://www.zarinpal.com/pg/services/WebGate/wsdl'  # Required
 # amount = 10000  # Amount will be based on Toman  Required
-description = u'خرید خدمات تصحیح متن انگلیسی'  # Required
 # email = 'user@userurl.ir'  # Optional
-mobile = '09123456789'  # Optional
 
 
 @login_required(login_url='user_profile:login')
 def Send_request(request):
     client = Client(ZARINPAL_WEBSERVICE)
+    description = u'خرید خدمات تصحیح متن انگلیسی'  # Required
     amount = request.user.amount
     email = request.user.email
+    mobile = '09123456789'  # Optional
     result = client.service.PaymentRequest(MMERCHANT_ID,
                                            amount,
                                            description,
@@ -349,3 +352,47 @@ def verify(request):
     else:
         messages.warning(request, 'Transaction failed or canceled by user.')
         return redirect('user_profile:index')
+
+event=Event.objects.filter(pk=1)
+
+
+def hamayesh_reg(request):
+    if request.method == "POST":
+        form = HamayeshForm(request.POST)
+        if form.is_valid():
+            post = form.save()
+            amount=event.expense
+            description=event.description
+            client = Client(ZARINPAL_WEBSERVICE)
+            result = client.service.PaymentRequest(MMERCHANT_ID,
+                                                   amount,
+                                                   description,
+                                                   post.email,
+                                                   post.mobile,
+                                                   'https://scorize.com' + reverse('user_profile:verify_event'))
+            if result.Status == 100:
+                return redirect('https://www.zarinpal.com/pg/StartPay/' + result.Authority)
+            else:
+                return HttpResponse(result.Status)
+    else:
+            form = HamayeshForm()
+    return render(request, 'user_profile/hamayesh.html',{'form': form, 'event':event})
+
+def verify_event(request):
+    client = Client(ZARINPAL_WEBSERVICE)
+    if request.GET.get('Status') == 'OK':
+        result = client.service.PaymentVerification(MMERCHANT_ID,
+                                                    request.GET['Authority'],
+                                                    event.expense)
+        if result.Status == 100:
+            messages.success(request, 'تراکنش با موفقیت انجام شد.')
+            return redirect('user_profile:hamayesh')
+        elif result.Status == 101:
+            messages.success(request, 'پرداخت شما با موفقیت انجام شد.')
+            return redirect('user_profile:hamayesh')
+        else:
+            messages.error(request, 'Transaction failed.')
+            return redirect('user_profile:hamayesh')
+    else:
+        messages.warning(request, 'Transaction failed or canceled by user.')
+        return redirect('user_profile:hamayesh')

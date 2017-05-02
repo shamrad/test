@@ -3,7 +3,7 @@ from django.core.exceptions import ValidationError
 from django.core.validators import MaxLengthValidator
 from simple_email_confirmation.models import EmailAddress
 
-from .models import User, Writing, Teacherate, Price
+from .models import User, Writing, Teacherate, Price, Hamayesh
 from django import  forms
 
 
@@ -76,3 +76,9 @@ class PriceForm(forms.ModelForm):
     class Meta:
         model= Price
         fields = ['wallet','number']
+
+
+class HamayeshForm(forms.ModelForm):
+    class Meta:
+        model= Hamayesh
+        fields = ['name', 'email', 'mobile','university', 'grade', 'major']

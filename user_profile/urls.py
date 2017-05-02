@@ -1,6 +1,6 @@
 from django.conf.urls import url
 from .views import UserFormView, index, LoginView, writing, Logout, EditView, NewWriting, CommingSoon, \
-    ChangePassword, Etebar, Send_request, verify, emailsent, confirmation
+    ChangePassword, Etebar, Send_request, verify, emailsent, confirmation, hamayesh_reg
 
 app_name='user_profile'
 
@@ -20,6 +20,7 @@ urlpatterns = [
 
 
     url(r'NewWriting/$', NewWriting, name='NewWriting'),
+    url(r'enroll/$', hamayesh_reg, name='hamayesh'),
 
     url(r'^آزمون-تافل/', CommingSoon, name='exam'),
     url(r'^اسپیکینگ/', CommingSoon, name='speaking'),

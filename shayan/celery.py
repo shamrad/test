@@ -13,7 +13,7 @@ app.autodiscover_tasks()
 
 app.conf.beat_schedule= {
     'ersal-e-darsname':{
-        'task': 'user_profile.tasks.ersal',
+        'task': 'user_profile.tasks.delaytask',
         'options': {'queue': 'celery'},
         'schedule': crontab(minute=0, hour=9, day_of_week='1,3,6'),
         # 'schedule': crontab(),
