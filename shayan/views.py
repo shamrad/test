@@ -2,7 +2,7 @@
 from django.shortcuts import render,redirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-
+from django.http import HttpResponse
 
 def khane(request):
         return render(request, 'user_profile/home.html')
@@ -46,4 +46,5 @@ def handler500(request):
 
 
 def telegrambot(request):
-    pass
+
+    return HttpResponse(request.body)
