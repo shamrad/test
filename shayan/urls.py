@@ -4,7 +4,7 @@ from django.conf.urls import url,include
 from django.contrib import admin
 
 from user_profile.views import resendkey, conversation, reference
-from .views import khane, service,aboutus, test, faq, barname, nini, telegrambot
+from .views import khane, service,aboutus, test, faq, barname, nini, MessageCounter
 from django.contrib.auth.views import password_reset,password_reset_done,password_reset_confirm, password_reset_complete
 
 urlpatterns = [
@@ -34,6 +34,6 @@ urlpatterns = [
     url(r'^teacher/', include('corrector.urls')),
 
     # telegramBot
-    url(r'^333028480:AAG2EAmXyBfGqV4XYyD7iD7EEZnd6zvil78/', telegrambot, name='telegrambot'),
+    url(r'^333028480:AAG2EAmXyBfGqV4XYyD7iD7EEZnd6zvil78/', MessageCounter , name='telegrambot'),
 
  ]

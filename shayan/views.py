@@ -4,6 +4,26 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import HttpResponse
 
+# telegram
+from telepot.delegate import per_chat_id, create_open, pave_event_space
+import telepot
+import re
+import os
+import requests
+import tempfile
+from telepot.namedtuple import ReplyKeyboardMarkup, KeyboardButton, ForceReply
+from telepot.namedtuple import InlineKeyboardMarkup, InlineKeyboardButton
+from telepot.namedtuple import InlineQueryResultArticle, InlineQueryResultPhoto, InputTextMessageContent
+
+try:
+    from Queue import Queue
+except ImportError:
+    from queue import Queue
+
+
+
+
+
 def khane(request):
         return render(request, 'user_profile/home.html')
 
@@ -45,6 +65,24 @@ def handler500(request):
     return response
 
 
-def telegrambot(request):
 
-    return HttpResponse(request.body)
+# telegrambot
+class MessageCounter(telepot.helper.ChatHandler):
+
+    def __init__(self, *args, **kwargs):
+        super(MessageCounter, self).__init__(*args, **kwargs)
+
+    def on_chat_message(self, msg):
+
+        bot = telepot.DelegatorBot('333028480:AAG2EAmXyBfGqV4XYyD7iD7EEZnd6zvil78', [
+            pave_event_space()(
+                per_chat_id(), create_open, MessageCounter, timeout=10),
+        ])
+        bot.message_loop()  # take updates from queue
+
+        print(msg)
+        chat_id = msg['chat']['id']
+
+        if 'text' in msg:
+            if re.search(r'hello', msg['text'], re.MULTILINE):
+                bot.sendMessage(chat_id, 'hello word', reply_to_message_id=msg['message_id'])
