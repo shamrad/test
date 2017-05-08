@@ -353,14 +353,16 @@ def verify(request):
         messages.warning(request, 'Transaction failed or canceled by user.')
         return redirect('user_profile:index')
 
-event=Event.objects.filter(pk=1)
+# event=Event.objects.filter(pk=1)
 
 
-def hamayesh_reg(request):
+def hamayesh_reg(request,pk):
     if request.method == "POST":
         form = HamayeshForm(request.POST)
         if form.is_valid():
-            post = form.save()
+            post = form.save(commit=False)
+            event=Event.objects.get(pk=pk)
+            post.event=event
             amount=event.expense
             description=event.description
             client = Client(ZARINPAL_WEBSERVICE)

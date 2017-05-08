@@ -20,7 +20,10 @@ urlpatterns = [
 
 
     url(r'NewWriting/$', NewWriting, name='NewWriting'),
-    url(r'enroll/$', hamayesh_reg, name='hamayesh'),
+
+
+
+    url(r'enroll/(?P<pk>[0-9]+)$', hamayesh_reg, name='hamayesh'),
 
     url(r'^آزمون-تافل/', CommingSoon, name='exam'),
     url(r'^اسپیکینگ/', CommingSoon, name='speaking'),
