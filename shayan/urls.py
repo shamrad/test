@@ -3,7 +3,7 @@
 from django.conf.urls import url,include
 from django.contrib import admin
 
-from user_profile.views import resendkey, conversation, reference
+from user_profile.views import resendkey, conversation, reference, hamayesh_reg, verify_event
 from .views import khane, service,aboutus, test, faq, barname, nini, MessageCounter
 from django.contrib.auth.views import password_reset,password_reset_done,password_reset_confirm, password_reset_complete
 
@@ -35,5 +35,10 @@ urlpatterns = [
 
     # telegramBot
     url(r'^333028480:AAG2EAmXyBfGqV4XYyD7iD7EEZnd6zvil78/', MessageCounter , name='telegrambot'),
+
+    # hamayesh
+    url(r'enroll/(?P<pk>[0-9]+)$', hamayesh_reg, name='hamayesh'),
+    url(r'^verify_event/(?P<pk>[0-9]+)/(?P<postid>[0-9]+)$', verify_event, name='verify_event'),
+
 
  ]

@@ -21,7 +21,7 @@ from django.conf import settings
 
 from .form import UserForm, LoginForm, WritingForm, Rate, PriceForm, EmailForm, HamayeshForm
 from django.views.generic import View
-from .models import Writing, Subject, Teacherate, Buy, Price, Registration, Course, Lesson, Event
+from .models import Writing, Subject, Teacherate, Buy, Price, Registration, Course, Lesson, Event, Hamayesh
 from django.views.generic import CreateView
 
 
@@ -371,7 +371,7 @@ def hamayesh_reg(request,pk):
                                                    description,
                                                    post.email,
                                                    post.mobile,
-                                                   'https://scorize.com' + reverse('user_profile:verify_event',kwargs={'pk':pk}))
+                                                   'https://scorize.com' + reverse('verify_event',kwargs={'pk':pk,'postid':post.id}))
             if result.Status == 100:
                 return redirect('https://www.zarinpal.com/pg/StartPay/' + result.Authority)
             else:
@@ -380,8 +380,9 @@ def hamayesh_reg(request,pk):
             form = HamayeshForm()
     return render(request, 'user_profile/hamayesh.html',{'form': form})
 
-def verify_event(request,pk):
+def verify_event(request,pk, postid):
     event = Event.objects.get(pk=pk)
+    user=Hamayesh.objects.get(pk=postid)
     client = Client(ZARINPAL_WEBSERVICE)
     if request.GET.get('Status') == 'OK':
         result = client.service.PaymentVerification(MMERCHANT_ID,
@@ -389,13 +390,16 @@ def verify_event(request,pk):
                                                     event.expense)
         if result.Status == 100:
             messages.success(request, 'تراکنش با موفقیت انجام شد.')
+            msg = render_to_string('user_profile/Email4.html')
+            send_mail('ثبت نام با موفقیت انجام شد','Registration is Completed!',
+                  settings.DEFAULT_FROM_EMAIL, [user.email], fail_silently=False, html_message=msg),
             return HttpResponse('ok')
         elif result.Status == 101:
             messages.success(request, 'پرداخت شما با موفقیت انجام شد.')
             return HttpResponse('ok')
         else:
             messages.error(request, 'Transaction failed.')
-            return redirect('user_profile:hamayesh')
+            return redirect('home')
     else:
         messages.warning(request, 'Transaction failed or canceled by user.')
-        return redirect('user_profile:hamayesh')
+        return redirect('home')

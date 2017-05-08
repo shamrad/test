@@ -143,15 +143,18 @@ class Event(models.Model):
     expense=models.IntegerField()
     description=models.CharField(max_length=200)
 
+    def __str__(self):
+        return self.name + ' at ' + self.date
+
 
 class Hamayesh(models.Model):
     name=models.CharField(max_length=100)
     mobile=models.CharField(max_length=12)
-    email=models.CharField(max_length=50)
+    email=models.EmailField()
     university=models.CharField(max_length=50)
     event=models.ForeignKey(Event)
-    grade=models.CharField(max_length=20)
-    major=models.CharField(max_length=20)
+    grade=models.CharField(max_length=20, blank=True)
+    major=models.CharField(max_length=20, blank=True)
     def __str__(self):
         return self.name + ' registered from ' + self.university
 

@@ -37,7 +37,5 @@ urlpatterns = [
     # url(r'^verify?Authority=(?P<Authority>[0-9]+)&Status=(?P<Status>[A-Z]+)/', verify, name='verify'),
     url(r'^verify/', verify, name='verify'),
 
-    # hamyesh
-    url(r'enroll/(?P<pk>[0-9]+)$', hamayesh_reg, name='hamayesh'),
-    url(r'^verify_event/(?P<pk>[0-9]+)$', verify_event, name='verify_event'),
+
 ]
