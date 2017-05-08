@@ -371,16 +371,17 @@ def hamayesh_reg(request,pk):
                                                    description,
                                                    post.email,
                                                    post.mobile,
-                                                   'https://scorize.com' + reverse('user_profile:verify_event'))
+                                                   'https://scorize.com' + reverse('user_profile:verify_event',kwargs={'pk':pk}))
             if result.Status == 100:
                 return redirect('https://www.zarinpal.com/pg/StartPay/' + result.Authority)
             else:
                 return HttpResponse(result.Status)
     else:
             form = HamayeshForm()
-    return render(request, 'user_profile/hamayesh.html',{'form': form, 'event':event})
+    return render(request, 'user_profile/hamayesh.html',{'form': form})
 
-def verify_event(request):
+def verify_event(request,pk):
+    event = Event.objects.get(pk=pk)
     client = Client(ZARINPAL_WEBSERVICE)
     if request.GET.get('Status') == 'OK':
         result = client.service.PaymentVerification(MMERCHANT_ID,
