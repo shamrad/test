@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Writing,User, Subject, Teacherate, Price, Buy, Course, Lesson, Registration
+from .models import Writing,User, Subject, Teacherate, Price, Buy, Course, Lesson, Registration, Hamayesh, Event
 
 admin.site.register(Writing)
 admin.site.register(User)
@@ -10,4 +10,6 @@ admin.site.register(Buy)
 admin.site.register(Course)
 admin.site.register(Lesson)
 admin.site.register(Registration)
+admin.site.register(Hamayesh)
+admin.site.register(Event)
 
