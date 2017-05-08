@@ -389,10 +389,10 @@ def verify_event(request,pk):
                                                     event.expense)
         if result.Status == 100:
             messages.success(request, 'تراکنش با موفقیت انجام شد.')
-            return redirect('user_profile:hamayesh')
+            return HttpResponse('ok')
         elif result.Status == 101:
             messages.success(request, 'پرداخت شما با موفقیت انجام شد.')
-            return redirect('user_profile:hamayesh')
+            return HttpResponse('ok')
         else:
             messages.error(request, 'Transaction failed.')
             return redirect('user_profile:hamayesh')
