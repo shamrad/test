@@ -1,6 +1,5 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-
 from .models import Writing,User, Subject, Teacherate, Price, Buy, Course, Lesson, Registration, Hamayesh, Event
 
 class MemberAdmin(UserAdmin):
@@ -10,7 +9,7 @@ class MemberAdmin(UserAdmin):
     search_fields = ('email', 'first_name', 'last_name')
 
 admin.site.register(Writing)
-admin.site.register(User)
+admin.site.register(User, MemberAdmin)
 admin.site.register(Subject)
 admin.site.register(Teacherate)
 admin.site.register(Price)
