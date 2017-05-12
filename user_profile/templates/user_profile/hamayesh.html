@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block title %}
-{#event.description#}
+{{ event.description}}
 {% endblock %}
 
 {% block style %}
@@ -45,23 +45,23 @@
              <tbody>
              <tr>
                  <td>عنوان رویداد</td>
-                 <td>event.name</td>
+                 <td>{{ event.name }}</td>
              </tr>
              <tr>
                  <td>مکان برگزاری</td>
-                 <td>event.location</td>
+                 <td>{{ event.location}}</td>
              </tr>
              <tr>
                  <td>تاریخ برگزاری</td>
-                 <td>event.date</td>
+                 <td>{{ event.date}}</td>
              </tr>
              <tr>
                  <td>مقدار سرمایه گذاری شما</td>
-                 <td>event.expense</td>
+                 <td>{{ event.expense}}</td>
              </tr>
              <tr>
                  <td>توضیحات بیشتر</td>
-                 <td>event.description</td>
+                 <td>{{ event.description}}</td>
              </tr>
              </tbody>
          </table>
