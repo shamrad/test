@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block title %}
-    ثبت نام در همایش How to Apply 2018 دانشگاه شریف
+{#event.description#}
 {% endblock %}
 
 {% block style %}
@@ -20,9 +20,11 @@
     <br>
     <br>
     <br>
-<form class="form-signin text-center" action="" method="post" enctype="multipart/form-data">
+    <div class="row">
+     <div class="col-lg-6 ">
+         <form class="form-signin text-center" action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        <h2 class="form-signin-heading" style="color: rgb(149,23,104)">فرم ثبت نام در همایش</h2>
+        <h2 class="form-signin-heading" style="color: rgb(149,23,104)">فرم ثبت نام در رویداد</h2>
 <br>
         {% for field in form %}
                 <span>{{ field.errors }}</span>
@@ -32,6 +34,39 @@
 <br>
         <button class="btn btn-lg btn-primary btn-block" type="submit" style="background-color: rgb(149,23,104); width: 25rem; margin: auto">ثبت و پرداخت هزینه</button>
     </form>
+</div>
+     <div class="col-lg-6 table-responsive">
+         <table class="table table-hover table-bordered text-center" style="direction: rtl">
+             <thead>
+             <tr>
+                 <th class="text-center" colspan="2" style="direction: rtl">مشخصات رویداد</th>
+             </tr>
+             </thead>
+             <tbody>
+             <tr>
+                 <td>عنوان رویداد</td>
+                 <td>event.name</td>
+             </tr>
+             <tr>
+                 <td>مکان برگزاری</td>
+                 <td>event.location</td>
+             </tr>
+             <tr>
+                 <td>تاریخ برگزاری</td>
+                 <td>event.date</td>
+             </tr>
+             <tr>
+                 <td>مقدار سرمایه گذاری شما</td>
+                 <td>event.expense</td>
+             </tr>
+             <tr>
+                 <td>توضیحات بیشتر</td>
+                 <td>event.description</td>
+             </tr>
+             </tbody>
+         </table>
+     </div>
+    </div>
     </div>
     <br>
     <br>

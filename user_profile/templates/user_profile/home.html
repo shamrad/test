@@ -31,13 +31,11 @@
 
         {#        neveshte hayi ke type mishan miran#}
         <div class="text-center" style="font-size: 30px;">
-            <p style="font-size: 36px"> به وب سایت گروه آموزشی اسکورایز خوش آمدید</p>
-            <br>
+            <p style="font-size: 36px; padding-bottom: 1rem"> به وب سایت گروه آموزشی اسکورایز خوش آمدید</p>
             <p style="font-size: 30px">برای آنها که می خواهند<span class="first"></span></p>
         </div>
 {#         mahale namayesh#}
 
-<br>
 <br>
         <div class="text-center">
         <div data-anijs="if: mouseover, do: bounce animated, to: #airplane" class="btn btn-outline-inverse btn-lg paeen" style="width: 400px; font-size: 20px">میخواهم در آزمون های بین المللی شرکت کنم</div>
@@ -61,7 +59,13 @@
         <br>
     </div>
 
-        <a href="{% url 'hamayesh' 1 %}">همایش</a>
+    <div style="padding-top: 0.5rem">
+    <div class="row text-center" style=" background-color: rgb(219,112,147); color: white; ">
+        <h1 class="col-lg-8"><a class="text-center" style="color: white ; font-size: 3rem" href="{% url 'hamayesh' 1 %}"> ثبت نام در همایش اپلای دانشگاه شریف - خرداد 96</a></h1>
+        <h1 class="col-lg-2 col-lg-offset-3" style="border: 2px solid white; border-radius: 1rem"><a class="text-center" style="color: white ; font-size: 2rem" href="{% url 'hamayesh' 1 %}">توضیحات همایش</a></h1>
+        <img data-anijs="if: scroll, on: window, do: zoomIn animated, before: $scrollReveal repeat" style="padding: 1rem" src="{% static "user_profile/lecture.png" %}">
+    </div>
+    </div>
 
     <br>
     <br>
@@ -209,7 +213,7 @@
 <br>
 <br>
     <!--quotations section-->
-    <div class="container-fluid" data-anijs="if: scroll, on: window, do: fadeInUp animated, before: $scrollReveal">
+    <div  data-anijs="if: scroll, on: window, do: fadeInUp animated, before: $scrollReveal">
     <div class="row text-center" style=" background-color: rgb(149,23,104); color: white; ">
         <h1 class="col-lg-8"><i class="fa fa-quote-left fa-2x" aria-hidden="true"></i> Study Smart, Not Hard</h1>
         <img data-anijs="if: scroll, on: window, do: zoomIn animated, before: $scrollReveal repeat" style="padding-top: 5rem" src="{% static "user_profile/study.png" %}">

@@ -85,7 +85,7 @@ class UserFormView(View):
     form_class = UserForm
     template_name = 'user_profile/register_form.html'
 
-    def get(self, request: object) -> object:
+    def get(self, request):
         form = self.form_class(None)
         return render(request, self.template_name, {'form': form})
 
@@ -357,11 +357,11 @@ def verify(request):
 
 
 def hamayesh_reg(request,pk):
+    event = Event.objects.get(pk=pk)
     if request.method == "POST":
         form = HamayeshForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
-            event=Event.objects.get(pk=pk)
             post.event=event
             amount=event.expense
             description=event.description
@@ -378,7 +378,7 @@ def hamayesh_reg(request,pk):
                 return HttpResponse(result.Status)
     else:
             form = HamayeshForm()
-    return render(request, 'user_profile/hamayesh.html',{'form': form})
+    return render(request, 'user_profile/hamayesh.html',{'form': form, 'event': event})
 
 def verify_event(request,pk, postid):
     event = Event.objects.get(pk=pk)
