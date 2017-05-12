@@ -22,20 +22,61 @@
     <br>
     <div class="row">
      <div class="col-lg-6 ">
-         <form class="form-signin text-center" action="" method="post" enctype="multipart/form-data">
+         <form class=" text-center form-horizontal" action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <h2 class="form-signin-heading" style="color: rgb(149,23,104)">فرم ثبت نام در رویداد</h2>
 <br>
-        {% for field in form %}
-                <span>{{ field.errors }}</span>
-                <label style="color: rgb(149,23,104)">{{ field.label_tag }}</label>
-                <div class="">{{ field }}</div>
-        {% endfor %}
+    <div class="form-group">
+    <label for="id_name" class="col-sm-2 control-label">نام</label>
+    <div class="col-sm-4">
+      <input class="form-control" id="id_name" name="name" placeholder="نام">
+    </div>
+    </div>
+    <div class="form-group">
+    <label for="id_email" class="col-sm-2 control-label">ایمیل</label>
+    <div class="col-sm-4">
+      <input type="email" class="form-control" id="id_email" name="email" placeholder="ایمیل">
+    </div>
+    </div>
+    <div class="form-group">
+    <label for="id_mobile" class="col-sm-2 control-label">شماره تلفن</label>
+    <div class="col-sm-4">
+      <input class="form-control" id="id_mobile" name="mobile" placeholder="موبایل">
+    </div>
+    </div>
+    <div class="form-group">
+    <label for="id_university" class="col-sm-2 control-label">دانشگاه محل تحصیل</label>
+    <div class="col-sm-4">
+      <select class="form-control" id="id_university" name="university">
+          <option>دانشگاه صنعتی شریف</option>
+          <option>دانشگاه تهران</option>
+          <option>دانشگاه صنعتی امیرکبیر</option>
+          <option>سایر</option>
+      </select>
+    </div>
+    </div>
+    <div class="form-group">
+    <label for="id_grade" class="col-sm-2 control-label">مقطع تحصیلی</label>
+    <div class="col-sm-4">
+      <select class="form-control" id="id_grade" name="grade" >
+          <option>کارشناسی</option>
+          <option>کارشناسی ارشد</option>
+          <option>دکتری</option>
+      </select>
+    </div>
+    </div>
+    <div class="form-group">
+    <label for="id_major" class="col-sm-2 control-label">رشته تحصیلی</label>
+    <div class="col-sm-4">
+      <input class="form-control" id="id_major" name="major">
+    </div>
+    </div>
 <br>
         <button class="btn btn-lg btn-primary btn-block" type="submit" style="background-color: rgb(149,23,104); width: 25rem; margin: auto">ثبت و پرداخت هزینه</button>
     </form>
 </div>
      <div class="col-lg-6 table-responsive">
+         <br>
          <table class="table table-hover table-bordered text-center" style="direction: rtl">
              <thead>
              <tr>
@@ -57,7 +98,7 @@
              </tr>
              <tr>
                  <td>مقدار سرمایه گذاری شما</td>
-                 <td>{{ event.expense}}</td>
+                 <td> تومان{{ event.expense}}</td>
              </tr>
              <tr>
                  <td>توضیحات بیشتر</td>
