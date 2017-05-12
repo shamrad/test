@@ -366,19 +366,21 @@ def hamayesh_reg(request,pk):
             amount=event.expense
             description=event.description
             client = Client(ZARINPAL_WEBSERVICE)
-            result = client.service.PaymentRequest(MMERCHANT_ID,
-                                                   amount,
-                                                   description,
-                                                   post.email,
-                                                   post.mobile,
-                                                   'https://scorize.com' + reverse('verify_event',kwargs={'pk':pk,'postid':post.id}))
-            if result.Status == 100:
-                return redirect('https://www.zarinpal.com/pg/StartPay/' + result.Authority)
-            else:
-                return HttpResponse(result.Status)
+            # result = client.service.PaymentRequest(MMERCHANT_ID,
+            #                                        amount,
+            #                                        description,
+            #                                        post.email,
+            #                                        post.mobile,
+            #                                        'https://scorize.com' + reverse('verify_event',kwargs={'pk':pk,'postid':post.id}))
+            # if result.Status == 100:
+            #     return redirect('https://www.zarinpal.com/pg/StartPay/' + result.Authority)
+            # else:
+            #     return HttpResponse(result.Status)
+            return generate_pdf(request, pk=pk , id=post.id)
     else:
             form = HamayeshForm()
     return render(request, 'user_profile/hamayesh.html',{'form': form, 'event': event})
+
 
 def verify_event(request,pk, postid):
     event = Event.objects.get(pk=pk)
@@ -393,7 +395,7 @@ def verify_event(request,pk, postid):
             msg = render_to_string('user_profile/Email4.html')
             send_mail('ثبت نام با موفقیت انجام شد','Registration is Completed!',
                   settings.DEFAULT_FROM_EMAIL, [user.email], fail_silently=False, html_message=msg),
-            return HttpResponse('ok')
+            return generate_pdf(request, pk=pk, id=postid)
         elif result.Status == 101:
             messages.success(request, 'پرداخت شما با موفقیت انجام شد.')
             return HttpResponse('ok')
@@ -403,3 +405,17 @@ def verify_event(request,pk, postid):
     else:
         messages.warning(request, 'Transaction failed or canceled by user.')
         return redirect('home')
+
+
+from user_profile.utils import render_to_pdf
+
+
+def generate_pdf(request, pk, id):
+    event= Event.objects.get(pk= pk)
+    reg= Hamayesh.objects.get(pk=id)
+    data = {
+         'reg': reg,
+         'event': event,
+     }
+    pdf = render_to_pdf('user_profile/ticket.html', data)
+    return HttpResponse(pdf, content_type='application/pdf')

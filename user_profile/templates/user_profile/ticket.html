@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ثبت نام با موفقیت انجام شد</title>
+</head>
+<body>
+         <table style="direction: rtl">
+             <thead>
+             <tr>
+                 <th class="text-center" colspan="2" style="direction: rtl">اطلاعات ثبت نام</th>
+             </tr>
+             </thead>
+             <tbody>
+             <tr>
+                 <td>نام</td>
+                 <td>{{ reg.name }}</td>
+             </tr>
+             <tr>
+                 <td>شماره تلفن</td>
+                 <td>{{ reg.mobile }}</td>
+             </tr>
+             <tr>
+                 <td>ایمیل</td>
+                 <td>{{ reg.email }}</td>
+             </tr>
+             <tr>
+                 <td>عنوان رویداد</td>
+                 <td>{{ event.name }}</td>
+             </tr>
+             <tr>
+                 <td>مکان برگزاری</td>
+                 <td>{{ event.location}}</td>
+             </tr>
+             <tr>
+                 <td>تاریخ برگزاری</td>
+                 <td>{{ event.date}}</td>
+             </tr>
+             <tr>
+                 <td>مقدار سرمایه گذاری شما</td>
+                 <td>{{ event.expense}} تومان</td>
+             </tr>
+             <tr>
+                 <td>توضیحات بیشتر</td>
+                 <td>{{ event.description}}</td>
+             </tr>
+             </tbody>
+         </table>
+
+</body>
+</html>
