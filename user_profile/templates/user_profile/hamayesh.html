@@ -22,7 +22,7 @@
     <br>
     <div class="row">
      <div class="col-lg-6 ">
-         <form class=" text-center form-horizontal" action="" method="post" enctype="multipart/form-data">
+         <form style="direction: rtl" class=" text-center form-horizontal" action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <h2 class="form-signin-heading" style="color: rgb(149,23,104)">فرم ثبت نام در رویداد</h2>
 <br>
@@ -48,6 +48,7 @@
     <label for="id_university" class="col-sm-2 control-label">دانشگاه محل تحصیل</label>
     <div class="col-sm-4">
       <select class="form-control" id="id_university" name="university">
+          <option value="" selected>نام دانشگاه شما</option>
           <option>دانشگاه صنعتی شریف</option>
           <option>دانشگاه تهران</option>
           <option>دانشگاه صنعتی امیرکبیر</option>
@@ -59,6 +60,7 @@
     <label for="id_grade" class="col-sm-2 control-label">مقطع تحصیلی</label>
     <div class="col-sm-4">
       <select class="form-control" id="id_grade" name="grade" >
+          <option value="" selected>مقطع تحصیلی شما</option>
           <option>کارشناسی</option>
           <option>کارشناسی ارشد</option>
           <option>دکتری</option>
@@ -98,7 +100,7 @@
              </tr>
              <tr>
                  <td>مقدار سرمایه گذاری شما</td>
-                 <td> تومان{{ event.expense}}</td>
+                 <td>{{ event.expense}} تومان</td>
              </tr>
              <tr>
                  <td>توضیحات بیشتر</td>
