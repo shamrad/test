@@ -38,7 +38,7 @@ urlpatterns = [
 
     # hamayesh
     url(r'enroll/(?P<pk>[0-9]+)$', hamayesh_reg, name='hamayesh'),
-    url(r'enroll/pdf/$', generate_pdf, name='pdf'),
+    # url(r'enroll/pdf/$', generate_pdf, name='pdf'),
     url(r'^verify_event/(?P<pk>[0-9]+)/(?P<postid>[0-9]+)$', verify_event, name='verify_event'),
 
 

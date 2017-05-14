@@ -11,6 +11,3 @@ requests-oauthlib==0.7.0
 virtualenv==15.0.3
 django-simple-email-confirmation
 telepot==10.5
-xhtml2pdf==0.2b1
-reportlab==3.4.0
-PyPDF2
