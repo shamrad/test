@@ -126,11 +126,12 @@
                         <div role="tabpanel" class="tab-pane fade" id="raigan">
                             <div class="tab-inner">
                                 {% if exam %}
-                                    <h3>شما Writing رایگان خود را قبلا نوشته اید!</h3>
+                                    <a class="btn btn-warning" href="{% url 'user_profile:NewWriting' %}"><h3>نوشتن Writing</h3></a>
+                                    <p>ثبت متن جدید!</p>
                                 {% else %}
                                     <a class="btn btn-warning" href="{% url 'user_profile:NewWriting' %}"><h3>نوشتن Writing رایگان</h3></a>
+                                    <p>محدود به 1000 کاراکتر</p>
                                 {% endif %}
-                                <p>محدود به 1000 کاراکتر</p>
                             </div>
                         </div>
 

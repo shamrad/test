@@ -55,7 +55,11 @@
         <div class="collapse navbar-collapse" id="Main">
             <ul class="nav navbar-nav">
                 <li class="pf" ><a href="{% url 'user_profile:index' %} " >{% block nav %}{% endblock %}<span class="sr-only">(current)</span></a></li>
-                <li class="newwrt"><a href="{% url 'user_profile:NewWriting' %}">نوشتن متن جدید</a></li>
+                {% if request.user.is_confirmed %}
+                     <li class="newwrt"><a href="{% url 'user_profile:NewWriting' %}">نوشتن متن جدید</a></li>
+                {% else %}
+                     <li class="newwrt" data-toggle="modal" data-target="#test1"><a href="{% url 'user_profile:NewWriting' %}">نوشتن متن جدید</a></li>
+                {% endif %}
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">خدمات <span class="caret"></span></a>
                     <ul class="dropdown-menu" style="direction: rtl">
@@ -91,6 +95,22 @@
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
+<div class="modal fade" id="test1" tabindex="-1" role="dialog" aria-labelledby="testLabel" style="direction: rtl">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="testLabel">ایمیل شما تایید نشده است!</h4>
+      </div>
+      <div class="modal-body">
+          کاربر محترم، {{ user.first_name }}  عزیز، برای استفاده از محتوای موجود در صفحه شخصی خود لازم است ایمیل خود را تایید کنید. قبلا هنگام ثبت نام لینک تایید ایمیل برای شما فرستاده شده است.
+      </div>
+      <div class="modal-footer">
+        <a type="button" class="btn btn-primary" href="{% url 'resendkey' %}">ارسال دوباره ایمیل</a>
+      </div>
+    </div>
+  </div>
+</div>
 <br>
 <br>
 <br>
