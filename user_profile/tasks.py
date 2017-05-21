@@ -1,6 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
-import numpy as np
+
 from celery import Celery
 from django.contrib.auth import get_user_model
 from django.core.mail import send_mail
@@ -15,9 +15,12 @@ app = Celery()
 
 
 @app.task(name='user_profile.tasks.ersal')
-def ersal(x, A):
-    A=np.array(A)
-    B=A[x*10:(x+1)*10:1]
+def ersal(x,m, A):
+    if (x+1)*m <= len(A):
+        B = A[x*m:(x+1)*m-1:1]
+    else:
+        B = A[x*m:len(A)-1:1]
+
     for i in B:
         pending_lesson = Lesson.objects.filter(whichcourse=i.course).get(order=i.last_email_received + 1)
         msg_html = render_to_string('user_profile/Email.html',
@@ -38,9 +41,13 @@ def ersal(x, A):
 @app.task(name='user_profile.tasks.delaytask')
 def delaytask():
     pending_requests = Registration.objects.filter(is_finished=False)
-    n=(len(pending_requests)//10)+1
+    m=5
+    if len(pending_requests)//m == len(pending_requests)/m:
+        n=(len(pending_requests)//m)
+    else:
+        n=(len(pending_requests)//m)+1
     for i in range(n):
-        ersal(i, pending_requests).delay(300)
+        ersal.apply_async((i,m, pending_requests), countdown=900)
 
 
 
