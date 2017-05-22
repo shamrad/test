@@ -15,13 +15,9 @@ app = Celery()
 
 
 @app.task(name='user_profile.tasks.ersal')
-def ersal(x,m, A):
-    if (x+1)*m <= len(A):
-        B = A[x*m:(x+1)*m-1:1]
-    else:
-        B = A[x*m:len(A)-1:1]
-
-    for i in B:
+def ersal():
+    pending_requests = Registration.objects.filter(is_finished=False)
+    for i in pending_requests:
         pending_lesson = Lesson.objects.filter(whichcourse=i.course).get(order=i.last_email_received + 1)
         msg_html = render_to_string('user_profile/Email.html',
                                     {'username': i.participant.username,
@@ -36,18 +32,6 @@ def ersal(x,m, A):
         if i.last_email_received == i.course.number_of_sessions:
             i.is_finished = True
         i.save()
-
-
-@app.task(name='user_profile.tasks.delaytask')
-def delaytask():
-    pending_requests = Registration.objects.filter(is_finished=False)
-    m=5
-    if len(pending_requests)//m == len(pending_requests)/m:
-        n=(len(pending_requests)//m)
-    else:
-        n=(len(pending_requests)//m)+1
-    for i in range(n):
-        ersal.apply_async((i,m, pending_requests), countdown=900)
 
 
 
