@@ -15,26 +15,31 @@ from user_profile.models import Registration, Lesson, Writing
 app = Celery()
 
 
-@app.task(name='user_profile.tasks.ersal', rate_limit='20/h')
-def ersal():
+@app.task(name='user_profile.tasks.getrequest')
+def getrequest():
     pending_requests = Registration.objects.filter(is_finished=False)
-    for i in pending_requests:
-        pending_lesson = Lesson.objects.filter(whichcourse=i.course).get(order=i.last_email_received + 1)
-        msg_html = render_to_string('user_profile/Email.html',
-                                    {'username': i.participant.username,
-                                     'number': pending_lesson.order,
-                                     'content': pending_lesson.content,
-                                     'site': settings.SITE_URL,
-                                     'music_file': 'dars ha/'+ pending_lesson.whichcourse.name +'/Lesson ' + str(pending_lesson.order) + '.mp3',
-                                     'text_file': 'dars ha/'+ pending_lesson.whichcourse.name +'/' + str(pending_lesson.order) + '.pdf'})
-        send_mail('دانلود درس شماره %s' % pending_lesson.order, pending_lesson.content, settings.DEFAULT_FROM_EMAIL,
-                  [i.participant.email], fail_silently=False, html_message=msg_html)
-        i.last_email_received += 1
-        if i.last_email_received == i.course.number_of_sessions:
-            i.is_finished = True
-        i.save()
+    for request in pending_requests:
+        ersal(request)
 
 
+@app.task(name='user_profile.tasks.ersal', rate_limit='20/h')
+def ersal(i):
+    pending_lesson = Lesson.objects.filter(whichcourse=i.course).get(order=i.last_email_received + 1)
+    msg_html = render_to_string('user_profile/Email.html',
+                                {'username': i.participant.username,
+                                 'number': pending_lesson.order,
+                                 'content': pending_lesson.content,
+                                 'site': settings.SITE_URL,
+                                 'music_file': 'dars ha/' + pending_lesson.whichcourse.name + '/Lesson ' + str(
+                                     pending_lesson.order) + '.mp3',
+                                 'text_file': 'dars ha/' + pending_lesson.whichcourse.name + '/' + str(
+                                     pending_lesson.order) + '.pdf'})
+    send_mail('دانلود درس شماره %s' % pending_lesson.order, pending_lesson.content, settings.DEFAULT_FROM_EMAIL,
+              [i.participant.email], fail_silently=False, html_message=msg_html)
+    i.last_email_received += 1
+    if i.last_email_received == i.course.number_of_sessions:
+        i.is_finished = True
+    i.save()
 
 
 @app.task(name='user_profile.tasks.notif')

@@ -13,9 +13,9 @@ app.autodiscover_tasks()
 
 app.conf.beat_schedule= {
     'ersal-e-darsname':{
-        'task': 'user_profile.tasks.ersal',
+        'task': 'user_profile.tasks.getrequest',
         'options': {'queue': 'celery'},
-        'schedule': crontab(minute=0, hour=13, day_of_week='1,3,6'),
+        'schedule': crontab(minute=54, hour=6, day_of_week='1,2,3,6'),
         # 'schedule': crontab(),
     },
     'notif-e-writing-raigan':{
