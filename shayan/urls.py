@@ -7,6 +7,8 @@ from user_profile.views import resendkey, conversation, reference, hamayesh_reg,
 from .views import khane, service,aboutus, test, faq, barname, nini, MessageCounter
 from django.contrib.auth.views import password_reset,password_reset_done,password_reset_confirm, password_reset_complete
 
+handler404 = 'shayan.views.page_not_found'
+handler500 = 'shayan.views.server_error'
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', khane, name='home'),
@@ -43,3 +45,5 @@ urlpatterns = [
 
 
  ]
+
+
