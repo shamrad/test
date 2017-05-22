@@ -2,6 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 
 from celery import Celery
+from celery.worker.control import rate_limit
 from django.contrib.auth import get_user_model
 from django.core.mail import send_mail
 from django.conf import settings
@@ -14,7 +15,7 @@ from user_profile.models import Registration, Lesson, Writing
 app = Celery()
 
 
-@app.task(name='user_profile.tasks.ersal')
+@app.task(name='user_profile.tasks.ersal', rate_limit='20/h')
 def ersal():
     pending_requests = Registration.objects.filter(is_finished=False)
     for i in pending_requests:
