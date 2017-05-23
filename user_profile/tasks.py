@@ -21,8 +21,8 @@ def getrequest():
     for request in pending_requests:
         ersal(request)
 
-
-@app.task(name='user_profile.tasks.ersal', rate_limit='20/h')
+rate_limit("user_profile.tasks.ersal", "20/h")
+@app.task(name='user_profile.tasks.ersal')
 def ersal(i):
     pending_lesson = Lesson.objects.filter(whichcourse=i.course).get(order=i.last_email_received + 1)
     msg_html = render_to_string('user_profile/Email.html',
