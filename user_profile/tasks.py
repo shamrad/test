@@ -21,7 +21,6 @@ def getrequest():
     for request in pending_requests:
         ersal(request)
 
-rate_limit("user_profile.tasks.ersal", "20/h")
 
 
 @app.task(name='user_profile.tasks.ersal')

@@ -3,6 +3,7 @@ from __future__ import absolute_import, unicode_literals
 import os
 import celery
 from celery.schedules import crontab
+from celery.worker.control import rate_limit
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'shayan.settings')
 app = celery.Celery('shayan')
@@ -11,6 +12,7 @@ app.config_from_object('django.conf:settings')
 # app.config_from_object('django.conf:settings', namespace='CELERY')
 app.autodiscover_tasks()
 
+rate_limit("user_profile.tasks.ersal", "20/h")
 app.conf.beat_schedule= {
     'ersal-e-darsname':{
         'task': 'user_profile.tasks.getrequest',
