@@ -35,7 +35,7 @@ class User(AbstractUser, SimpleEmailConfirmationUserMixin):
 
 class Writing(models.Model):
     author=models.ForeignKey(User)
-    text=models.TextField(max_length=10000)
+    text =models.TextField(max_length=10000)
     title = models.CharField(max_length=3000, default='untitled')
     time = models.DateTimeField(auto_now_add=True)
     moshaver=models.TextField(default='نظر مشاور ثبت نشده است.')

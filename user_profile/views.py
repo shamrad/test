@@ -209,6 +209,8 @@ def NewWriting(request):
                           '%s has submitted a new writing, and it is avaliable in your profile.' % current_user.username,
                           settings.DEFAULT_FROM_EMAIL, [corrector.email], fail_silently=False)
             return redirect('user_profile:index')
+        else:
+            raise ValidationError('فیلدها را پر کنید')
 
     else:
         if current_user.teacher:
