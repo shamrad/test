@@ -47,8 +47,10 @@ class LoginForm(AuthenticationForm):
         password_field.label = 'password'
 
 
-
 class WritingForm(forms.ModelForm):
+    def clean_title(self):
+        if self.title is None:
+            raise forms.ValidationError("فیلد موضوع را هنوز پر نکرده اید")
     class Meta:
         model= Writing
         fields = ['title', 'text']

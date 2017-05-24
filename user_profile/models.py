@@ -27,7 +27,7 @@ class User(AbstractUser, SimpleEmailConfirmationUserMixin):
         _('teacher'),
         default=False,
         help_text=_(
-            'Designates whether this user can edit the scor??. '
+            'Designates whether this user can edit the score??. '
 
         ),
     )
@@ -36,7 +36,7 @@ class User(AbstractUser, SimpleEmailConfirmationUserMixin):
 class Writing(models.Model):
     author=models.ForeignKey(User)
     text=models.TextField(max_length=10000)
-    title = models.CharField(max_length=3000,  default='untitled')
+    title = models.CharField(max_length=3000, default='untitled')
     time = models.DateTimeField(auto_now_add=True)
     moshaver=models.TextField(default='نظر مشاور ثبت نشده است.')
     corrector=models.CharField(max_length=30, null=True, blank=True)
