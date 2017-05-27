@@ -23,7 +23,11 @@ def getrequest():
 
 
 
-@app.task(name='user_profile.tasks.ersal')
+@app.task(name='user_profile.tasks.ersal',
+    rate_limit='10/h',
+    bind=True,
+    max_retries=3,
+    soft_time_limit=5)
 def ersal(i):
     pending_lesson = Lesson.objects.filter(whichcourse=i.course).get(order=i.last_email_received + 1)
     msg_html = render_to_string('user_profile/Email.html',
