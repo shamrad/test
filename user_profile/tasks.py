@@ -22,7 +22,6 @@ def getrequest():
 
 
 @app.task(name='user_profile.tasks.ersal',
-    rate_limit='20/h',
     bind=True,
     max_retries=3,
     soft_time_limit=5)
