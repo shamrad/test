@@ -38,6 +38,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'user_profile',
     'corrector',
+    'bot',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

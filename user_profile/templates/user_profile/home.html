@@ -19,123 +19,67 @@
     <div class="container-fluid">
 {#    pink section#}
     <div class="row" style=" background-color: rgb(149,23,104); color: white; ">
-        <h1 class="text-center" data-anijs="if: mouseover, do: bounce animated" style="font-family: 'Rouge Script';font-size: 50px ">Scorize</h1>
-<br>
-        <br>
-{#        <div class="jumbotron text-center" style="direction: rtl; background: none; padding: 1rem ">#}
-{#            <h1 class="center-block" style=" width:50%; border: 3px solid white; border-radius: 10px">آمادگی آزمون های زبان</h1>#}
-{#        </div>#}
-{#        <div class="text-center">#}
-{#            <h2>یک آزمون را دوبار تکرار نکنید</h2>#}
-{#        </div>#}
+        <div class="row">
+
+{#        welcome section#}
+
+
+            <h1 class="text-center"  style="font-family: 'Rouge Script';font-size: 50px ">Scorize</h1>
+            <br>
+            <br>
+
 
         {#        neveshte hayi ke type mishan miran#}
         <div class="text-center" style="font-size: 30px;">
-            <p style="font-size: 36px; padding-bottom: 1rem"> به وب سایت گروه آموزشی اسکورایز خوش آمدید</p>
-            <p style="font-size: 30px">برای آنها که می خواهند<span class="first"></span></p>
+            <p style="font-size: 50px; padding-bottom: 1rem " > به وب سایت گروه آموزشی اسکورایز خوش آمدید</p>
+            <p style="font-size: 25px">اگر یادگیری زبان انگیلیسی یکی از دغدغه های شماست با ما همراه باشید</p>
+            <br>
         </div>
 {#         mahale namayesh#}
 
-<br>
+        <br>
         <div class="text-center">
-        <div data-anijs="if: mouseover, do: bounce animated, to: #airplane" class="btn btn-outline-inverse btn-lg paeen" style="width: 400px; font-size: 20px">میخواهم در آزمون های بین المللی شرکت کنم</div>
-        <div data-anijs="if: mouseover, do: bounce animated, to: #chat" class="btn btn-outline-inverse btn-lg " data-toggle="modal" data-target="#free" role="button" style="width: 400px; font-size: 20px"> میخواهم در دوره رایگان مکالمه شرکت کنم</div>
+            <div class="btn btn-outline-inverse btn-lg " style="width: 400px; font-size: 20px">تصحیح رایگان متن های انگلیسی </div>
+            <div class="btn btn-outline-inverse btn-lg " data-toggle="modal" data-target="#free" role="button" style="width: 400px; font-size: 20px"> شرکت در دوره های رایگان مکالمه</div>
         </div>
-        <br>
-        <div class="row">
-            <div class="col-md-6 col-sx-6 col-md-offset-3 text-center">
-                <img id="airplane" style="margin-right: 100px"  data-anijs="if: mouseover, do: rubberBand animated" src="{% static 'user_profile/airplane.png' %}" width="100px">
-
-
-{#        <div class="totop col-lg-2">#}
-{#          <i class="arrow">#}
-{#            <span class="spani"></span>#}
-{#          </i>#}
-{#        </div>#}
-
-                <img id="chat" style="margin-left: 100px" data-anijs="if: mouseover, do: tada animated" src="{% static 'user_profile/chat.png' %}" width="100px">
+            <div class="text-center">
+                <br>
+                <p class="btn btn-outline-inverse paeen">اگر به تازگی تصمیم به یادگیری زبان گرفته اید و یا نمی دانید از کجا باید شروع کنید </p>
             </div>
-        </div>
-        <br>
-    </div>
 
-    <div style="padding-top: 0.5rem">
-    <div class="row text-center" style=" background-color: rgb(219,112,147); color: white; ">
-        <h1 class="col-lg-8"><a class="text-center" style="color: white ; font-size: 3rem" href="{% url 'hamayesh' 1 %}"> ثبت نام در همایش اپلای دانشگاه شریف - خرداد 96</a></h1>
-        <h1 class="col-lg-2 col-lg-offset-3" style="border: 2px solid white; border-radius: 1rem"><a class="text-center" style="color: white ; font-size: 2rem" href="{% url 'hamayesh' 1 %}">توضیحات همایش</a></h1>
-        <img data-anijs="if: scroll, on: window, do: zoomIn animated, before: $scrollReveal repeat" style="padding: 1rem" src="{% static "user_profile/lecture.png" %}">
-    </div>
-    </div>
+            <div class="totop ">
+          <i class="arrow">
+            <span class="spani"></span>
+          </i>
+        </div>
+
+
+            </div>
+
+</div>
 
     <br>
     <br>
     <br class="up">
-    <br>
-    <br>
-
+<Br>
 {#    picture of toefl and others#}
+{##}
+{#            <div class="row" >#}
+{#              <div class=" text-center" >#}
+{#                <img alt="GRE , جی آر ای ,exam , learning, آزمون" src="{% static 'user_profile/gre1.jpg' %}">#}
+{#                <img alt="toefl , تافل ,exam , learning, آزمون" src="{% static 'user_profile/ets.jpg' %}">#}
+{#                <img alt="ielts , آیلتس ,exam , learning, آزمون" src="{% static 'user_profile/toefl1.jpg' %}">#}
+{#              </div>#}
+{#            </div>#}
 
-            <div class="row" >
-              <div class=" text-center" >
-                <img alt="GRE , جی آر ای ,exam , learning, آزمون" src="{% static 'user_profile/gre1.jpg' %}">
-                <img alt="toefl , تافل ,exam , learning, آزمون" src="{% static 'user_profile/ets.jpg' %}">
-                <img alt="ielts , آیلتس ,exam , learning, آزمون" src="{% static 'user_profile/toefl1.jpg' %}">
-              </div>
-            </div>
 
-    <br>
-    <br>
-    <br>
 
 
 
 <div class="row" style="">
 
 {#sliiide show#}
-{#    <div class="col-lg-6">#}
-{#    <script src="{% static 'user_profile/jssor.slider.min.js' %}" type="text/javascript" data-library="jssor.slider" data-version="22.0.15"></script>#}
-{#<script type="text/javascript">#}
-{#    jssor_1_slider_init = function() {#}
-{##}
-{#        var jssor_1_SlideoTransitions = [#}
-{#            [{b:-1,d:1,i:100}],#}
-{#            [{b:0,d:2000,x:537}],#}
-{#            [{b:2000,d:2000,x:-499}],#}
-{#            [{b:4000,d:2000,x:537}],#}
-{#            [{b:6000,d:2000,x:-499}]#}
-{#        ];#}
-{##}
-{#        var jssor_1_options = {#}
-{#            $AutoPlay: true,#}
-{#            $Idle: 1000,#}
-{#            $CaptionSliderOptions: {#}
-{#                $Class: $JssorCaptionSlideo$,#}
-{#                $Transitions: jssor_1_SlideoTransitions#}
-{#            }#}
-{#        };#}
-{##}
-{#        var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);#}
-{#    };#}
-{#</script>#}
-{##}
-{#<div id="jssor_1" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 500px; height: 450px; overflow: hidden; visibility: hidden;" data-anijs="if: scroll, on: window, do: slideInLeft animated, before: $scrollReveal">#}
-{#    <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 500px; height: 450px; overflow: hidden;">#}
-{#        <!--<img data-u="add" title="Jssor Slider" style="display:block;position:absolute;top:0;right:0;width:16px;height:16px;z-index:1000;" src="" />-->#}
-{#        <a data-u="any" href="http://www.jssor.com/meehraaad/mehradslide.slider" style="display:none">jQuery Slider</a>#}
-{#        <div data-p="118.75">#}
-{#            <img data-u="caption" data-t="0" style="position:absolute;top:0px;left:0px;width:500px;height:450px;z-index:0;" src="{% static 'user_profile/imac3.png' %}" />#}
-{#            <img style="position:absolute;top:22px;left:19px;width:464px;height:297px;z-index:0;" src="{% static 'user_profile/ss5.jpg' %}" />#}
-{#            <img data-u="caption" data-t="1" style="position:absolute;top:22px;left:-518px;width:464px;height:297px;z-index:0;" src="{% static 'user_profile/ss1.jpg' %}" />#}
-{#            <img data-u="caption" data-t="2" style="position:absolute;top:22px;left:518px;width:464px;height:297px;z-index:0;" src="{% static 'user_profile/ss2.jpg' %}" />#}
-{#            <img data-u="caption" data-t="3" style="position:absolute;top:22px;left:-518px;width:464px;height:297px;z-index:0;" src="{% static 'user_profile/ss3.jpg' %}" />#}
-{#            <img data-u="caption" data-t="4" style="position:absolute;top:22px;left:518px;width:464px;height:297px;z-index:0;" src="{% static 'user_profile/ss4.jpg' %}" />#}
-{#        </div>#}
-{#    </div>#}
-{#</div>#}
-{#<script type="text/javascript">jssor_1_slider_init();</script>#}
-{#<!-- #endregion Jssor Slider End -->#}
-{##}
-{#</div>#}
+
 
      <!--who we are section-->
     <div class="col-lg-6 col-lg-offset-3">
@@ -351,8 +295,9 @@
       </div>
       <div class="modal-footer">
         <a type="button" class="btn btn-default" href="{% url 'nini' %}">اطلاعات بیشتر در مورد دوره</a>
-        <a type="button" class="btn btn-primary" href="{% url 'user_profile:register' %}">میخواهم در دوره ثبت نام کنم</a>
+        <a type="button" class="btn btn-primary" href="{% url 'user_profile:login' %}">میخواهم در دوره ثبت نام کنم</a>
       </div>
+
     </div>
   </div>
 </div>
@@ -372,4 +317,50 @@
 <script type="text/javascript" rel="script" src="{% static 'user_profile/homescript.js' %}"></script>
         <script src="{% static 'user_profile/typed.js' %}"></script>
 
+{##}
+{#            <script src="{% static 'user_profile/jssor.slider.min.js' %}" type="text/javascript" data-library="jssor.slider" data-version="22.0.15"></script>#}
+{#        <script type="text/javascript">#}
+{#            jssor_1_slider_init = function() {#}
+{##}
+{#                var jssor_1_SlideoTransitions = [#}
+{#                    [{b:-1,d:1,i:100}],#}
+{#                    [{b:0,d:2000,x:537}],#}
+{#                    [{b:2000,d:2000,x:-499}],#}
+{#                    [{b:4000,d:2000,x:537}],#}
+{#                    [{b:6000,d:2000,x:-499}]#}
+{#                ];#}
+{##}
+{#                var jssor_1_options = {#}
+{#                    $AutoPlay: true,#}
+{#                    $Idle: 1000,#}
+{#                    $CaptionSliderOptions: {#}
+{#                        $Class: $JssorCaptionSlideo$,#}
+{#                        $Transitions: jssor_1_SlideoTransitions#}
+{#                    }#}
+{#                };#}
+{##}
+{#                var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);#}
+{#            };#}
+{#        </script>#}
+{##}
+{#        <div id="jssor_1" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 500px; height: 450px; overflow: hidden; visibility: hidden;" data-anijs="if: scroll, on: window, do: slideInLeft animated, before: $scrollReveal">#}
+{#            <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 500px; height: 450px; overflow: hidden;">#}
+{#                <!--<img data-u="add" title="Jssor Slider" style="display:block;position:absolute;top:0;right:0;width:16px;height:16px;z-index:1000;" src="" />-->#}
+{#                <a data-u="any" href="http://www.jssor.com/meehraaad/mehradslide.slider" style="display:none">jQuery Slider</a>#}
+{#                <div data-p="118.75">#}
+{#                    <img data-u="caption" data-t="0" style="position:absolute;top:0px;left:0px;width:500px;height:450px;z-index:0;" src="{% static 'user_profile/imac3.png' %}" />#}
+{#                    <img style="position:absolute;top:22px;left:19px;width:464px;height:297px;z-index:0;" src="{% static 'user_profile/ss5.jpg' %}" />#}
+{#                    <img data-u="caption" data-t="1" style="position:absolute;top:22px;left:-518px;width:464px;height:297px;z-index:0;" src="{% static 'user_profile/ss1.jpg' %}" />#}
+{#                    <img data-u="caption" data-t="2" style="position:absolute;top:22px;left:518px;width:464px;height:297px;z-index:0;" src="{% static 'user_profile/ss2.jpg' %}" />#}
+{#                    <img data-u="caption" data-t="3" style="position:absolute;top:22px;left:-518px;width:464px;height:297px;z-index:0;" src="{% static 'user_profile/ss3.jpg' %}" />#}
+{#                    <img data-u="caption" data-t="4" style="position:absolute;top:22px;left:518px;width:464px;height:297px;z-index:0;" src="{% static 'user_profile/ss4.jpg' %}" />#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#        <script type="text/javascript">jssor_1_slider_init();</script>#}
+{#        <!-- #endregion Jssor Slider End -->#}
+
+
+
 {% endblock %}
+
